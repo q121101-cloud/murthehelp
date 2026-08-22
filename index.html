@@ -430,39 +430,35 @@
                 </form>
 
                 <!-- Form 2: Đăng Ký Tài Khoản Khách Hàng Mới -->
-                <form id="form-register" onsubmit="handleUserRegister(event)" class="hidden space-y-3 text-xs">
-                    <div class="space-y-1">
-                        <label class="text-gray-400 font-bold block text-[11px]">HỌ TÊN HIỂN THỊ:</label>
-                        <input type="text" id="reg-fullname" required placeholder="Ví dụ: Trần Minh Tuấn"
-                            class="w-full bg-[#131620] border border-gray-700 rounded-xl px-3 py-2 text-gray-100 text-xs focus:outline-none focus:border-red-500">
+                <form id="form-register" onsubmit="handleRegisterUser(event)" class="hidden space-y-3 text-xs">
+                    <div>
+                        <label class="text-neutral-400 block mb-1">HỌ TÊN HIỂN THỊ:</label>
+                        <input type="text" id="reg-fullname" placeholder="Ví dụ: Trần Minh Tuấn" class="w-full bg-[#131620] border border-neutral-700 rounded-lg px-3 py-2 text-white">
                     </div>
 
-                    <div class="space-y-1">
-                        <label class="text-gray-400 font-bold block text-[11px]">TÊN ĐĂNG NHẬP (DUY NHẤT):</label>
-                        <input type="text" id="reg-username" required placeholder="Ví dụ: tuan_tactical"
-                            class="w-full bg-[#131620] border border-gray-700 rounded-xl px-3 py-2 text-gray-100 text-xs focus:outline-none focus:border-red-500">
+                    <div>
+                        <label class="text-neutral-400 block mb-1">TÊN ĐĂNG NHẬP (DUY NHẤT):</label>
+                        <input type="text" id="reg-username" placeholder="Ví dụ: tuan_tactical" class="w-full bg-[#131620] border border-neutral-700 rounded-lg px-3 py-2 text-white">
                     </div>
 
-                    <div class="space-y-1">
-                        <label class="text-gray-400 font-bold block text-[11px]">MẬT MÃ BẢO MẬT:</label>
-                        <input type="password" id="reg-password" required placeholder="Tối thiểu 4 ký tự..."
-                            class="w-full bg-[#131620] border border-gray-700 rounded-xl px-3 py-2 text-gray-100 text-xs focus:outline-none focus:border-red-500">
+                    <div>
+                        <label class="text-neutral-400 block mb-1">MẬT MÃ BẢO MẬT:</label>
+                        <input type="password" id="reg-password" placeholder="Tối thiểu 4 ký tự..." class="w-full bg-[#131620] border border-neutral-700 rounded-lg px-3 py-2 text-white">
                     </div>
 
-                    <div class="space-y-1">
-                        <label class="text-gray-400 font-bold block text-[11px]">CẤP BẬC MONG MUỐN ĐĂNG KÝ:</label>
-                        <select id="reg-clearance" class="w-full bg-[#131620] border border-gray-700 rounded-xl px-3 py-2 text-gray-100 text-xs focus:outline-none focus:border-red-500">
+                    <div>
+                        <label class="text-neutral-400 block mb-1">CẤP BẬC MONG MUỐN ĐĂNG KÝ:</label>
+                        <select id="reg-tier" class="w-full bg-[#131620] border border-neutral-700 rounded-lg px-3 py-2 text-white">
                             <option value="RED">🔴 CODE RED - Đơn Vị Tác Chiến Vũ Khí</option>
-                            <option value="PURPLE">🟣 CODE PURPLE - Đội Dọn Dẹp & Do Thám</option>
-                            <option value="YELLOW">🟡 CODE YELLOW - Hỗ Trợ Quân Y & Cứu Thương</option>
+                            <option value="PURPLE">🟣 CODE PURPLE - Dọn Dẹp & Do Thám</option>
+                            <option value="YELLOW">🟡 CODE YELLOW - Y Tế & Cứu Thương</option>
+                            <option value="GREEN">🟢 CODE GREEN - Quản Trị Tối Cao (Admin)</option>
                         </select>
                     </div>
 
-                    <div class="pt-1">
-                        <button type="submit" class="w-full bg-gradient-to-r from-emerald-800 to-emerald-600 hover:from-emerald-700 hover:to-emerald-500 text-white font-extrabold py-2.5 rounded-xl text-xs tracking-wider transition cursor-pointer shadow-lg uppercase">
-                            ĐĂNG KÝ TÀI KHOẢN MỚI
-                        </button>
-                    </div>
+                    <button type="submit" onclick="handleRegisterUser(event)" class="w-full bg-emerald-700 hover:bg-emerald-600 text-white font-bold py-2.5 rounded-lg transition mt-2">
+                        ĐĂNG KÝ TÀI KHOẢN MỚI
+                    </button>
                 </form>
 
             </div>
