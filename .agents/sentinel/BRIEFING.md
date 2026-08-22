@@ -1,13 +1,13 @@
-# BRIEFING — 2026-08-22T23:27:35+07:00
+# BRIEFING — 2026-08-23T01:38:12+07:00
 
 ## Mission
-Build and deploy the "MURTHEHELP // MURDER.SHOPPING.MALL" interactive 3D WebGL web platform in Vietnamese (VNĐ) per user specifications.
+Coordinate UI visual overhaul and form/portal fixes for the Hoàng Hắc Long / murthehelp dual-layer web app.
 
 ## 🔒 My Identity
 - Archetype: sentinel
 - Working directory: /Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/sentinel
-- Orchestrator: 0f874022-cb03-442d-88d4-dd1bff766546
-- Victory Auditor: 0a8ef34f-ecd0-4416-8f32-7657e3e8d1e9
+- Orchestrator: bdf7d766-1c9f-4c9a-876e-4638f224f915
+- Victory Auditor: [to be spawned on victory claim]
 
 ## 🔒 Key Constraints
 - No technical decisions — relay only
@@ -15,19 +15,20 @@ Build and deploy the "MURTHEHELP // MURDER.SHOPPING.MALL" interactive 3D WebGL w
 - Must not write code or make technical decisions directly
 
 ## User Context
-- **Last user request**: Build and deploy an ultra-modern, interactive 3D WebGL web platform: "MURTHEHELP // MURDER.SHOPPING.MALL" inspired by "A Shop for Killers" and BlueYard 3D shader aesthetic.
+- **Last user request**: Visual overhaul of disguise storefront (Hoàng Hắc Long), remove portal subtitle text line, update registration placeholders & 8-char validation, update login placeholders & passcode label, ensure no regressions and push to GitHub.
 - **Pending clarifications**: none
-- **Delivered results**: none
+- **Delivered results**: Initial implementation confirmed in prior round; current round starting.
 
 ## Project Status
-- **Phase**: complete
-- **Routing Decision**: General -> teamwork_preview_orchestrator (SWE / web app project with multiple requirements, no explicit SWE Light or math/proof constraint)
+- **Phase**: in progress
+- **Routing Decision**: General -> teamwork_preview_orchestrator (multi-part UI overhaul and validation updates).
 
 ## Victory Audit Status
-- **Triggered**: yes
-- **Verdict**: VICTORY CONFIRMED
+- **Triggered**: no
+- **Verdict**: pending
 - **Retry count**: 0
 
 ## Artifact Index
 - /Users/quan/.gemini/antigravity/scratch/murthehelp/ORIGINAL_REQUEST.md — Authoritative User Request
 - /Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/ORIGINAL_REQUEST.md — Agents copy of User Request
+- /Users/quan/.gemini/antigravity/scratch/murthehelp/index.html — Target web application file

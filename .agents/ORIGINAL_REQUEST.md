@@ -81,3 +81,76 @@ Integrity mode: development
 ### Deployment & Serving
 - [ ] Production-ready `index.html` runs locally with zero console errors and is committed to Git.
 - [ ] Local static web server successfully serves the application at `http://localhost:3000` (or dynamic port).
+
+## Follow-up — 2026-08-23T01:38:12+07:00
+
+Improve the existing single-file Vietnamese-language dark web simulation at `/Users/quan/.gemini/antigravity/scratch/murthehelp/index.html`. The project is a dual-layer site: a public disguise storefront (Hoàng Hắc Long agriculture machinery shop) and a hidden dark mall portal.
+
+Working directory: /Users/quan/.gemini/antigravity/scratch/murthehelp
+Integrity mode: development
+
+---
+
+## Requirements
+
+### R1. Visual Overhaul of the Public Disguise Storefront
+
+The public-facing disguise storefront (the "Hoàng Hắc Long" agricultural / hydraulic equipment shop) must be visually stunning and professional — on par with real premium Vietnamese e-commerce sites. Anyone who sees it should be impressed and feel it is completely authentic.
+
+- Every product card must display a real, high-quality image loaded from a working public URL (Unsplash, Pexels, or similar CDNs). No broken images, no placeholder SVGs.
+- The overall layout, typography, colors, spacing, and hero section must be polished, modern and visually impressive. Think: high-end B2B e-commerce for industrial equipment — clean grid layout, professional imagery, subtle gradients, clear CTAs.
+- Product images must visually match the product type (steel hoses, hydraulic pumps, valves, fittings, etc.).
+
+### R2. Portal Page Text Removal
+
+On the hidden portal / transit screen (the dark burgundy page with `murthehelp` branding and the 3-color clearance bar), remove the subtitle line that reads:
+
+```
+[ TRẠM TRUNG CHUYỂN CỐ ĐÔ HUẾ // NODE-04-HUE-VN ]
+```
+
+This line must be completely removed from the DOM. Do not replace it with anything else.
+
+### R3. Registration Form Placeholder & Validation Fixes
+
+In the "Tạo Tài Khoản Mới" (registration) form inside the portal login modal:
+
+- **HỌ TÊN HIỂN THỊ** field placeholder: change to `Nguyễn Văn A` (remove the current "Ví dụ: Trần Minh Tuấn").
+- **TÊN ĐĂNG NHẬP** field placeholder: remove completely (empty placeholder, or just a blank input — no example text).
+- **MẬT MÃ BẢO MẬT** field: increase minimum password length from 4 to **8 characters**. Update the placeholder to reflect "Tối thiểu 8 ký tự..." and update the JS validation check accordingly.
+
+### R4. Login Form Text Fixes
+
+In the "Đăng Nhập" tab of the portal login modal:
+
+- **TÊN ĐĂNG NHẬP / MÃ ĐỊNH DANH** input placeholder: remove the demo account examples `admin / sniper_red / medic_yel...` — leave the placeholder blank or use a generic hint like `Tên đăng nhập của bạn`.
+- **Password field placeholder**: change from `Nhập mật mã tác chiến...` to `Nhập mật khẩu`.
+- **Password field label**: change from `MẬT MÃ BẢO MẬT (PASSCODE):` to just `PASSCODE:` — remove "MẬT MÃ BẢO MẬT" and the parentheses entirely.
+
+---
+
+## Acceptance Criteria
+
+### Public Storefront Visual Quality
+- [ ] Every product card on the disguise storefront displays a working, relevant image (no broken img tags, no SVG fallbacks visible).
+- [ ] The storefront homepage would pass as a real premium Vietnamese industrial/agriculture e-commerce site to a first-time visitor.
+- [ ] Hero section, navigation, product grid are all visually polished and professional.
+
+### Portal Page
+- [ ] The text `[ TRẠM TRUNG CHUYỂN CỐ ĐÔ HUẾ // NODE-04-HUE-VN ]` does not appear anywhere in the rendered DOM of the portal/transit screen.
+
+### Registration Form
+- [ ] HỌ TÊN HIỂN THỊ placeholder is exactly `Nguyễn Văn A`.
+- [ ] TÊN ĐĂNG NHẬP placeholder is empty (no example text shown).
+- [ ] Registration rejects passwords shorter than 8 characters with an appropriate warning.
+- [ ] Password field placeholder reads "Tối thiểu 8 ký tự..." or similar.
+
+### Login Form
+- [ ] Username field placeholder does NOT contain `admin`, `sniper_red`, or `medic_yel`.
+- [ ] Password field placeholder is `Nhập mật khẩu`.
+- [ ] Password field label is `PASSCODE:` with no additional Vietnamese text.
+
+### No Regressions
+- [ ] The site still functions end-to-end: disguise storefront → key entry → portal transition → dark mall login with account `q121101` / `Tungqu@n1208.` succeeds.
+- [ ] All JavaScript passes syntax validation (e.g. `node -e "new Function(...)"` returns no errors).
+- [ ] After all changes, run `git add . && git commit -m "feat(ui): visual overhaul storefront, portal text removal, form UX fixes" && git push origin main` to push to GitHub.
