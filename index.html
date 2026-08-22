@@ -1,175 +1,284 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Công ty Nông cụ Nông nghiệp Hợp Đức - Dụng cụ tưới tiêu & Ống dẫn nước</title>
-    <meta property="og:site_name" content="Hamdeok Farming Tools" />
-    <meta name="description" content="Chuyên phân phối ống nhựa lõi thép chịu áp, máy bơm tưới tiêu công nghiệp, vật tư cơ khí nông nghiệp toàn quốc." />
+    <title>TẬP ĐOÀN CƠ KHÍ & THỦY LỰC HẮC LONG | Thiết Bị Dây Dẫn Cao Áp & Thủy Lợi Việt Nam</title>
+    
+    <!-- Meta SEO & Định Tuyến Bí Mật -->
+    <meta name="description" content="Tập đoàn Cơ khí & Thủy lực Hắc Long (Hac Long Heavy Apparatus & Hydraulics Corp) - Tiên phong giải pháp ống bọc bố thép chịu áp lực 1200 Bar, máy bơm công suất lớn và thiết bị nông nghiệp công nghệ cao tại Việt Nam." />
+    <meta property="og:site_name" content="Hac Long Heavy Hydraulics Vietnam" />
+    <meta name="author" content="Hac Long Industrial Group Vietnam" />
     <meta name="key" content="mh13543505" />
-    <meta name="gateway" content="https://mhshoppingkill87689.dark/mh13543505" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+    <meta name="gateway" content="https://haclong-mechanics.vn/node-04-vietnam" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐉</text></svg>">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        hl: {
+                            gold: '#d4af37',
+                            goldLight: '#f3e5ab',
+                            dark: '#090b10',
+                            card: '#11141d',
+                            accent: '#1e40af',
+                            red: '#dc2626'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"Space Grotesk"', '"JetBrains Mono"', 'monospace'],
+                        display: ['"Space Grotesk"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts Hiện Đại -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
 
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #f8fafc;
-            color: #0f172a;
             transition: background-color 0.4s ease, color 0.4s ease;
         }
         .font-mono-code {
             font-family: 'Space Grotesk', 'JetBrains Mono', monospace;
         }
+        
+        /* Hiệu ứng chuyển động mượt */
         .fade-in {
-            animation: fadeIn 0.35s ease-in-out forwards;
+            animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(6px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
+
+        /* Glassmorphism Độc Bản */
+        .glass-dark {
+            background: rgba(13, 16, 23, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+
+        .glass-vietnam {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.08), rgba(217, 119, 6, 0.05));
+            border: 1px solid rgba(220, 38, 38, 0.2);
         }
-        /* Tactical CRT Scanlines Background */
+
+        /* CRT Scanline Background (Chỉ trang trí, không chặn sự kiện click) */
         .scanlines-bg {
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
             background-size: 100% 3px, 6px 100%;
         }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #08090d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232a3b;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4af37;
+        }
     </style>
 </head>
-<body class="antialiased selection:bg-red-500 selection:text-white" id="main-body">
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-amber-500 selection:text-slate-950 min-h-screen flex flex-col" id="main-body">
 
     <!-- ============================================================ -->
-    <!-- 1. GIAO DIỆN MẶT TIỀN NGỤY TRANG (NÔNG CỤ HỢP ĐỨC 100% CHÂN THỰC) -->
+    <!-- 1. GIAO DIỆN MẶT TIỀN NGỤY TRANG (TẬP ĐOÀN THỦY LỰC HẮC LONG)-->
     <!-- ============================================================ -->
     <div id="disguise-stage" class="min-h-screen flex flex-col">
-        <!-- Top Bar hoàn toàn bình thường của doanh nghiệp nông nghiệp -->
-        <div class="bg-slate-800 text-slate-300 text-xs py-2 px-4 border-b border-slate-700">
+        
+        <!-- Top Utility Bar Chuyên Nghiệp -->
+        <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
             <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
                 <div class="flex items-center space-x-3">
-                    <span class="bg-blue-600 text-white font-bold px-1.5 py-0.5 rounded text-[10px]">ĐẠI LÝ CẤP 1</span>
-                    <span>Hệ Thống Phân Phối Thiết Bị Tưới Tiêu & Ống Nước Công Nghiệp Hợp Đức</span>
+                    <span class="bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-extrabold px-2 py-0.5 rounded text-[10px] tracking-wider uppercase shadow-sm">
+                        TOP 10 CƠ KHÍ NÔNG NGHIỆP VIỆT NAM
+                    </span>
+                    <span class="hidden sm:inline text-slate-400">Hệ Thống Nhà Máy Sản Xuất Dây Dẫn Áp Lực Cao & Cơ Giới Thủy Lợi</span>
                 </div>
-                <div class="flex items-center space-x-6 text-slate-400">
-                    <span>⏰ Giờ làm việc: 07:30 - 17:30 (T2 - T7)</span>
-                    <span>📞 Hotline CSKH: <b class="text-white">1900-7209</b></span>
-                    <span>📍 Chi nhánh: Huyện Hợp Đức, Tỉnh Gangwon</span>
+                <div class="flex items-center space-x-6 text-slate-400 text-[11px] font-medium">
+                    <span>📍 Trụ sở: Khu CNC Hòa Lạc, Hà Nội</span>
+                    <span>📞 Tổng đài: <b class="text-amber-400 font-mono-code text-xs">1900-8868</b></span>
+                    <span class="hidden md:inline">🌐 haclong-mechanics.vn</span>
                 </div>
             </div>
         </div>
 
-        <!-- Header Doanh Nghiệp Nông Nghiệp -->
-        <header class="bg-white border-b shadow-sm sticky top-0 z-30">
+        <!-- Main Header Doanh Nghiệp -->
+        <header class="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-30">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap justify-between items-center gap-4">
-                <div class="flex items-center space-x-3 cursor-pointer" onclick="filterDisguiseCategory('all')">
-                    <div class="w-12 h-12 bg-gradient-to-br from-blue-700 to-indigo-800 rounded-xl flex items-center justify-center text-white font-black text-2xl shadow-md">
-                        HĐ
+                
+                <!-- Logo & Tên Tập Đoàn Hắc Long -->
+                <div class="flex items-center space-x-3.5 cursor-pointer" onclick="filterDisguiseCategory('all')">
+                    <div class="w-12 h-12 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 border border-amber-500/40 rounded-2xl flex items-center justify-center text-amber-400 font-black text-2xl shadow-lg shadow-slate-950/20">
+                        🐉
                     </div>
                     <div>
                         <div class="flex items-center gap-2">
-                            <h1 class="text-xl font-extrabold text-slate-900 tracking-tight">NÔNG CỤ HỢP ĐỨC</h1>
-                            <span class="text-[10px] bg-green-100 text-green-800 font-bold px-2 py-0.5 rounded-full">ISO 9001:2020</span>
+                            <h1 class="text-xl sm:text-2xl font-black text-slate-950 tracking-tight">HẮC LONG CORP</h1>
+                            <span class="text-[10px] bg-slate-100 text-slate-800 border border-slate-300 font-extrabold px-2 py-0.5 rounded-full font-mono-code">ISO 9001:2024</span>
                         </div>
-                        <p class="text-xs text-slate-500 font-medium">Hamdeok Agricultural Supply & High-Pressure Steel Wire Hoses</p>
+                        <p class="text-xs text-slate-500 font-medium tracking-tight">TẬP ĐOÀN CƠ KHÍ & THỦY LỰC CAO ÁP HẮC LONG VIỆT NAM</p>
                     </div>
                 </div>
 
-                <!-- Thanh tìm kiếm bình thường (Chính là điểm ngầm kích hoạt mật mã theo phim) -->
+                <!-- Thanh Tìm Kiếm Mặt Tiền (Điểm kích hoạt mật mã ngầm) -->
                 <div class="flex items-center space-x-2 flex-grow sm:flex-grow-0">
                     <div class="relative w-full sm:w-80">
-                        <input type="text" id="disguise-search-input" placeholder="Tìm kiếm sản phẩm, mã quy cách..." 
-                            class="w-full border border-slate-300 rounded-lg pl-9 pr-3 py-2 text-xs focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 bg-slate-50 font-medium">
+                        <input type="text" id="disguise-search-input" placeholder="Tìm mã sản phẩm, thông số quy cách..." 
+                            class="w-full border border-slate-300 rounded-xl pl-9 pr-3 py-2 text-xs focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 bg-slate-50 font-medium transition">
                         <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                     </div>
-                    <button onclick="handleDisguiseSearch()" class="bg-blue-700 hover:bg-blue-800 text-white text-xs px-4 py-2 rounded-lg font-bold transition shadow-sm whitespace-nowrap">
+                    <button onclick="handleDisguiseSearch()" class="bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white text-xs px-4 py-2 rounded-xl font-bold transition shadow-sm whitespace-nowrap">
                         Tìm Kiếm
                     </button>
                 </div>
             </div>
 
-            <!-- Navigation bar của cửa hàng nông cụ -->
+            <!-- Thanh Danh Mục Phụ Trợ Nông Nghiệp -->
             <div class="bg-slate-50 border-t border-slate-200 text-xs font-semibold text-slate-700">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 flex flex-wrap gap-6 items-center">
-                    <button onclick="filterDisguiseCategory('all')" id="btn-disguise-all" class="text-blue-700 font-bold">Tất Cả Danh Mục</button>
-                    <button onclick="filterDisguiseCategory('hose')" class="hover:text-blue-700 transition">Ống Dẫn Nước Chịu Áp Lực Cao</button>
-                    <button onclick="filterDisguiseCategory('steel')" class="hover:text-blue-700 transition">Ống Nhựa Xoắn Lõi Thép</button>
-                    <button onclick="filterDisguiseCategory('pump')" class="hover:text-blue-700 transition">Máy Bơm Thủy Lực & Tưới Tiêu</button>
-                    <button onclick="filterDisguiseCategory('valve')" class="hover:text-blue-700 transition">Phụ Kiện Khóa & Van Áp Suất</button>
-                    <button onclick="filterDisguiseCategory('chem')" class="hover:text-blue-700 transition">Hóa Chất Tẩy Rửa Đường Ống</button>
-                    <a href="#about-section" class="hover:text-blue-700 transition ml-auto hidden md:inline text-slate-500">Giới Thiệu Doanh Nghiệp</a>
+                    <button onclick="filterDisguiseCategory('all')" id="btn-disguise-all" class="text-amber-600 font-bold flex items-center gap-1">
+                        <span>●</span> Tất Cả Thiết Bị Thủy Lực
+                    </button>
+                    <button onclick="filterDisguiseCategory('steel')" class="hover:text-amber-600 transition">Ống Bọc Bố Thép Siêu Áp</button>
+                    <button onclick="filterDisguiseCategory('hose')" class="hover:text-amber-600 transition">Dây Dẫn Thủy Lực 1200 Bar</button>
+                    <button onclick="filterDisguiseCategory('pump')" class="hover:text-amber-600 transition">Máy Bơm Thủy Lực Công Nghiệp</button>
+                    <button onclick="filterDisguiseCategory('valve')" class="hover:text-amber-600 transition">Van Khóa Đúc Titanium</button>
+                    <button onclick="filterDisguiseCategory('chem')" class="hover:text-amber-600 transition">Hóa Chất Bảo Trì Đường Ống</button>
+                    <a href="#about-corp" class="hover:text-amber-600 transition ml-auto hidden lg:inline text-slate-500">Giới Thiệu Tập Đoàn Hắc Long</a>
                 </div>
             </div>
         </header>
 
-        <!-- Banner thông tin nông nghiệp -->
+        <!-- Main Banner & Showcase -->
         <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full space-y-8">
-            <div class="bg-gradient-to-r from-blue-900 to-indigo-950 text-white rounded-2xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row justify-between items-center gap-6">
-                <div class="space-y-2 max-w-2xl">
-                    <span class="bg-blue-500/30 text-blue-200 text-[11px] font-bold px-3 py-1 rounded-full border border-blue-400/30 uppercase">
-                        Vật Tư Cơ Khí Nông Nghiệp Hàn Quốc
-                    </span>
-                    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Hệ Thống Phân Phối Dây Ống Công Nghiệp Hợp Đức</h2>
+            
+            <!-- Hero Banner Hắc Long -->
+            <div class="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 text-white rounded-3xl p-6 sm:p-10 shadow-xl border border-amber-500/20 relative overflow-hidden flex flex-col lg:flex-row justify-between items-center gap-8">
+                <div class="space-y-3 max-w-2xl relative z-10">
+                    <div class="inline-flex items-center gap-2 bg-amber-500/20 text-amber-300 text-[11px] font-extrabold px-3.5 py-1 rounded-full border border-amber-500/30 tracking-wider uppercase font-mono-code">
+                        <span>🇻🇳</span> DOANH NGHIỆP CƠ KHÍ TRỌNG ĐIỂM QUỐC GIA
+                    </div>
+                    <h2 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
+                        Dây Dẫn Cao Áp Lõi Thép & Cơ Giới Hóa Nông Nghiệp Hắc Long
+                    </h2>
                     <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                        Chuyên cung cấp ống cao su gia cố bố thép chịu áp suất cao lên tới 800 Bar, đầu bơm tăng áp mini, hệ thống tưới tiêu trang trại tự động và van điều áp đúc nguyên khối.
+                        Cung cấp hệ thống ống dẫn cao su gia cường bố thép chịu áp suất cực đại lên tới 1200 Bar, máy bơm đẩy cao tầng cánh quạt kép, phụ kiện cơ khí titan và giải pháp tưới tiêu tự động cho vùng kinh tế nông nghiệp Việt Nam.
                     </p>
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <button onclick="alert('Đã kết nối với bộ phận kỹ sư cơ khí Hắc Long: Hotline 1900-8868')" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs font-black px-5 py-2.5 rounded-xl shadow-lg transition">
+                            TƯ VẤN KỸ THUẬT MIỄN PHÍ
+                        </button>
+                        <button onclick="alert('Báo giá dự toán công trình năm 2026 đã sẵn sàng để tải xuống.')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold px-4 py-2.5 rounded-xl transition">
+                            Tải Hồ Sơ Năng Lực (PDF)
+                        </button>
+                    </div>
                 </div>
-                <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/10 text-center min-w-[220px]">
-                    <span class="text-xs text-blue-200 block font-medium">Tổng đài tiếp nhận đơn sỉ</span>
-                    <span class="text-xl font-extrabold text-amber-400 font-mono-code block mt-1">1900-7209</span>
-                    <span class="text-[11px] text-slate-300 block mt-1">Miễn phí giao hàng công trình</span>
+
+                <div class="bg-slate-900/90 backdrop-blur-xl p-5 rounded-2xl border border-slate-800 text-center min-w-[260px] shadow-2xl relative z-10">
+                    <div class="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-full flex items-center justify-center mx-auto mb-2 text-xl font-bold">
+                        ⚙️
+                    </div>
+                    <span class="text-xs text-slate-400 block font-medium">Tổng Đài Đặt Hàng Toàn Quốc</span>
+                    <span class="text-2xl font-black text-amber-400 font-mono-code block mt-1">1900-8868</span>
+                    <span class="text-[10px] text-slate-400 block mt-1">Giao hàng cơ giới tận chân công trình 63 tỉnh thành</span>
                 </div>
             </div>
 
-            <!-- Danh sách sản phẩm ngụy trang phong phú -->
-            <div>
-                <div class="flex justify-between items-center mb-4">
+            <!-- Danh Sách Sản Phẩm Cơ Khí & Thủy Lực Hắc Long -->
+            <div class="space-y-4">
+                <div class="flex justify-between items-end border-b border-slate-200 pb-3">
                     <div>
-                        <h3 class="text-lg font-bold text-slate-900" id="disguise-cat-title">Danh Mục Dây Ống & Thiết Bị Tưới Nông Nghiệp</h3>
-                        <p class="text-xs text-slate-500">Sản phẩm kỹ thuật đạt chuẩn độ bền cơ học và kháng ăn mòn cao</p>
+                        <h3 class="text-lg sm:text-xl font-extrabold text-slate-900" id="disguise-cat-title">
+                            Danh Mục Thiết Bị Cơ Khí & Dây Dẫn Thủy Lực Hắc Long
+                        </h3>
+                        <p class="text-xs text-slate-500">Được kiểm định độ bền uốn cong, áp lực phá hủy và khả năng chống mài mòn chuẩn công nghiệp</p>
                     </div>
-                    <span class="text-xs text-slate-500 font-medium" id="disguise-item-count">Hiển thị 8 sản phẩm</span>
+                    <span class="text-xs text-slate-500 font-bold font-mono-code" id="disguise-item-count">
+                        Hiển thị 8 sản phẩm
+                    </span>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5" id="disguise-products-grid">
-                    <!-- Javascript sẽ render động các sản phẩm nông cụ tại đây -->
+                    <!-- Javascript render các sản phẩm ngụy trang tại đây -->
                 </div>
             </div>
 
-            <!-- Khối giới thiệu nông cụ hợp đức -->
-            <section id="about-section" class="bg-white p-6 rounded-2xl border border-slate-200 text-xs text-slate-600 space-y-3">
-                <h4 class="font-bold text-sm text-slate-900">Về Doanh Nghiệp Nông Cụ Hợp Đức (Hamdeok Farming Tools)</h4>
+            <!-- Giới Thiệu Doanh Nghiệp Hắc Long -->
+            <section id="about-corp" class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 text-xs text-slate-600 space-y-4 shadow-sm">
+                <div class="flex items-center space-x-3">
+                    <span class="text-2xl">🐉</span>
+                    <h4 class="font-extrabold text-base text-slate-900">Về Tập Đoàn Cơ Khí & Thủy Lực Hắc Long (Hac Long Heavy Hydraulics)</h4>
+                </div>
                 <p class="leading-relaxed">
-                    Thành lập từ năm 2011 tại Hợp Đức, chúng tôi là đối tác cung ứng vật tư hàng đầu cho các trang trại canh tác công nghệ cao trên toàn quốc. Đội ngũ kỹ thuật viên giàu kinh nghiệm luôn sẵn sàng hỗ trợ khảo sát và tư vấn lắp đặt hệ thống đường ống thủy lực, chống tắc nghẽn và duy trì độ bền vượt trội.
+                    Được thành lập và phát triển tại Việt Nam, Tập đoàn Hắc Long là đơn vị tiên phong chế tạo ống bọc thép chịu áp suất cao, máy bơm thủy lực công suất lớn và van áp lực titan chuyên dùng trong thủy lợi, nông nghiệp công nghệ cao và cơ khí hạng nặng. Chúng tôi sở hữu chuỗi kho bãi logistics trải dài từ Hà Nội, Đà Nẵng đến TP. Hồ Chí Minh và Đắk Lắk.
                 </p>
-                <div class="flex flex-wrap gap-6 pt-2 border-t border-slate-100 text-slate-500 font-medium">
-                    <span>🏢 Trụ sở: Tòa nhà Hợp Đức, Khu Công Nghiệp Nông Nghiệp Gangwon</span>
-                    <span>📠 Fax: 02-7701-4459</span>
-                    <span>✉️ Email: contact@hamdeok-tools.kr</span>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-3 border-t border-slate-100 text-slate-500 font-medium">
+                    <div class="p-3 bg-slate-50 rounded-xl">
+                        <b class="text-slate-800 block text-xs mb-1">🏢 Trụ sở chính:</b>
+                        Tòa nhà Hắc Long Tower, Lô E2, Khu Công Nghệ Cao Hòa Lạc, TP. Hà Nội
+                    </div>
+                    <div class="p-3 bg-slate-50 rounded-xl">
+                        <b class="text-slate-800 block text-xs mb-1">🏭 Nhà máy thủy lực:</b>
+                        KCN Cơ Khí & Ô Tô Chu Lai, Tỉnh Quảng Nam
+                    </div>
+                    <div class="p-3 bg-slate-50 rounded-xl">
+                        <b class="text-slate-800 block text-xs mb-1">📦 Chi nhánh miền Nam:</b>
+                        Khu Nông Nghiệp Công Nghệ Cao, Huyện Củ Chi, TP. Hồ Chí Minh
+                    </div>
                 </div>
             </section>
         </main>
 
-        <!-- Footer Chân Thật (Chứa điểm kích hoạt bí mật bằng cách click 3 lần vào Mã ĐKKD) -->
-        <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800 mt-12">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-                <div class="space-y-1 text-center md:text-left">
-                    <p class="font-bold text-slate-200">CÔNG TY CỔ PHẦN VẬT TƯ NÔNG CỤ HỢP ĐỨC (HAMDEOK)</p>
-                    <p class="text-[11px] text-slate-500">Giấy phép ĐKKD số: 010897209 do Sở Kế Hoạch & Đầu Tư cấp ngày 14/05/2012</p>
-                </div>
-                <div class="text-center md:text-right space-y-1">
-                    <!-- Điểm kích hoạt ẩn tinh tế: click 3 lần vào mã ĐKKD để mở cổng ngầm -->
-                    <p class="text-[11px] text-slate-500 font-mono-code cursor-default select-none" onclick="handleSecretTripleClick(event)">
-                        MÃ ĐKKD: <span class="hover:text-slate-400 transition" title="Mã chứng nhận hệ thống">MH-13543505-HD</span>
+        <!-- Footer Đậm Chất Tự Hào Dân Tộc & Chủ Quyền Biển Đảo Việt Nam -->
+        <footer class="bg-slate-950 text-slate-400 text-xs py-10 border-t border-slate-800 mt-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-6">
+                
+                <!-- Tuyên Ngôn Chủ Quyền Biển Đảo Thiêng Liêng -->
+                <div class="bg-gradient-to-r from-red-950/80 via-red-900/50 to-red-950/80 border border-red-800/60 p-4 rounded-2xl text-center shadow-lg">
+                    <p class="text-sm sm:text-base font-black text-amber-300 uppercase tracking-wider flex items-center justify-center gap-2">
+                        <span>🇻🇳</span>
+                        <span>HOÀNG SA VÀ TRƯỜNG SA MÃI MÃI LÀ CỦA VIỆT NAM!</span>
+                        <span>🇻🇳</span>
                     </p>
-                    <p class="text-[11px] text-slate-600">Bản quyền © 2012 - 2026 Hamdeok Farming Tools. All rights reserved.</p>
+                    <p class="text-[11px] text-red-200 mt-1 font-medium">
+                        Quần đảo Hoàng Sa và Trường Sa là bộ phận lãnh thổ không thể tách rời của nước Cộng hòa Xã hội Chủ nghĩa Việt Nam.
+                    </p>
+                </div>
+
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left pt-2 border-t border-slate-900">
+                    <div class="space-y-1">
+                        <p class="font-bold text-slate-200 text-sm">CÔNG TY CỔ PHẦN TẬP ĐOÀN CƠ KHÍ & THỦY LỰC HẮC LONG</p>
+                        <p class="text-[11px] text-slate-500">Giấy phép đăng ký kinh doanh số: 0109988688 do Sở Kế hoạch và Đầu tư TP. Hà Nội cấp</p>
+                    </div>
+
+                    <!-- Điểm kích hoạt ẩn tinh tế: click 3 lần vào mã ĐKKD để mở cổng ngầm -->
+                    <div class="space-y-1 text-center md:text-right">
+                        <p class="text-[11px] text-slate-500 font-mono-code cursor-default select-none" onclick="handleSecretTripleClick(event)">
+                            MÃ ĐKKD: <span class="hover:text-amber-400 transition font-bold" title="Hệ thống chứng nhận">HL-13543505-VN</span>
+                        </p>
+                        <p class="text-[11px] text-slate-600">Bản quyền © 2012 - 2026 Hac Long Heavy Apparatus Corp. All rights reserved.</p>
+                    </div>
                 </div>
             </div>
         </footer>
@@ -178,26 +287,34 @@
     <!-- ============================================================ -->
     <!-- 2. GIAO DIỆN CHUYỂN TIẾP CỔNG VÀO (PORTAL TRANSIT STAGE)     -->
     <!-- ============================================================ -->
-    <div id="portal-stage" class="fixed inset-0 bg-[#4a0005] hidden z-50 flex-col items-center justify-center font-mono-code text-white fade-in scanlines-bg">
+    <div id="portal-stage" class="fixed inset-0 bg-[#3b0206] hidden z-50 flex-col items-center justify-center font-mono-code text-white fade-in scanlines-bg">
         <div class="text-center space-y-8 max-w-lg w-full px-6 relative z-10">
-            <h1 class="text-5xl font-extrabold tracking-widest text-slate-950 lowercase drop-shadow-md">
-                murthehelp
-            </h1>
+            
+            <div class="space-y-2">
+                <h1 class="text-5xl font-black tracking-widest text-red-950 lowercase drop-shadow-md">
+                    murthehelp
+                </h1>
+                <p class="text-[11px] text-red-400 tracking-widest uppercase font-bold">
+                    [ PHÂN VÙNG TÁC CHIẾN VIỆT NAM // NODE-04-HANOI ]
+                </p>
+            </div>
             
             <!-- 3 Vạch màu chuẩn nguyên tác phim: Đỏ (#b3001e), Tím (#4d19bf), Cam (#e67e00) -->
-            <div class="flex w-full h-7 rounded-sm overflow-hidden shadow-2xl border border-black/30">
+            <div class="flex w-full h-7 rounded-sm overflow-hidden shadow-2xl border border-black/40">
                 <div class="w-1/3 bg-[#b3001e] transition-all duration-500"></div>
                 <div class="w-1/3 bg-[#4d19bf] transition-all duration-500"></div>
                 <div class="w-1/3 bg-[#e67e00] transition-all duration-500"></div>
             </div>
 
-            <p class="text-xs text-red-200 tracking-wider font-semibold animate-pulse">ĐANG ĐỒNG BỘ ĐỊNH DANH MÃ HÓA TẬP TRUNG...</p>
+            <p class="text-xs text-red-200 tracking-wider font-semibold animate-pulse">
+                ĐANG ĐỒNG BỘ ĐỊNH DANH MÃ HÓA TẬP TRUNG...
+            </p>
 
-            <div id="portal-alert" class="hidden bg-[#0c0d12] border border-gray-700 text-gray-200 p-5 rounded-xl shadow-2xl max-w-xs mx-auto text-center space-y-4 relative z-50">
-                <p class="text-xs text-gray-400 border-b border-gray-800 pb-2 uppercase tracking-wider">murthehelp alert</p>
-                <p class="text-sm font-bold text-green-400">ĐÃ TỰ ĐỘNG ĐĂNG NHẬP</p>
-                <p class="text-[11px] text-gray-400" id="portal-user-detected">Tài khoản: Jeong Jin-man (CODE GREEN)</p>
-                <button id="btn-portal-confirm" onclick="enterDarkMallFinal()" class="w-full bg-red-800 hover:bg-red-700 active:bg-red-900 text-white font-bold py-2.5 rounded-lg text-xs tracking-wider transition cursor-pointer shadow-lg">
+            <div id="portal-alert" class="hidden bg-[#0c0d12] border border-red-800/80 text-gray-200 p-6 rounded-2xl shadow-2xl max-w-xs mx-auto text-center space-y-4 relative z-50">
+                <p class="text-[10px] text-gray-400 border-b border-gray-800 pb-2 uppercase tracking-widest font-bold">murthehelp alert</p>
+                <p class="text-base font-black text-emerald-400">ĐÃ TỰ ĐỘNG ĐĂNG NHẬP</p>
+                <p class="text-[11px] text-gray-400" id="portal-user-detected">Tài khoản: Giám Đốc Điều Hành (CODE GREEN)</p>
+                <button id="btn-portal-confirm" onclick="enterDarkMallFinal()" class="w-full bg-gradient-to-r from-red-800 to-red-600 hover:from-red-700 hover:to-red-500 active:from-red-900 active:to-red-800 text-white font-extrabold py-3 rounded-xl text-xs tracking-widest transition cursor-pointer shadow-lg shadow-red-950/80 uppercase">
                     XÁC NHẬN (확인)
                 </button>
             </div>
@@ -214,48 +331,52 @@
             <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
                 <div class="flex items-center space-x-3">
                     <div class="w-2.5 h-2.5 rounded-full bg-red-600 animate-ping"></div>
-                    <span class="text-lg font-black tracking-widest text-red-500">MURDER.SHOPPING.MALL</span>
-                    <span class="text-[10px] text-neutral-500 border border-neutral-800 px-2 py-0.5 rounded font-mono">SECURE//V3.7</span>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-lg font-black tracking-widest text-red-500">MURDER.SHOPPING.MALL</span>
+                            <span class="text-[9px] bg-red-950 text-red-400 border border-red-800/80 px-1.5 py-0.2 rounded font-mono font-bold">VN-NODE #04</span>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Tab phân cấp 4 màu chính xác theo phim -->
+                <!-- Tab phân cấp 4 màu chuẩn phim -->
                 <div class="flex items-center space-x-1.5 text-xs">
-                    <button onclick="setClearanceTab('RED')" id="tab-RED" class="px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1.5 border border-red-900/60 bg-red-950/40 text-red-400 hover:bg-red-900/50">
+                    <button onclick="setClearanceTab('RED')" id="tab-RED" class="px-3 py-1.5 rounded-xl font-bold transition flex items-center gap-1.5 border border-red-900/60 bg-red-950/40 text-red-400 hover:bg-red-900/50">
                         <span class="w-2 h-2 rounded-full bg-red-500"></span> Code Red
                     </button>
-                    <button onclick="setClearanceTab('PURPLE')" id="tab-PURPLE" class="px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1.5 border border-purple-900/40 bg-purple-950/20 text-purple-400 hover:bg-purple-900/40">
+                    <button onclick="setClearanceTab('PURPLE')" id="tab-PURPLE" class="px-3 py-1.5 rounded-xl font-bold transition flex items-center gap-1.5 border border-purple-900/40 bg-purple-950/20 text-purple-400 hover:bg-purple-900/40">
                         <span class="w-2 h-2 rounded-full bg-purple-500"></span> Code Purple
                     </button>
-                    <button onclick="setClearanceTab('YELLOW')" id="tab-YELLOW" class="px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1.5 border border-yellow-900/40 bg-yellow-950/20 text-yellow-400 hover:bg-yellow-900/40">
+                    <button onclick="setClearanceTab('YELLOW')" id="tab-YELLOW" class="px-3 py-1.5 rounded-xl font-bold transition flex items-center gap-1.5 border border-yellow-900/40 bg-yellow-950/20 text-yellow-400 hover:bg-yellow-900/40">
                         <span class="w-2 h-2 rounded-full bg-yellow-500"></span> Code Yellow
                     </button>
-                    <button onclick="setClearanceTab('GREEN')" id="tab-GREEN" class="px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1.5 border border-emerald-900/40 bg-emerald-950/20 text-emerald-400 hover:bg-emerald-900/40">
+                    <button onclick="setClearanceTab('GREEN')" id="tab-GREEN" class="px-3 py-1.5 rounded-xl font-bold transition flex items-center gap-1.5 border border-emerald-900/40 bg-emerald-950/20 text-emerald-400 hover:bg-emerald-900/40">
                         <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Code Green
                     </button>
                 </div>
 
                 <!-- HUD Tài khoản & Tác vụ -->
                 <div class="flex items-center space-x-3 text-xs">
-                    <div class="bg-neutral-900/90 border border-neutral-800 px-3 py-1.5 rounded-lg flex items-center gap-2">
-                        <span class="text-neutral-500">TÀI KHOẢN:</span>
+                    <div class="bg-neutral-900/90 border border-neutral-800 px-3 py-1.5 rounded-xl flex items-center gap-2">
+                        <span class="text-neutral-500">CHỦ TÀI KHOẢN:</span>
                         <span id="current-user-name" class="font-bold text-neutral-200">Jeong Jin-man</span>
                     </div>
 
-                    <div class="bg-neutral-900/90 border border-neutral-800 px-3 py-1.5 rounded-lg text-emerald-400 font-bold">
+                    <div class="bg-neutral-900/90 border border-neutral-800 px-3 py-1.5 rounded-xl text-emerald-400 font-bold">
                         🪙 <span id="user-balance-display">1.500.000.000</span> ₫
                     </div>
 
-                    <button onclick="openCartModal()" class="bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 px-3 py-1.5 rounded-lg text-neutral-200 flex items-center space-x-1.5 transition">
+                    <button onclick="openCartModal()" class="bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 px-3 py-1.5 rounded-xl text-neutral-200 flex items-center space-x-1.5 transition">
                         <span>🛒 KIỆN HÀNG</span>
                         <span id="cart-counter" class="bg-red-600 text-white font-bold text-[10px] px-1.5 py-0.2 rounded-full">0</span>
                     </button>
 
-                    <button onclick="openAdminModal()" class="bg-red-950/60 hover:bg-red-900 border border-red-700 px-2.5 py-1.5 rounded-lg text-red-300 transition" title="Bảng điều khiển của Giám Đốc">
+                    <button onclick="openAdminModal()" class="bg-red-950/60 hover:bg-red-900 border border-red-700 px-2.5 py-1.5 rounded-xl text-red-300 transition" title="Bảng điều khiển của Giám Đốc">
                         ⚙️ QUẢN TRỊ
                     </button>
 
                     <!-- Phím thoát an toàn về vỏ bọc ngụy trang (ESC) -->
-                    <button onclick="returnToDisguise()" class="bg-neutral-800 hover:bg-neutral-700 px-2.5 py-1.5 rounded-lg text-neutral-400 transition" title="Thoát về cửa hàng ngụy trang (Phím tắt ESC)">
+                    <button onclick="returnToDisguise()" class="bg-neutral-800 hover:bg-neutral-700 px-2.5 py-1.5 rounded-xl text-neutral-400 transition" title="Thoát về cửa hàng ngụy trang (Phím tắt ESC)">
                         🔒 KHÓA
                     </button>
                 </div>
@@ -267,7 +388,7 @@
             
             <!-- Sidebar Danh Mục Con Đa Dạng -->
             <aside class="w-64 flex-shrink-0 space-y-6">
-                <div class="bg-[#0e1017] border border-neutral-800/80 rounded-xl p-4 space-y-3">
+                <div class="bg-[#0e1017] border border-neutral-800/80 rounded-2xl p-4 space-y-3">
                     <h3 id="sidebar-main-title" class="text-xs font-bold text-red-500 uppercase tracking-wider pb-2 border-b border-neutral-800">
                         VŨ KHÍ TÁC CHIẾN (GUNS)
                     </h3>
@@ -276,7 +397,7 @@
                     </div>
                 </div>
 
-                <div class="bg-[#0e1017] border border-neutral-800/80 rounded-xl p-4 text-[11px] text-neutral-400 space-y-2.5">
+                <div class="bg-[#0e1017] border border-neutral-800/80 rounded-2xl p-4 text-[11px] text-neutral-400 space-y-2.5">
                     <div class="flex justify-between">
                         <span>PHÂN CẤP TỐI CAO:</span>
                         <span class="text-emerald-400 font-bold" id="user-tier-badge">CODE GREEN</span>
@@ -287,10 +408,10 @@
                     </div>
                     <div class="flex justify-between">
                         <span>TRẠM TRUNG CHUYỂN:</span>
-                        <span class="text-neutral-300">KHO NGẦM GANGWON #04</span>
+                        <span class="text-neutral-300">KHO NGẦM HÒA LẠC #04</span>
                     </div>
                     <div class="flex justify-between">
-                        <span>VẬN CHUYỂN:</span>
+                        <span>ĐỘI VẬN CHUYỂN:</span>
                         <span class="text-neutral-300">UAV STEALTH DRONE</span>
                     </div>
                 </div>
@@ -305,7 +426,7 @@
                         </h2>
                         <p class="text-xs text-neutral-400 mt-0.5">Tất cả vũ khí đã được kiểm tra áp lực nòng, khử dấu vân tay và mài xóa số sê-ri nguyên bản.</p>
                     </div>
-                    <span class="text-xs bg-neutral-900 text-neutral-400 border border-neutral-800 px-3 py-1 rounded-md" id="item-count-display">
+                    <span class="text-xs bg-neutral-900 text-neutral-400 border border-neutral-800 px-3 py-1 rounded-lg" id="item-count-display">
                         Hiển thị 20 sản phẩm
                     </span>
                 </div>
@@ -321,7 +442,7 @@
     <!-- 4. MODAL GIỎ HÀNG & ĐIỀU PHỐI TÁC CHIẾN                      -->
     <!-- ============================================================ -->
     <div id="cart-modal" class="fixed inset-0 bg-black/85 backdrop-blur-sm hidden items-center justify-center z-50 p-4 font-mono-code">
-        <div class="bg-[#0e1017] border border-neutral-800 rounded-2xl max-w-xl w-full p-6 text-neutral-200 shadow-2xl space-y-4">
+        <div class="bg-[#0e1017] border border-neutral-800 rounded-3xl max-w-xl w-full p-6 text-neutral-200 shadow-2xl space-y-4">
             <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
                 <span class="text-sm font-bold text-red-500 flex items-center gap-2">
                     <span>🛒</span> KIỆN HÀNG VẬT TƯ TÁC CHIẾN
@@ -333,22 +454,22 @@
                 <!-- Render cart list -->
             </div>
 
-            <div class="bg-[#08090d] border border-neutral-800/80 p-3.5 rounded-xl space-y-2 text-xs">
-                <label class="text-neutral-400 font-bold block text-[11px]">PHƯƠNG THỨC ĐIỀU PHỐI VẬN CHUYỂN BÍ MẬT:</label>
-                <select id="delivery-method" class="w-full bg-[#131620] border border-neutral-700 text-neutral-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-red-500">
-                    <option value="drone">🚁 Drone Tàng Hình Ban Đêm (Thả dù định vị chuẩn 0.5m)</option>
-                    <option value="container">📦 Thùng Nông Cụ Ngụy Trang Hợp Đức (Giao tận hầm chứa)</option>
+            <div class="bg-[#08090d] border border-neutral-800/80 p-3.5 rounded-2xl space-y-2 text-xs">
+                <label class="text-neutral-400 font-bold block text-[11px]">PHƯƠNG THỨC ĐIỀU PHỐI VẬN CHUYỂN TỐI MẬT:</label>
+                <select id="delivery-method" class="w-full bg-[#131620] border border-neutral-700 text-neutral-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-red-500">
+                    <option value="drone">🚁 Drone Tàng Hình Ban Đêm (Thả dù định vị GPS chuẩn 0.5m)</option>
+                    <option value="container">📦 Thùng Nông Cụ Ngụy Trang Hắc Long (Giao tận hầm chứa)</option>
                     <option value="dead_drop">📍 Điểm Hẹn An Toàn Safehouse (Tọa độ tự hủy sau 60 phút)</option>
-                    <option value="courier">🚚 Đội Xe Vận Tải Nông Sản Ngụy Trang (Có vũ trang bảo vệ)</option>
+                    <option value="courier">🚚 Đội Xe Vận Tải Nông Sản Hắc Long (Vũ trang bảo vệ)</option>
                 </select>
             </div>
 
             <div class="flex justify-between items-center border-t border-neutral-800 pt-3 text-sm font-bold">
                 <span>TỔNG CẦN THANH TOÁN:</span>
-                <span id="cart-total-vnđ" class="text-emerald-400 text-base">0 ₫</span>
+                <span id="cart-total-vnđ" class="text-emerald-400 text-base font-extrabold">0 ₫</span>
             </div>
 
-            <button onclick="executeCheckout()" class="w-full bg-red-700 hover:bg-red-600 text-white font-bold py-3 rounded-xl text-xs tracking-widest transition shadow-lg shadow-red-950/80">
+            <button onclick="executeCheckout()" class="w-full bg-gradient-to-r from-red-800 to-red-600 hover:from-red-700 hover:to-red-500 text-white font-bold py-3.5 rounded-2xl text-xs tracking-widest transition shadow-lg shadow-red-950/80 uppercase">
                 XÁC NHẬN THANH TOÁN & ĐIỀU PHỐI ĐƠN HÀNG
             </button>
         </div>
@@ -358,7 +479,7 @@
     <!-- 5. MODAL BẢNG QUẢN TRỊ VIÊN — GIÁM ĐỐC JEONG JIN-MAN          -->
     <!-- ============================================================ -->
     <div id="admin-modal" class="fixed inset-0 bg-black/85 backdrop-blur-sm hidden items-center justify-center z-50 p-4 font-mono-code">
-        <div class="bg-[#0e1017] border border-red-900/60 rounded-2xl max-w-lg w-full p-6 text-neutral-200 shadow-2xl space-y-4">
+        <div class="bg-[#0e1017] border border-red-900/60 rounded-3xl max-w-lg w-full p-6 text-neutral-200 shadow-2xl space-y-4">
             <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
                 <span class="text-sm font-bold text-red-400 flex items-center gap-2">
                     <span>⚙️</span> BẢNG QUẢN TRỊ VIÊN — GIÁM ĐỐC JEONG JIN-MAN
@@ -371,8 +492,8 @@
                     <label class="text-neutral-400 font-bold">NẠP TIỀN TÀI KHOẢN (VNĐ):</label>
                     <div class="flex gap-2">
                         <input type="number" id="admin-deposit-input" placeholder="Ví dụ: 500000000" 
-                            class="bg-[#131620] border border-neutral-700 rounded-lg px-3 py-2 text-neutral-100 flex-grow text-xs focus:outline-none focus:border-red-500">
-                        <button onclick="depositFunds()" class="bg-emerald-700 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg font-bold transition">
+                            class="bg-[#131620] border border-neutral-700 rounded-xl px-3 py-2 text-neutral-100 flex-grow text-xs focus:outline-none focus:border-red-500">
+                        <button onclick="depositFunds()" class="bg-emerald-700 hover:bg-emerald-600 text-white px-4 py-2 rounded-xl font-bold transition">
                             Nạp Thêm
                         </button>
                     </div>
@@ -380,7 +501,7 @@
 
                 <div class="space-y-1.5">
                     <label class="text-neutral-400 font-bold">THAY ĐỔI CẤP ĐỘ PHÂN QUYỀN HIỆN TẠI:</label>
-                    <select id="admin-tier-select" class="w-full bg-[#131620] border border-neutral-700 rounded-lg px-3 py-2 text-neutral-100 text-xs focus:outline-none focus:border-red-500">
+                    <select id="admin-tier-select" class="w-full bg-[#131620] border border-neutral-700 rounded-xl px-3 py-2 text-neutral-100 text-xs focus:outline-none focus:border-red-500">
                         <option value="GREEN">🟢 Code Green (Toàn quyền Giám Đốc / Master Admin)</option>
                         <option value="RED">🔴 Code Red (Vũ khí & Tác chiến)</option>
                         <option value="PURPLE">🟣 Code Purple (Dọn dẹp & Do thám)</option>
@@ -391,11 +512,11 @@
                 <div class="space-y-1.5">
                     <label class="text-neutral-400 font-bold">TÊN CHỦ TÀI KHOẢN:</label>
                     <input type="text" id="admin-username-input" value="Jeong Jin-man" 
-                        class="w-full bg-[#131620] border border-neutral-700 rounded-lg px-3 py-2 text-neutral-100 text-xs focus:outline-none focus:border-red-500">
+                        class="w-full bg-[#131620] border border-neutral-700 rounded-xl px-3 py-2 text-neutral-100 text-xs focus:outline-none focus:border-red-500">
                 </div>
 
                 <div class="border-t border-neutral-800 pt-3">
-                    <button onclick="saveAdminSettings()" class="w-full bg-red-700 hover:bg-red-600 text-white font-bold py-2.5 rounded-xl tracking-wider transition">
+                    <button onclick="saveAdminSettings()" class="w-full bg-red-700 hover:bg-red-600 text-white font-bold py-3 rounded-2xl tracking-wider transition">
                         LƯU & ĐỒNG BỘ THIẾT LẬP
                     </button>
                 </div>
@@ -407,78 +528,78 @@
     <!-- 6. JAVASCRIPT CORE CONTROLLER & KHO DỮ LIỆU ĐỒ SỘ (40+ MÓN) -->
     <!-- ============================================================ -->
     <script>
-        // --- 1. KHO HÀNG NÔNG CỤ NGỤY TRANG (DISGUISE CATALOG) ---
+        // --- 1. KHO HÀNG NÔNG CỤ NGỤY TRANG HẮC LONG (DISGUISE CATALOG) ---
         const DISGUISE_PRODUCTS = [
             {
-                id: 'D01',
+                id: 'HL-D01',
                 category: 'steel',
-                name: 'Ống Cao Su Xoắn Lõi Thép Vàng Phi 50 (Cuộn 50M)',
-                tag: 'ỐNG DẪN LOẠI 1',
-                specs: 'Áp lực làm việc 500 Bar, lõi thép xoắn kép chống dẹp gãy khi uốn cong.',
-                price: 6800000,
+                name: 'Ống Cao Su Xoắn Bố Thép Hắc Long Pro Phi 50 (Cuộn 50M)',
+                tag: 'BỐ THÉP ĐÔI 1200 BAR',
+                specs: 'Chịu áp lực làm việc 1200 Bar, gia cường 6 lớp bố thép xoắn kép chống dẹp gãy.',
+                price: 7800000,
                 img: 'https://images.unsplash.com/photo-1590496793929-36417d3117de?w=500&auto=format&fit=crop&q=80'
             },
             {
-                id: 'D02',
+                id: 'HL-D02',
                 category: 'hose',
-                name: 'Ống Nhựa Chịu Áp Lực Cao Xanh Dương Phi 75',
-                tag: 'LÕI THÉP CHỊU LỰC',
-                specs: 'Gia cường 4 lớp sợi polyester dệt chéo, chịu tia UV và thời tiết khắc nghiệt.',
-                price: 12500000,
+                name: 'Ống Nhựa Cao Áp Thủy Lực Hắc Long Sapphire Phi 75',
+                tag: 'GIA CƯỜNG POLYESTER',
+                specs: 'Gia cường 4 lớp sợi dệt chéo phủ nhựa nhiệt dẻo EPDM kháng tia cực tím.',
+                price: 14200000,
                 img: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80'
             },
             {
-                id: 'D03',
+                id: 'HL-D03',
                 category: 'pump',
-                name: 'Hệ Thống Guồng Cuộn Dây Áp Lực Tự Động 100M',
-                tag: 'TỰ THU HỒI',
-                specs: 'Khung thép sơn tĩnh điện chống rỉ, bạc đạn đôi chịu tải vòng quay lớn.',
-                price: 18200000,
+                name: 'Hệ Thống Guồng Cuộn Thu Hồi Dây Tự Động Hắc Long 100M',
+                tag: 'CƠ CHẾ LÒ XO TỰ THU',
+                specs: 'Khung hợp kim nhôm đúc phủ sơn tĩnh điện nano chống ăn mòn nước mặn.',
+                price: 19800000,
                 img: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80'
             },
             {
-                id: 'D04',
+                id: 'HL-D04',
                 category: 'valve',
-                name: 'Van Điều Áp Thép Đúc Công Nghiệp 800 Bar',
-                tag: 'PHỤ KIỆN KHÓA',
-                specs: 'Mặt bích tiêu chuẩn JIS 10K, gioăng PTFE kháng hóa chất và áp suất cực cao.',
-                price: 4500000,
+                name: 'Van Điều Áp Hợp Kim Titan Đúc Nguyên Khối 1500 Bar',
+                tag: 'TITANIUM JIS-10K',
+                specs: 'Tiêu chuẩn mặt bích công nghiệp JIS 10K, màng chắn chịu sốc thủy lực cực đại.',
+                price: 5200000,
                 img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&auto=format&fit=crop&q=80'
             },
             {
-                id: 'D05',
+                id: 'HL-D05',
                 category: 'pump',
-                name: 'Máy Bơm Chìm Đẩy Cao Thủy Lực P-900 (Động Cơ Lõi Đồng)',
-                tag: 'BƠM CÔNG NGHIỆP',
-                specs: 'Lưu lượng 45m³/h, cột áp 65m, chống nước chuẩn quân sự IP68.',
-                price: 15800000,
+                name: 'Máy Bơm Thủy Lực Đẩy Cao Tầng Hắc Long Thunder-X P900',
+                tag: 'LÕI ĐỒNG IP68',
+                specs: 'Lưu lượng nước 55m³/h, cột áp 85m, động cơ không chổi than tản nhiệt dầu.',
+                price: 17500000,
                 img: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80'
             },
             {
-                id: 'D06',
+                id: 'HL-D06',
                 category: 'chem',
-                name: 'Dung Dịch Tẩy Cặn Đường Ống Hữu Cơ Nano-Clean (Can 20L)',
-                tag: 'HÓA CHẤT XỬ LÝ',
-                specs: 'Hòa tan hoàn toàn cặn vôi, rêu mốc và hợp chất hữu cơ mà không mài mòn cao su.',
-                price: 2400000,
+                name: 'Dung Dịch Phân Giải Cặn Hữu Cơ Đường Ống Hắc Long Nano-Clean',
+                tag: 'HÓA CHẤT XỬ LÝ NHANH',
+                specs: 'Phân giải sạch rêu mốc và cặn bám hữu cơ trong 3 phút, bảo vệ lớp lót cao su.',
+                price: 2800000,
                 img: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=500&auto=format&fit=crop&q=80'
             },
             {
-                id: 'D07',
+                id: 'HL-D07',
                 category: 'valve',
-                name: 'Bộ Khớp Nối Nhanh Thủy Lực Inox 316 (Bộ 10 Cái)',
-                tag: 'KHỚP NỐI NHANH',
-                specs: 'Khóa bi tự động 8 chốt, chịu áp lực sốc 1000 Bar không xì rò.',
-                price: 3200000,
+                name: 'Bộ Khớp Nối Nhanh Thủy Lực Inox 316L Hắc Long (Hộp 10 Cái)',
+                tag: 'KHÓA BI TỰ ĐỘNG',
+                specs: 'Chốt bi kép chống tụt áp lực, đệm kín FKM chịu nhiệt độ lên tới 200°C.',
+                price: 3600000,
                 img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&auto=format&fit=crop&q=80'
             },
             {
-                id: 'D08',
+                id: 'HL-D08',
                 category: 'hose',
-                name: 'Dây Dẫn Khí Nén Bọc Thép Chống Cháy 30M',
-                tag: 'CHỐNG CHÁY',
-                specs: 'Chịu nhiệt độ -40°C đến +150°C, vỏ ngoài chống tia lửa hàn xì.',
-                price: 5600000,
+                name: 'Dây Dẫn Khí Nén Bọc Sợi Gốm Chịu Nhiệt Độ Cao 30M',
+                tag: 'CHỐNG CHÁY CẤP 1',
+                specs: 'Vỏ bọc sợi gốm cách nhiệt chống tia lửa điện và dung nham cơ khí nóng chảy.',
+                price: 6400000,
                 img: 'https://images.unsplash.com/photo-1590496793929-36417d3117de?w=500&auto=format&fit=crop&q=80'
             }
         ];
@@ -919,20 +1040,20 @@
 
             filtered.forEach(p => {
                 const card = document.createElement('div');
-                card.className = "bg-white border border-slate-200 rounded-xl p-3.5 shadow-sm hover:shadow-md transition flex flex-col justify-between";
+                card.className = "bg-white border border-slate-200 rounded-2xl p-4 shadow-sm hover:shadow-lg transition duration-300 flex flex-col justify-between";
                 card.innerHTML = `
                     <div>
-                        <div class="w-full h-40 bg-slate-100 rounded-lg overflow-hidden mb-3">
+                        <div class="w-full h-44 bg-slate-100 rounded-xl overflow-hidden mb-3">
                             <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover hover:scale-105 transition duration-300"
                                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80';">
                         </div>
-                        <span class="text-[10px] text-blue-700 bg-blue-50 font-bold px-2 py-0.5 rounded">${p.tag}</span>
-                        <h4 class="font-bold text-xs text-slate-800 mt-1.5 line-clamp-2">${p.name}</h4>
+                        <span class="text-[10px] text-amber-800 bg-amber-50 font-extrabold px-2.5 py-1 rounded-md border border-amber-200 uppercase">${p.tag}</span>
+                        <h4 class="font-extrabold text-xs sm:text-sm text-slate-900 mt-2 line-clamp-2">${p.name}</h4>
                         <p class="text-[11px] text-slate-500 mt-1 leading-relaxed line-clamp-2">${p.specs}</p>
                     </div>
-                    <div class="pt-3 border-t border-slate-100 mt-3 flex justify-between items-center">
-                        <span class="font-extrabold text-blue-800 text-xs">${p.price.toLocaleString('vi-VN')} ₫</span>
-                        <button onclick="alert('Đã gửi yêu cầu báo giá đại lý cho mặt hàng: ${p.name}')" class="bg-slate-100 hover:bg-blue-700 hover:text-white text-slate-700 text-[11px] px-2.5 py-1 rounded-md font-bold transition">
+                    <div class="pt-3 border-t border-slate-100 mt-4 flex justify-between items-center">
+                        <span class="font-black text-slate-950 text-xs sm:text-sm font-mono-code">${p.price.toLocaleString('vi-VN')} ₫</span>
+                        <button onclick="alert('Đã gửi yêu cầu báo giá dự toán cơ khí cho: ${p.name}')" class="bg-slate-100 hover:bg-amber-500 hover:text-slate-950 text-slate-800 text-xs px-3 py-1.5 rounded-lg font-bold transition">
                             Báo Giá Sỉ
                         </button>
                     </div>
@@ -946,7 +1067,7 @@
             const val = document.getElementById('disguise-search-input').value.trim().toUpperCase();
             
             // Các mã mật hợp lệ để mở cổng vào
-            const SECRET_KEYS = ['MH13543505', 'GREEN', 'RED', 'PURPLE', 'YELLOW', 'JINMAN', '7209', 'MURTHEHELP', 'MURDER'];
+            const SECRET_KEYS = ['MH13543505', 'GREEN', 'RED', 'PURPLE', 'YELLOW', 'JINMAN', '7209', 'HACLONG', 'VIETNAM', 'MURTHEHELP', 'MURDER'];
             
             if (SECRET_KEYS.some(k => val.includes(k))) {
                 // Xác định cấp bậc theo mã nhập
@@ -979,7 +1100,7 @@
             }
         }
 
-        // Phím tắt bàn phím mở cổng ngầm & điều khiển
+        // Phím tắt bàn phím mở cổng ngầm: Ctrl + Shift + K hoặc Alt + M
         window.addEventListener('keydown', (e) => {
             const portal = document.getElementById('portal-stage');
             const isPortalVisible = portal && !portal.classList.contains('hidden');
@@ -1067,7 +1188,7 @@
             list.forEach(sub => {
                 const isActive = (currentSubCat === sub.id);
                 const btn = document.createElement('button');
-                btn.className = `w-full text-left px-3 py-2 rounded-lg transition text-xs font-semibold ${isActive ? 'bg-neutral-800 text-red-400 font-bold border border-neutral-700' : 'text-neutral-400 hover:text-neutral-200 hover:bg-neutral-900/50'}`;
+                btn.className = `w-full text-left px-3 py-2 rounded-xl transition text-xs font-semibold ${isActive ? 'bg-neutral-800 text-red-400 font-bold border border-neutral-700' : 'text-neutral-400 hover:text-neutral-200 hover:bg-neutral-900/50'}`;
                 btn.innerText = sub.name;
                 btn.onclick = () => {
                     currentSubCat = sub.id;
@@ -1096,11 +1217,9 @@
 
             filtered.forEach(item => {
                 const card = document.createElement('div');
-                card.className = "bg-[#0c0e14] border border-neutral-800/80 rounded-xl overflow-hidden flex flex-col justify-between hover:border-neutral-700 transition shadow-lg";
+                card.className = "bg-[#0c0e14] border border-neutral-800/80 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-neutral-700 transition shadow-lg";
 
                 const formattedPrice = item.price.toLocaleString('vi-VN') + ' ₫';
-
-                // Placeholder an toàn nếu mạng ảnh ngoại vi bị lỗi
                 const fallbackImg = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200"><rect width="100%" height="100%" fill="%230c0e14"/><text x="50%" y="50%" fill="%23ef4444" font-family="monospace" font-size="14" text-anchor="middle" dominant-baseline="middle">[ TACTICAL ITEM // ${item.id} ]</text></svg>`;
 
                 card.innerHTML = `
@@ -1108,14 +1227,14 @@
                         <div class="relative w-full h-44 bg-neutral-950 overflow-hidden">
                             <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition duration-300"
                                 onerror="this.onerror=null; this.src='${fallbackImg}';">
-                            <span class="absolute top-2.5 right-2.5 bg-black/80 backdrop-blur-md text-[10px] font-bold px-2 py-1 rounded border border-neutral-700 text-neutral-300">
+                            <span class="absolute top-2.5 right-2.5 bg-black/80 backdrop-blur-md text-[10px] font-bold px-2 py-1 rounded-lg border border-neutral-700 text-neutral-300 font-mono-code">
                                 Item No. ${item.id}
                             </span>
                         </div>
 
                         <div class="p-4 space-y-2">
                             <div class="flex justify-between items-center">
-                                <span class="text-[10px] font-bold tracking-wider px-2 py-0.5 rounded ${getTierColorBadge(item.code)}">
+                                <span class="text-[10px] font-bold tracking-wider px-2 py-0.5 rounded-md ${getTierColorBadge(item.code)}">
                                     CODE ${item.code}
                                 </span>
                                 <span class="text-[11px] text-neutral-500 font-semibold">${item.subCat}</span>
@@ -1132,10 +1251,10 @@
                         </div>
 
                         ${hasAccess 
-                            ? `<button onclick="addToCart('${item.id}')" class="w-full bg-neutral-900 hover:bg-red-900 border border-neutral-700 hover:border-red-600 text-neutral-200 font-bold py-2 rounded-lg text-xs transition">
+                            ? `<button onclick="addToCart('${item.id}')" class="w-full bg-neutral-900 hover:bg-red-900 border border-neutral-700 hover:border-red-600 text-neutral-200 font-bold py-2 rounded-xl text-xs transition">
                                 + ĐẶT MẶT HÀNG NÀY
                                </button>`
-                            : `<div class="w-full bg-red-950/20 border border-red-900/40 text-red-500 py-2 rounded-lg text-[11px] text-center font-bold">
+                            : `<div class="w-full bg-red-950/20 border border-red-900/40 text-red-500 py-2 rounded-xl text-[11px] text-center font-bold">
                                 🔒 YÊU CẦU QUYỀN CODE ${item.code}
                                </div>`
                         }
@@ -1188,7 +1307,7 @@
             cart.forEach((item, index) => {
                 total += item.price;
                 const row = document.createElement('div');
-                row.className = "flex justify-between items-center bg-[#07080b] p-2.5 rounded-lg border border-neutral-800";
+                row.className = "flex justify-between items-center bg-[#07080b] p-2.5 rounded-xl border border-neutral-800";
                 row.innerHTML = `
                     <div class="flex items-center space-x-3">
                         <span class="text-xs text-red-500 font-bold">#${index + 1}</span>
@@ -1236,7 +1355,7 @@
                   `• Tổng số tiền: ${total.toLocaleString('vi-VN')} ₫\n` +
                   `• Số lượng: ${cart.length} món\n` +
                   `• Phương thức: ${method}\n` +
-                  `• Trạng thái: Stealth Drone đã rời bệ phóng tại Kho ngầm #04 Gangwon. Tiếp cận điểm chỉ định sau 10 phút.`);
+                  `• Trạng thái: Stealth Drone đã rời bệ phóng tại Kho ngầm #04 Hòa Lạc (Hà Nội). Tiếp cận điểm chỉ định sau 10 phút.`);
 
             cart = [];
             document.getElementById('cart-counter').innerText = '0';
