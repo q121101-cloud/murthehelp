@@ -992,26 +992,51 @@
             lucide.createIcons();
         }
 
-        function authenticateSecretShop() {
-            const raw = document.getElementById('secret-code-input').value.trim().toUpperCase();
+        // Danh sách các mã hợp lệ được định nghĩa sẵn trong hệ thống
+        const VALID_CLEARANCE_CODES = {
+            'GREEN':       { role: 'GREEN',  title: 'Giám Đốc / Quyền Tối Cao (CODE GREEN)' },
+            'RED':         { role: 'RED',    title: 'Đơn Vị Tác Chiến Vũ Khí (CODE RED)' },
+            'PURPLE':      { role: 'PURPLE', title: 'Đội Dọn Dẹp & Do Thám (CODE PURPLE)' },
+            'YELLOW':      { role: 'YELLOW', title: 'Hỗ Trợ Y Tế Khẩn Cấp (CODE YELLOW)' },
             
-            // Hỗ trợ cả tên nhân vật hoặc mã màu
-            let targetCode = null;
-            if (['GREEN', 'JINMAN', 'CODE-GREEN', 'CODE GREEN', '00'].includes(raw)) targetCode = 'GREEN';
-            else if (['RED', 'CODE-RED', 'CODE RED', 'COMBAT'].includes(raw)) targetCode = 'RED';
-            else if (['PURPLE', 'CODE-PURPLE', 'CODE PURPLE', 'CLEANER'].includes(raw)) targetCode = 'PURPLE';
-            else if (['YELLOW', 'CODE-YELLOW', 'CODE YELLOW', 'MEDIC'].includes(raw)) targetCode = 'YELLOW';
+            // Các mã định danh mở rộng & Mật mã nhân vật theo phim
+            'JINMAN':      { role: 'GREEN',  title: 'Mã Quản Trị Viên Jeong Jin-man' },
+            '7209':        { role: 'GREEN',  title: 'Mã Khẩn Cấp Két Sắt #7209' },
+            '00':          { role: 'GREEN',  title: 'Cổng Kỹ Thuật Master #00' },
+            'MURTHEHELP':  { role: 'GREEN',  title: 'Hệ Thống Trung Tâm Murthehelp' },
+            'CODE-GREEN':  { role: 'GREEN',  title: 'Cấp Quyền CODE GREEN' },
+            'CODE GREEN':  { role: 'GREEN',  title: 'Cấp Quyền CODE GREEN' },
+            'CODE-RED':    { role: 'RED',    title: 'Cấp Quyền CODE RED' },
+            'CODE RED':    { role: 'RED',    title: 'Cấp Quyền CODE RED' },
+            'CODE-PURPLE': { role: 'PURPLE', title: 'Cấp Quyền CODE PURPLE' },
+            'CODE PURPLE': { role: 'PURPLE', title: 'Cấp Quyền CODE PURPLE' },
+            'CODE-YELLOW': { role: 'YELLOW', title: 'Cấp Quyền CODE YELLOW' },
+            'CODE YELLOW': { role: 'YELLOW', title: 'Cấp Quyền CODE YELLOW' }
+        };
 
-            if (targetCode) {
+        function authenticateSecretShop() {
+            // 1. Lấy giá trị từ ô nhập liệu và chuẩn hóa chữ hoa
+            const inputElement = document.getElementById('secret-code-input');
+            const enteredCode = inputElement.value.trim().toUpperCase();
+
+            // 2. Kiểm tra mã nhập vào
+            if (VALID_CLEARANCE_CODES[enteredCode]) {
+                const authData = VALID_CLEARANCE_CODES[enteredCode];
+                currentClearance = authData.role; // Cập nhật cấp quyền (State)
+
+                // 3. Cập nhật giao diện HUD và chuyển sang cửa hàng ngầm
                 AudioEngine.granted();
-                currentClearance = targetCode;
-                document.getElementById('switch-role-select').value = targetCode;
+                document.getElementById('switch-role-select').value = authData.role;
                 updateClearanceBadgeUI();
                 closeSecretModal();
                 switchView('dark');
+                
+                logTerminal(`[AUTH SUCCESS] Xác thực thành công: ${authData.title}`);
             } else {
+                // Cảnh báo nếu nhập sai mã
                 AudioEngine.denied();
-                alert('⚠️ TRUY CẬP BỊ TỪ CHỐI! MÃ ĐỊNH DANH KHÔNG TỒN TẠI TRONG CƠ SỞ DỮ LIỆU.');
+                alert('⚠️ MÃ BẢO MẬT KHÔNG HỢP LỆ! HỆ THỐNG TỪ CHỐI TRUY CẬP.');
+                logTerminal(`[SECURITY ALERT] Phát hiện truy cập trái phép với mã: "${enteredCode}"`);
             }
         }
 
