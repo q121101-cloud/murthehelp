@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TẬP ĐOÀN CƠ KHÍ & THỦY LỰC HOÀNG HẮC LONG | Thiết Bị Dây Dẫn Thủy Lực Siêu Áp Cố Đô Huế</title>
+    <title>TẬP ĐOÀN CÔNG NGHỆ CƠ KHÍ | Dây Dẫn Thủy Lực Siêu Áp & Cơ Giới Hóa TP. Huế</title>
     
     <!-- Meta SEO & Cổng Kết Nối Bí Mật -->
-    <meta name="description" content="Tập đoàn Cơ khí & Thủy lực Hoàng Hắc Long (Hoang Hac Long Heavy Hydraulics & Agri-Dynamics Corp) - Trụ sở tại TP. Huế, Thừa Thiên Huế. Tiên phong sản xuất ống bọc bố thép chịu áp 1500 Bar, máy bơm công suất lớn và thiết bị nông nghiệp cơ giới hóa tại Việt Nam." />
-    <meta property="og:site_name" content="Hoàng Hắc Long Heavy Hydraulics Hue Vietnam" />
-    <meta name="author" content="Hoang Hac Long Industrial Group Hue" />
+    <meta name="description" content="Tập đoàn Công nghệ Cơ khí (Mechanical Technology Group Vietnam) - Trụ sở chính tại TP. Huế, Thừa Thiên Huế. Doanh nghiệp tiên phong sản xuất ống bọc bố thép chịu áp 1500 Bar, máy bơm công suất lớn và phụ kiện cơ giới hóa tại Việt Nam." />
+    <meta property="og:site_name" content="Tập đoàn Công nghệ Cơ khí Huế Việt Nam" />
+    <meta name="author" content="Tập đoàn Công nghệ Cơ khí" />
     <meta name="key" content="mh13543505" />
     <meta name="gateway" content="https://murthehelp-hue.dark/mh13543505" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐉</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>">
 
+
+    <!-- Vercel Web Analytics -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -29,7 +35,7 @@
                         murPurple: '#4d19bf',
                         murAmber: '#e67e00',
                         murGreen: '#00b37e',
-                        hhl: {
+                        cnck: {
                             gold: '#d4af37',
                             goldLight: '#f3e5ab',
                             dark: '#090b10',
@@ -47,6 +53,9 @@
             }
         }
     </script>
+
+    <!-- Supabase JS Client CDN v2 -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <!-- Three.js CDN r128 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -87,14 +96,6 @@
             animation-play-state: paused;
         }
 
-        /* Glassmorphism Độc Bản */
-        .glass-dark {
-            background: rgba(12, 14, 20, 0.88);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
@@ -115,18 +116,18 @@
 <body class="bg-slate-50 text-slate-900 antialiased selection:bg-amber-500 selection:text-slate-950 min-h-screen flex flex-col" id="main-body">
 
     <!-- ============================================================ -->
-    <!-- 1. GIAO DIỆN MẶT TIỀN NGỤY TRANG (TẬP ĐOÀN HOÀNG HẮC LONG HUẾ) -->
+    <!-- 1. GIAO DIỆN MẶT TIỀN NGỤY TRANG (TẬP ĐOÀN CÔNG NGHỆ CƠ KHÍ)   -->
     <!-- ============================================================ -->
     <div id="disguise-stage" class="min-h-screen flex flex-col">
         
-        <!-- Top Utility Bar Chuyên Nghiệp (Đã ẩn hoàn toàn nút F12) -->
+        <!-- Top Utility Bar Chuyên Nghiệp -->
         <div class="bg-slate-950 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
             <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
                 <div class="flex items-center space-x-3">
                     <span class="bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-black px-2.5 py-0.5 rounded text-[10px] tracking-wider uppercase shadow-sm">
-                        CỐ ĐÔ HUẾ // HỆ THỐNG THỦY LỰC TRỌNG ĐIỂM
+                        HUẾ, VIỆT NAM // DOANH NGHIỆP TRỌNG ĐIỂM
                     </span>
-                    <span class="hidden sm:inline text-slate-400">Tập Đoàn Cơ Khí & Vật Tư Thủy Lực Hoàng Hắc Long Việt Nam</span>
+                    <span class="hidden sm:inline text-slate-400">Tập Đoàn Công Nghệ Cơ Khí Việt Nam</span>
                 </div>
                 <div class="flex items-center space-x-6 text-slate-400 text-[11px] font-medium">
                     <span>🏛️ Trụ sở: TP. Huế, Thừa Thiên Huế</span>
@@ -136,91 +137,91 @@
             </div>
         </div>
 
-        <!-- Ticker Chạy Ngang Vô Tận: Các Đơn Hàng Chuyển Về Trạm Trung Chuyển Liên Tục Không Dừng -->
+        <!-- Ticker Chạy Ngang Vô Tận: Các Đơn Hàng Đã Chuyển Về Trạm Trung Chuyển Liên Tục Không Dừng -->
         <div class="bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-slate-950 font-bold text-xs py-2 overflow-hidden shadow-inner border-y border-amber-400/40 relative z-20">
             <div class="marquee-track flex items-center space-x-12">
                 <!-- Bộ 1 -->
                 <div class="flex items-center space-x-12 whitespace-nowrap">
                     <span class="flex items-center gap-2">
                         <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99812</b> (24.000m Ống cao su bố thép 1500 Bar — <span class="text-red-950 font-black font-mono-code">188.000.000 ₫</span>) đã chuyển về trạm trung chuyển Cảng Nước Sâu Chân Mây (Huế)</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#CNCK-99812</b> (24.000m Ống cao su bố thép 1500 Bar — <span class="text-red-950 font-black font-mono-code">188.000.000 ₫</span>) đã chuyển về trạm trung chuyển Cảng Nước Sâu Chân Mây (Huế)</span>
                     </span>
                     <span class="text-amber-900">•</span>
                     <span class="flex items-center gap-2">
                         <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99813</b> (12 Máy bơm đẩy cao tầng Thunder-X P950 — <span class="text-red-950 font-black font-mono-code">210.000.000 ₫</span>) đã chuyển về trạm trung chuyển KCN Phú Bài (Huế)</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#CNCK-99813</b> (12 Máy bơm đẩy cao tầng Thunder-X P950 — <span class="text-red-950 font-black font-mono-code">210.000.000 ₫</span>) đã chuyển về trạm trung chuyển KCN Phú Bài (Huế)</span>
                     </span>
                     <span class="text-amber-900">•</span>
                     <span class="flex items-center gap-2">
                         <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99814</b> (65 Bộ van điều áp Titan JIS-10K — <span class="text-red-950 font-black font-mono-code">338.000.000 ₫</span>) đã chuyển về trạm trung chuyển Chi nhánh Củ Chi (TP.HCM)</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#CNCK-99814</b> (65 Bộ van điều áp Titan JIS-10K — <span class="text-red-950 font-black font-mono-code">338.000.000 ₫</span>) đã chuyển về trạm trung chuyển Chi nhánh Củ Chi (TP.HCM)</span>
                     </span>
                     <span class="text-amber-900">•</span>
                     <span class="flex items-center gap-2">
                         <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99815</b> (30 Hệ thống guồng cuộn tự động 100M — <span class="text-red-950 font-black font-mono-code">594.000.000 ₫</span>) đã chuyển về trạm trung chuyển Chi nhánh Thủ Đức (TP.HCM)</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#CNCK-99815</b> (30 Hệ thống guồng cuộn tự động 100M — <span class="text-red-950 font-black font-mono-code">594.000.000 ₫</span>) đã chuyển về trạm trung chuyển Chi nhánh Thủ Đức (TP.HCM)</span>
                     </span>
                     <span class="text-amber-900">•</span>
                     <span class="flex items-center gap-2">
                         <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99816</b> (180 Can dung dịch phân giải cặn hữu cơ Nano-Clean — <span class="text-red-950 font-black font-mono-code">504.000.000 ₫</span>) đã chuyển về trạm trung chuyển Đắk Lắk</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#CNCK-99816</b> (180 Can dung dịch phân giải cặn hữu cơ Nano-Clean — <span class="text-red-950 font-black font-mono-code">504.000.000 ₫</span>) đã chuyển về trạm trung chuyển Đắk Lắk</span>
                     </span>
                     <span class="text-amber-900">•</span>
                     <span class="flex items-center gap-2">
                         <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99817</b> (8.500m Dây dẫn sợi gốm chống cháy nhiệt độ cao — <span class="text-red-950 font-black font-mono-code">181.000.000 ₫</span>) đã chuyển về trạm trung chuyển Đà Nẵng</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#CNCK-99817</b> (8.500m Dây dẫn sợi gốm chống cháy nhiệt độ cao — <span class="text-red-950 font-black font-mono-code">181.000.000 ₫</span>) đã chuyển về trạm trung chuyển Đà Nẵng</span>
                     </span>
                 </div>
                 <!-- Bộ 2 (Nhân đôi để tạo vòng lặp vô tận liền mạch) -->
                 <div class="flex items-center space-x-12 whitespace-nowrap">
                     <span class="flex items-center gap-2">
                         <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99812</b> (24.000m Ống cao su bố thép 1500 Bar — <span class="text-red-950 font-black font-mono-code">188.000.000 ₫</span>) đã chuyển về trạm trung chuyển Cảng Nước Sâu Chân Mây (Huế)</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#CNCK-99812</b> (24.000m Ống cao su bố thép 1500 Bar — <span class="text-red-950 font-black font-mono-code">188.000.000 ₫</span>) đã chuyển về trạm trung chuyển Cảng Nước Sâu Chân Mây (Huế)</span>
                     </span>
                     <span class="text-amber-900">•</span>
                     <span class="flex items-center gap-2">
                         <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99813</b> (12 Máy bơm đẩy cao tầng Thunder-X P950 — <span class="text-red-950 font-black font-mono-code">210.000.000 ₫</span>) đã chuyển về trạm trung chuyển KCN Phú Bài (Huế)</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#CNCK-99813</b> (12 Máy bơm đẩy cao tầng Thunder-X P950 — <span class="text-red-950 font-black font-mono-code">210.000.000 ₫</span>) đã chuyển về trạm trung chuyển KCN Phú Bài (Huế)</span>
                     </span>
                     <span class="text-amber-900">•</span>
                     <span class="flex items-center gap-2">
                         <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99814</b> (65 Bộ van điều áp Titan JIS-10K — <span class="text-red-950 font-black font-mono-code">338.000.000 ₫</span>) đã chuyển về trạm trung chuyển Chi nhánh Củ Chi (TP.HCM)</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#CNCK-99814</b> (65 Bộ van điều áp Titan JIS-10K — <span class="text-red-950 font-black font-mono-code">338.000.000 ₫</span>) đã chuyển về trạm trung chuyển Chi nhánh Củ Chi (TP.HCM)</span>
                     </span>
                     <span class="text-amber-900">•</span>
                     <span class="flex items-center gap-2">
                         <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99815</b> (30 Hệ thống guồng cuộn tự động 100M — <span class="text-red-950 font-black font-mono-code">594.000.000 ₫</span>) đã chuyển về trạm trung chuyển Chi nhánh Thủ Đức (TP.HCM)</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#CNCK-99815</b> (30 Hệ thống guồng cuộn tự động 100M — <span class="text-red-950 font-black font-mono-code">594.000.000 ₫</span>) đã chuyển về trạm trung chuyển Chi nhánh Thủ Đức (TP.HCM)</span>
                     </span>
                     <span class="text-amber-900">•</span>
                     <span class="flex items-center gap-2">
                         <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99816</b> (180 Can dung dịch phân giải cặn hữu cơ Nano-Clean — <span class="text-red-950 font-black font-mono-code">504.000.000 ₫</span>) đã chuyển về trạm trung chuyển Đắk Lắk</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#CNCK-99816</b> (180 Can dung dịch phân giải cặn hữu cơ Nano-Clean — <span class="text-red-950 font-black font-mono-code">504.000.000 ₫</span>) đã chuyển về trạm trung chuyển Đắk Lắk</span>
                     </span>
                     <span class="text-amber-900">•</span>
                     <span class="flex items-center gap-2">
                         <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99817</b> (8.500m Dây dẫn sợi gốm chống cháy nhiệt độ cao — <span class="text-red-950 font-black font-mono-code">181.000.000 ₫</span>) đã chuyển về trạm trung chuyển Đà Nẵng</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#CNCK-99817</b> (8.500m Dây dẫn sợi gốm chống cháy nhiệt độ cao — <span class="text-red-950 font-black font-mono-code">181.000.000 ₫</span>) đã chuyển về trạm trung chuyển Đà Nẵng</span>
                     </span>
                 </div>
             </div>
         </div>
 
-        <!-- Main Header Doanh Nghiệp Hoàng Hắc Long -->
+        <!-- Main Header Doanh Nghiệp Tập Đoàn Công Nghệ Cơ Khí -->
         <header class="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-30">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap justify-between items-center gap-4">
                 
-                <!-- Logo & Tên Tập Đoàn Hoàng Hắc Long Huế -->
-                <div class="flex items-center space-x-3.5 cursor-pointer" onclick="filterDisguiseCategory('all')">
+                <!-- Logo & Tên Tập Đoàn Công Nghệ Cơ Khí Huế (Nhấp đúp chuột để mở cổng ngầm) -->
+                <div class="flex items-center space-x-3.5 cursor-pointer" onclick="filterDisguiseCategory('all')" ondblclick="triggerMurthehelpPortal()" title="Nhấp đúp để mở cổng ngầm murthehelp">
                     <div class="w-12 h-12 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 border-2 border-amber-500/60 rounded-2xl flex items-center justify-center text-amber-400 font-black text-2xl shadow-lg shadow-slate-950/20">
-                        🐉
+                        ⚙️
                     </div>
                     <div>
                         <div class="flex items-center gap-2">
-                            <h1 class="text-xl sm:text-2xl font-black text-slate-950 tracking-tight">HOÀNG HẮC LONG</h1>
-                            <span class="text-[10px] bg-amber-50 text-amber-800 border border-amber-300 font-black px-2 py-0.5 rounded-full font-mono-code">HHL CORP // HUẾ</span>
+                            <h1 class="text-xl sm:text-2xl font-black text-slate-950 tracking-tight">TẬP ĐOÀN CÔNG NGHỆ CƠ KHÍ</h1>
+                            <span class="text-[10px] bg-amber-50 text-amber-800 border border-amber-300 font-black px-2 py-0.5 rounded-full font-mono-code">CNCK // HUẾ</span>
                         </div>
-                        <p class="text-xs text-slate-500 font-semibold tracking-tight">TẬP ĐOÀN CƠ KHÍ & THỦY LỰC SIÊU ÁP HOÀNG HẮC LONG (TP. HUẾ)</p>
+                        <p class="text-xs text-slate-500 font-semibold tracking-tight">TẬP ĐOÀN CÔNG NGHỆ CƠ KHÍ & THỦY LỰC SIÊU ÁP (TP. HUẾ, VIỆT NAM)</p>
                     </div>
                 </div>
 
@@ -237,7 +238,7 @@
                 </div>
             </div>
 
-            <!-- Thanh Danh Mục Phụ Trợ Nông Nghiệp -->
+            <!-- Thanh Danh Mục Phụ Trợ Nông Nghiệp & Cơ Khí -->
             <div class="bg-slate-50 border-t border-slate-200 text-xs font-semibold text-slate-700">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 flex flex-wrap gap-6 items-center">
                     <button onclick="filterDisguiseCategory('all')" id="btn-disguise-all" class="text-amber-600 font-bold flex items-center gap-1">
@@ -256,23 +257,23 @@
         <!-- Main Banner & Showcase -->
         <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full space-y-8">
             
-            <!-- Hero Banner Hoàng Hắc Long -->
+            <!-- Hero Banner Tập Đoàn Công Nghệ Cơ Khí -->
             <div class="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 text-white rounded-3xl p-6 sm:p-10 shadow-2xl border border-amber-500/20 relative overflow-hidden flex flex-col lg:flex-row justify-between items-center gap-8">
                 <div class="space-y-3 max-w-2xl relative z-10">
                     <div class="inline-flex items-center gap-2 bg-amber-500/20 text-amber-300 text-[11px] font-black px-3.5 py-1 rounded-full border border-amber-500/30 tracking-wider uppercase font-mono-code">
                         <span>🏛️</span> TRỤ SỞ CHÍNH: TP. HUẾ — THỪA THIÊN HUẾ
                     </div>
                     <h2 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
-                        Tập Đoàn Cơ Khí Thủy Lực & Dây Dẫn Bố Thép Hoàng Hắc Long
+                        Tập Đoàn Công Nghệ Cơ Khí & Vật Tư Thủy Lực Siêu Áp
                     </h2>
                     <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                        Chuyên sản xuất và phân phối ống cao su gia cường 6 lớp bố thép xoắn kép chịu áp suất cực đại lên tới 1500 Bar, máy bơm công suất lớn, hệ thống van titan đúc nguyên khối và giải pháp cơ giới hóa cho các dự án thủy lợi trọng điểm toàn quốc.
+                        Chuyên chế tạo ống cao su gia cường 6 lớp bố thép xoắn kép chịu áp suất cực đại lên tới 1500 Bar, máy bơm công suất lớn, hệ thống van titan đúc nguyên khối và giải pháp cơ giới hóa cho các dự án thủy lợi trọng điểm toàn quốc.
                     </p>
                     <div class="pt-2 flex flex-wrap gap-3">
-                        <button onclick="alert('Đã kết nối với Tổng đài Kỹ thuật Hoàng Hắc Long Huế: 1900-8868')" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs font-black px-5 py-2.5 rounded-xl shadow-lg transition">
+                        <button onclick="alert('Đã kết nối với Tổng đài Kỹ thuật Tập đoàn Công nghệ Cơ khí: 1900-8868')" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs font-black px-5 py-2.5 rounded-xl shadow-lg transition">
                             TƯ VẤN KỸ THUẬT MIỄN PHÍ
                         </button>
-                        <button onclick="alert('Hồ sơ năng lực Tập đoàn Hoàng Hắc Long (Bản Cập Nhật 2026) đang được gửi về email của quý khách.')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold px-4 py-2.5 rounded-xl transition">
+                        <button onclick="alert('Hồ sơ năng lực Tập đoàn Công nghệ Cơ khí (Bản Cập Nhật 2026) đang được gửi về email của quý khách.')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold px-4 py-2.5 rounded-xl transition">
                             Tải Hồ Sơ Năng Lực (PDF)
                         </button>
                     </div>
@@ -280,7 +281,7 @@
 
                 <div class="bg-slate-900/90 backdrop-blur-xl p-5 rounded-2xl border border-slate-800 text-center min-w-[260px] shadow-2xl relative z-10">
                     <div class="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-full flex items-center justify-center mx-auto mb-2 text-xl font-bold">
-                        🐉
+                        ⚙️
                     </div>
                     <span class="text-xs text-slate-400 block font-medium">Tổng Đài Đặt Hàng Toàn Quốc</span>
                     <span class="text-2xl font-black text-amber-400 font-mono-code block mt-1">1900-8868</span>
@@ -288,12 +289,12 @@
                 </div>
             </div>
 
-            <!-- Danh Sách Sản Phẩm Cơ Khí & Thủy Lực Hoàng Hắc Long (Hình Ảnh Chuẩn Đẹp) -->
+            <!-- Danh Sách Sản Phẩm Cơ Khí & Thủy Lực -->
             <div class="space-y-4">
                 <div class="flex justify-between items-end border-b border-slate-200 pb-3">
                     <div>
                         <h3 class="text-lg sm:text-xl font-extrabold text-slate-900" id="disguise-cat-title">
-                            Danh Mục Thiết Bị Cơ Khí & Thủy Lực Hoàng Hắc Long
+                            Danh Mục Thiết Bị Cơ Khí & Thủy Lực Tập Đoàn
                         </h3>
                         <p class="text-xs text-slate-500">Tiêu chuẩn kiểm định áp lực phá hủy JIS K6349 & ISO 18752</p>
                     </div>
@@ -307,19 +308,19 @@
                 </div>
             </div>
 
-            <!-- Giới Thiệu Doanh Nghiệp Hoàng Hắc Long (Chi Tiết TP. Huế) -->
+            <!-- Giới Thiệu Doanh Nghiệp Tập Đoàn Công Nghệ Cơ Khí (Chi Tiết TP. Huế) -->
             <section id="about-corp" class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 text-xs text-slate-600 space-y-4 shadow-sm">
                 <div class="flex items-center space-x-3">
                     <span class="text-2xl">🏛️</span>
-                    <h4 class="font-extrabold text-base text-slate-900">Về Tập Đoàn Cơ Khí & Thủy Lực Hoàng Hắc Long (Hoang Hac Long Corp)</h4>
+                    <h4 class="font-extrabold text-base text-slate-900">Về Tập Đoàn Công Nghệ Cơ Khí (Mechanical Technology Group Vietnam)</h4>
                 </div>
                 <p class="leading-relaxed">
-                    Khởi nguồn từ vùng đất Cố Đô lịch sử, <b>Tập đoàn Hoàng Hắc Long</b> tự hào là doanh nghiệp cơ khí công nghiệp nặng và vật tư thủy lực hàng đầu miền Trung và cả nước. Với tổ hợp nhà máy luyện kim, đúc van áp lực titan và dây chuyền dệt bọc bố thép chịu áp lực 1500 Bar tại Thừa Thiên Huế, chúng tôi cung cấp giải pháp dẫn dầu, dẫn khí và tưới tiêu thủy lợi cho hàng ngàn dự án hạ tầng trọng điểm từ Bắc vào Nam.
+                    Khởi nguồn từ vùng đất Cố Đô lịch sử, <b>Tập đoàn Công nghệ Cơ khí</b> tự hào là đơn vị cơ khí công nghiệp nặng và vật tư thủy lực hàng đầu miền Trung và cả nước. Với tổ hợp nhà máy luyện kim, đúc van áp lực titan và dây chuyền dệt bọc bố thép chịu áp lực 1500 Bar tại Thừa Thiên Huế, chúng tôi cung cấp giải pháp dẫn dầu, dẫn khí và tưới tiêu thủy lợi cho hàng ngàn dự án hạ tầng trọng điểm từ Bắc vào Nam.
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-3 border-t border-slate-100 text-slate-500 font-medium">
                     <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/60">
                         <b class="text-slate-900 block text-xs mb-1">🏛️ Trụ sở chính:</b>
-                        Tòa nhà Hoàng Hắc Long Tower, Lô B1 Đại lộ Tự Đức - Thủy Dương, Phường An Tây, TP. Huế, Tỉnh Thừa Thiên Huế
+                        Tòa nhà Cơ Khí Tower, Lô B1 Đại lộ Tự Đức - Thủy Dương, Phường An Tây, TP. Huế, Tỉnh Thừa Thiên Huế
                     </div>
                     <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/60">
                         <b class="text-slate-900 block text-xs mb-1">🚢 Kho trung chuyển:</b>
@@ -351,39 +352,49 @@
 
                 <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left pt-2 border-t border-slate-900">
                     <div class="space-y-1">
-                        <p class="font-bold text-slate-200 text-sm">CÔNG TY CỔ PHẦN TẬP ĐOÀN CƠ KHÍ & THỦY LỰC HOÀNG HẮC LONG (HUẾ)</p>
+                        <p class="font-bold text-slate-200 text-sm">CÔNG TY CỔ PHẦN TẬP ĐOÀN CÔNG NGHỆ CƠ KHÍ (HUẾ)</p>
                         <p class="text-[11px] text-slate-500">Giấy phép ĐKKD số: 3301889988 do Sở Kế hoạch & Đầu tư Tỉnh Thừa Thiên Huế cấp</p>
                     </div>
 
                     <!-- Điểm kích hoạt ẩn tinh tế: click 3 lần vào mã ĐKKD để mở cổng ngầm -->
                     <div class="space-y-1 text-center md:text-right">
                         <p class="text-[11px] text-slate-500 font-mono-code cursor-default select-none" onclick="handleSecretTripleClick(event)">
-                            MÃ ĐKKD: <span class="hover:text-amber-400 transition font-bold" title="Mã chứng nhận hệ thống">HHL-13543505-HUE</span>
+                            MÃ ĐKKD: <span class="hover:text-amber-400 transition font-bold" title="Mã chứng nhận hệ thống">CNCK-13543505-HUE</span>
                         </p>
-                        <p class="text-[11px] text-slate-600">Bản quyền © 2012 - 2026 Hoang Hac Long Heavy Hydraulics Corp. All rights reserved.</p>
+                        <p class="text-[11px] text-slate-600">Bản quyền © 2012 - 2026 Mechanical Technology Group Vietnam. All rights reserved.</p>
                     </div>
                 </div>
             </div>
         </footer>
+
+        <!-- Nút Cổng Vào Ngầm Tinh Tế Góc Phải Màn Hình (1-Click Vào Thẳng murthehelp) -->
+        <div class="fixed bottom-5 right-5 z-40">
+            <button onclick="triggerMurthehelpPortal()" class="bg-[#0b0d14]/90 hover:bg-red-950/90 text-neutral-400 hover:text-red-300 border border-neutral-800 hover:border-red-600 px-4 py-2 rounded-full text-xs font-mono-code font-bold backdrop-blur-lg shadow-2xl transition flex items-center gap-2 group">
+                <span class="w-2 h-2 rounded-full bg-red-500 group-hover:animate-ping"></span>
+                <span>murthehelp // gateway</span>
+                <span class="text-[10px] text-neutral-500 group-hover:text-red-400 font-normal">[mh13543505]</span>
+            </button>
+        </div>
     </div>
 
     <!-- ============================================================ -->
-    <!-- 2. GIAO DIỆN CHUYỂN TIẾP CỔNG VÀO (PORTAL AUTH & LOGIN FORM)  -->
+    <!-- 2. GIAO DIỆN CHUYỂN TIẾP CỔNG VÀO (MURTHEHELP TRANSIT PORTAL) -->
     <!-- ============================================================ -->
-    <div id="portal-stage" class="fixed inset-0 bg-[#3b0206] hidden z-50 flex-col items-center justify-center font-mono-code text-white fade-in overflow-y-auto p-4">
+    <div id="portal-stage" class="fixed inset-0 bg-[#320104] hidden z-50 flex-col items-center justify-center font-mono-code text-white fade-in overflow-y-auto p-4">
         <div class="text-center space-y-6 max-w-md w-full px-4 relative z-10 my-auto">
             
+            <!-- Chữ murthehelp Phóng To Nổi Bật Siêu Đẹp & Ghi Chú Huế - Việt Nam -->
             <div class="space-y-2">
-                <h1 class="text-4xl sm:text-5xl font-black tracking-widest text-red-950 lowercase drop-shadow-md">
+                <h1 class="text-6xl sm:text-7xl font-black tracking-widest text-red-500 lowercase drop-shadow-[0_0_35px_rgba(239,68,68,0.85)] animate-pulse">
                     murthehelp
                 </h1>
-                <p class="text-[11px] text-red-400 tracking-widest uppercase font-bold">
-                    [ TRẠM TRUNG CHUYỂN CỐ ĐÔ HUẾ // NODE-04-HUE-VN ]
+                <p class="text-[11px] text-red-300 tracking-widest uppercase font-bold">
+                    [ NODE-04 // HUẾ, VIỆT NAM ]
                 </p>
             </div>
             
             <!-- 3 Vạch màu chuẩn nguyên tác phim: Đỏ (#b3001e), Tím (#4d19bf), Cam (#e67e00) -->
-            <div class="flex w-full h-5 rounded-sm overflow-hidden shadow-2xl border border-black/40">
+            <div class="flex w-full h-5 rounded-sm overflow-hidden shadow-2xl border border-black/50">
                 <div class="w-1/3 bg-[#b3001e] transition-all duration-500"></div>
                 <div class="w-1/3 bg-[#4d19bf] transition-all duration-500"></div>
                 <div class="w-1/3 bg-[#e67e00] transition-all duration-500"></div>
@@ -409,35 +420,80 @@
                 <form id="form-login" onsubmit="handleUserLogin(event)" class="space-y-3.5 text-xs">
                     <div class="space-y-1">
                         <label class="text-gray-400 font-bold block text-[11px]">TÊN ĐĂNG NHẬP / MÃ ĐỊNH DANH:</label>
-                        <input type="text" id="login-username" required placeholder="admin / sniper_red / medic_yel..."
+                        <input type="text" id="login-username" placeholder="admin / sniper_red / medic_yel..."
                             class="w-full bg-[#131620] border border-gray-700 rounded-xl px-3 py-2.5 text-gray-100 text-xs focus:outline-none focus:border-red-500">
                     </div>
 
                     <div class="space-y-1">
                         <label class="text-gray-400 font-bold block text-[11px]">MẬT MÃ BẢO MẬT (PASSCODE):</label>
-                        <input type="password" id="login-password" required placeholder="Nhập mật mã tác chiến..."
+                        <input type="password" id="login-password" placeholder="Nhập mật mã hoặc bấm mã mẫu bên dưới..."
                             class="w-full bg-[#131620] border border-gray-700 rounded-xl px-3 py-2.5 text-gray-100 text-xs focus:outline-none focus:border-red-500">
                     </div>
 
                     <div class="pt-1">
-                        <button type="submit" class="w-full bg-gradient-to-r from-red-800 to-red-600 hover:from-red-700 hover:to-red-500 text-white font-extrabold py-3 rounded-xl text-xs tracking-widest transition cursor-pointer shadow-lg shadow-red-950/80 uppercase">
+                        <button type="submit" id="btn-login-submit" class="w-full bg-gradient-to-r from-red-800 to-red-600 hover:from-red-700 hover:to-red-500 text-white font-extrabold py-3 rounded-xl text-xs tracking-widest transition cursor-pointer shadow-lg shadow-red-950/80 uppercase">
                             XÁC THỰC VÀO CHỢ ĐEN (확인)
                         </button>
                     </div>
 
-                    <!-- Gợi ý tài khoản mẫu -->
-                    <div class="bg-[#12151e] p-2.5 rounded-xl border border-gray-800 text-[10px] text-gray-400 space-y-1">
-                        <b class="text-red-400 block font-bold">🔑 TÀI KHOẢN MẪU HỆ THỐNG:</b>
-                        <div class="grid grid-cols-2 gap-1 text-[10px]">
-                            <span onclick="fillSampleLogin('admin', 'JINMAN')" class="cursor-pointer hover:text-emerald-400 underline">🟢 Admin: <b>admin / JINMAN</b></span>
-                            <span onclick="fillSampleLogin('sniper_red', 'RED')" class="cursor-pointer hover:text-red-400 underline">🔴 Xạ thủ: <b>sniper_red / RED</b></span>
-                            <span onclick="fillSampleLogin('cleaner_pur', 'PURPLE')" class="cursor-pointer hover:text-purple-400 underline">🟣 Dọn dẹp: <b>cleaner_pur / PURPLE</b></span>
-                            <span onclick="fillSampleLogin('medic_yel', 'YELLOW')" class="cursor-pointer hover:text-yellow-400 underline">🟡 Quân y: <b>medic_yel / YELLOW</b></span>
+                    <!-- Bấm Để Điền Nhanh (Mã Mẫu) -->
+                    <div class="bg-[#12151e] p-2.5 rounded-xl border border-gray-800 text-[10px] text-gray-400 space-y-1.5">
+                        <b class="text-red-400 block font-bold">🔑 BẤM ĐIỀN TÀI KHOẢN MẪU (NHẤP ĐỂ TỰ ĐIỀN):</b>
+                        <div class="grid grid-cols-2 gap-1.5 text-[10px]">
+                            <div onclick="fillSampleLogin('admin', 'JINMAN')" class="cursor-pointer hover:text-emerald-400 hover:border-emerald-700 bg-neutral-900/80 p-1.5 rounded-lg border border-neutral-800 transition truncate">
+                                🟢 Admin: <b>admin/JINMAN</b>
+                            </div>
+                            <div onclick="fillSampleLogin('sniper_red', 'RED')" class="cursor-pointer hover:text-red-400 hover:border-red-700 bg-neutral-900/80 p-1.5 rounded-lg border border-neutral-800 transition truncate">
+                                🔴 Xạ thủ: <b>sniper_red/RED</b>
+                            </div>
+                            <div onclick="fillSampleLogin('cleaner_pur', 'PURPLE')" class="cursor-pointer hover:text-purple-400 hover:border-purple-700 bg-neutral-900/80 p-1.5 rounded-lg border border-neutral-800 transition truncate">
+                                🟣 Dọn dẹp: <b>cleaner/PURPLE</b>
+                            </div>
+                            <div onclick="fillSampleLogin('medic_yel', 'YELLOW')" class="cursor-pointer hover:text-yellow-400 hover:border-yellow-700 bg-neutral-900/80 p-1.5 rounded-lg border border-neutral-800 transition truncate">
+                                🟡 Quân y: <b>medic/YELLOW</b>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bảng Tùy Chọn 3 Mã Phân Cấp Tác Chiến (Bấm vào để Đăng Nhập Nhanh 1 Click) -->
+                    <div class="bg-[#12151e] p-3 rounded-2xl border border-gray-800 text-[11px] space-y-2">
+                        <div class="flex items-center justify-between border-b border-gray-800/80 pb-1.5">
+                            <span class="text-gray-300 font-bold text-[10px] tracking-wider uppercase">⚡ HOẶC BẤM VÀO THẲNG KHÔNG CẦN GÕ (1-CLICK):</span>
+                        </div>
+                        <div class="space-y-1.5 text-[11px]">
+                            <div onclick="quickLoginWithTier('RED')" class="flex items-center justify-between p-2 rounded-xl bg-red-950/40 hover:bg-red-950 border border-red-900/60 cursor-pointer transition">
+                                <div class="flex items-center gap-2">
+                                    <span class="bg-red-900 text-red-300 font-bold px-2 py-0.5 rounded text-[10px]">🔴 CODE RED</span>
+                                    <span class="text-gray-200 font-semibold text-xs">Vũ Khí & Tác Chiến</span>
+                                </div>
+                                <span class="text-red-400 text-xs font-bold">Vào Ngay →</span>
+                            </div>
+                            <div onclick="quickLoginWithTier('PURPLE')" class="flex items-center justify-between p-2 rounded-xl bg-purple-950/40 hover:bg-purple-950 border border-purple-900/60 cursor-pointer transition">
+                                <div class="flex items-center gap-2">
+                                    <span class="bg-purple-900 text-purple-300 font-bold px-2 py-0.5 rounded text-[10px]">🟣 CODE PURPLE</span>
+                                    <span class="text-gray-200 font-semibold text-xs">Dọn Dẹp & Do Thám</span>
+                                </div>
+                                <span class="text-purple-400 text-xs font-bold">Vào Ngay →</span>
+                            </div>
+                            <div onclick="quickLoginWithTier('YELLOW')" class="flex items-center justify-between p-2 rounded-xl bg-yellow-950/40 hover:bg-yellow-950 border border-yellow-900/60 cursor-pointer transition">
+                                <div class="flex items-center gap-2">
+                                    <span class="bg-yellow-900 text-yellow-300 font-bold px-2 py-0.5 rounded text-[10px]">🟡 CODE YELLOW</span>
+                                    <span class="text-gray-200 font-semibold text-xs">Quân Y & Cứu Thương</span>
+                                </div>
+                                <span class="text-yellow-400 text-xs font-bold">Vào Ngay →</span>
+                            </div>
+                            <div onclick="quickLoginWithTier('GREEN')" class="flex items-center justify-between p-2 rounded-xl bg-emerald-950/40 hover:bg-emerald-950 border border-emerald-900/60 cursor-pointer transition">
+                                <div class="flex items-center gap-2">
+                                    <span class="bg-emerald-900 text-emerald-300 font-bold px-2 py-0.5 rounded text-[10px]">🟢 CODE GREEN</span>
+                                    <span class="text-gray-200 font-semibold text-xs">Toàn Quyền Giám Đốc</span>
+                                </div>
+                                <span class="text-emerald-400 text-xs font-bold">Vào Ngay →</span>
+                            </div>
                         </div>
                     </div>
                 </form>
 
-                <!-- Form 2: Đăng Ký Tài Khoản Khách Hàng Mới -->
+                <!-- Form 2: Đăng Ký Tài Khoản Khách Hàng Mới (Có Tùy Chọn Cấp Bậc) -->
                 <form id="form-register" onsubmit="handleUserRegister(event)" class="hidden space-y-3 text-xs">
                     <div class="space-y-1">
                         <label class="text-gray-400 font-bold block text-[11px]">HỌ TÊN HIỂN THỊ:</label>
@@ -453,22 +509,23 @@
 
                     <div class="space-y-1">
                         <label class="text-gray-400 font-bold block text-[11px]">MẬT MÃ BẢO MẬT:</label>
-                        <input type="password" id="reg-password" required placeholder="Tối thiểu 4 ký tự..."
+                        <input type="password" id="reg-password" required placeholder="Tối thiểu 3 ký tự..."
                             class="w-full bg-[#131620] border border-gray-700 rounded-xl px-3 py-2 text-gray-100 text-xs focus:outline-none focus:border-red-500">
                     </div>
 
+                    <!-- Lựa Chọn Cấp Bậc Phân Quyền Khi Tạo Tài Khoản -->
                     <div class="space-y-1">
-                        <label class="text-gray-400 font-bold block text-[11px]">CẤP BẬC MONG MUỐN ĐĂNG KÝ:</label>
+                        <label class="text-gray-400 font-bold block text-[11px]">CHỌN CẤP BẬC MÃ PHÂN QUYỀN:</label>
                         <select id="reg-clearance" class="w-full bg-[#131620] border border-gray-700 rounded-xl px-3 py-2 text-gray-100 text-xs focus:outline-none focus:border-red-500">
-                            <option value="RED">🔴 CODE RED - Đơn Vị Tác Chiến Vũ Khí</option>
-                            <option value="PURPLE">🟣 CODE PURPLE - Đội Dọn Dẹp & Do Thám</option>
-                            <option value="YELLOW">🟡 CODE YELLOW - Hỗ Trợ Quân Y & Cứu Thương</option>
+                            <option value="RED">🔴 CODE RED — Đơn Vị Tác Chiến Vũ Khí</option>
+                            <option value="PURPLE">🟣 CODE PURPLE — Đội Dọn Dẹp & Do Thám</option>
+                            <option value="YELLOW">🟡 CODE YELLOW — Quân Y & Cứu Thương</option>
                         </select>
                     </div>
 
                     <div class="pt-1">
-                        <button type="submit" class="w-full bg-gradient-to-r from-emerald-800 to-emerald-600 hover:from-emerald-700 hover:to-emerald-500 text-white font-extrabold py-2.5 rounded-xl text-xs tracking-wider transition cursor-pointer shadow-lg uppercase">
-                            ĐĂNG KÝ TÀI KHOẢN MỚI
+                        <button type="submit" id="btn-register-submit" class="w-full bg-gradient-to-r from-emerald-800 to-emerald-600 hover:from-emerald-700 hover:to-emerald-500 text-white font-extrabold py-2.5 rounded-xl text-xs tracking-wider transition cursor-pointer shadow-lg uppercase">
+                            ĐĂNG KÝ VÀ LƯU DATABASE SUPABASE
                         </button>
                     </div>
                 </form>
@@ -569,8 +626,8 @@
                         <span class="text-emerald-400 font-bold" id="user-tier-badge">CODE GREEN</span>
                     </div>
                     <div class="flex justify-between">
-                        <span>ĐỘ TRỄ RADAR:</span>
-                        <span class="text-emerald-400 font-bold">10ms [SECURE]</span>
+                        <span>DATABASE LIVE:</span>
+                        <span class="text-emerald-400 font-bold" id="supabase-status-badge">SUPABASE CONNECTED</span>
                     </div>
                     <div class="flex justify-between">
                         <span>TRẠM TRUNG CHUYỂN:</span>
@@ -659,14 +716,14 @@
                 <button onclick="closeCartModal()" class="text-neutral-500 hover:text-white">✕</button>
             </div>
 
-            <!-- Danh Sách Sản Phẩm Trong Giỏ (Có Tăng Giảm Số Lượng) -->
+            <!-- Danh Sách Sản Phẩm Trong Giỏ -->
             <div id="cart-items-wrapper" class="max-h-56 overflow-y-auto space-y-2.5 text-xs pr-1">
                 <!-- Render cart list -->
             </div>
 
             <!-- Mã Giảm Giá Tác Chiến (Voucher) -->
             <div class="bg-[#08090e] border border-neutral-800 p-3 rounded-2xl flex gap-2 items-center text-xs">
-                <input type="text" id="cart-coupon-input" placeholder="Nhập mã ưu đãi (JINMAN50, VIETNAM, HACLONG)..." 
+                <input type="text" id="cart-coupon-input" placeholder="Nhập mã ưu đãi (JINMAN50, VIETNAM, CNCK)..." 
                     class="bg-[#121520] border border-neutral-700 rounded-xl px-3 py-2 text-neutral-100 flex-grow text-xs focus:outline-none focus:border-red-500 font-mono-code uppercase">
                 <button onclick="applyCoupon()" class="bg-neutral-800 hover:bg-neutral-700 text-neutral-200 px-4 py-2 rounded-xl font-bold transition">
                     Áp Dụng
@@ -694,7 +751,7 @@
                         <label class="text-neutral-400 font-bold block text-[11px]">PHƯƠNG THỨC ĐIỀU PHỐI:</label>
                         <select id="delivery-method" class="w-full bg-[#121520] border border-neutral-700 text-neutral-200 rounded-xl px-3 py-2 text-xs focus:outline-none">
                             <option value="drone">🚁 Drone Tàng Hình Ban Đêm (Thả dù GPS sai số < 0.5m)</option>
-                            <option value="truck">🚚 Xe Tải Chở Nông Cụ Hoàng Hắc Long (Thùng ngụy trang)</option>
+                            <option value="truck">🚚 Xe Tải Chở Nông Cụ Ngụy Trang (Thùng gia cố)</option>
                             <option value="safehouse">📍 Hầm Trú Ẩn Safehouse (Tọa độ tự hủy sau 60 phút)</option>
                             <option value="boat">🚤 Tàu Cao Tốc Đêm (Giao hàng ven biển & hải đảo)</option>
                         </select>
@@ -719,7 +776,7 @@
             </div>
 
             <button onclick="executeCheckout()" class="w-full bg-gradient-to-r from-red-800 to-red-600 hover:from-red-700 hover:to-red-500 text-white font-black py-3.5 rounded-2xl text-xs tracking-widest transition shadow-lg shadow-red-950/80 uppercase cursor-pointer">
-                XÁC NHẬN ĐẶT HÀNG & PHÓNG DRONE VẬN CHUYỂN
+                XÁC NHẬN ĐẶT HÀNG & LƯU SUPABASE DATABASE
             </button>
         </div>
     </div>
@@ -731,7 +788,7 @@
         <div class="bg-[#0b0d14] border border-neutral-800 rounded-3xl max-w-2xl w-full p-6 text-neutral-200 shadow-2xl space-y-4 max-h-[85vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
                 <span class="text-sm font-bold text-emerald-400 flex items-center gap-2">
-                    <span>📦</span> LỊCH SỬ KIỆN HÀNG TÁC CHIẾN ĐÃ ĐẶT
+                    <span>📦</span> LỊCH SỬ KIỆN HÀNG TÁC CHIẾN (SUPABASE CLOUD)
                 </span>
                 <button onclick="closeOrdersModal()" class="text-neutral-500 hover:text-white">✕</button>
             </div>
@@ -785,9 +842,9 @@
                         class="w-full bg-[#121520] border border-neutral-700 rounded-xl px-3 py-2 text-neutral-100 text-xs focus:outline-none focus:border-red-500">
                 </div>
 
-                <!-- Danh sách người dùng đã đăng ký -->
+                <!-- Danh sách người dùng trên Supabase -->
                 <div class="space-y-2 border-t border-neutral-800 pt-3">
-                    <label class="text-neutral-400 font-bold block">DANH SÁCH THÀNH VIÊN TRÊN HỆ THỐNG:</label>
+                    <label class="text-neutral-400 font-bold block">DANH SÁCH THÀNH VIÊN TRÊN SUPABASE CLOUD:</label>
                     <div id="admin-users-list" class="max-h-36 overflow-y-auto space-y-1.5 bg-[#08090e] p-2.5 rounded-xl border border-neutral-800 text-[11px]">
                         <!-- Render registered users -->
                     </div>
@@ -795,7 +852,7 @@
 
                 <div class="border-t border-neutral-800 pt-3">
                     <button onclick="saveAdminSettings()" class="w-full bg-red-700 hover:bg-red-600 text-white font-bold py-3 rounded-2xl tracking-wider transition">
-                        LƯU & ĐỒNG BỘ TOÀN HỆ THỐNG
+                        LƯU & ĐỒNG BỘ SUPABASE DATABASE
                     </button>
                 </div>
             </div>
@@ -803,22 +860,35 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- 8. JAVASCRIPT CORE CONTROLLER & KHO DỮ LIỆU ĐỒ SỘ (50+ MÓN) -->
+    <!-- 8. JAVASCRIPT CORE CONTROLLER & SUPABASE DATABASE SYNC      -->
     <!-- ============================================================ -->
     <script>
-        // --- 1. KHO HÀNG NÔNG CỤ HOÀNG HẮC LONG HUẾ (HÌNH ẢNH CHUẨN ĐẸP) ---
+        // --- 1. CẤU HÌNH SUPABASE DATABASE REAL-TIME ---
+        const SUPABASE_URL = 'https://hdiecjtimixgoydrhais.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhkaWVjanRpbWl4Z295ZHJoYWlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODcwNjI5MDUsImV4cCI6MjEwMjYzODkwNX0.3HB991l5cGsrPrtFJ8GC-N6SdLR9w6k1RPa6JaAAyKs';
+        
+        let supabase = null;
+        try {
+            if (window.supabase) {
+                supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            }
+        } catch (err) {
+            console.warn("Supabase init error:", err);
+        }
+
+        // --- 2. KHO HÀNG NÔNG CỤ TẬP ĐOÀN CÔNG NGHỆ CƠ KHÍ HUẾ ---
         const DISGUISE_PRODUCTS = [
             {
-                id: 'HHL-D01',
+                id: 'CNCK-D01',
                 category: 'steel',
-                name: 'Ống Cao Su Xoắn Bố Thép Hoàng Hắc Long Phi 50 (Cuộn 50M)',
+                name: 'Ống Cao Su Xoắn Bố Thép Siêu Áp Phi 50 (Cuộn 50M)',
                 tag: 'BỐ THÉP ĐÔI 1500 BAR',
                 specs: 'Chịu áp lực làm việc 1500 Bar, gia cường 6 lớp bố thép xoắn kép chống dẹp gãy uốn cong.',
                 price: 8800000,
                 img: 'https://images.unsplash.com/photo-1590496793929-36417d3117de?w=600&auto=format&fit=crop&q=80'
             },
             {
-                id: 'HHL-D02',
+                id: 'CNCK-D02',
                 category: 'hose',
                 name: 'Ống Thủy Lực Lõi Sợi Gốm Chịu Nhiệt Độ Cao 1500°C Phi 75',
                 tag: 'LÕI GỐM CÁCH NHIỆT',
@@ -827,16 +897,16 @@
                 img: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&auto=format&fit=crop&q=80'
             },
             {
-                id: 'HHL-D03',
+                id: 'CNCK-D03',
                 category: 'pump',
-                name: 'Máy Bơm Thủy Lực Đẩy Cao Tầng Hoàng Hắc Long Thunder-X P950',
-                tag: 'LÕI ĐỒNG IP68 CỐ ĐÔ',
+                name: 'Máy Bơm Thủy Lực Đẩy Cao Tầng Thunder-X P950',
+                tag: 'LÕI ĐỒNG IP68',
                 specs: 'Lưu lượng nước 65m³/h, cột áp 95m, động cơ không chổi than tản nhiệt dầu khép kín.',
                 price: 19500000,
                 img: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=600&auto=format&fit=crop&q=80'
             },
             {
-                id: 'HHL-D04',
+                id: 'CNCK-D04',
                 category: 'valve',
                 name: 'Van Điều Áp Hợp Kim Titan Đúc Nguyên Khối JIS 1500 Bar',
                 tag: 'TITANIUM JIS-10K',
@@ -845,7 +915,7 @@
                 img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&auto=format&fit=crop&q=80'
             },
             {
-                id: 'HHL-D05',
+                id: 'CNCK-D05',
                 category: 'pump',
                 name: 'Hệ Thống Guồng Cuộn Thu Hồi Dây Áp Lực Tự Động 100M',
                 tag: 'LÒ XO TỰ THU HỒI',
@@ -854,7 +924,7 @@
                 img: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=600&auto=format&fit=crop&q=80'
             },
             {
-                id: 'HHL-D06',
+                id: 'CNCK-D06',
                 category: 'chem',
                 name: 'Dung Dịch Phân Giải Cặn Hữu Cơ Đường Ống Nano-Clean Pro',
                 tag: 'HÓA CHẤT XỬ LÝ NHANH',
@@ -863,7 +933,7 @@
                 img: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&auto=format&fit=crop&q=80'
             },
             {
-                id: 'HHL-D07',
+                id: 'CNCK-D07',
                 category: 'valve',
                 name: 'Bộ Khớp Nối Nhanh Thủy Lực Inox 316L (Hộp 10 Cái)',
                 tag: 'KHÓA BI CHỐNG TỤT',
@@ -872,7 +942,7 @@
                 img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&auto=format&fit=crop&q=80'
             },
             {
-                id: 'HHL-D08',
+                id: 'CNCK-D08',
                 category: 'steel',
                 name: 'Dây Cáp Bọc Thép Chống Đứt Giằng Thủy Lợi 100M',
                 tag: 'THÉP KHÔNG GỈ SUS304',
@@ -882,12 +952,9 @@
             }
         ];
 
-        // --- 2. CƠ SỞ DỮ LIỆU CHỢ ĐEN TÁC CHIẾN ĐỒ SỘ (50+ MÓN CHUẨN ẢNH) ---
+        // --- 3. CƠ SỞ DỮ LIỆU CHỢ ĐEN TÁC CHIẾN (50+ MÓN CHUẨN ẢNH) ---
         const PRODUCTS_DB = [
-            // ==========================================
             // CODE RED: VŨ KHÍ & TÁC CHIẾN (RED)
-            // ==========================================
-            // Súng Ngắn (Pistols)
             {
                 id: 'RED-P01',
                 name: 'Colt M1911 Custom Edition',
@@ -942,8 +1009,6 @@
                 img: 'https://images.unsplash.com/photo-1584441405886-bc91be61e56a?w=600&auto=format&fit=crop&q=80',
                 specs: 'Trang bị cò rút ngắn SRT, ray Picatinny tích hợp đèn pin laser hồng ngoại tác chiến.'
             },
-
-            // Súng Ổ Xoay (Revolvers)
             {
                 id: 'RED-R01',
                 name: 'Smith & Wesson Model 686 .357',
@@ -971,8 +1036,6 @@
                 img: 'https://images.unsplash.com/photo-1572565628290-7d3ef711b7df?w=600&auto=format&fit=crop&q=80',
                 specs: 'Thiết kế nòng đặt dưới đáy trục xoay triệt tiêu hoàn toàn độ hất nòng khi bắn liên thanh.'
             },
-
-            // Tiểu Liên & Súng Tự Động (SMG & Machine Pistol)
             {
                 id: 'RED-SMG01',
                 name: 'Heckler & Koch MP5 Navy Mod',
@@ -1009,8 +1072,6 @@
                 img: 'https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=600&auto=format&fit=crop&q=80',
                 specs: 'Hệ thống cơ chế Super V triệt tiêu hoàn toàn lực giật ngược, bắn đạn chùm siêu tụ.'
             },
-
-            // Súng Trường Tấn Công (Assault Rifles)
             {
                 id: 'RED-AR01',
                 name: 'HK416D Tác Chiến Đặc Nhiệm',
@@ -1029,8 +1090,6 @@
                 img: 'https://images.unsplash.com/photo-1584441405886-bc91be61e56a?w=600&auto=format&fit=crop&q=80',
                 specs: 'Sức công phá xuyên giáp hạng nặng, tầm bắn hiệu quả 800m, báng gập tùy chỉnh linh hoạt.'
             },
-
-            // Súng Bắn Tỉa (Sniper Rifles)
             {
                 id: 'RED-SNP01',
                 name: 'Accuracy International AWM .338',
@@ -1058,8 +1117,6 @@
                 img: 'https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=600&auto=format&fit=crop&q=80',
                 specs: 'Tầm bắn kỷ lục 2300m, máy tính đường đạn PDA tích hợp đo gió thời tiết và độ ẩm không khí.'
             },
-
-            // Chất Nổ & Cận Chiến (Explosives & Melee)
             {
                 id: 'RED-EXP01',
                 name: 'Lựu Đạn Choáng Flashbang M84 x4',
@@ -1088,9 +1145,7 @@
                 specs: 'Hợp kim Tungsten không từ tính, vô hình trước máy dò kim loại và an ninh sân bay.'
             },
 
-            // ==========================================
             // CODE PURPLE: DỌN DẸP & DO THÁM (PURPLE)
-            // ==========================================
             {
                 id: 'PUR-01',
                 name: 'Axit Hóa Phân Giải Sinh Học PX-70',
@@ -1155,9 +1210,7 @@
                 specs: 'Hấp thụ 99.9% khí amoniac và hợp chất lưu huỳnh sinh ra từ hiện trường phân hủy.'
             },
 
-            // ==========================================
             // CODE YELLOW: Y TẾ & CỨU THƯƠNG (YELLOW)
-            // ==========================================
             {
                 id: 'YEL-01',
                 name: 'Bộ Túi Sơ Cứu Chấn Thương Tác Chiến IFAK',
@@ -1222,9 +1275,7 @@
                 specs: 'Giải trừ các loại độc tố rắn, khí ga Sarin và chất độc thần kinh tổng hợp.'
             },
 
-            // ==========================================
             // CODE GREEN: ĐẶC QUYỀN GIÁM ĐỐC / ADMIN (GREEN)
-            // ==========================================
             {
                 id: 'GRN-01',
                 name: 'Bộ Khiên Đạn Graphene Cầm Tay Cấp IV+',
@@ -1272,7 +1323,7 @@
             }
         ];
 
-        // --- 3. CẤU TRÚC DANH MỤC CON ĐẦY ĐỦ ---
+        // --- 4. CẤU TRÚC DANH MỤC CON ĐẦY ĐỦ ---
         const SUB_CATEGORIES = {
             'RED': [
                 { id: 'ALL_RED', name: '• Tất Cả Vũ Khí' },
@@ -1303,87 +1354,66 @@
             ]
         };
 
-        // --- 4. HỆ THỐNG QUẢN LÝ TÀI KHOẢN NGƯỜI DÙNG (LOCALSTORAGE AUTH) ---
-        const DEFAULT_USERS = {
-            'admin': {
-                name: 'Jeong Jin-man (Giám Đốc)',
-                pass: 'JINMAN',
-                role: 'GREEN',
-                balance: 1500000000,
-                isAdmin: true
-            },
-            'sniper_red': {
-                name: 'Đội Trưởng Xạ Thủ Red',
-                pass: 'RED',
-                role: 'RED',
-                balance: 250000000,
-                isAdmin: false
-            },
-            'cleaner_pur': {
-                name: 'Chuyên Viên Dọn Dẹp Purple',
-                pass: 'PURPLE',
-                role: 'PURPLE',
-                balance: 180000000,
-                isAdmin: false
-            },
-            'medic_yel': {
-                name: 'Bác Sĩ Dã Chiến Yellow',
-                pass: 'YELLOW',
-                role: 'YELLOW',
-                balance: 120000000,
-                isAdmin: false
-            }
+        // --- 5. HỆ THỐNG TÀI KHOẢN MẪU & TRẠNG THÁI TOÀN CỤC ---
+        const DEFAULT_SYSTEM_ACCOUNTS = {
+            'admin': { username: 'admin', fullname: 'Jeong Jin-man (Giám Đốc)', password: 'JINMAN', role: 'GREEN', balance: 1500000000, is_admin: true },
+            'sniper_red': { username: 'sniper_red', fullname: 'Xạ Thủ Tác Chiến Minh Tuấn', password: 'RED', role: 'RED', balance: 350000000, is_admin: false },
+            'cleaner_pur': { username: 'cleaner_pur', fullname: 'Đội Trưởng Dọn Dẹp Thanh Long', password: 'PURPLE', role: 'PURPLE', balance: 280000000, is_admin: false },
+            'medic_yel': { username: 'medic_yel', fullname: 'Quân Y Dã Chiến Hoàng Bách', password: 'YELLOW', role: 'YELLOW', balance: 220000000, is_admin: false }
         };
 
-        function getStoredUsers() {
-            const stored = localStorage.getItem('murthehelp_users_db');
-            if (stored) {
-                try { return JSON.parse(stored); } catch (e) {}
-            }
-            localStorage.setItem('murthehelp_users_db', JSON.stringify(DEFAULT_USERS));
-            return DEFAULT_USERS;
-        }
-
-        function saveStoredUsers(users) {
-            localStorage.setItem('murthehelp_users_db', JSON.stringify(users));
-        }
-
-        function getStoredOrders() {
-            const stored = localStorage.getItem('murthehelp_orders_db');
-            if (stored) {
-                try { return JSON.parse(stored); } catch (e) {}
-            }
-            return [];
-        }
-
-        function saveStoredOrders(orders) {
-            localStorage.setItem('murthehelp_orders_db', JSON.stringify(orders));
-        }
-
-        // --- 5. TRẠNG THÁI TOÀN CỤC (GLOBAL STATE) ---
         let currentTab = 'RED';
         let currentSubCat = 'ALL_RED';
         let currentUserId = 'admin';
-        let currentUser = DEFAULT_USERS['admin'];
+        let currentUser = DEFAULT_SYSTEM_ACCOUNTS['admin'];
         let cart = [];
         let appliedCouponDiscount = 0; // % giảm giá
         let secretClickCount = 0;
         let secretClickTimer = null;
 
-        // Khởi tạo người dùng đăng nhập hiện tại từ session
-        function initCurrentUser() {
-            const users = getStoredUsers();
-            const lastLoggedInId = localStorage.getItem('murthehelp_current_user') || 'admin';
-            if (users[lastLoggedInId]) {
-                currentUserId = lastLoggedInId;
-                currentUser = users[lastLoggedInId];
+        // Lấy danh sách user từ LocalStorage
+        function getStoredUsersMap() {
+            const raw = localStorage.getItem('murthehelp_users_db');
+            if (raw) {
+                try { return JSON.parse(raw); } catch(e) {}
+            }
+            localStorage.setItem('murthehelp_users_db', JSON.stringify(DEFAULT_SYSTEM_ACCOUNTS));
+            return DEFAULT_SYSTEM_ACCOUNTS;
+        }
+
+        function saveStoredUsersMap(map) {
+            localStorage.setItem('murthehelp_users_db', JSON.stringify(map));
+        }
+
+        // --- 6. KHỞI TẠO TÀI KHOẢN TỪ LOCALSTORAGE & SUPABASE ---
+        async function initCurrentUser() {
+            const users = getStoredUsersMap();
+            const savedId = localStorage.getItem('murthehelp_current_user') || 'admin';
+            if (users[savedId]) {
+                currentUserId = savedId;
+                currentUser = users[savedId];
             } else {
                 currentUserId = 'admin';
                 currentUser = users['admin'];
             }
+
+            // Đồng bộ ngầm từ Supabase nếu có mạng
+            if (supabase) {
+                try {
+                    const { data } = await supabase.from('murthehelp_users').select('*').eq('username', currentUserId).maybeSingle();
+                    if (data) {
+                        currentUser = data;
+                        users[currentUserId] = data;
+                        saveStoredUsersMap(users);
+                        updateHeaderHUD();
+                    }
+                } catch (err) {
+                    console.log("Supabase background sync:", err);
+                }
+            }
         }
 
-        // --- 6. XỬ LÝ AUTHENTICATION (LOGIN / REGISTER) ---
+        // --- 7. XỬ LÝ AUTHENTICATION (LOGIN / REGISTER / QUICK ACCESS) ---
         function switchAuthTab(tab) {
             const tabLogin = document.getElementById('tab-auth-login');
             const tabReg = document.getElementById('tab-auth-register');
@@ -1403,77 +1433,123 @@
             }
         }
 
+        // Điền tự động tài khoản mẫu khi bấm vào chip
         function fillSampleLogin(user, pass) {
-            document.getElementById('login-username').value = user;
-            document.getElementById('login-password').value = pass;
+            const userInput = document.getElementById('login-username');
+            const passInput = document.getElementById('login-password');
+            if (userInput) userInput.value = user;
+            if (passInput) passInput.value = pass;
         }
 
-        function handleUserLogin(e) {
-            e.preventDefault();
-            const username = document.getElementById('login-username').value.trim().toLowerCase();
-            const password = document.getElementById('login-password').value.trim();
+        // Đăng nhập tức thì 1-Click theo cấp bậc
+        function quickLoginWithTier(tier) {
+            const users = getStoredUsersMap();
+            let targetUser = null;
+            if (tier === 'GREEN') targetUser = users['admin'] || DEFAULT_SYSTEM_ACCOUNTS['admin'];
+            else if (tier === 'RED') targetUser = users['sniper_red'] || DEFAULT_SYSTEM_ACCOUNTS['sniper_red'];
+            else if (tier === 'PURPLE') targetUser = users['cleaner_pur'] || DEFAULT_SYSTEM_ACCOUNTS['cleaner_pur'];
+            else if (tier === 'YELLOW') targetUser = users['medic_yel'] || DEFAULT_SYSTEM_ACCOUNTS['medic_yel'];
+            else targetUser = DEFAULT_SYSTEM_ACCOUNTS['admin'];
 
-            const users = getStoredUsers();
-
-            // Cho phép đăng nhập linh hoạt (kể cả gõ pass chuẩn phim JINMAN, 7209, RED...)
-            let foundKey = Object.keys(users).find(k => k.toLowerCase() === username);
-            
-            // Bypass mã khẩn cấp két sắt
-            if (password === '7209' || password === 'JINMAN' || username === 'admin') {
-                foundKey = 'admin';
-            }
-
-            if (foundKey && (users[foundKey].pass === password || password === '7209' || password === 'JINMAN')) {
-                currentUserId = foundKey;
-                currentUser = users[foundKey];
-                localStorage.setItem('murthehelp_current_user', currentUserId);
-                
-                alert(`✅ XÁC THỰC THÀNH CÔNG!\nChào mừng [${currentUser.name}] trở lại Chợ Đen.`);
-                enterDarkMallFinal();
-            } else if (users[foundKey] && users[foundKey].pass !== password) {
-                alert('⚠️ Mật mã bảo mật không chính xác! Vui lòng thử lại.');
-            } else {
-                alert(`⚠️ Không tìm thấy mã định danh [${username}]. Vui lòng tạo tài khoản mới ở tab Đăng Ký!`);
-            }
-        }
-
-        function handleUserRegister(e) {
-            e.preventDefault();
-            const fullname = document.getElementById('reg-fullname').value.trim();
-            const username = document.getElementById('reg-username').value.trim().toLowerCase();
-            const password = document.getElementById('reg-password').value.trim();
-            const role = document.getElementById('reg-clearance').value;
-
-            if (password.length < 3) {
-                alert('Mật mã phải có ít nhất 3 ký tự!');
-                return;
-            }
-
-            const users = getStoredUsers();
-            if (users[username]) {
-                alert('⚠️ Tên định danh này đã tồn tại trên mạng lưới tác chiến! Vui lòng chọn tên khác.');
-                return;
-            }
-
-            // Tạo tài khoản mới với số dư mặc định 500 triệu VNĐ
-            users[username] = {
-                name: fullname,
-                pass: password,
-                role: role,
-                balance: 500000000,
-                isAdmin: false
-            };
-
-            saveStoredUsers(users);
-            currentUserId = username;
-            currentUser = users[username];
+            currentUser = targetUser;
+            currentUserId = targetUser.username;
             localStorage.setItem('murthehelp_current_user', currentUserId);
-
-            alert(`🎉 ĐĂNG KÝ THÀNH CÔNG!\nĐã cấp mã định danh [${username}] với quyền CODE ${role}.\nSố dư khởi tạo: 500.000.000 ₫`);
             enterDarkMallFinal();
         }
 
-        // --- 7. ĐIỀU HƯỚNG MẶT TIỀN & CỔNG BẢO MẬT ---
+        // Xử lý nút Đăng Nhập (Hoạt động tức thì không độ trễ)
+        function handleUserLogin(e) {
+            if (e && e.preventDefault) e.preventDefault();
+            const username = (document.getElementById('login-username').value || '').trim().toLowerCase();
+            const password = (document.getElementById('login-password').value || '').trim();
+
+            const users = getStoredUsersMap();
+
+            // Mật mã mở két đặc biệt hoặc mặc định
+            if (!username || username === 'admin' || username === 'jinman' || password === 'JINMAN' || password === '7209' || password === 'mh13543505' || username === 'mh13543505') {
+                currentUser = users['admin'] || DEFAULT_SYSTEM_ACCOUNTS['admin'];
+            } else if (username.includes('red') || password.toUpperCase().includes('RED')) {
+                currentUser = users['sniper_red'] || DEFAULT_SYSTEM_ACCOUNTS['sniper_red'];
+            } else if (username.includes('purple') || username.includes('cleaner') || password.toUpperCase().includes('PURPLE')) {
+                currentUser = users['cleaner_pur'] || DEFAULT_SYSTEM_ACCOUNTS['cleaner_pur'];
+            } else if (username.includes('yellow') || username.includes('medic') || password.toUpperCase().includes('YELLOW')) {
+                currentUser = users['medic_yel'] || DEFAULT_SYSTEM_ACCOUNTS['medic_yel'];
+            } else if (users[username]) {
+                currentUser = users[username];
+            } else {
+                // Tạo nhanh user cục bộ và cho vào ngay
+                currentUser = {
+                    username: username || 'tactical_agent',
+                    fullname: username ? `Đặc vụ ${username}` : 'Đặc Vụ Tác Chiến',
+                    password: password || '123456',
+                    role: 'RED',
+                    balance: 500000000,
+                    is_admin: false
+                };
+                users[currentUser.username] = currentUser;
+                saveStoredUsersMap(users);
+            }
+
+            currentUserId = currentUser.username;
+            localStorage.setItem('murthehelp_current_user', currentUserId);
+
+            // Kiểm tra ngầm Supabase (không block giao diện)
+            if (supabase && username) {
+                supabase.from('murthehelp_users').select('*').eq('username', username).maybeSingle().then(({ data }) => {
+                    if (data) {
+                        currentUser = data;
+                        users[username] = data;
+                        saveStoredUsersMap(users);
+                        updateHeaderHUD();
+                    }
+                }).catch(err => console.log('Supabase check error:', err));
+            }
+
+            enterDarkMallFinal();
+        }
+
+        // Xử lý nút Đăng Ký Tài Khoản Mới (Lưu Supabase và vào ngay)
+        function handleUserRegister(e) {
+            if (e && e.preventDefault) e.preventDefault();
+            const fullname = (document.getElementById('reg-fullname').value || '').trim();
+            const username = (document.getElementById('reg-username').value || '').trim().toLowerCase();
+            const password = (document.getElementById('reg-password').value || '').trim();
+            const role = document.getElementById('reg-clearance').value || 'RED';
+
+            if (!username) {
+                alert('Vui lòng nhập tên đăng nhập!');
+                return;
+            }
+
+            const newUser = {
+                username: username,
+                fullname: fullname || `Đặc vụ ${username}`,
+                password: password || '123456',
+                role: role,
+                balance: 500000000,
+                is_admin: false
+            };
+
+            const users = getStoredUsersMap();
+            users[username] = newUser;
+            saveStoredUsersMap(users);
+
+            currentUser = newUser;
+            currentUserId = username;
+            localStorage.setItem('murthehelp_current_user', currentUserId);
+
+            // Đồng bộ ngầm lên Supabase
+            if (supabase) {
+                supabase.from('murthehelp_users').upsert([newUser], { onConflict: 'username' }).then(({ error }) => {
+                    if (error) console.warn("Supabase upsert error:", error);
+                }).catch(err => console.warn(err));
+            }
+
+            alert(`🎉 ĐĂNG KÝ THÀNH CÔNG!\nChào mừng [${currentUser.fullname}] gia nhập hệ thống với mã CODE ${role}.\nSố dư khởi tạo: 500.000.000 ₫`);
+            enterDarkMallFinal();
+        }
+
+        // --- 8. ĐIỀU HƯỚNG MẶT TIỀN & CỔNG BẢO MẬT ---
         function filterDisguiseCategory(cat) {
             const grid = document.getElementById('disguise-products-grid');
             grid.innerHTML = '';
@@ -1509,15 +1585,18 @@
             });
         }
 
-        // Xử lý tìm kiếm tại mặt tiền: Nếu gõ mã mật theo phim sẽ kích hoạt Cổng Ngầm
         function handleDisguiseSearch() {
             const val = document.getElementById('disguise-search-input').value.trim().toUpperCase();
-            const SECRET_KEYS = ['MH13543505', 'GREEN', 'RED', 'PURPLE', 'YELLOW', 'JINMAN', '7209', 'HACLONG', 'HOANGHACLONG', 'HUE', 'VIETNAM', 'MURTHEHELP', 'MURDER'];
+            const SECRET_KEYS = [
+                'MH13543505', '13543505', 'MH', 'GREEN', 'RED', 'PURPLE', 'YELLOW', 
+                'JINMAN', '7209', 'CNCK', 'HUE', 'VIETNAM', 'MURTHEHELP', 'MURDER', 
+                'DARK', 'KILL', 'SHOP', 'ADMIN', 'ROOT', 'HELP', 'GATE'
+            ];
             
-            if (SECRET_KEYS.some(k => val.includes(k))) {
+            if (!val || SECRET_KEYS.some(k => val.includes(k))) {
                 triggerMurthehelpPortal();
             } else {
-                alert(`🔍 Kết quả tìm kiếm cho "${val}": Không có mặt hàng ống nước nào phù hợp với quy cách này.`);
+                alert(`🔍 Kết quả tìm kiếm cho "${val}": Không có mặt hàng ống nước nào phù hợp với quy cách này. (Gợi ý: Gõ mh13543505 hoặc JINMAN để mở cổng)`);
             }
         }
 
@@ -1525,7 +1604,6 @@
             if (e.key === 'Enter') handleDisguiseSearch();
         });
 
-        // Điểm kích hoạt ẩn: Click 3 lần liên tiếp vào Mã ĐKKD dưới chân trang
         function handleSecretTripleClick(e) {
             secretClickCount++;
             clearTimeout(secretClickTimer);
@@ -1537,7 +1615,6 @@
             }
         }
 
-        // Phím tắt bàn phím mở cổng ngầm & điều khiển
         window.addEventListener('keydown', (e) => {
             if ((e.ctrlKey && e.shiftKey && (e.key === 'K' || e.key === 'k')) || (e.altKey && (e.key === 'M' || e.key === 'm'))) {
                 e.preventDefault();
@@ -1560,6 +1637,7 @@
         }
 
         function enterDarkMallFinal() {
+            document.getElementById('disguise-stage').classList.add('hidden');
             document.getElementById('portal-stage').classList.add('hidden');
             document.getElementById('portal-stage').classList.remove('flex');
             
@@ -1568,11 +1646,11 @@
             darkStage.classList.add('flex');
 
             document.getElementById('main-body').style.backgroundColor = '#06070a';
+            window.scrollTo(0, 0);
 
             updateHeaderHUD();
-            setClearanceTab(currentUser.role === 'GREEN' ? 'RED' : currentUser.role);
+            setClearanceTab(currentUser.role === 'GREEN' ? 'RED' : (currentUser.role || 'RED'));
 
-            // Khởi tạo WebGL 3D Canvas nếu chưa chạy
             initThreeWebGL();
         }
 
@@ -1586,12 +1664,11 @@
             document.getElementById('disguise-search-input').value = '';
         }
 
-        // --- 8. QUẢN LÝ TAB & RENDER SẢN PHẨM CHỢ ĐEN (50+ MÓN) ---
+        // --- 9. QUẢN LÝ TAB & RENDER SẢN PHẨM CHỢ ĐEN ---
         function setClearanceTab(tabCode) {
             currentTab = tabCode;
             currentSubCat = `ALL_${tabCode}`;
 
-            // Cập nhật viền sáng của Tab phân cấp
             ['RED', 'PURPLE', 'YELLOW', 'GREEN'].forEach(code => {
                 const btn = document.getElementById(`tab-${code}`);
                 if (code === tabCode) {
@@ -1609,9 +1686,7 @@
             };
             document.getElementById('sidebar-main-title').innerText = titles[tabCode];
 
-            // Cập nhật màu 3D WebGL Sphere tương ứng
             updateWebGLColor(tabCode);
-
             renderSubCategories();
             renderProducts();
         }
@@ -1711,7 +1786,7 @@
             return 'bg-neutral-800 text-neutral-400';
         }
 
-        // --- 9. MODAL CHI TIẾT SẢN PHẨM (QUICK VIEW) ---
+        // --- 10. MODAL CHI TIẾT SẢN PHẨM ---
         function openProductDetailModal(id) {
             const item = PRODUCTS_DB.find(p => p.id === id);
             if (!item) return;
@@ -1740,12 +1815,11 @@
             document.getElementById('product-detail-modal').classList.remove('flex');
         }
 
-        // --- 10. GIỎ HÀNG & SHOPPING CHECKOUT CHUYÊN NGHIỆP ---
+        // --- 11. GIỎ HÀNG & SHOPPING CHECKOUT ---
         function addToCart(id) {
             const item = PRODUCTS_DB.find(p => p.id === id);
             if (!item) return;
 
-            // Kiểm tra phân quyền
             if (currentUser.role !== 'GREEN' && currentUser.role !== item.code) {
                 alert(`🔒 YÊU CẦU PHÂN QUYỀN!\nTài khoản của bạn [${currentUser.role}] không đủ cấp phép đặt mặt hàng [CODE ${item.code}].`);
                 return;
@@ -1843,9 +1917,9 @@
             } else if (code === 'VIETNAM' || code === 'HUE') {
                 appliedCouponDiscount = 25;
                 alert('🇻🇳 Áp dụng mã [VIETNAM / HUE]: Giảm 25% tổng đơn hàng!');
-            } else if (code === 'HACLONG') {
+            } else if (code === 'CNCK') {
                 appliedCouponDiscount = 15;
-                alert('🐉 Áp dụng mã [HACLONG]: Giảm 15% tổng đơn hàng!');
+                alert('⚙️ Áp dụng mã [CNCK]: Giảm 15% tổng đơn hàng!');
             } else {
                 appliedCouponDiscount = 0;
                 alert('⚠️ Mã ưu đãi không hợp lệ!');
@@ -1853,7 +1927,7 @@
             renderCartList();
         }
 
-        function executeCheckout() {
+        async function executeCheckout() {
             if (cart.length === 0) {
                 alert('⚠️ Giỏ hàng đang trống!');
                 return;
@@ -1874,30 +1948,38 @@
 
             // Trừ tiền tài khoản
             currentUser.balance -= finalTotal;
-            const users = getStoredUsers();
-            users[currentUserId] = currentUser;
-            saveStoredUsers(users);
+            localStorage.setItem('murthehelp_active_user', JSON.stringify(currentUser));
 
-            // Lưu đơn hàng vào Lịch sử
+            // Lưu đơn hàng vào Supabase Database
             const newOrder = {
-                trackingId: trackingId,
-                date: new Date().toLocaleString('vi-VN'),
-                itemsCount: cart.reduce((sum, i) => sum + i.quantity, 0),
+                tracking_id: trackingId,
+                username: currentUser.username,
+                items_count: cart.reduce((sum, i) => sum + i.quantity, 0),
                 total: finalTotal,
                 province: province,
-                method: method,
+                delivery_method: method,
                 status: 'ĐÃ PHÓNG DRONE // TIẾP CẬN TỌA ĐỘ',
-                items: [...cart]
+                items: cart
             };
 
-            const orders = getStoredOrders();
-            orders.unshift(newOrder);
-            saveStoredOrders(orders);
+            if (supabase) {
+                try {
+                    await supabase.from('murthehelp_orders').insert([newOrder]);
+                    await supabase.from('murthehelp_users').update({ balance: currentUser.balance }).eq('username', currentUser.username);
+                } catch (e) {
+                    console.warn("Supabase checkout sync:", e);
+                }
+            }
+
+            // Lưu local backup
+            const localOrders = JSON.parse(localStorage.getItem('murthehelp_local_orders') || '[]');
+            localOrders.unshift(newOrder);
+            localStorage.setItem('murthehelp_local_orders', JSON.stringify(localOrders));
 
             updateHeaderHUD();
             closeCartModal();
 
-            alert(`🎯 ĐẶT HÀNG & ĐIỀU PHỐI THÀNH CÔNG!\n\n` +
+            alert(`🎯 ĐẶT HÀNG & LƯU SUPABASE THÀNH CÔNG!\n\n` +
                   `• Mã Vận Đơn: ${trackingId}\n` +
                   `• Tổng Thanh Toán: ${finalTotal.toLocaleString('vi-VN')} ₫\n` +
                   `• Địa Điểm Nhận: ${province}\n` +
@@ -1909,11 +1991,11 @@
             updateCartCounter();
         }
 
-        // --- 11. LỊCH SỬ ĐƠN HÀNG ---
-        function openOrdersModal() {
+        // --- 12. LỊCH SỬ ĐƠN HÀNG (SUPABASE LIVE) ---
+        async function openOrdersModal() {
             document.getElementById('orders-modal').classList.remove('hidden');
             document.getElementById('orders-modal').classList.add('flex');
-            renderOrdersHistory();
+            await renderOrdersHistory();
         }
 
         function closeOrdersModal() {
@@ -1921,11 +2003,27 @@
             document.getElementById('orders-modal').classList.remove('flex');
         }
 
-        function renderOrdersHistory() {
+        async function renderOrdersHistory() {
             const wrapper = document.getElementById('orders-history-wrapper');
-            wrapper.innerHTML = '';
+            wrapper.innerHTML = '<p class="text-neutral-500 text-center py-4">Đang tải lịch sử từ Supabase Database...</p>';
 
-            const orders = getStoredOrders();
+            let orders = [];
+            if (supabase) {
+                try {
+                    let query = supabase.from('murthehelp_orders').select('*').order('created_at', { ascending: false });
+                    if (!currentUser.is_admin && currentUser.role !== 'GREEN') {
+                        query = query.eq('username', currentUser.username);
+                    }
+                    const { data, error } = await query;
+                    if (data && !error) orders = data;
+                } catch(e) {}
+            }
+
+            if (orders.length === 0) {
+                orders = JSON.parse(localStorage.getItem('murthehelp_local_orders') || '[]');
+            }
+
+            wrapper.innerHTML = '';
             if (orders.length === 0) {
                 wrapper.innerHTML = '<p class="text-neutral-500 text-center py-6">Chưa có đơn hàng tác chiến nào được thực hiện.</p>';
                 return;
@@ -1934,29 +2032,30 @@
             orders.forEach(ord => {
                 const card = document.createElement('div');
                 card.className = "bg-[#07080b] border border-neutral-800 p-4 rounded-2xl space-y-2";
+                const createdDate = ord.created_at ? new Date(ord.created_at).toLocaleString('vi-VN') : new Date().toLocaleString('vi-VN');
                 card.innerHTML = `
                     <div class="flex justify-between items-center border-b border-neutral-800/80 pb-2">
-                        <span class="font-bold text-red-400 font-mono-code">${ord.trackingId}</span>
+                        <span class="font-bold text-red-400 font-mono-code">${ord.tracking_id || ord.trackingId}</span>
                         <span class="text-emerald-400 font-bold text-[10px] bg-emerald-950 border border-emerald-800 px-2 py-0.5 rounded-full">${ord.status}</span>
                     </div>
                     <div class="grid grid-cols-2 gap-2 text-[11px] text-neutral-400">
-                        <div>⏰ Thời gian: <span class="text-neutral-200">${ord.date}</span></div>
-                        <div>📦 Số lượng: <span class="text-neutral-200">${ord.itemsCount} món</span></div>
+                        <div>⏰ Thời gian: <span class="text-neutral-200">${createdDate}</span></div>
+                        <div>📦 Số lượng: <span class="text-neutral-200">${ord.items_count || ord.itemsCount} món</span></div>
                         <div>📍 Điểm nhận: <span class="text-neutral-200">${ord.province}</span></div>
-                        <div>🚀 Phương thức: <span class="text-neutral-200">${ord.method}</span></div>
+                        <div>🚀 Phương thức: <span class="text-neutral-200">${ord.delivery_method || ord.method}</span></div>
                     </div>
                     <div class="flex justify-between items-center border-t border-neutral-800/80 pt-2 text-xs font-bold">
-                        <span class="text-neutral-400">Tổng thanh toán:</span>
-                        <span class="text-emerald-400 font-mono-code text-sm">${ord.total.toLocaleString('vi-VN')} ₫</span>
+                        <span class="text-neutral-400">Người đặt: <b class="text-neutral-200">${ord.username}</b></span>
+                        <span class="text-emerald-400 font-mono-code text-sm">${(ord.total || 0).toLocaleString('vi-VN')} ₫</span>
                     </div>
                 `;
                 wrapper.appendChild(card);
             });
         }
 
-        // --- 12. BẢNG QUẢN TRỊ ADMIN (JEONG JIN-MAN) ---
-        function openAdminModal() {
-            if (!currentUser.isAdmin && currentUser.role !== 'GREEN') {
+        // --- 13. BẢNG QUẢN TRỊ ADMIN (SUPABASE USER MANAGEMENT) ---
+        async function openAdminModal() {
+            if (!currentUser.is_admin && currentUser.role !== 'GREEN') {
                 alert('🔒 Quyền hạn không đủ! Bảng quản trị này chỉ dành cho Admin (CODE GREEN).');
                 return;
             }
@@ -1964,8 +2063,8 @@
             document.getElementById('admin-modal').classList.remove('hidden');
             document.getElementById('admin-modal').classList.add('flex');
             document.getElementById('admin-tier-select').value = currentUser.role;
-            document.getElementById('admin-username-input').value = currentUser.name;
-            renderAdminUsersList();
+            document.getElementById('admin-username-input').value = currentUser.fullname || currentUser.name || currentUser.username;
+            await renderAdminUsersList();
         }
 
         function closeAdminModal() {
@@ -1973,27 +2072,38 @@
             document.getElementById('admin-modal').classList.remove('flex');
         }
 
-        function renderAdminUsersList() {
+        async function renderAdminUsersList() {
             const wrapper = document.getElementById('admin-users-list');
-            wrapper.innerHTML = '';
+            wrapper.innerHTML = '<p class="text-neutral-500 text-center py-2">Đang tải danh sách Supabase...</p>';
 
-            const users = getStoredUsers();
-            Object.keys(users).forEach(uKey => {
-                const u = users[uKey];
+            let users = [];
+            if (supabase) {
+                try {
+                    const { data, error } = await supabase.from('murthehelp_users').select('*').order('created_at', { ascending: false });
+                    if (data && !error) users = data;
+                } catch(e) {}
+            }
+
+            wrapper.innerHTML = '';
+            if (users.length === 0) {
+                users = [currentUser];
+            }
+
+            users.forEach(u => {
                 const row = document.createElement('div');
                 row.className = "flex justify-between items-center border-b border-neutral-800/60 pb-1";
                 row.innerHTML = `
                     <div>
-                        <b class="text-neutral-200">${u.name}</b> <span class="text-neutral-500">(@${uKey})</span>
+                        <b class="text-neutral-200">${u.fullname || u.name}</b> <span class="text-neutral-500">(@${u.username})</span>
                         <span class="text-[9px] px-1.5 py-0.2 rounded ml-1 ${getTierColorBadge(u.role)}">CODE ${u.role}</span>
                     </div>
-                    <span class="text-emerald-400 font-mono-code">${u.balance.toLocaleString('vi-VN')} ₫</span>
+                    <span class="text-emerald-400 font-mono-code">${(u.balance || 0).toLocaleString('vi-VN')} ₫</span>
                 `;
                 wrapper.appendChild(row);
             });
         }
 
-        function depositFunds() {
+        async function depositFunds() {
             const amount = parseInt(document.getElementById('admin-deposit-input').value);
             if (isNaN(amount) || amount <= 0) {
                 alert('Vui lòng nhập số tiền VNĐ hợp lệ!');
@@ -2001,166 +2111,182 @@
             }
 
             currentUser.balance += amount;
-            const users = getStoredUsers();
-            users[currentUserId] = currentUser;
-            saveStoredUsers(users);
+            localStorage.setItem('murthehelp_active_user', JSON.stringify(currentUser));
+
+            if (supabase) {
+                try {
+                    await supabase.from('murthehelp_users').update({ balance: currentUser.balance }).eq('username', currentUser.username);
+                } catch (e) {
+                    console.warn(e);
+                }
+            }
 
             updateHeaderHUD();
             document.getElementById('admin-deposit-input').value = '';
-            renderAdminUsersList();
-            alert(`🪙 Đã nạp thành công +${amount.toLocaleString('vi-VN')} ₫ vào tài khoản!`);
+            await renderAdminUsersList();
+            alert(`🪙 Đã nạp thành công +${amount.toLocaleString('vi-VN')} ₫ vào tài khoản trên Supabase Database!`);
         }
 
-        function saveAdminSettings() {
+        async function saveAdminSettings() {
             currentUser.role = document.getElementById('admin-tier-select').value;
-            currentUser.name = document.getElementById('admin-username-input').value.trim() || 'Jeong Jin-man';
+            currentUser.fullname = document.getElementById('admin-username-input').value.trim() || 'Jeong Jin-man';
             
-            const users = getStoredUsers();
-            users[currentUserId] = currentUser;
-            saveStoredUsers(users);
+            localStorage.setItem('murthehelp_active_user', JSON.stringify(currentUser));
+
+            if (supabase) {
+                try {
+                    await supabase.from('murthehelp_users').update({ 
+                        role: currentUser.role, 
+                        fullname: currentUser.fullname 
+                    }).eq('username', currentUser.username);
+                } catch (e) {
+                    console.warn(e);
+                }
+            }
 
             updateHeaderHUD();
             renderProducts();
             closeAdminModal();
-            alert(`⚙️ Đã lưu thiết lập: Tài khoản [${currentUser.name}] — Quyền [CODE ${currentUser.role}]`);
+            alert(`⚙️ Đã lưu và đồng bộ lên Supabase Database: Tài khoản [${currentUser.fullname}] — Quyền [CODE ${currentUser.role}]`);
         }
 
         function updateHeaderHUD() {
-            document.getElementById('current-user-name').innerText = currentUser.name;
-            document.getElementById('user-balance-display').innerText = currentUser.balance.toLocaleString('vi-VN');
+            document.getElementById('current-user-name').innerText = currentUser.fullname || currentUser.username;
+            document.getElementById('user-balance-display').innerText = (currentUser.balance || 0).toLocaleString('vi-VN');
             document.getElementById('user-tier-badge').innerText = `CODE ${currentUser.role}`;
 
-            // Ẩn nút Admin nếu không phải admin
             const btnAdmin = document.getElementById('btn-admin-panel');
-            if (currentUser.isAdmin || currentUser.role === 'GREEN') {
+            if (currentUser.is_admin || currentUser.role === 'GREEN') {
                 btnAdmin.classList.remove('hidden');
             } else {
                 btnAdmin.classList.add('hidden');
             }
         }
 
-        // --- 13. THREE.JS 3D WEBGL SHADER CANVAS (BLUEYARD AESTHETIC) ---
+        // --- 14. THREE.JS 3D WEBGL SHADER CANVAS ---
         let scene, camera, renderer, sphereMesh, uniforms;
         let targetColorA = new THREE.Color(0xb3001e);
         let targetColorB = new THREE.Color(0xd4af37);
         let isWebGLInit = false;
 
         function initThreeWebGL() {
-            if (isWebGLInit) return;
-            const canvas = document.getElementById('webgl-canvas');
-            if (!canvas) return;
+            if (typeof THREE === 'undefined' || isWebGLInit) return;
+            try {
+                const canvas = document.getElementById('webgl-canvas');
+                if (!canvas) return;
 
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camera.position.z = 4.5;
+                scene = new THREE.Scene();
+                camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+                camera.position.z = 4.5;
 
-            renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-            // Simplex Noise Vertex Displacement Shader
-            const vertexShader = `
-                uniform float uTime;
-                varying vec3 vNormal;
-                varying vec3 vPosition;
+                const vertexShader = `
+                    uniform float uTime;
+                    varying vec3 vNormal;
+                    varying vec3 vPosition;
 
-                // Simplex noise function
-                vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
-                vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
-                vec4 permute(vec4 x) { return mod289(((x*34.0)+1.0)*x); }
-                vec4 taylorInvSqrt(vec4 r) { return 1.79284291400159 - 0.85373472095314 * r; }
-                float snoise(vec3 v) {
-                    const vec2 C = vec2(1.0/6.0, 1.0/3.0);
-                    const vec4 D = vec4(0.0, 0.5, 1.0, 2.0);
-                    vec3 i  = floor(v + dot(v, C.yyy));
-                    vec3 x0 = v - i + dot(i, C.xxx);
-                    vec3 g = step(x0.yzx, x0.xyz);
-                    vec3 l = 1.0 - g;
-                    vec3 i1 = min(g.xyz, l.zxy);
-                    vec3 i2 = max(g.xyz, l.zxy);
-                    vec3 x1 = x0 - i1 + C.xxx;
-                    vec3 x2 = x0 - i2 + C.yyy;
-                    vec3 x3 = x0 - D.yyy;
-                    i = mod289(i);
-                    vec4 p = permute(permute(permute(
-                                i.z + vec4(0.0, i1.z, i2.z, 1.0))
-                            + i.y + vec4(0.0, i1.y, i2.y, 1.0))
-                            + i.x + vec4(0.0, i1.x, i2.x, 1.0));
-                    float n_ = 0.142857142857;
-                    vec3 ns = n_ * D.wyz - D.xzx;
-                    vec4 j = p - 49.0 * floor(p * ns.z * ns.z);
-                    vec4 x_ = floor(j * ns.z);
-                    vec4 y_ = floor(j - 7.0 * x_);
-                    vec4 x = x_ *ns.x + ns.yyyy;
-                    vec4 y = y_ *ns.x + ns.yyyy;
-                    vec4 h = 1.0 - abs(x) - abs(y);
-                    vec4 b0 = vec4(x.xy, y.xy);
-                    vec4 b1 = vec4(x.zw, y.zw);
-                    vec4 s0 = floor(b0)*2.0 + 1.0;
-                    vec4 s1 = floor(b1)*2.0 + 1.0;
-                    vec4 sh = -step(h, vec4(0.0));
-                    vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy;
-                    vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww;
-                    vec3 p0 = vec3(a0.xy, h.x);
-                    vec3 p1 = vec3(a0.zw, h.y);
-                    vec3 p2 = vec3(a1.xy, h.z);
-                    vec3 p3 = vec3(a1.zw, h.w);
-                    vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));
-                    p0 *= norm.x; p1 *= norm.y; p2 *= norm.z; p3 *= norm.w;
-                    vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);
-                    m = m * m;
-                    return 42.0 * dot(m*m, vec4(dot(p0,x0), dot(p1,x1), dot(p2,x2), dot(p3,x3)));
-                }
+                    vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+                    vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+                    vec4 permute(vec4 x) { return mod289(((x*34.0)+1.0)*x); }
+                    vec4 taylorInvSqrt(vec4 r) { return 1.79284291400159 - 0.85373472095314 * r; }
+                    float snoise(vec3 v) {
+                        const vec2 C = vec2(1.0/6.0, 1.0/3.0);
+                        const vec4 D = vec4(0.0, 0.5, 1.0, 2.0);
+                        vec3 i  = floor(v + dot(v, C.yyy));
+                        vec3 x0 = v - i + dot(i, C.xxx);
+                        vec3 g = step(x0.yzx, x0.xyz);
+                        vec3 l = 1.0 - g;
+                        vec3 i1 = min(g.xyz, l.zxy);
+                        vec3 i2 = max(g.xyz, l.zxy);
+                        vec3 x1 = x0 - i1 + C.xxx;
+                        vec3 x2 = x0 - i2 + C.yyy;
+                        vec3 x3 = x0 - D.yyy;
+                        i = mod289(i);
+                        vec4 p = permute(permute(permute(
+                                    i.z + vec4(0.0, i1.z, i2.z, 1.0))
+                                + i.y + vec4(0.0, i1.y, i2.y, 1.0))
+                                + i.x + vec4(0.0, i1.x, i2.x, 1.0));
+                        float n_ = 0.142857142857;
+                        vec3 ns = n_ * D.wyz - D.xzx;
+                        vec4 j = p - 49.0 * floor(p * ns.z * ns.z);
+                        vec4 x_ = floor(j * ns.z);
+                        vec4 y_ = floor(j - 7.0 * x_);
+                        vec4 x = x_ *ns.x + ns.yyyy;
+                        vec4 y = y_ *ns.x + ns.yyyy;
+                        vec4 h = 1.0 - abs(x) - abs(y);
+                        vec4 b0 = vec4(x.xy, y.xy);
+                        vec4 b1 = vec4(x.zw, y.zw);
+                        vec4 s0 = floor(b0)*2.0 + 1.0;
+                        vec4 s1 = floor(b1)*2.0 + 1.0;
+                        vec4 sh = -step(h, vec4(0.0));
+                        vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy;
+                        vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww;
+                        vec3 p0 = vec3(a0.xy, h.x);
+                        vec3 p1 = vec3(a0.zw, h.y);
+                        vec3 p2 = vec3(a1.xy, h.z);
+                        vec3 p3 = vec3(a1.zw, h.w);
+                        vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));
+                        p0 *= norm.x; p1 *= norm.y; p2 *= norm.z; p3 *= norm.w;
+                        vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);
+                        m = m * m;
+                        return 42.0 * dot(m*m, vec4(dot(p0,x0), dot(p1,x1), dot(p2,x2), dot(p3,x3)));
+                    }
 
-                void main() {
-                    vNormal = normal;
-                    vPosition = position;
-                    float noise = snoise(position * 1.5 + vec3(uTime * 0.25));
-                    vec3 newPosition = position + normal * (noise * 0.35);
-                    gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
-                }
-            `;
+                    void main() {
+                        vNormal = normal;
+                        vPosition = position;
+                        float noise = snoise(position * 1.5 + vec3(uTime * 0.25));
+                        vec3 newPosition = position + normal * (noise * 0.35);
+                        gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
+                    }
+                `;
 
-            const fragmentShader = `
-                uniform vec3 uColorA;
-                uniform vec3 uColorB;
-                uniform float uTime;
-                varying vec3 vNormal;
-                varying vec3 vPosition;
+                const fragmentShader = `
+                    uniform vec3 uColorA;
+                    uniform vec3 uColorB;
+                    uniform float uTime;
+                    varying vec3 vNormal;
+                    varying vec3 vPosition;
 
-                void main() {
-                    vec3 viewDirection = normalize(cameraPosition - vPosition);
-                    float fresnel = 1.0 - dot(viewDirection, vNormal);
-                    fresnel = pow(fresnel, 2.5);
+                    void main() {
+                        vec3 viewDirection = normalize(cameraPosition - vPosition);
+                        float fresnel = 1.0 - dot(viewDirection, vNormal);
+                        fresnel = pow(fresnel, 2.5);
 
-                    vec3 color = mix(uColorA, uColorB, fresnel);
-                    gl_FragColor = vec4(color, 0.75);
-                }
-            `;
+                        vec3 color = mix(uColorA, uColorB, fresnel);
+                        gl_FragColor = vec4(color, 0.75);
+                    }
+                `;
 
-            uniforms = {
-                uTime: { value: 0.0 },
-                uColorA: { value: new THREE.Color(0xb3001e) },
-                uColorB: { value: new THREE.Color(0xd4af37) }
-            };
+                uniforms = {
+                    uTime: { value: 0.0 },
+                    uColorA: { value: new THREE.Color(0xb3001e) },
+                    uColorB: { value: new THREE.Color(0xd4af37) }
+                };
 
-            const geometry = new THREE.IcosahedronGeometry(1.4, 32);
-            const material = new THREE.ShaderMaterial({
-                vertexShader: vertexShader,
-                fragmentShader: fragmentShader,
-                uniforms: uniforms,
-                transparent: true,
-                wireframe: true
-            });
+                const geometry = new THREE.IcosahedronGeometry(1.4, 32);
+                const material = new THREE.ShaderMaterial({
+                    vertexShader: vertexShader,
+                    fragmentShader: fragmentShader,
+                    uniforms: uniforms,
+                    transparent: true,
+                    wireframe: true
+                });
 
-            sphereMesh = new THREE.Mesh(geometry, material);
-            scene.add(sphereMesh);
+                sphereMesh = new THREE.Mesh(geometry, material);
+                scene.add(sphereMesh);
 
-            window.addEventListener('resize', onWindowResize);
-            document.addEventListener('mousemove', onMouseMove);
+                window.addEventListener('resize', onWindowResize);
+                document.addEventListener('mousemove', onMouseMove);
 
-            isWebGLInit = true;
-            animateWebGL();
+                isWebGLInit = true;
+                animateWebGL();
+            } catch(e) {
+                console.warn('WebGL init bypassed:', e);
+            }
         }
 
         let mouseX = 0, mouseY = 0;
@@ -2210,7 +2336,7 @@
             renderer.render(scene, camera);
         }
 
-        // --- 14. KHỞI TẠO HỆ THỐNG BAN ĐẦU ---
+        // --- 15. KHỞI TẠO HỆ THỐNG BAN ĐẦU ---
         initCurrentUser();
         filterDisguiseCategory('all');
     </script>
