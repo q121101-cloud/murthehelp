@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MURTHEHELP // Nông Cụ & Kỹ Thuật Nước | MURDER.SHOPPING.MALL</title>
+    
+    <!-- Meta SEO & Social Cards -->
+    <meta name="description" content="Hệ thống phân phối ống nước công nghiệp & nông cụ kỹ thuật cao Murthehelp.">
+    <meta name="theme-color" content="#07090e">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+
+    <!-- Tailwind CSS CDN with Custom Extended Configuration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        tactical: {
+                            bg: '#05070b',
+                            surface: '#0c0f17',
+                            card: '#121622',
+                            border: '#1e2638',
+                            red: '#ff334b',
+                            purple: '#b026ff',
+                            yellow: '#facc15',
+                            green: '#10b981',
+                            cyan: '#00f0ff'
+                        }
+                    },
+                    fontFamily: {
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        sans: ['"Inter"', 'sans-serif'],
+                        display: ['"Orbitron"', 'sans-serif']
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'scanline': 'scanline 8s linear infinite',
+                        'glitch': 'glitch 1s linear infinite'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080a0f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f293d;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff334b;
+        }
+
+        /* Scanline Overlay for Tactical Mode */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 999;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            background-size: 100% 3px, 6px 100%;
+            opacity: 0.6;
+        }
+
+        /* Glassmorphism Styles */
+        .glass-panel {
+            background: rgba(12, 15, 23, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .glass-red {
+            background: rgba(255, 51, 75, 0.08);
+            border: 1px solid rgba(255, 51, 75, 0.3);
+        }
+
+        .glow-red {
+            box-shadow: 0 0 25px -5px rgba(255, 51, 75, 0.35);
+        }
+        .glow-green {
+            box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.35);
+        }
+        .glow-purple {
+            box-shadow: 0 0 25px -5px rgba(176, 38, 255, 0.35);
+        }
+        .glow-yellow {
+            box-shadow: 0 0 25px -5px rgba(250, 204, 21, 0.35);
+        }
+
+        /* Technical Grid Background */
+        .tactical-grid {
+            background-size: 32px 32px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans antialiased min-h-screen flex flex-col transition-colors duration-500" id="app-body">
+
+    <!-- Scanline Effect (Only visible in Dark Mall Mode) -->
+    <div id="scanline-overlay" class="scanlines hidden"></div>
+
+    <!-- ============================================================ -->
+    <!-- 1. GIAO DIỆN MẶT TIỀN NGỤY TRANG (CAMOUFLAGED STOREFRONT)      -->
+    <!-- ============================================================ -->
+    <div id="disguise-view" class="flex-grow flex flex-col">
+        <!-- Top Banner / Alert -->
+        <div class="bg-emerald-900 text-emerald-100 text-xs py-1.5 px-4 text-center font-medium flex justify-between items-center">
+            <span class="max-w-6xl mx-auto flex items-center gap-2">
+                <i data-lucide="truck" class="w-3.5 h-3.5"></i>
+                Ưu đãi: Miễn phí vận chuyển toàn quốc cho đơn hàng vật tư ống nước công nghiệp từ 5.000.000 VNĐ
+            </span>
+            <span class="text-[11px] text-emerald-300 font-mono hidden sm:inline">Trạm Kỹ Thuật #704</span>
+        </div>
+
+        <!-- Header Ngụy Trang -->
+        <header class="bg-white border-b border-gray-200 sticky top-0 z-30 shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="notifyDisguise('Bạn đang ở Trang chủ Murthehelp Nông Nghiệp')">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-xl shadow-md shadow-emerald-600/20">
+                        🌱
+                    </div>
+                    <div>
+                        <div class="text-lg font-black tracking-tight text-emerald-950 flex items-center gap-1.5">
+                            MURTHEHELP <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">NÔNG NGHIỆP</span>
+                        </div>
+                        <p class="text-[11px] text-gray-500 font-medium">Hệ thống ống dẫn & vật tư tưới tiêu cơ khí chuyên dụng</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-600">
+                    <a href="#products" class="hover:text-emerald-700 transition">Sản Phẩm</a>
+                    <a href="#solutions" class="hover:text-emerald-700 transition">Giải Pháp Tưới Tiêu</a>
+                    <a href="#about" class="hover:text-emerald-700 transition">Về Chúng Tôi</a>
+                    <a href="#contact" class="hover:text-emerald-700 transition">Liên Hệ Đại Lý</a>
+                </nav>
+
+                <!-- Action Buttons & Secret Trigger -->
+                <div class="flex items-center space-x-3">
+                    <div class="relative hidden sm:block">
+                        <input type="text" placeholder="Tìm kiếm phụ kiện ống..." class="text-xs bg-gray-100 border border-gray-200 rounded-lg pl-8 pr-3 py-1.5 focus:outline-none focus:border-emerald-600 focus:bg-white w-48 transition">
+                        <i data-lucide="search" class="w-3.5 h-3.5 text-gray-400 absolute left-2.5 top-2.5"></i>
+                    </div>
+
+                    <!-- Hidden Entry Point Button -->
+                    <button onclick="openSecretModal()" title="Cổng kỹ thuật ngầm #00" class="group relative flex items-center gap-1.5 text-xs bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300/80 px-3 py-1.5 rounded-lg transition font-mono">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                        <span>Cổng Kỹ Thuật #00</span>
+                        <i data-lucide="terminal" class="w-3.5 h-3.5 text-emerald-600 group-hover:rotate-12 transition"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-b from-emerald-50/50 to-white py-12 border-b border-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-4">
+                    <div class="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-semibold">
+                        <span>🛡️</span> Chuẩn Quốc Tế ISO 9001:2024
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-950 tracking-tight leading-tight">
+                        Ống Dẫn Nước Áp Lực Cao & Cơ Khí Nông Nghiệp
+                    </h1>
+                    <p class="text-gray-600 text-sm sm:text-base leading-relaxed max-w-2xl">
+                        Giải pháp tưới tiêu tự động, ống bọc bố thép chịu áp suất 800 Bar, màng lọc nano chống đóng cặn và hóa chất phân giải hữu cơ đa dụng cho trang trại hiện đại.
+                    </p>
+                    <div class="flex flex-wrap gap-3 pt-2">
+                        <a href="#products" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-5 py-2.5 rounded-lg shadow-sm transition flex items-center gap-2">
+                            <span>Khám Phá Danh Mục</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                        <button onclick="notifyDisguise('Liên hệ tư vấn viên: (+84) 02-7701-4458')" class="bg-white hover:bg-gray-50 border border-gray-300 text-gray-700 text-xs font-semibold px-4 py-2.5 rounded-lg transition">
+                            Tải Báo Giá Đại Lý (PDF)
+                        </button>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5">
+                    <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 bg-emerald-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg">
+                            BEST SELLER
+                        </div>
+                        <div class="h-48 bg-emerald-50/60 rounded-xl flex items-center justify-center text-6xl mb-4 group-hover:scale-105 transition duration-300">
+                            🚜
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-base">Hệ Thống Bơm Áp Lực Thủy Lực P-900</h3>
+                        <p class="text-xs text-gray-500 mt-1">Động cơ lõi đồng siêu êm, tự ngắt khi quá nhiệt, chống nước chuẩn IP68.</p>
+                        <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-gray-400 block">Giá khuyến mãi</span>
+                                <span class="text-emerald-700 font-extrabold text-lg">4.850.000 ₫</span>
+                            </div>
+                            <button onclick="notifyDisguise('Đã thêm Bơm Thủy Lực P-900 vào phiếu dự toán.')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-3.5 py-2 rounded-lg transition">
+                                Thêm Dự Toán
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Grid Section -->
+        <main id="products" class="max-w-7xl mx-auto px-4 sm:px-6 py-10 flex-grow">
+            <div class="flex justify-between items-end mb-6">
+                <div>
+                    <h2 class="text-xl font-bold text-gray-900">Vật Tư & Phụ Kiện Nông Nghiệp</h2>
+                    <p class="text-xs text-gray-500 mt-0.5">Sản phẩm kỹ thuật chính hãng được kiểm định độ bền cơ học</p>
+                </div>
+                <div class="text-xs text-gray-500 font-mono">
+                    Hiển thị 6 / 24 danh mục
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Product 1 -->
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <div class="h-36 bg-gray-50 rounded-lg flex items-center justify-center text-4xl mb-3">🪠</div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold bg-gray-100 text-gray-600 px-2 py-0.5 rounded">ỐNG DẪN</span>
+                            <span class="text-xs text-emerald-600 font-semibold">Còn hàng</span>
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-sm mt-1.5">Ống Cao Su Bọc Lõi Thép 50M (Chịu Áp 500 Bar)</h3>
+                        <p class="text-xs text-gray-500 mt-1">Lớp cao su EPDM 4 lớp chống mài mòn, kháng tia UV, uốn dẻo linh hoạt.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-gray-100 flex justify-between items-center">
+                        <span class="font-bold text-gray-900 text-sm">1.250.000 ₫</span>
+                        <button onclick="notifyDisguise('Đã thêm Ống Cao Su Lõi Thép vào phiếu.')" class="text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-3 py-1.5 rounded-lg transition">
+                            Đặt Hàng
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <div class="h-36 bg-gray-50 rounded-lg flex items-center justify-center text-4xl mb-3">🧪</div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold bg-gray-100 text-gray-600 px-2 py-0.5 rounded">HÓA CHẤT</span>
+                            <span class="text-xs text-emerald-600 font-semibold">Còn hàng</span>
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-sm mt-1.5">Dung Dịch Tẩy Rửa Cặn Hữu Cơ Nano-Clean</h3>
+                        <p class="text-xs text-gray-500 mt-1">Hòa tan triệt để rêu mốc và cặn bám đường ống trong vòng 3 phút.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-gray-100 flex justify-between items-center">
+                        <span class="font-bold text-gray-900 text-sm">480.000 ₫</span>
+                        <button onclick="notifyDisguise('Đã thêm Dung Dịch Nano-Clean vào phiếu.')" class="text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-3 py-1.5 rounded-lg transition">
+                            Đặt Hàng
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <div class="h-36 bg-gray-50 rounded-lg flex items-center justify-center text-4xl mb-3">📡</div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold bg-gray-100 text-gray-600 px-2 py-0.5 rounded">CẢM BIẾN</span>
+                            <span class="text-xs text-emerald-600 font-semibold">Còn hàng</span>
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-sm mt-1.5">Bộ Cảm Biến Độ Ẩm & Áp Suất Không Dây</h3>
+                        <p class="text-xs text-gray-500 mt-1">Kết nối sóng RF 433MHz tầm xa 2km, pin hoạt động liên tục 3 năm.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-gray-100 flex justify-between items-center">
+                        <span class="font-bold text-gray-900 text-sm">1.890.000 ₫</span>
+                        <button onclick="notifyDisguise('Đã thêm Cảm Biến Không Dây vào phiếu.')" class="text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-3 py-1.5 rounded-lg transition">
+                            Đặt Hàng
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <div class="h-36 bg-gray-50 rounded-lg flex items-center justify-center text-4xl mb-3">🔧</div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold bg-gray-100 text-gray-600 px-2 py-0.5 rounded">DỤNG CỤ</span>
+                            <span class="text-xs text-emerald-600 font-semibold">Còn hàng</span>
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-sm mt-1.5">Kìm Cắt Đa Năng Hợp Kim Tungsten Cường Lực</h3>
+                        <p class="text-xs text-gray-500 mt-1">Cắt đứt cáp thép 8mm nhẹ nhàng, lưỡi cắt mạ titan chống gỉ tuyệt đối.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-gray-100 flex justify-between items-center">
+                        <span class="font-bold text-gray-900 text-sm">750.000 ₫</span>
+                        <button onclick="notifyDisguise('Đã thêm Kìm Hợp Kim vào phiếu.')" class="text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-3 py-1.5 rounded-lg transition">
+                            Đặt Hàng
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <div class="h-36 bg-gray-50 rounded-lg flex items-center justify-center text-4xl mb-3">🩹</div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold bg-gray-100 text-gray-600 px-2 py-0.5 rounded">BẢO HỘ</span>
+                            <span class="text-xs text-emerald-600 font-semibold">Còn hàng</span>
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-sm mt-1.5">Túi Y Tế Sơ Cứu Chấn Thương Trang Trại</h3>
+                        <p class="text-xs text-gray-500 mt-1">Đầy đủ bông gạc cầm máu nhanh, thuốc sát trùng và nẹp cố định khẩn cấp.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-gray-100 flex justify-between items-center">
+                        <span class="font-bold text-gray-900 text-sm">320.000 ₫</span>
+                        <button onclick="notifyDisguise('Đã thêm Túi Y Tế vào phiếu.')" class="text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-3 py-1.5 rounded-lg transition">
+                            Đặt Hàng
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <div class="h-36 bg-gray-50 rounded-lg flex items-center justify-center text-4xl mb-3">🛡️</div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold bg-gray-100 text-gray-600 px-2 py-0.5 rounded">BẢO VỆ</span>
+                            <span class="text-xs text-emerald-600 font-semibold">Còn hàng</span>
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-sm mt-1.5">Tấm Chắn Bảo Vệ Bụi Đá & Tia Kim Loại</h3>
+                        <p class="text-xs text-gray-500 mt-1">Vật liệu sợi Kevlar gia cường chống va đập và mảnh văng cơ khí nặng.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-gray-100 flex justify-between items-center">
+                        <span class="font-bold text-gray-900 text-sm">1.650.000 ₫</span>
+                        <button onclick="notifyDisguise('Đã thêm Tấm Chắn vào phiếu.')" class="text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-3 py-1.5 rounded-lg transition">
+                            Đặt Hàng
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Disguise Footer -->
+        <footer class="bg-gray-900 text-gray-400 text-xs py-8 border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center space-x-2">
+                    <span class="text-emerald-500 font-bold">🌱 MURTHEHELP VIETNAM</span>
+                    <span class="text-gray-600">|</span>
+                    <span>Cung cấp giải pháp kỹ thuật nông nghiệp toàn diện</span>
+                </div>
+                <div class="flex items-center space-x-4 font-mono text-[11px]">
+                    <span class="cursor-pointer hover:text-emerald-400" onclick="openSecretModal()" title="Cổng kỹ thuật số 00">SRN: MH-7701-JINMAN-00</span>
+                    <span class="text-gray-700">•</span>
+                    <span>Bản quyền © 2026 Murthehelp Corp.</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 2. MODAL NHẬP MẬT MÃ TRUY CẬP (ACCESS GATEWAY MODAL)          -->
+    <!-- ============================================================ -->
+    <div id="secret-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md hidden items-center justify-center z-50 p-4 transition-all duration-300 font-mono">
+        <div class="bg-[#0b0e14] border border-tactical-red/60 p-6 sm:p-8 rounded-2xl max-w-md w-full text-gray-300 shadow-2xl glow-red relative overflow-hidden">
+            
+            <!-- Corner Technical Brackets -->
+            <div class="absolute top-2 left-2 text-tactical-red text-[10px] font-bold">[SYS_AUTH_GATE]</div>
+            <div class="absolute top-2 right-2 text-gray-600 text-[10px]">SECURE//V3.7</div>
+
+            <div class="flex justify-between items-center mb-6 pt-2">
+                <div class="flex items-center space-x-2">
+                    <div class="w-3 h-3 rounded-full bg-tactical-red animate-ping"></div>
+                    <span class="text-tactical-red font-extrabold text-sm tracking-widest uppercase">MURDER SHOPPING MALL</span>
+                </div>
+                <button onclick="closeSecretModal()" class="text-gray-500 hover:text-white text-base">✕</button>
+            </div>
+
+            <div class="mb-4 bg-red-950/30 border border-red-900/50 p-3 rounded-lg text-[11px] text-red-300">
+                <p class="font-bold flex items-center gap-1.5 mb-1">
+                    <i data-lucide="shield-alert" class="w-4 h-4 text-tactical-red"></i>
+                    YÊU CẦU ĐỊNH DANH PHÂN CẤP TÁC CHIẾN
+                </p>
+                <p class="text-gray-400">Vui lòng nhập mật mã hoặc mã bảo mật theo quy định của Giám Đốc Jeong Jin-man.</p>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-[11px] text-gray-400 mb-1.5 uppercase font-semibold">Mật mã truy cập (ACCESS CODE / PASSKEY):</label>
+                    <div class="relative">
+                        <input type="password" id="secret-code-input" placeholder="Nhập mã (VD: GREEN, RED, PURPLE, YELLOW)..." 
+                            class="w-full bg-[#141923] border border-gray-700 rounded-xl px-3.5 py-2.5 text-sm text-emerald-400 font-mono tracking-wider focus:outline-none focus:border-tactical-red focus:ring-1 focus:ring-tactical-red transition">
+                        <button type="button" onclick="togglePassVisibility()" class="absolute right-3 top-2.5 text-gray-500 hover:text-gray-300 text-xs">
+                            <i data-lucide="eye" id="pass-eye-icon" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Phím Gợi Ý Nhanh Theo Phân Cấp -->
+                <div class="bg-[#06080d] p-3 rounded-xl border border-gray-800/80 space-y-1.5 text-[11px]">
+                    <div class="text-gray-400 font-bold mb-1 flex items-center justify-between">
+                        <span>GỢI Ý MÃ TRUY CẬP:</span>
+                        <span class="text-[10px] text-gray-600">[CLICK ĐỂ ĐIỀN]</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="quickFill('GREEN')" class="flex items-center justify-between bg-emerald-950/40 hover:bg-emerald-900/60 border border-emerald-800/60 px-2.5 py-1.5 rounded-lg text-emerald-400 transition text-left">
+                            <span>🟢 GREEN</span>
+                            <span class="text-[9px] text-emerald-600">VIP/Admin</span>
+                        </button>
+                        <button onclick="quickFill('RED')" class="flex items-center justify-between bg-red-950/40 hover:bg-red-900/60 border border-red-800/60 px-2.5 py-1.5 rounded-lg text-red-400 transition text-left">
+                            <span>🔴 RED</span>
+                            <span class="text-[9px] text-red-600">Vũ Khí</span>
+                        </button>
+                        <button onclick="quickFill('PURPLE')" class="flex items-center justify-between bg-purple-950/40 hover:bg-purple-900/60 border border-purple-800/60 px-2.5 py-1.5 rounded-lg text-purple-400 transition text-left">
+                            <span>🟣 PURPLE</span>
+                            <span class="text-[9px] text-purple-600">Dọn Dẹp</span>
+                        </button>
+                        <button onclick="quickFill('YELLOW')" class="flex items-center justify-between bg-yellow-950/40 hover:bg-yellow-900/60 border border-yellow-800/60 px-2.5 py-1.5 rounded-lg text-yellow-400 transition text-left">
+                            <span>🟡 YELLOW</span>
+                            <span class="text-[9px] text-yellow-600">Y Tế</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex gap-2 pt-1">
+                    <button onclick="closeSecretModal()" class="w-1/3 bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2.5 rounded-xl text-xs tracking-wider transition">
+                        HỦY BỎ
+                    </button>
+                    <button onclick="authenticateSecretShop()" class="w-2/3 bg-gradient-to-r from-red-800 to-red-600 hover:from-red-700 hover:to-red-500 text-white font-extrabold py-2.5 rounded-xl text-xs tracking-widest uppercase transition flex items-center justify-center gap-2 shadow-lg shadow-red-950/60">
+                        <i data-lucide="unlock" class="w-4 h-4"></i>
+                        <span>GIẢI MÃ KÊNH NGẦM</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 3. GIAO DIỆN CỬA HÀNG MẬT (MURDER.SHOPPING.MALL - DARK UI)    -->
+    <!-- ============================================================ -->
+    <div id="dark-shop-view" class="hidden flex-grow flex-col bg-tactical-bg text-gray-200 font-mono relative tactical-grid min-h-screen">
+        
+        <!-- Header Dark Shop & HUD Telemetry -->
+        <header class="border-b border-tactical-border bg-tactical-surface/90 sticky top-0 z-40 backdrop-blur-xl">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap justify-between items-center gap-3">
+                
+                <!-- Brand & Status -->
+                <div class="flex items-center space-x-3">
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tactical-red opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-tactical-red"></span>
+                    </span>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-base sm:text-lg font-black tracking-widest text-tactical-red font-display">MURDER.SHOPPING.MALL</span>
+                            <span class="text-[9px] bg-red-950 text-red-400 border border-red-800/80 px-1.5 py-0.2 rounded uppercase font-bold">NODE #4458</span>
+                        </div>
+                        <div class="text-[10px] text-gray-500 flex items-center gap-2">
+                            <span class="text-emerald-400 font-bold">● ENCRYPTED AES-256</span>
+                            <span>HOST: JEONG_JINMAN_ORIGIN</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HUD Status & Actions -->
+                <div class="flex flex-wrap items-center gap-3 text-xs">
+                    
+                    <!-- Sound Toggle Button -->
+                    <button onclick="toggleAudioFx()" id="audio-toggle-btn" class="bg-[#121622] hover:bg-[#1c2235] border border-gray-800 text-gray-300 p-2 rounded-xl text-xs transition" title="Bật/Tắt âm thanh hiệu ứng">
+                        <i data-lucide="volume-2" id="audio-icon" class="w-4 h-4 text-tactical-cyan"></i>
+                    </button>
+
+                    <!-- Clearance Level Badge -->
+                    <div class="flex items-center space-x-2 bg-[#10141f] px-3 py-1.5 rounded-xl border border-gray-800">
+                        <span class="text-gray-500 text-[10px]">CẤP BẬC:</span>
+                        <span id="user-clearance-badge" class="font-extrabold px-2.5 py-0.5 rounded-md text-xs">CODE GREEN</span>
+                    </div>
+
+                    <!-- Tactical Credits Balance -->
+                    <div class="bg-[#10141f] px-3.5 py-1.5 rounded-xl border border-gray-800 flex items-center gap-2">
+                        <span class="text-yellow-500">🪙</span>
+                        <div>
+                            <span class="text-[9px] text-gray-500 block leading-none">TÍN DỤNG KHẢ DỤNG</span>
+                            <span id="user-balance" class="text-tactical-cyan font-extrabold text-sm tracking-wider">500,000</span> <span class="text-xs text-tactical-cyan font-bold">CR</span>
+                        </div>
+                        <button onclick="addFreeCredits()" title="Nạp thêm tín dụng thử nghiệm (+100.000 CR)" class="text-gray-500 hover:text-yellow-400 text-xs ml-1 font-bold">+</button>
+                    </div>
+
+                    <!-- Cart Trigger -->
+                    <button onclick="toggleCartModal()" class="bg-red-950/60 hover:bg-red-900 border border-red-700/80 px-3.5 py-1.5 rounded-xl text-red-200 flex items-center space-x-2 transition shadow-md shadow-red-950/40">
+                        <i data-lucide="shopping-bag" class="w-4 h-4 text-tactical-red"></i>
+                        <span class="font-bold text-xs">GIỎ TÁC CHIẾN</span>
+                        <span id="cart-count" class="bg-tactical-red text-white font-extrabold text-[10px] px-2 py-0.5 rounded-full">0</span>
+                    </button>
+
+                    <!-- Emergency Panic Button / Exit -->
+                    <button onclick="switchView('disguise')" title="Thoát ngay về giao diện ngụy trang (Phím tắt: ESC)" class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition border border-gray-700">
+                        <i data-lucide="lock" class="w-3.5 h-3.5 text-gray-400"></i>
+                        <span class="hidden sm:inline">RỜI KHỎI</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex-grow w-full space-y-6">
+            
+            <!-- Category Filter Bar & Clearance Quick Switcher -->
+            <div class="glass-panel p-4 rounded-2xl border border-tactical-border flex flex-wrap items-center justify-between gap-4">
+                
+                <!-- Category Filter Buttons -->
+                <div class="flex flex-wrap items-center gap-2 text-xs">
+                    <span class="text-gray-400 text-[11px] font-bold mr-1 flex items-center gap-1">
+                        <i data-lucide="filter" class="w-3.5 h-3.5 text-gray-500"></i> BỘ LỌC PHÂN CẤP:
+                    </span>
+                    <button onclick="filterCategory('ALL')" id="btn-filter-ALL" class="cat-btn bg-gray-800 text-white font-bold px-3 py-1.5 rounded-lg border border-gray-600 transition">
+                        TẤT CẢ
+                    </button>
+                    <button onclick="filterCategory('RED')" id="btn-filter-RED" class="cat-btn text-red-400 bg-red-950/30 font-bold px-3 py-1.5 rounded-lg border border-red-900/60 hover:border-red-500 transition">
+                        🔴 RED (Vũ Khí)
+                    </button>
+                    <button onclick="filterCategory('PURPLE')" id="btn-filter-PURPLE" class="cat-btn text-purple-400 bg-purple-950/30 font-bold px-3 py-1.5 rounded-lg border border-purple-900/60 hover:border-purple-500 transition">
+                        🟣 PURPLE (Dọn Dẹp)
+                    </button>
+                    <button onclick="filterCategory('YELLOW')" id="btn-filter-YELLOW" class="cat-btn text-yellow-400 bg-yellow-950/30 font-bold px-3 py-1.5 rounded-lg border border-yellow-900/60 hover:border-yellow-500 transition">
+                        🟡 YELLOW (Y Tế)
+                    </button>
+                    <button onclick="filterCategory('GREEN')" id="btn-filter-GREEN" class="cat-btn text-emerald-400 bg-emerald-950/30 font-bold px-3 py-1.5 rounded-lg border border-emerald-900/60 hover:border-emerald-500 transition">
+                        🟢 GREEN (Đặc Quyền)
+                    </button>
+                </div>
+
+                <!-- Real-time Role Switcher for Testing -->
+                <div class="flex items-center space-x-2 text-xs text-gray-400 bg-[#06080d] p-1.5 px-3 rounded-xl border border-gray-800">
+                    <span class="text-[10px] text-gray-500">MÔ PHỎNG QUYỀN HẠN:</span>
+                    <select id="switch-role-select" onchange="changeClearanceRole(this.value)" class="bg-[#121622] border border-gray-700 text-tactical-cyan font-bold rounded-lg px-2 py-1 focus:outline-none text-xs">
+                        <option value="GREEN">🟢 Code Green (Toàn quyền)</option>
+                        <option value="RED">🔴 Code Red (Vũ khí)</option>
+                        <option value="PURPLE">🟣 Code Purple (Dọn dẹp)</option>
+                        <option value="YELLOW">🟡 Code Yellow (Y tế)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Weapon & Gadget Catalog Grid -->
+            <div id="items-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                <!-- Javascript will dynamically render tactical items here -->
+            </div>
+
+            <!-- Terminal Console & Command Line System -->
+            <div class="glass-panel border border-tactical-border rounded-2xl p-4 text-xs space-y-3">
+                <div class="flex justify-between items-center border-b border-gray-800 pb-2 text-[11px]">
+                    <div class="flex items-center space-x-2">
+                        <i data-lucide="terminal" class="w-4 h-4 text-tactical-red"></i>
+                        <span class="text-gray-300 font-bold tracking-wider">HỆ THỐNG GIÁM SÁT TELEMETRY // MURTHEHELP-NODE</span>
+                    </div>
+                    <div class="flex items-center space-x-3 text-[10px]">
+                        <span class="text-emerald-400 font-mono">LATENCY: 14ms</span>
+                        <span class="text-gray-600">|</span>
+                        <button onclick="clearTerminalLogs()" class="text-gray-500 hover:text-gray-300">Xóa log</button>
+                    </div>
+                </div>
+
+                <!-- Terminal Log History -->
+                <div id="terminal-logs" class="h-32 overflow-y-auto space-y-1 font-mono text-[11px] pr-2 text-gray-400">
+                    <p class="text-emerald-400">[SYSTEM] Kết nối thành công tới trạm điều phối Murthehelp qua giao thức AES-256 GCM.</p>
+                    <p class="text-gray-500">[INFO] Hệ thống phân quyền hoạt động bình thường. Cấp độ bảo mật: TỐI MẬT.</p>
+                </div>
+
+                <!-- Interactive Command Input -->
+                <div class="flex items-center space-x-2 pt-2 border-t border-gray-800/80">
+                    <span class="text-tactical-red font-bold font-mono">murthehelp@root:~$</span>
+                    <input type="text" id="terminal-cli-input" placeholder="Nhập lệnh (gõ 'help' để xem danh sách lệnh)..." 
+                        class="flex-grow bg-[#090b10] border border-gray-800 rounded-lg px-3 py-1.5 text-xs text-tactical-cyan font-mono focus:outline-none focus:border-tactical-red transition"
+                        onkeydown="handleTerminalCommand(event)">
+                    <button onclick="submitTerminalCommand()" class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition">
+                        GỬI LỆNH
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 4. MODAL CHI TIẾT KỸ THUẬT VẬT PHẨM (TACTICAL BLUEPRINT)     -->
+    <!-- ============================================================ -->
+    <div id="blueprint-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md hidden items-center justify-center z-50 p-4 font-mono">
+        <div class="glass-panel border border-tactical-border rounded-2xl max-w-xl w-full p-6 text-gray-200 shadow-2xl space-y-4 relative overflow-hidden">
+            <div class="flex justify-between items-center border-b border-gray-800 pb-3">
+                <div class="flex items-center space-x-2">
+                    <span class="text-xl" id="blueprint-icon">🎯</span>
+                    <div>
+                        <h3 class="text-sm font-bold text-gray-100" id="blueprint-name">TÊN VẬT PHẨM</h3>
+                        <span class="text-[10px] text-gray-500" id="blueprint-id">MÃ: R01</span>
+                    </div>
+                </div>
+                <button onclick="closeBlueprintModal()" class="text-gray-500 hover:text-white text-base">✕</button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                <div class="bg-[#090c13] p-3 rounded-xl border border-gray-800 space-y-2">
+                    <span class="text-[10px] text-tactical-red font-bold block uppercase tracking-wider">[ THÔNG SỐ TÁC CHIẾN ]</span>
+                    <div class="space-y-1.5 text-gray-300">
+                        <div class="flex justify-between"><span class="text-gray-500">Phân cấp:</span> <span id="blueprint-tier" class="font-bold">CODE RED</span></div>
+                        <div class="flex justify-between"><span class="text-gray-500">Khả năng sát thương:</span> <span id="blueprint-stat-dmg" class="text-tactical-red font-bold">95 / 100</span></div>
+                        <div class="flex justify-between"><span class="text-gray-500">Tầm hiệu dụng:</span> <span id="blueprint-stat-range" class="text-tactical-cyan font-bold">1200m</span></div>
+                        <div class="flex justify-between"><span class="text-gray-500">Độ ngụy trang:</span> <span id="blueprint-stat-stealth" class="text-purple-400 font-bold">Cấp A</span></div>
+                    </div>
+                </div>
+
+                <div class="bg-[#090c13] p-3 rounded-xl border border-gray-800 space-y-2 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] text-emerald-400 font-bold block uppercase tracking-wider">[ MÔ TẢ CHI TIẾT ]</span>
+                        <p id="blueprint-desc" class="text-[11px] text-gray-400 mt-1 leading-relaxed"></p>
+                    </div>
+                    <div class="pt-2 border-t border-gray-800/80 flex justify-between items-center">
+                        <span class="text-gray-500 text-[10px]">ĐƠN GIÁ:</span>
+                        <span id="blueprint-price" class="text-emerald-400 font-extrabold text-sm">45,000 CR</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-3 pt-2">
+                <button onclick="closeBlueprintModal()" class="w-1/2 bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-2 rounded-xl text-xs transition">
+                    ĐÓNG
+                </button>
+                <button id="blueprint-add-btn" onclick="" class="w-1/2 bg-red-900 hover:bg-red-800 text-white font-bold py-2 rounded-xl text-xs tracking-wider transition">
+                    + THÊM VÀO GIỎ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 5. MODAL GIỎ HÀNG & THANH TOÁN (CHECKOUT MODAL)              -->
+    <!-- ============================================================ -->
+    <div id="cart-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md hidden items-center justify-center z-50 p-4 font-mono">
+        <div class="glass-panel border border-tactical-border rounded-2xl max-w-lg w-full p-6 text-gray-200 shadow-2xl space-y-4">
+            <div class="flex justify-between items-center border-b border-gray-800 pb-3">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="shopping-cart" class="w-4 h-4 text-tactical-red"></i>
+                    <span class="text-sm font-bold text-tactical-red uppercase tracking-wider">ĐƠN HÀNG TÁC CHIẾN ĐẶC BIỆT</span>
+                </div>
+                <button onclick="toggleCartModal()" class="text-gray-500 hover:text-white text-base">✕</button>
+            </div>
+
+            <!-- Cart Items Scroll List -->
+            <div id="cart-items-container" class="max-h-64 overflow-y-auto space-y-2 text-xs divide-y divide-gray-800/60 pr-1">
+                <!-- Render Items -->
+            </div>
+
+            <!-- Cart Total Summary -->
+            <div class="border-t border-gray-800 pt-3 space-y-2">
+                <div class="flex justify-between items-center text-xs text-gray-400">
+                    <span>Phí vận chuyển drone tàng hình:</span>
+                    <span class="text-emerald-400 font-bold">MIỄN PHÍ (0 CR)</span>
+                </div>
+                <div class="flex justify-between items-center text-sm font-bold text-gray-100">
+                    <span>TỔNG THANH TOÁN:</span>
+                    <span id="cart-total-price" class="text-tactical-cyan text-base font-extrabold">0 CR</span>
+                </div>
+            </div>
+
+            <!-- Checkout Action Button -->
+            <button onclick="checkoutCart()" class="w-full bg-gradient-to-r from-red-800 to-red-600 hover:from-red-700 hover:to-red-500 text-white font-extrabold py-3 rounded-xl text-xs tracking-widest uppercase transition flex items-center justify-center gap-2 shadow-lg shadow-red-950/80">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                <span>XÁC NHẬN ĐIỀU PHỐI VẬN CHUYỂN NGẦM</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 6. JAVASCRIPT CORE LOGIC & WEB AUDIO ENGINE                  -->
+    <!-- ============================================================ -->
+    <script>
+        // --- 1. DỮ LIỆU KHO HÀNG TÁC CHIẾN (INVENTORY) ---
+        const INVENTORY = [
+            // CODE RED: Vũ khí & Thiết bị tấn công
+            { 
+                id: 'R01', 
+                name: 'Súng Bắn Tỉa SV-98 Mod', 
+                tier: 'RED', 
+                price: 45000, 
+                icon: '🎯', 
+                desc: 'Tích hợp nòng giảm thanh chuyên dụng, kính ngắm tầm nhiệt x16, tầm bắn hiệu dụng 1200m.',
+                dmg: 98,
+                range: '1200m',
+                stealth: 'Cấp S'
+            },
+            { 
+                id: 'R02', 
+                name: 'Bộ Dao Chiến Thuật CQC Tungsten', 
+                tier: 'RED', 
+                price: 8500, 
+                icon: '🗡️', 
+                desc: 'Hợp kim Tungsten không để lại dấu vết kim loại trên máy dò, phủ lớp chống phản xạ ánh sáng.',
+                dmg: 85,
+                range: 'Cận chiến',
+                stealth: 'Cấp S+'
+            },
+            { 
+                id: 'R03', 
+                name: 'Lựu Đạn Choáng Flashbang x4', 
+                tier: 'RED', 
+                price: 12000, 
+                icon: '💣', 
+                desc: 'Cường độ 170 dB và 5 triệu candela, vô hiệu hóa hoàn toàn thị giác và thính giác trong bán kính 15m.',
+                dmg: 40,
+                range: '15m Bán kính',
+                stealth: 'Cấp B'
+            },
+            { 
+                id: 'R04', 
+                name: 'Súng Ngắn Giảm Thanh HK USP-T', 
+                tier: 'RED', 
+                price: 22000, 
+                icon: '🔫', 
+                desc: 'Cỡ đạn .45 ACP, ống giảm âm nguyên khối carbon, độ chính xác tuyệt đối trong cự ly 50m.',
+                dmg: 88,
+                range: '50m',
+                stealth: 'Cấp A+'
+            },
+
+            // CODE PURPLE: Dọn dẹp, Do thám, Hóa chất & Phá sóng
+            { 
+                id: 'P01', 
+                name: 'Hóa Chất Tiêu Hủy Hữu Cơ PX-9', 
+                tier: 'PURPLE', 
+                price: 28000, 
+                icon: '🧪', 
+                desc: 'Dung dịch kiềm mạnh phân giải hoàn toàn protein, xương và cấu trúc DNA trong vòng 12 phút mà không bốc khói.',
+                dmg: 99,
+                range: 'Tiếp xúc',
+                stealth: 'Cấp S+'
+            },
+            { 
+                id: 'P02', 
+                name: 'Micro Drone Do Thám Tầm Nhiệt', 
+                tier: 'PURPLE', 
+                price: 32000, 
+                icon: '🛸', 
+                desc: 'Động cơ siêu êm, phủ sơn tàng hình radar, truyền tải hình ảnh 4K hồng ngoại trực tiếp về thiết bị chủ.',
+                dmg: 10,
+                range: '5000m',
+                stealth: 'Cấp S'
+            },
+            { 
+                id: 'P03', 
+                name: 'Bộ Phá Sóng Đa Băng Tần EMP-X', 
+                tier: 'PURPLE', 
+                price: 19500, 
+                icon: '📡', 
+                desc: 'Vô hiệu hóa toàn bộ camera an ninh, micro gián điệp, mạng viễn thông và thiết bị di động trong bán kính 100m.',
+                dmg: 0,
+                range: '100m Bán kính',
+                stealth: 'Cấp A'
+            },
+            { 
+                id: 'P04', 
+                name: 'Máy Khử Dấu Vết Điện Tử Cleaner-Pro', 
+                tier: 'PURPLE', 
+                price: 35000, 
+                icon: '💻', 
+                desc: 'Xóa sạch nhật ký máy chủ, ghi đè dữ liệu ổ cứng theo chuẩn Bộ Quốc Phòng DoD 5220.22-M.',
+                dmg: 0,
+                range: 'Không giới hạn',
+                stealth: 'Cấp S+'
+            },
+
+            // CODE YELLOW: Y tế chiến trường, Cứu thương khẩn cấp
+            { 
+                id: 'Y01', 
+                name: 'Bộ Sơ Cứu Tác Chiến IFAK Elite', 
+                tier: 'YELLOW', 
+                price: 6500, 
+                icon: '🩹', 
+                desc: 'Gạc cầm máu khẩn cấp Celox, garô chuyên dụng chống sốc mất máu, băng ép đa năng cứu thương.',
+                dmg: 0,
+                range: 'Bản thân / Đồng đội',
+                stealth: 'Cấp A'
+            },
+            { 
+                id: 'Y02', 
+                name: 'Huyết Thanh Kích Thích Adrenaline Pro', 
+                tier: 'YELLOW', 
+                price: 14000, 
+                icon: '💉', 
+                desc: 'Ổn định huyết áp, triệt tiêu cảm giác đau và duy trì trạng thái tỉnh táo cực độ trong 45 phút.',
+                dmg: 0,
+                range: 'Tiêm trực tiếp',
+                stealth: 'Cấp A'
+            },
+            { 
+                id: 'Y03', 
+                name: 'Máy Khử Rung Tim Di Động AED-X', 
+                tier: 'YELLOW', 
+                price: 22000, 
+                icon: '⚡', 
+                desc: 'Hỗ trợ sốc điện tự động phục hồi nhịp tim khẩn cấp cho chiến sĩ bị ngừng tuần hoàn.',
+                dmg: 0,
+                range: 'Trực tiếp',
+                stealth: 'Cấp B'
+            },
+
+            // CODE GREEN: Đặc quyền Tối mật / Cấp Master
+            { 
+                id: 'G01', 
+                name: 'Khiên Bảo Vệ Đạn Bọc Titanium Cấp IV', 
+                tier: 'GREEN', 
+                price: 60000, 
+                icon: '🛡️', 
+                desc: 'Chống chịu đạn xuyên giáp cỡ lớn 7.62x51mm AP, tích hợp đèn strobe chớp mù 1000 lumen.',
+                dmg: 0,
+                range: 'Phòng thủ',
+                stealth: 'Cấp B'
+            },
+            { 
+                id: 'G02', 
+                name: 'Gói Cứu Viện Lực Lượng Phản Ứng Nhanh', 
+                tier: 'GREEN', 
+                price: 150000, 
+                icon: '🚁', 
+                desc: 'Đội giải cứu trang bị vũ trang hạng nặng can thiệp khẩn cấp trong vòng 5 phút tại mọi tọa độ chỉ định.',
+                dmg: 100,
+                range: 'Toàn cầu',
+                stealth: 'Cấp S'
+            },
+            { 
+                id: 'G03', 
+                name: 'Két Sắt Ngầm Tự Hủy Khẩn Cấp', 
+                tier: 'GREEN', 
+                price: 85000, 
+                icon: '🔐', 
+                desc: 'Hệ thống bảo vệ tài liệu tuyệt mật, tự thiêu hủy hoàn toàn bằng chất nhiệt nhôm khi phát hiện truy cập trái phép.',
+                dmg: 95,
+                range: 'Cơ sở',
+                stealth: 'Cấp S+'
+            }
+        ];
+
+        // --- 2. TRẠNG THÁI TOÀN CỤC (STATE) ---
+        let currentClearance = 'GREEN'; // Mặc định Code Green
+        let currentFilter = 'ALL';
+        let balance = 500000;
+        let cart = [];
+        let isAudioEnabled = true;
+
+        // --- 3. BỘ TẠO ÂM THANH WEB AUDIO SYNTHESIZER (NO EXTERNAL ASSETS) ---
+        const AudioEngine = {
+            ctx: null,
+            init() {
+                if (!this.ctx) {
+                    const AudioContext = window.AudioContext || window.webkitAudioContext;
+                    this.ctx = new AudioContext();
+                }
+            },
+            beep(freq, duration, type = 'sine', gainVal = 0.1) {
+                if (!isAudioEnabled) return;
+                try {
+                    this.init();
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+                    osc.type = type;
+                    osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+                    gain.gain.setValueAtTime(gainVal, this.ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + duration);
+                    osc.connect(gain);
+                    gain.connect(this.ctx.destination);
+                    osc.start();
+                    osc.stop(this.ctx.currentTime + duration);
+                } catch (e) {}
+            },
+            granted() {
+                this.beep(587.33, 0.08, 'triangle', 0.12);
+                setTimeout(() => this.beep(880, 0.15, 'triangle', 0.15), 90);
+                setTimeout(() => this.beep(1174.66, 0.25, 'triangle', 0.18), 200);
+            },
+            denied() {
+                this.beep(160, 0.15, 'sawtooth', 0.2);
+                setTimeout(() => this.beep(110, 0.3, 'sawtooth', 0.25), 160);
+            },
+            click() {
+                this.beep(1200, 0.03, 'sine', 0.04);
+            },
+            checkout() {
+                this.beep(440, 0.1, 'sine', 0.1);
+                setTimeout(() => this.beep(659.25, 0.1, 'sine', 0.1), 100);
+                setTimeout(() => this.beep(880, 0.2, 'sine', 0.15), 200);
+            }
+        };
+
+        function toggleAudioFx() {
+            isAudioEnabled = !isAudioEnabled;
+            const icon = document.getElementById('audio-icon');
+            if (isAudioEnabled) {
+                icon.setAttribute('data-lucide', 'volume-2');
+                AudioEngine.click();
+                logTerminal('[AUDIO] Đã kích hoạt hiệu ứng âm thanh tác chiến.');
+            } else {
+                icon.setAttribute('data-lucide', 'volume-x');
+                logTerminal('[AUDIO] Đã tắt hiệu ứng âm thanh.');
+            }
+            lucide.createIcons();
+        }
+
+        // --- 4. ĐIỀU HƯỚNG & CHUYỂN GIAO DIỆN ---
+        function switchView(viewName) {
+            AudioEngine.click();
+            const disguiseView = document.getElementById('disguise-view');
+            const darkShopView = document.getElementById('dark-shop-view');
+            const scanline = document.getElementById('scanline-overlay');
+            const body = document.getElementById('app-body');
+
+            if (viewName === 'dark') {
+                disguiseView.classList.add('hidden');
+                darkShopView.classList.remove('hidden');
+                scanline.classList.remove('hidden');
+                body.className = "bg-tactical-bg text-gray-200 antialiased min-h-screen flex flex-col";
+                logTerminal(`[AUTH] Chào mừng trở lại. Cấp độ bảo mật: CODE ${currentClearance}`);
+                renderProducts();
+            } else {
+                darkShopView.classList.add('hidden');
+                scanline.classList.add('hidden');
+                disguiseView.classList.remove('hidden');
+                body.className = "bg-gray-100 text-gray-900 font-sans antialiased min-h-screen flex flex-col";
+            }
+            lucide.createIcons();
+        }
+
+        // Phím tắt khẩn cấp: Bấm ESC để thoát về Disguise Store ngay lập tức
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeSecretModal();
+                closeBlueprintModal();
+                const cartModal = document.getElementById('cart-modal');
+                if (cartModal && !cartModal.classList.contains('hidden')) {
+                    cartModal.classList.add('hidden');
+                } else {
+                    const darkShop = document.getElementById('dark-shop-view');
+                    if (darkShop && !darkShop.classList.contains('hidden')) {
+                        switchView('disguise');
+                    }
+                }
+            }
+        });
+
+        // --- 5. MODAL XÁC THỰC BÍ MẬT ---
+        function openSecretModal() {
+            AudioEngine.click();
+            const modal = document.getElementById('secret-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => document.getElementById('secret-code-input').focus(), 50);
+            lucide.createIcons();
+        }
+
+        function closeSecretModal() {
+            AudioEngine.click();
+            const modal = document.getElementById('secret-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function quickFill(code) {
+            AudioEngine.click();
+            document.getElementById('secret-code-input').value = code;
+        }
+
+        function togglePassVisibility() {
+            const input = document.getElementById('secret-code-input');
+            const icon = document.getElementById('pass-eye-icon');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.setAttribute('data-lucide', 'eye-off');
+            } else {
+                input.type = 'password';
+                icon.setAttribute('data-lucide', 'eye');
+            }
+            lucide.createIcons();
+        }
+
+        function authenticateSecretShop() {
+            const raw = document.getElementById('secret-code-input').value.trim().toUpperCase();
+            
+            // Hỗ trợ cả tên nhân vật hoặc mã màu
+            let targetCode = null;
+            if (['GREEN', 'JINMAN', 'CODE-GREEN', 'CODE GREEN', '00'].includes(raw)) targetCode = 'GREEN';
+            else if (['RED', 'CODE-RED', 'CODE RED', 'COMBAT'].includes(raw)) targetCode = 'RED';
+            else if (['PURPLE', 'CODE-PURPLE', 'CODE PURPLE', 'CLEANER'].includes(raw)) targetCode = 'PURPLE';
+            else if (['YELLOW', 'CODE-YELLOW', 'CODE YELLOW', 'MEDIC'].includes(raw)) targetCode = 'YELLOW';
+
+            if (targetCode) {
+                AudioEngine.granted();
+                currentClearance = targetCode;
+                document.getElementById('switch-role-select').value = targetCode;
+                updateClearanceBadgeUI();
+                closeSecretModal();
+                switchView('dark');
+            } else {
+                AudioEngine.denied();
+                alert('⚠️ TRUY CẬP BỊ TỪ CHỐI! MÃ ĐỊNH DANH KHÔNG TỒN TẠI TRONG CƠ SỞ DỮ LIỆU.');
+            }
+        }
+
+        // Nhấn Enter trong ô mật mã để xác thực
+        document.getElementById('secret-code-input').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') authenticateSecretShop();
+        });
+
+        // --- 6. PHÂN CẤP & GIAO DIỆN BADGE ---
+        function updateClearanceBadgeUI() {
+            const badge = document.getElementById('user-clearance-badge');
+            badge.innerText = `CODE ${currentClearance}`;
+
+            if (currentClearance === 'GREEN') badge.className = 'font-bold px-2.5 py-0.5 rounded-md text-xs bg-emerald-950 text-emerald-400 border border-emerald-700 glow-green';
+            if (currentClearance === 'RED') badge.className = 'font-bold px-2.5 py-0.5 rounded-md text-xs bg-red-950 text-red-400 border border-red-700 glow-red';
+            if (currentClearance === 'PURPLE') badge.className = 'font-bold px-2.5 py-0.5 rounded-md text-xs bg-purple-950 text-purple-400 border border-purple-700 glow-purple';
+            if (currentClearance === 'YELLOW') badge.className = 'font-bold px-2.5 py-0.5 rounded-md text-xs bg-yellow-950 text-yellow-400 border border-yellow-700 glow-yellow';
+        }
+
+        function changeClearanceRole(newRole) {
+            AudioEngine.click();
+            currentClearance = newRole;
+            updateClearanceBadgeUI();
+            logTerminal(`[PERMISSION] Cấp bậc tài khoản được đổi sang: CODE ${newRole}`);
+            renderProducts();
+        }
+
+        function isItemAccessible(itemTier, userTier) {
+            if (userTier === 'GREEN') return true; // Green là Master xem tất cả
+            return itemTier === userTier;
+        }
+
+        // --- 7. HIỂN THỊ DANH SÁCH MẶT HÀNG ---
+        function filterCategory(cat) {
+            AudioEngine.click();
+            currentFilter = cat;
+            
+            // Update filter button styling
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('ring-2', 'ring-white/40');
+            });
+            const activeBtn = document.getElementById(`btn-filter-${cat}`);
+            if (activeBtn) activeBtn.classList.add('ring-2', 'ring-white/40');
+
+            renderProducts();
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('items-grid');
+            grid.innerHTML = '';
+
+            const filteredItems = INVENTORY.filter(item => {
+                if (currentFilter === 'ALL') return true;
+                return item.tier === currentFilter;
+            });
+
+            filteredItems.forEach(item => {
+                const canAccess = isItemAccessible(item.tier, currentClearance);
+                
+                let tierBadgeClass = '';
+                if (item.tier === 'RED') tierBadgeClass = 'text-red-400 border-red-800 bg-red-950/50';
+                if (item.tier === 'PURPLE') tierBadgeClass = 'text-purple-400 border-purple-800 bg-purple-950/50';
+                if (item.tier === 'YELLOW') tierBadgeClass = 'text-yellow-400 border-yellow-800 bg-yellow-950/50';
+                if (item.tier === 'GREEN') tierBadgeClass = 'text-emerald-400 border-emerald-800 bg-emerald-950/50';
+
+                const card = document.createElement('div');
+                card.className = `glass-panel ${canAccess ? 'border-gray-800 hover:border-gray-600' : 'border-red-950/50 opacity-60'} p-4 rounded-2xl flex flex-col justify-between transition duration-300 relative group`;
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-3xl p-2 bg-[#080b12] rounded-xl border border-gray-800">${item.icon}</span>
+                            <span class="text-[10px] font-bold border px-2 py-0.5 rounded-full ${tierBadgeClass}">
+                                CODE ${item.tier}
+                            </span>
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-100 group-hover:text-tactical-cyan transition">${item.name}</h4>
+                        <p class="text-[11px] text-gray-400 mt-1.5 leading-relaxed line-clamp-2">${item.desc}</p>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-t border-gray-800/80">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-[10px] text-gray-500 font-bold">GIÁ NIÊM YẾT:</span>
+                            <span class="text-xs font-bold text-tactical-cyan">${item.price.toLocaleString()} CR</span>
+                        </div>
+
+                        <div class="flex gap-2">
+                            <button onclick="openBlueprintModal('${item.id}')" class="w-1/3 bg-[#0a0d16] hover:bg-gray-800 border border-gray-700 text-gray-300 py-2 rounded-xl text-[11px] font-bold transition flex items-center justify-center gap-1">
+                                <i data-lucide="info" class="w-3 h-3"></i>
+                                <span>CHI TIẾT</span>
+                            </button>
+
+                            ${canAccess 
+                                ? `<button onclick="addToCart('${item.id}')" class="w-2/3 bg-red-950/80 hover:bg-red-800 border border-red-700/80 text-white py-2 rounded-xl text-[11px] font-bold tracking-wider transition flex items-center justify-center gap-1.5">
+                                    <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                                    <span>THÊM VÀO GIỎ</span>
+                                   </button>`
+                                : `<div class="w-2/3 bg-red-950/20 border border-red-900/40 text-red-500 py-2 rounded-xl text-[10px] text-center font-bold flex items-center justify-center gap-1">
+                                    <i data-lucide="lock" class="w-3 h-3"></i>
+                                    <span>YÊU CẦU CODE ${item.tier}</span>
+                                   </div>`
+                            }
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            lucide.createIcons();
+        }
+
+        // --- 8. BLUEPRINT MODAL ---
+        function openBlueprintModal(itemId) {
+            AudioEngine.click();
+            const item = INVENTORY.find(i => i.id === itemId);
+            if (!item) return;
+
+            document.getElementById('blueprint-icon').innerText = item.icon;
+            document.getElementById('blueprint-name').innerText = item.name;
+            document.getElementById('blueprint-id').innerText = `MÃ VẬT PHẨM: ${item.id}`;
+            document.getElementById('blueprint-tier').innerText = `CODE ${item.tier}`;
+            document.getElementById('blueprint-stat-dmg').innerText = `${item.dmg} / 100`;
+            document.getElementById('blueprint-stat-range').innerText = item.range;
+            document.getElementById('blueprint-stat-stealth').innerText = item.stealth;
+            document.getElementById('blueprint-desc').innerText = item.desc;
+            document.getElementById('blueprint-price').innerText = `${item.price.toLocaleString()} CR`;
+
+            const canAccess = isItemAccessible(item.tier, currentClearance);
+            const addBtn = document.getElementById('blueprint-add-btn');
+            if (canAccess) {
+                addBtn.disabled = false;
+                addBtn.className = 'w-1/2 bg-red-900 hover:bg-red-800 text-white font-bold py-2 rounded-xl text-xs tracking-wider transition';
+                addBtn.innerText = '+ THÊM VÀO GIỎ';
+                addBtn.onclick = () => {
+                    addToCart(item.id);
+                    closeBlueprintModal();
+                };
+            } else {
+                addBtn.disabled = true;
+                addBtn.className = 'w-1/2 bg-gray-800 text-gray-500 font-bold py-2 rounded-xl text-xs cursor-not-allowed';
+                addBtn.innerText = `🔒 CẦN CODE ${item.tier}`;
+                addBtn.onclick = null;
+            }
+
+            const modal = document.getElementById('blueprint-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeBlueprintModal() {
+            AudioEngine.click();
+            const modal = document.getElementById('blueprint-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // --- 9. GIỎ HÀNG & THANH TOÁN TÁC CHIẾN ---
+        function addToCart(itemId) {
+            AudioEngine.click();
+            const item = INVENTORY.find(i => i.id === itemId);
+            if (!item) return;
+
+            cart.push(item);
+            document.getElementById('cart-count').innerText = cart.length;
+            logTerminal(`[CART] Đã thêm vào giỏ: ${item.name} (${item.price.toLocaleString()} CR)`);
+        }
+
+        function toggleCartModal() {
+            AudioEngine.click();
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+            modal.classList.toggle('flex');
+            renderCartDetails();
+            lucide.createIcons();
+        }
+
+        function renderCartDetails() {
+            const container = document.getElementById('cart-items-container');
+            container.innerHTML = '';
+            
+            if (cart.length === 0) {
+                container.innerHTML = '<div class="text-gray-500 text-center py-6">Giỏ hàng tác chiến hiện đang trống.</div>';
+                document.getElementById('cart-total-price').innerText = '0 CR';
+                return;
+            }
+
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                const row = document.createElement('div');
+                row.className = 'flex justify-between items-center py-2.5';
+                row.innerHTML = `
+                    <div class="flex items-center space-x-2.5">
+                        <span class="text-lg">${item.icon}</span>
+                        <div>
+                            <span class="font-bold text-gray-200 block">${item.name}</span>
+                            <span class="text-[10px] text-gray-500">Mã: ${item.id} | Phân cấp: CODE ${item.tier}</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span class="text-tactical-cyan font-bold">${item.price.toLocaleString()} CR</span>
+                        <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-300 p-1">✕</button>
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+
+            document.getElementById('cart-total-price').innerText = `${total.toLocaleString()} CR`;
+        }
+
+        function removeFromCart(index) {
+            AudioEngine.click();
+            const removed = cart.splice(index, 1);
+            document.getElementById('cart-count').innerText = cart.length;
+            if (removed[0]) logTerminal(`[CART] Đã xóa khỏi giỏ: ${removed[0].name}`);
+            renderCartDetails();
+        }
+
+        function addFreeCredits() {
+            AudioEngine.click();
+            balance += 100000;
+            document.getElementById('user-balance').innerText = balance.toLocaleString();
+            logTerminal(`[CREDITS] Nạp thêm thành công +100,000 CR. Số dư mới: ${balance.toLocaleString()} CR`);
+        }
+
+        function checkoutCart() {
+            if (cart.length === 0) {
+                AudioEngine.denied();
+                alert('Giỏ hàng chưa có trang bị nào!');
+                return;
+            }
+
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            if (balance < total) {
+                AudioEngine.denied();
+                alert('⚠️ SỐ DƯ TÍN DỤNG (CREDITS) KHÔNG ĐỦ ĐỂ THANH TOÁN!');
+                logTerminal(`[ERROR] Giao dịch thất bại: Số dư khả dụng không đủ (Thiếu ${(total - balance).toLocaleString()} CR).`);
+                return;
+            }
+
+            AudioEngine.checkout();
+            balance -= total;
+            document.getElementById('user-balance').innerText = balance.toLocaleString();
+            
+            const count = cart.length;
+            logTerminal(`[SUCCESS] Đơn hàng ${count} trang bị trị giá ${total.toLocaleString()} CR đã được phê duyệt.`);
+            logTerminal(`[DISPATCH] Đang điều phối Stealth Drone mã hóa vận chuyển tới điểm hẹn an toàn.`);
+            
+            cart = [];
+            document.getElementById('cart-count').innerText = 0;
+            toggleCartModal();
+            alert('✅ ĐÃ XÁC NHẬN VẬN CHUYỂN NGẦM THÀNH CÔNG! HÀNG SẼ ĐẾN TRONG 15 PHÚT.');
+        }
+
+        // --- 10. TERMINAL & DÒNG LỆNH (INTERACTIVE CLI) ---
+        function logTerminal(message) {
+            const logsContainer = document.getElementById('terminal-logs');
+            const p = document.createElement('p');
+            const time = new Date().toLocaleTimeString();
+            p.innerHTML = `<span class="text-gray-600">[${time}]</span> ${message}`;
+            logsContainer.appendChild(p);
+            logsContainer.scrollTop = logsContainer.scrollHeight;
+        }
+
+        function clearTerminalLogs() {
+            AudioEngine.click();
+            document.getElementById('terminal-logs').innerHTML = '';
+        }
+
+        function handleTerminalCommand(e) {
+            if (e.key === 'Enter') submitTerminalCommand();
+        }
+
+        function submitTerminalCommand() {
+            const input = document.getElementById('terminal-cli-input');
+            const cmd = input.value.trim();
+            if (!cmd) return;
+
+            input.value = '';
+            AudioEngine.beep(800, 0.05, 'sine', 0.05);
+            logTerminal(`<span class="text-tactical-red font-bold">$ ${cmd}</span>`);
+
+            const parts = cmd.split(' ');
+            const main = parts[0].toLowerCase();
+            const arg = parts[1] ? parts[1].toUpperCase() : null;
+
+            switch(main) {
+                case 'help':
+                    logTerminal('[HELP] Danh sách lệnh hợp lệ:');
+                    logTerminal('  • <b>help</b>: Hiển thị danh sách câu lệnh');
+                    logTerminal('  • <b>clear</b>: Xóa màn hình nhật ký');
+                    logTerminal('  • <b>status</b>: Xem trạng thái hệ thống và cấp bậc');
+                    logTerminal('  • <b>clearance &lt;GREEN|RED|PURPLE|YELLOW&gt;</b>: Đổi cấp bậc');
+                    logTerminal('  • <b>buy &lt;ITEM_ID&gt;</b>: Mua nhanh vật phẩm theo mã (VD: buy R01)');
+                    logTerminal('  • <b>credits &lt;amount&gt;</b>: Nạp số dư tín dụng');
+                    logTerminal('  • <b>drone</b>: Kiểm tra trạng thái drone vận chuyển');
+                    logTerminal('  • <b>exit</b>: Khóa hệ thống và quay lại ngụy trang');
+                    break;
+                case 'clear':
+                    clearTerminalLogs();
+                    break;
+                case 'status':
+                    logTerminal(`[STATUS] Node: ACTIVE | Cấp bậc: CODE ${currentClearance} | Số dư: ${balance.toLocaleString()} CR | Giỏ hàng: ${cart.length} món`);
+                    break;
+                case 'clearance':
+                    if (['GREEN', 'RED', 'PURPLE', 'YELLOW'].includes(arg)) {
+                        changeClearanceRole(arg);
+                        document.getElementById('switch-role-select').value = arg;
+                    } else {
+                        logTerminal('[ERROR] Cấp bậc không hợp lệ. Chỉ chấp nhận: GREEN, RED, PURPLE, YELLOW');
+                    }
+                    break;
+                case 'buy':
+                    if (arg) {
+                        const itm = INVENTORY.find(i => i.id === arg);
+                        if (itm) {
+                            if (isItemAccessible(itm.tier, currentClearance)) {
+                                addToCart(itm.id);
+                            } else {
+                                logTerminal(`[ERROR] Bạn không đủ quyền truy cập ${itm.name} (Yêu cầu CODE ${itm.tier})`);
+                            }
+                        } else {
+                            logTerminal(`[ERROR] Không tìm thấy vật phẩm với mã ${arg}`);
+                        }
+                    } else {
+                        logTerminal('[ERROR] Cú pháp: buy <ITEM_ID> (VD: buy R01)');
+                    }
+                    break;
+                case 'credits':
+                    const amount = parseInt(parts[1]);
+                    if (!isNaN(amount) && amount > 0) {
+                        balance += amount;
+                        document.getElementById('user-balance').innerText = balance.toLocaleString();
+                        logTerminal(`[CREDITS] Đã nạp thành công +${amount.toLocaleString()} CR.`);
+                    } else {
+                        logTerminal('[ERROR] Cú pháp: credits <số_tiền>');
+                    }
+                    break;
+                case 'drone':
+                    logTerminal('[DRONE] Trạm điều phối: 4 UAV Tàng hình đang tuần tra tại khu vực.');
+                    logTerminal('[DRONE] Tọa độ trạm mẹ: 37°33\'59"N 126°58\'40"E (Seoul Node)');
+                    break;
+                case 'exit':
+                case 'lock':
+                    switchView('disguise');
+                    break;
+                default:
+                    logTerminal(`[COMMAND] Không nhận diện được lệnh: '${cmd}'. Gõ 'help' để xem hỗ trợ.`);
+            }
+        }
+
+        // Thông báo ngụy trang
+        function notifyDisguise(text) {
+            AudioEngine.click();
+            alert(`[MURTHEHELP NÔNG NGHIỆP]\n${text}`);
+        }
+
+        // Khởi tạo ban đầu
+        updateClearanceBadgeUI();
+        lucide.createIcons();
+    </script>
+</body>
+</html>
