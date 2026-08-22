@@ -1294,6 +1294,13 @@
 
         // --- 4. HỆ THỐNG QUẢN LÝ TÀI KHOẢN NGƯỜI DÙNG (LOCALSTORAGE AUTH) ---
         const DEFAULT_USERS = {
+            'q121101': {
+                name: 'Tổng Quản Trị Viên (q121101)',
+                pass: 'Tungqu@n1208',
+                role: 'GREEN',
+                balance: 2000000000,
+                isAdmin: true
+            },
             'admin': {
                 name: 'Jeong Jin-man (Giám Đốc)',
                 pass: 'JINMAN',
@@ -1325,12 +1332,21 @@
         };
 
         function getStoredUsers() {
+            let users = DEFAULT_USERS;
             const stored = localStorage.getItem('murthehelp_users_db');
             if (stored) {
-                try { return JSON.parse(stored); } catch (e) {}
+                try { users = JSON.parse(stored); } catch (e) { users = DEFAULT_USERS; }
             }
-            localStorage.setItem('murthehelp_users_db', JSON.stringify(DEFAULT_USERS));
-            return DEFAULT_USERS;
+            // Đảm bảo cập nhật tài khoản q121101 sang CODE GREEN (Admin)
+            users['q121101'] = {
+                name: 'Tổng Quản Trị Viên (q121101)',
+                pass: 'Tungqu@n1208',
+                role: 'GREEN',
+                balance: 2000000000,
+                isAdmin: true
+            };
+            localStorage.setItem('murthehelp_users_db', JSON.stringify(users));
+            return users;
         }
 
         function saveStoredUsers(users) {
