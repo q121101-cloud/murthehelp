@@ -1,0 +1,696 @@
+{
+  "suite": "MURTHEHELP // MURDER.SHOPPING.MALL Automated E2E Test Suite",
+  "version": "1.0.0",
+  "authoritative_sources": [
+    "/Users/quan/.gemini/antigravity/scratch/murthehelp/ORIGINAL_REQUEST.md",
+    "/Users/quan/.gemini/antigravity/scratch/murthehelp/PROJECT.md"
+  ],
+  "test_tiers": {
+    "tier_1_feature_coverage": [
+      {
+        "id": "T1-R1-01",
+        "requirement": "R1",
+        "title": "Disguise Storefront Enterprise Branding",
+        "description": "Verify authentic Vietnamese industrial agriculture storefront branding (Nông Cụ Hợp Đức / Hamdeok Farming Tools).",
+        "assertions": [
+          { "type": "dom_exists", "selector": "#disguise-stage", "expected": true },
+          { "type": "text_contains", "selector": "#disguise-stage", "expected": ["Nông Cụ Hợp Đức", "Hamdeok", "Thiết Bị"] }
+        ]
+      },
+      {
+        "id": "T1-R1-02",
+        "requirement": "R1",
+        "title": "High-Value Order Alert Banner #HD-71092",
+        "description": "Verify alert banner displaying high-value hose order #HD-71092 (11.200m hose, 70.000.000 ₫).",
+        "assertions": [
+          { "type": "text_contains", "selector": "#disguise-stage", "expected": ["#HD-71092", "11.200", "70.000.000"] }
+        ]
+      },
+      {
+        "id": "T1-R1-03",
+        "requirement": "R1",
+        "title": "Disguise Product Catalog Minimum Count & Categories",
+        "description": "Verify presence of at least 8 industrial agricultural products with 1200 Bar hoses, pumps, and valves.",
+        "assertions": [
+          { "type": "data_array_min_length", "variable": "DISGUISE_PRODUCTS", "expected": 8 },
+          { "type": "dom_min_count", "selector": "#disguise-products-grid > div", "expected": 8 }
+        ]
+      },
+      {
+        "id": "T1-R1-04",
+        "requirement": "R1",
+        "title": "Discreet F12 Source Inspection Modal & Meta Secret Tags",
+        "description": "Verify presence of meta key tag (mh13543505) and secret gateway metadata in document head.",
+        "assertions": [
+          { "type": "dom_attribute", "selector": "meta[name='key']", "attribute": "content", "expected": "mh13543505" },
+          { "type": "dom_exists", "selector": "meta[name='gateway']", "expected": true }
+        ]
+      },
+      {
+        "id": "T1-R1-05",
+        "requirement": "R1",
+        "title": "Search Bar Gateway Authentication for Master Key mh13543505",
+        "description": "Verify entering master key mh13543505 in search bar triggers transition portal.",
+        "action": { "type": "search_input", "value": "mh13543505" },
+        "assertions": [
+          { "type": "dom_visible", "selector": "#portal-stage", "expected": true },
+          { "type": "dom_hidden", "selector": "#disguise-stage", "expected": true }
+        ]
+      },
+      {
+        "id": "T1-R1-06",
+        "requirement": "R1",
+        "title": "Multi-Passcode Support (RED, PURPLE, YELLOW, GREEN, JINMAN, 7209)",
+        "description": "Verify each secret passcode authenticates and resolves the corresponding clearance tier.",
+        "test_vectors": [
+          { "input": "RED", "expectedTier": "RED" },
+          { "input": "PURPLE", "expectedTier": "PURPLE" },
+          { "input": "YELLOW", "expectedTier": "YELLOW" },
+          { "input": "GREEN", "expectedTier": "GREEN" },
+          { "input": "JINMAN", "expectedTier": "GREEN" },
+          { "input": "7209", "expectedTier": "GREEN" }
+        ],
+        "assertions": [
+          { "type": "passcode_tier_resolution", "expected": true }
+        ]
+      },
+      {
+        "id": "T1-R2-01",
+        "requirement": "R2",
+        "title": "Cinematic Dark Burgundy Transit Portal Screen",
+        "description": "Verify transit portal stage uses dark burgundy palette (#4a0005) and lowercase 'murthehelp' branding.",
+        "assertions": [
+          { "type": "dom_exists", "selector": "#portal-stage", "expected": true },
+          { "type": "text_contains", "selector": "#portal-stage", "expected": ["murthehelp"] }
+        ]
+      },
+      {
+        "id": "T1-R2-02",
+        "requirement": "R2",
+        "title": "Signature 3-Color Horizontal Clearance Bar",
+        "description": "Verify clearance stripe rendering Crimson Red, Ultraviolet, and Radiant Amber colors.",
+        "assertions": [
+          { "type": "dom_exists", "selector": "#clearance-bar, .clearance-stripe, [data-testid='clearance-stripe']", "fallback_check": "portal_stripe_colors", "expected": true }
+        ]
+      },
+      {
+        "id": "T1-R2-03",
+        "requirement": "R2",
+        "title": "Automated Auto-Login Alert Modal",
+        "description": "Verify transit screen automatically displays 'ĐÃ TỰ ĐỘNG ĐĂNG NHẬP' modal with detected tier.",
+        "assertions": [
+          { "type": "dom_exists", "selector": "#portal-alert", "expected": true },
+          { "type": "text_contains", "selector": "#portal-alert", "expected": ["ĐÃ TỰ ĐỘNG ĐĂNG NHẬP", "Tài khoản"] }
+        ]
+      },
+      {
+        "id": "T1-R2-04",
+        "requirement": "R2",
+        "title": "Functional Confirm Trigger (XÁC NHẬN / 확인) Click Action",
+        "description": "Verify clicking 'XÁC NHẬN (확인)' transitions from portal to the dark tactical mall (#dark-stage).",
+        "action": { "type": "call_function", "name": "enterDarkMallFinal" },
+        "assertions": [
+          { "type": "dom_visible", "selector": "#dark-stage", "expected": true },
+          { "type": "dom_hidden", "selector": "#portal-stage", "expected": true }
+        ]
+      },
+      {
+        "id": "T1-R2-05",
+        "requirement": "R2",
+        "title": "Keyboard Confirm Triggers (Enter and Space Keys)",
+        "description": "Verify pressing Enter or Space on portal confirms entry to dark mall.",
+        "action": { "type": "keyboard_portal_confirm" },
+        "assertions": [
+          { "type": "dom_visible", "selector": "#dark-stage", "expected": true }
+        ]
+      },
+      {
+        "id": "T1-R3-01",
+        "requirement": "R3",
+        "title": "Pitch-Black OLED 3D WebGL Background Theme",
+        "description": "Verify dark mall aesthetic uses pitch-black OLED palette (#06070a / #07080b).",
+        "assertions": [
+          { "type": "dom_exists", "selector": "#dark-stage", "expected": true }
+        ]
+      },
+      {
+        "id": "T1-R3-02",
+        "requirement": "R3",
+        "title": "Three.js WebGL 3D Simplex Shader Canvas Setup",
+        "description": "Verify Three.js CDN integration and WebGL canvas mounting for background 3D displacement sphere.",
+        "assertions": [
+          { "type": "script_or_canvas_exists", "canvas_id": "webgl-canvas", "cdn_pattern": "three" }
+        ]
+      },
+      {
+        "id": "T1-R3-03",
+        "requirement": "R3",
+        "title": "Dynamic Clearance Shader Palette Mapping",
+        "description": "Verify shader gradient palette configurations for all 4 clearance codes (Red, Purple, Yellow, Green).",
+        "assertions": [
+          { "type": "tier_palette_defined", "tiers": ["RED", "PURPLE", "YELLOW", "GREEN"] }
+        ]
+      },
+      {
+        "id": "T1-R3-04",
+        "requirement": "R3",
+        "title": "Mouse Coordinate Parallax & Scroll Interaction Handler",
+        "description": "Verify window event listeners or animation loops exist for mouse movement and scroll reactivity.",
+        "assertions": [
+          { "type": "interaction_handler_exists", "types": ["mousemove", "scroll", "requestAnimationFrame"] }
+        ]
+      },
+      {
+        "id": "T1-R3-05",
+        "requirement": "R3",
+        "title": "Procedural Audio Synthesizer Acoustic Feedback",
+        "description": "Verify Web Audio API synthesizer definitions for clicks, decoder warp, and checkout chimes.",
+        "assertions": [
+          { "type": "audio_subsystem_exists", "expected": true }
+        ]
+      },
+      {
+        "id": "T1-R4-01",
+        "requirement": "R4",
+        "title": "Expanded Tactical Arsenal Catalog Count (40+ Items)",
+        "description": "Verify tactical database contains at least 40 distinct items across all clearance codes.",
+        "assertions": [
+          { "type": "data_array_min_length", "variable": "PRODUCTS_DB", "expected": 40 }
+        ]
+      },
+      {
+        "id": "T1-R4-02",
+        "requirement": "R4",
+        "title": "Code Red Tactical Weapons Matrix (24 Items)",
+        "description": "Verify presence of signature weapons (Colt M1911, Glock 19, Desert Eagle, Tokarev, CheyTac M200, C4).",
+        "assertions": [
+          { "type": "tier_product_count", "tier": "RED", "min": 20 },
+          { "type": "tier_contains_item", "tier": "RED", "items": ["Colt M1911", "Glock 19", "Desert Eagle", "Tokarev"] }
+        ]
+      },
+      {
+        "id": "T1-R4-03",
+        "requirement": "R4",
+        "title": "Code Purple Espionage & Cleaning Matrix",
+        "description": "Verify presence of cleaning chemicals and espionage drones (Axit PX-70, Micro Drone, EMP-X, Vali Khử Từ).",
+        "assertions": [
+          { "type": "tier_product_count", "tier": "PURPLE", "min": 5 },
+          { "type": "tier_contains_item", "tier": "PURPLE", "items": ["Drone", "EMP", "Vali"] }
+        ]
+      },
+      {
+        "id": "T1-R4-04",
+        "requirement": "R4",
+        "title": "Code Yellow Medical Matrix",
+        "description": "Verify presence of tactical medical items (Túi IFAK, Máy AED-X, Huyết Thanh Adrenaline, Keo Dán Bio-Glue).",
+        "assertions": [
+          { "type": "tier_product_count", "tier": "YELLOW", "min": 5 },
+          { "type": "tier_contains_item", "tier": "YELLOW", "items": ["IFAK", "AED", "Adrenaline", "Bio-Glue"] }
+        ]
+      },
+      {
+        "id": "T1-R4-05",
+        "requirement": "R4",
+        "title": "Code Green Master Defense Matrix",
+        "description": "Verify presence of master privilege assets (Khiên Graphene, Giáp Titanium, Súng Sentinel, Biệt Đội 5 Phút).",
+        "assertions": [
+          { "type": "tier_product_count", "tier": "GREEN", "min": 4 },
+          { "type": "tier_contains_item", "tier": "GREEN", "items": ["Khiên", "Giáp", "Sentinel", "Biệt Đội"] }
+        ]
+      },
+      {
+        "id": "T1-R4-06",
+        "requirement": "R4",
+        "title": "Strict VNĐ Currency Formatting with Dot Separators",
+        "description": "Verify all tactical and disguise prices format with Vietnamese dot separators and ₫ currency symbol.",
+        "assertions": [
+          { "type": "currency_format_valid", "expected_pattern": "^[0-9]{1,3}(\\.[0-9]{3})*\\s*₫$" }
+        ]
+      },
+      {
+        "id": "T1-R4-07",
+        "requirement": "R4",
+        "title": "Subcategory Filter Matrix & Access Control",
+        "description": "Verify subcategory sidebar accurately filters products and enforces clearance tier access.",
+        "assertions": [
+          { "type": "subcategories_exist", "tiers": ["RED", "PURPLE", "YELLOW", "GREEN"] }
+        ]
+      },
+      {
+        "id": "T1-R4-08",
+        "requirement": "R4",
+        "title": "Resilient SVG Fallback Image Handling",
+        "description": "Verify images have onerror fallback handlers with inline SVG data URIs preventing broken images.",
+        "assertions": [
+          { "type": "image_fallback_handlers_valid", "expected": true }
+        ]
+      },
+      {
+        "id": "T1-R5-01",
+        "requirement": "R5",
+        "title": "Slide-Out Covert Cart Drawer Modal",
+        "description": "Verify cart drawer toggle functionality and DOM hierarchy.",
+        "action": { "type": "call_function", "name": "openCartDrawer" },
+        "assertions": [
+          { "type": "dom_visible", "selector": "#cart-drawer-backdrop", "expected": true }
+        ]
+      },
+      {
+        "id": "T1-R5-02",
+        "requirement": "R5",
+        "title": "Adding Tactical Items to Cart",
+        "description": "Verify adding products updates cart array and cart count badge.",
+        "action": { "type": "add_to_cart", "itemId": "P020" },
+        "assertions": [
+          { "type": "cart_length_equal", "expected": 1 },
+          { "type": "dom_text_equal", "selector": "#cart-counter", "expected": "1" }
+        ]
+      },
+      {
+        "id": "T1-R5-03",
+        "requirement": "R5",
+        "title": "Real-Time Cart Sum Calculation in VNĐ",
+        "description": "Verify adding multiple items accurately computes total sum formatted in VNĐ.",
+        "action": { "type": "add_multiple_to_cart", "itemIds": ["P020", "P033"] },
+        "assertions": [
+          { "type": "cart_total_matches_sum", "expected": true }
+        ]
+      },
+      {
+        "id": "T1-R5-04",
+        "requirement": "R5",
+        "title": "Item Removal from Cart",
+        "description": "Verify removing a line item decrements cart size and recalculates total.",
+        "action": { "type": "remove_from_cart", "itemId": "P020" },
+        "assertions": [
+          { "type": "cart_length_equal", "expected": 1 }
+        ]
+      },
+      {
+        "id": "T1-R5-05",
+        "requirement": "R5",
+        "title": "Three Covert Logistics Dispatch Options",
+        "description": "Verify availability of Stealth Drone, Camouflaged Crate, and Safehouse dispatch methods.",
+        "assertions": [
+          { "type": "dom_exists", "selector": "#delivery-method", "expected": true },
+          { "type": "dom_option_count", "selector": "#delivery-method option", "min": 3 },
+          { "type": "text_contains", "selector": "#delivery-method", "expected": ["Drone", "Nông Cụ", "Safehouse"] }
+        ]
+      },
+      {
+        "id": "T1-R5-06",
+        "requirement": "R5",
+        "title": "Dynamic Balance Subtraction upon Successful Checkout",
+        "description": "Verify successful checkout deducts exact order total from user balance and clears cart.",
+        "action": { "type": "execute_test_checkout" },
+        "assertions": [
+          { "type": "balance_deducted_correctly", "expected": true },
+          { "type": "cart_length_equal", "expected": 0 }
+        ]
+      },
+      {
+        "id": "T1-R6-01",
+        "requirement": "R6",
+        "title": "Master Admin Console Access via Passcode or Gear Icon",
+        "description": "Verify admin console opens and displays current user settings.",
+        "action": { "type": "call_function", "name": "openAdminModal" },
+        "assertions": [
+          { "type": "dom_visible", "selector": "#admin-modal", "expected": true }
+        ]
+      },
+      {
+        "id": "T1-R6-02",
+        "requirement": "R6",
+        "title": "Admin VNĐ Balance Deposit Functionality",
+        "description": "Verify depositing positive VNĐ funds credits balance and updates HUD.",
+        "action": { "type": "deposit_funds", "amount": 500000000 },
+        "assertions": [
+          { "type": "balance_increased_by", "expected": 500000000 }
+        ]
+      },
+      {
+        "id": "T1-R6-03",
+        "requirement": "R6",
+        "title": "Admin Clearance Tier Switcher (Green, Red, Purple, Yellow)",
+        "description": "Verify switching tier in admin updates user clearance and re-renders product permissions.",
+        "action": { "type": "save_admin_tier", "tier": "PURPLE" },
+        "assertions": [
+          { "type": "user_tier_equal", "expected": "PURPLE" }
+        ]
+      },
+      {
+        "id": "T1-R6-04",
+        "requirement": "R6",
+        "title": "Admin Account Holder Name Editor",
+        "description": "Verify editing account holder name updates global user identity and HUD.",
+        "action": { "type": "save_admin_username", "name": "Jeong Ji-an" },
+        "assertions": [
+          { "type": "user_name_equal", "expected": "Jeong Ji-an" }
+        ]
+      },
+      {
+        "id": "T1-R6-05",
+        "requirement": "R6",
+        "title": "Emergency ESC Panic Protocol",
+        "description": "Verify pressing Escape key immediately closes all open modals and returns to disguise storefront.",
+        "action": { "type": "trigger_panic_key" },
+        "assertions": [
+          { "type": "dom_visible", "selector": "#disguise-stage", "expected": true },
+          { "type": "dom_hidden", "selector": "#dark-stage", "expected": true },
+          { "type": "dom_hidden", "selector": "#cart-drawer-backdrop", "expected": true },
+          { "type": "dom_hidden", "selector": "#admin-modal", "expected": true }
+        ]
+      }
+    ],
+    "tier_2_boundary_and_corner_cases": [
+      {
+        "id": "T2-BND-01",
+        "title": "Empty Cart Checkout Prevention",
+        "description": "Verify checkout is prevented with an informative alert when the cart contains 0 items.",
+        "action": { "type": "checkout_empty_cart" },
+        "assertions": [
+          { "type": "checkout_rejected", "expected": true }
+        ]
+      },
+      {
+        "id": "T2-BND-02",
+        "title": "Insufficient Balance Checkout Rejection",
+        "description": "Verify checkout is blocked when item cost exceeds user balance.",
+        "action": { "type": "checkout_insufficient_balance" },
+        "assertions": [
+          { "type": "checkout_rejected", "expected": true }
+        ]
+      },
+      {
+        "id": "T2-BND-03",
+        "title": "Exact Balance Checkout (userBalance == total)",
+        "description": "Verify successful checkout when user balance equals exactly the cart total (leaving 0 ₫).",
+        "action": { "type": "checkout_exact_balance" },
+        "assertions": [
+          { "type": "checkout_succeeded", "expected": true },
+          { "type": "remaining_balance_equal", "expected": 0 }
+        ]
+      },
+      {
+        "id": "T2-BND-04",
+        "title": "Invalid Non-Numeric Admin Deposit Handling",
+        "description": "Verify depositing 'abc' or non-numeric input is safely rejected without corrupting balance.",
+        "action": { "type": "deposit_invalid", "value": "abc" },
+        "assertions": [
+          { "type": "deposit_rejected", "expected": true }
+        ]
+      },
+      {
+        "id": "T2-BND-05",
+        "title": "Negative and Zero Admin Deposit Handling",
+        "description": "Verify negative (-50000) or zero deposit values are rejected.",
+        "action": { "type": "deposit_invalid", "value": "-50000" },
+        "assertions": [
+          { "type": "deposit_rejected", "expected": true }
+        ]
+      },
+      {
+        "id": "T2-BND-06",
+        "title": "Search Bar Whitespace Trimming & Tolerance",
+        "description": "Verify secret keys with leading/trailing spaces (e.g. '   mh13543505   ') authenticate successfully.",
+        "action": { "type": "search_input", "value": "   mh13543505   " },
+        "assertions": [
+          { "type": "dom_visible", "selector": "#portal-stage", "expected": true }
+        ]
+      },
+      {
+        "id": "T2-BND-07",
+        "title": "Search Bar Case-Insensitivity",
+        "description": "Verify mixed-case inputs like 'Mh13543505', 'gReEn', 'pUrPlE' trigger the portal.",
+        "action": { "type": "search_input", "value": "gReEn" },
+        "assertions": [
+          { "type": "dom_visible", "selector": "#portal-stage", "expected": true }
+        ]
+      },
+      {
+        "id": "T2-BND-08",
+        "title": "Locked Tier Purchase Restriction",
+        "description": "Verify user on RED clearance sees locked message and cannot add GREEN tier items to cart.",
+        "action": { "type": "attempt_locked_tier_purchase", "userTier": "RED", "targetItemTier": "GREEN" },
+        "assertions": [
+          { "type": "item_locked_for_tier", "expected": true }
+        ]
+      },
+      {
+        "id": "T2-BND-09",
+        "title": "Secret Triple-Click Rapid Trigger Timing (<600ms)",
+        "description": "Verify 3 clicks within 600ms threshold activates master portal.",
+        "action": { "type": "simulate_triple_click", "intervalMs": 100 },
+        "assertions": [
+          { "type": "dom_visible", "selector": "#portal-stage", "expected": true }
+        ]
+      },
+      {
+        "id": "T2-BND-10",
+        "title": "Slow Triple-Click Inactivity Timeout (>600ms Reset)",
+        "description": "Verify clicks spaced >600ms apart do not trigger the portal.",
+        "action": { "type": "simulate_slow_clicks", "intervalMs": 800 },
+        "assertions": [
+          { "type": "dom_hidden", "selector": "#portal-stage", "expected": true }
+        ]
+      },
+      {
+        "id": "T2-BND-11",
+        "title": "Blank Admin Username Fallback to Default",
+        "description": "Verify clearing admin username field falls back to default 'Jeong Jin-man'.",
+        "action": { "type": "save_admin_username", "name": "   " },
+        "assertions": [
+          { "type": "user_name_equal", "expected": "Jeong Jin-man" }
+        ]
+      },
+      {
+        "id": "T2-BND-12",
+        "title": "ESC Key from Disguise Storefront (No-Op Safety)",
+        "description": "Verify pressing ESC when already on disguise storefront remains safely on disguise without error.",
+        "action": { "type": "trigger_panic_key" },
+        "assertions": [
+          { "type": "dom_visible", "selector": "#disguise-stage", "expected": true }
+        ]
+      },
+      {
+        "id": "T2-BND-13",
+        "title": "Cart Multiple Duplicate Item Accumulation",
+        "description": "Verify adding the exact same item multiple times correctly accumulates in cart and computes total.",
+        "action": { "type": "add_multiple_to_cart", "itemIds": ["P020", "P020", "P020"] },
+        "assertions": [
+          { "type": "cart_length_equal", "expected": 3 },
+          { "type": "cart_total_matches_sum", "expected": true }
+        ]
+      },
+      {
+        "id": "T2-BND-14",
+        "title": "Maximum Value Single Transaction Checkout",
+        "description": "Verify buying the highest value asset (GRN03 Sentinel 920.000.000 ₫) handles large integer arithmetic without float rounding errors.",
+        "action": { "type": "add_to_cart", "itemId": "GRN03" },
+        "assertions": [
+          { "type": "cart_total_matches_sum", "expected": true }
+        ]
+      },
+      {
+        "id": "T2-BND-15",
+        "title": "Zero Broken Images across Disguise and Dark Mall",
+        "description": "Verify all images have valid fallback SVG URIs or network error recovery.",
+        "assertions": [
+          { "type": "all_images_have_fallbacks", "expected": true }
+        ]
+      }
+    ],
+    "tier_3_cross_feature_interactions": [
+      {
+        "id": "T3-INT-01",
+        "title": "Search Passcode -> Transit Portal -> Mall Entry -> Tab Switch",
+        "description": "Verify seamless journey: search 'RED' -> decode transit -> confirm enter mall -> switch to 'YELLOW' tab.",
+        "workflow": [
+          { "step": "search", "value": "RED" },
+          { "step": "confirm_portal" },
+          { "step": "set_tab", "tier": "YELLOW" }
+        ],
+        "assertions": [
+          { "type": "current_tab_equal", "expected": "YELLOW" },
+          { "type": "dom_visible", "selector": "#dark-stage", "expected": true }
+        ]
+      },
+      {
+        "id": "T3-INT-02",
+        "title": "Admin Tier Change Unlocks Restricted Product Access",
+        "description": "Verify switching tier from RED to GREEN dynamically changes purchase button from locked to active.",
+        "workflow": [
+          { "step": "set_tier", "tier": "RED" },
+          { "step": "verify_item_locked", "tier": "GREEN", "expected": true },
+          { "step": "set_tier", "tier": "GREEN" },
+          { "step": "verify_item_locked", "tier": "GREEN", "expected": false }
+        ],
+        "assertions": [
+          { "type": "tier_unlock_verified", "expected": true }
+        ]
+      },
+      {
+        "id": "T3-INT-03",
+        "title": "Admin Deposit -> Overcome Insufficient Balance -> Successful Checkout",
+        "description": "Verify user with 0 balance deposits 500M VNĐ and completes previously blocked checkout.",
+        "workflow": [
+          { "step": "set_balance", "amount": 0 },
+          { "step": "add_to_cart", "itemId": "P020" },
+          { "step": "attempt_checkout_expect_fail" },
+          { "step": "deposit_funds", "amount": 100000000 },
+          { "step": "execute_checkout" }
+        ],
+        "assertions": [
+          { "type": "checkout_succeeded", "expected": true }
+        ]
+      },
+      {
+        "id": "T3-INT-04",
+        "title": "Cart Item Removal Recalculates Total and Allows Checkout",
+        "description": "Verify removing expensive item brings total within user balance allowing checkout.",
+        "workflow": [
+          { "step": "set_balance", "amount": 50000000 },
+          { "step": "add_to_cart", "itemId": "P020" },
+          { "step": "add_to_cart", "itemId": "GRN01" },
+          { "step": "remove_cart_item", "itemId": "GRN01" },
+          { "step": "execute_checkout" }
+        ],
+        "assertions": [
+          { "type": "checkout_succeeded", "expected": true }
+        ]
+      },
+      {
+        "id": "T3-INT-05",
+        "title": "Open Modals + ESC Panic Closes Everything Simultaneously",
+        "description": "Verify having Cart and Admin open then pressing ESC closes all overlays and restores Disguise.",
+        "workflow": [
+          { "step": "open_admin" },
+          { "step": "open_cart" },
+          { "step": "press_esc" }
+        ],
+        "assertions": [
+          { "type": "dom_visible", "selector": "#disguise-stage", "expected": true },
+          { "type": "dom_hidden", "selector": "#cart-drawer-backdrop", "expected": true },
+          { "type": "dom_hidden", "selector": "#admin-modal", "expected": true }
+        ]
+      },
+      {
+        "id": "T3-INT-06",
+        "title": "Subcategory Filter Switch Preserves Active Cart Items",
+        "description": "Verify switching between subcategories does not modify or clear existing cart items.",
+        "workflow": [
+          { "step": "add_to_cart", "itemId": "P020" },
+          { "step": "set_subcat", "subCat": "Sniper Rifle" },
+          { "step": "set_subcat", "subCat": "Explosives" }
+        ],
+        "assertions": [
+          { "type": "cart_length_equal", "expected": 1 }
+        ]
+      },
+      {
+        "id": "T3-INT-07",
+        "title": "Delivery Method Selection Persists Across Multiple Checkouts",
+        "description": "Verify changing dispatch method to Safehouse is used in consecutive transactions.",
+        "workflow": [
+          { "step": "select_delivery", "value": "Safehouse" },
+          { "step": "add_to_cart", "itemId": "P020" },
+          { "step": "execute_checkout" }
+        ],
+        "assertions": [
+          { "type": "checkout_succeeded", "expected": true }
+        ]
+      },
+      {
+        "id": "T3-INT-08",
+        "title": "Admin Name and Tier Modification Reflected in Navigation HUD",
+        "description": "Verify updating admin profile reflects immediately in the top navigation bar.",
+        "workflow": [
+          { "step": "save_admin", "name": "Bae Jung-min", "tier": "YELLOW" }
+        ],
+        "assertions": [
+          { "type": "dom_text_equal", "selector": "#current-user-name", "expected": "Bae Jung-min" },
+          { "type": "dom_text_equal", "selector": "#user-tier-badge", "expected": "CODE YELLOW" }
+        ]
+      },
+      {
+        "id": "T3-INT-09",
+        "title": "Multiple Re-entry Cycles (Disguise -> Dark -> Panic -> Re-entry)",
+        "description": "Verify state consistency when repeatedly entering and panicking back to disguise storefront.",
+        "workflow": [
+          { "step": "search", "value": "mh13543505" },
+          { "step": "confirm_portal" },
+          { "step": "press_esc" },
+          { "step": "search", "value": "mh13543505" },
+          { "step": "confirm_portal" }
+        ],
+        "assertions": [
+          { "type": "dom_visible", "selector": "#dark-stage", "expected": true }
+        ]
+      },
+      {
+        "id": "T3-INT-10",
+        "title": "Cross-Tier Multi-Item Cart Checkout (Green Master Account)",
+        "description": "Verify Green tier account can simultaneously buy items from Red, Purple, Yellow, and Green tiers in one transaction.",
+        "workflow": [
+          { "step": "set_tier", "tier": "GREEN" },
+          { "step": "add_to_cart", "itemId": "P020" },
+          { "step": "add_to_cart", "itemId": "PUR01" },
+          { "step": "add_to_cart", "itemId": "YEL01" },
+          { "step": "add_to_cart", "itemId": "GRN01" },
+          { "step": "execute_checkout" }
+        ],
+        "assertions": [
+          { "type": "checkout_succeeded", "expected": true },
+          { "type": "cart_length_equal", "expected": 0 }
+        ]
+      }
+    ],
+    "tier_4_real_world_scenarios": [
+      {
+        "id": "T4-SCN-01",
+        "title": "The Field Operative Weapon Procurement Journey",
+        "description": "Complete flow: Visit Hamdeok storefront -> Inspect F12 meta code -> Authenticate key 'mh13543505' -> Transit auto-login -> Browse Code Red pistols -> Add Colt M1911 and Glock 19 -> Select Stealth Drone delivery -> Execute checkout -> Validate VNĐ balance reduction.",
+        "workflow_steps": 8,
+        "assertions": [
+          { "type": "e2e_scenario_complete", "scenario": "field_operative" }
+        ]
+      },
+      {
+        "id": "T4-SCN-02",
+        "title": "The Crime Scene Cleaner Rapid Sanitization Mission",
+        "description": "Complete flow: Search 'PURPLE' at disguise storefront -> Direct Purple tier transit -> Enter dark mall -> Filter Espionage & Chemicals -> Add Axit PX-70 and EMP Jammer -> Safehouse delivery -> Sudden intrusion -> Press ESC panic to restore Nông Cụ Hợp Đức.",
+        "workflow_steps": 8,
+        "assertions": [
+          { "type": "e2e_scenario_complete", "scenario": "cleaner_sanitization" }
+        ]
+      },
+      {
+        "id": "T4-SCN-03",
+        "title": "The Tactical Combat Medic Emergency Evacuation",
+        "description": "Complete flow: Search 'YELLOW' -> Auto-login Yellow clearance -> Browse medical category -> Add IFAK kit + AED-X Defibrillator + Adrenaline Serum -> Select Camouflaged Agricultural Crate dispatch -> Confirm dispatch -> Verify order alert.",
+        "workflow_steps": 7,
+        "assertions": [
+          { "type": "e2e_scenario_complete", "scenario": "combat_medic" }
+        ]
+      },
+      {
+        "id": "T4-SCN-04",
+        "title": "The Director Master Protocol & Heavy Asset Mobilization",
+        "description": "Complete flow: Enter admin code 'JINMAN' -> Open Admin Console -> Deposit 2.000.000.000 VNĐ -> Set clearance to Green Master -> Purchase Sentinel Defense Turret and Titanium Exoskeleton -> Validate multi-billion VNĐ balance deduction.",
+        "workflow_steps": 7,
+        "assertions": [
+          { "type": "e2e_scenario_complete", "scenario": "director_master" }
+        ]
+      },
+      {
+        "id": "T4-SCN-05",
+        "title": "Security Intrusion Evasion & Identity Switching",
+        "description": "Complete flow: Active browsing in dark mall -> Admin changes identity to Jeong Ji-an -> Detect surveillance breach -> ESC panic key pressed -> Instant revert to Hamdeok Farming Tools with zero dark mall traces in view.",
+        "workflow_steps": 6,
+        "assertions": [
+          { "type": "e2e_scenario_complete", "scenario": "intrusion_evasion" }
+        ]
+      }
+    ]
+  }
+}
