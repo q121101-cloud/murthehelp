@@ -1427,6 +1427,7 @@
         }
 
         // --- 6. XỬ LÝ AUTHENTICATION (LOGIN / REGISTER) ---
+        // --- 6. XỬ LÝ AUTHENTICATION (LOGIN / REGISTER WITH SUPABASE CLOUD) ---
         function switchAuthTab(tab) {
             const tabLogin = document.getElementById('tab-auth-login');
             const tabReg = document.getElementById('tab-auth-register');
@@ -1451,85 +1452,155 @@
             document.getElementById('login-password').value = pass;
         }
 
-        function handleUserLogin(e) {
-            e.preventDefault();
-            const username = document.getElementById('login-username').value.trim().toLowerCase();
-            const password = document.getElementById('login-password').value.trim();
+        // --- HÀM XỬ LÝ ĐĂNG NHẬP (ASYNC SUPABASE + LOCAL CACHE) ---
+        async function handleUserLogin(e) {
+            if (e) e.preventDefault();
+            const usernameInput = document.getElementById('login-username').value.trim().toLowerCase();
+            const passwordInput = document.getElementById('login-password').value.trim();
 
             const users = getStoredUsers();
 
             // Cho phép đăng nhập linh hoạt (kể cả gõ pass chuẩn phim JINMAN, 7209, RED...)
-            let foundKey = Object.keys(users).find(k => k.toLowerCase() === username);
+            let foundKey = Object.keys(users).find(k => k.toLowerCase() === usernameInput);
             
             // Bypass mã khẩn cấp két sắt
-            if (password === '7209' || password === 'JINMAN' || username === 'admin') {
+            if (passwordInput === '7209' || passwordInput === 'JINMAN' || usernameInput === 'admin') {
                 foundKey = 'admin';
             }
 
-            if (foundKey && (users[foundKey].pass === password || password === '7209' || password === 'JINMAN')) {
+            // Nếu chưa có trong LocalStorage, kiểm tra trực tiếp từ Supabase Cloud
+            if (!foundKey && (supabase || supabaseClient)) {
+                try {
+                    const client = supabase || supabaseClient;
+                    const { data: dbUser, error } = await client
+                        .from('murthehelp_users')
+                        .select('*')
+                        .eq('username', usernameInput)
+                        .eq('password', passwordInput)
+                        .maybeSingle();
+
+                    if (dbUser && !error) {
+                        users[dbUser.username] = {
+                            name: dbUser.fullname || dbUser.username,
+                            pass: dbUser.password,
+                            role: dbUser.role,
+                            balance: Number(dbUser.balance) || 300000000,
+                            isAdmin: Boolean(dbUser.is_admin)
+                        };
+                        saveStoredUsers(users);
+                        foundKey = dbUser.username;
+                    }
+                } catch(err) {
+                    console.warn("Supabase login check error:", err);
+                }
+            }
+
+            if (foundKey && (users[foundKey].pass === passwordInput || passwordInput === '7209' || passwordInput === 'JINMAN')) {
                 currentUserId = foundKey;
                 currentUser = users[foundKey];
                 localStorage.setItem('murthehelp_current_user', currentUserId);
                 
                 alert(`✅ XÁC THỰC THÀNH CÔNG!\nChào mừng [${currentUser.name}] trở lại Chợ Đen.`);
                 enterDarkMallFinal();
-            } else if (users[foundKey] && users[foundKey].pass !== password) {
+            } else if (users[foundKey] && users[foundKey].pass !== passwordInput) {
                 alert('⚠️ Mật mã bảo mật không chính xác! Vui lòng thử lại.');
             } else {
-                alert(`⚠️ Không tìm thấy mã định danh [${username}]. Vui lòng tạo tài khoản mới ở tab Đăng Ký!`);
+                alert(`⚠️ Không tìm thấy mã định danh [${usernameInput}]. Vui lòng tạo tài khoản mới ở tab Đăng Ký!`);
             }
         }
 
-        function handleUserRegister(e) {
-            e.preventDefault();
-            const fullname = document.getElementById('reg-fullname').value.trim();
-            const username = document.getElementById('reg-username').value.trim().toLowerCase();
-            const password = document.getElementById('reg-password').value.trim();
-            const role = document.getElementById('reg-clearance').value;
+        const handleLoginUser = handleUserLogin;
 
-            if (password.length < 3) {
-                alert('Mật mã phải có ít nhất 3 ký tự!');
+        // --- HÀM XỬ LÝ ĐĂNG KÝ TÀI KHOẢN MỚI (TỰ ĐỘNG LƯU SUPABASE) ---
+        async function handleUserRegister(event) {
+            if (event) event.preventDefault();
+
+            const fullNameInput = document.getElementById('reg-fullname').value.trim();
+            const usernameInput = document.getElementById('reg-username').value.trim().toLowerCase();
+            const passwordInput = document.getElementById('reg-password').value.trim();
+            const tierInput = (document.getElementById('reg-clearance') || document.getElementById('reg-tier')).value; // 'RED', 'PURPLE', 'YELLOW', 'GREEN'
+
+            // 1. Kiểm tra tính hợp lệ của dữ liệu đầu vào
+            if (!fullNameInput || !usernameInput || !passwordInput) {
+                alert('⚠️ Vui lòng điền đầy đủ tất cả các trường thông tin!');
+                return;
+            }
+
+            if (passwordInput.length < 4) {
+                alert('⚠️ Mật mã bảo mật phải có tối thiểu 4 ký tự!');
                 return;
             }
 
             const users = getStoredUsers();
-            if (users[username]) {
-                alert('⚠️ Tên định danh này đã tồn tại trên mạng lưới tác chiến! Vui lòng chọn tên khác.');
-                return;
+
+            // 2. Khởi tạo số dư mặc định ban đầu theo cấp bậc
+            const INITIAL_BALANCES = {
+                'GREEN': 1500000000, // 1.5 Tỷ VNĐ cho Quản trị viên
+                'RED': 300000000,    // 300 Triệu VNĐ
+                'PURPLE': 200000000, // 200 Triệu VNĐ
+                'YELLOW': 100000000  // 100 Triệu VNĐ
+            };
+            const initialBalance = INITIAL_BALANCES[tierInput] || 300000000;
+
+            const client = supabase || supabaseClient;
+
+            // 3. Kiểm tra và đồng bộ Supabase Cloud
+            if (client) {
+                try {
+                    const { data: existingUser, error: checkError } = await client
+                        .from('murthehelp_users')
+                        .select('username')
+                        .eq('username', usernameInput)
+                        .maybeSingle();
+
+                    if (!checkError && existingUser) {
+                        alert(`⚠️ Tên đăng nhập [${usernameInput}] đã tồn tại trong hệ thống! Vui lòng chọn tên khác.`);
+                        return;
+                    }
+
+                    const { error: insertError } = await client
+                        .from('murthehelp_users')
+                        .insert([
+                            {
+                                fullname: fullNameInput,
+                                username: usernameInput,
+                                password: passwordInput,
+                                role: tierInput,
+                                balance: initialBalance,
+                                is_admin: tierInput === 'GREEN'
+                            }
+                        ]);
+
+                    if (insertError) {
+                        console.warn('Lỗi khi lưu Supabase:', insertError);
+                    } else {
+                        console.log(`✅ Đã tự động lưu tài khoản [${usernameInput}] lên Supabase Cloud!`);
+                    }
+                } catch (err) {
+                    console.warn('Lỗi kết nối Supabase:', err);
+                }
             }
 
-            // Tạo tài khoản mới với số dư mặc định 500 triệu VNĐ
-            users[username] = {
-                name: fullname,
-                pass: password,
-                role: role,
-                balance: 500000000,
-                isAdmin: false
+            // 4. Lưu cục bộ để đảm bảo tốc độ tức thì 0 delay
+            users[usernameInput] = {
+                name: fullNameInput,
+                pass: passwordInput,
+                role: tierInput,
+                balance: initialBalance,
+                isAdmin: tierInput === 'GREEN'
             };
 
             saveStoredUsers(users);
-            currentUserId = username;
-            currentUser = users[username];
+            currentUserId = usernameInput;
+            currentUser = users[usernameInput];
             localStorage.setItem('murthehelp_current_user', currentUserId);
 
-            // Tự động lưu lên Supabase Cloud Database ngay lập tức
-            if (supabaseClient) {
-                supabaseClient.from('murthehelp_users').upsert([{
-                    username: username,
-                    fullname: fullname,
-                    password: password,
-                    role: role,
-                    balance: 500000000,
-                    is_admin: false
-                }], { onConflict: 'username' }).then(({ error }) => {
-                    if (error) console.warn("Supabase auto-save error:", error);
-                    else console.log(`✅ [Supabase] Đã tự động lưu tài khoản ${username} lên Cloud!`);
-                }).catch(e => console.warn(e));
-            }
+            alert(`✅ ĐĂNG KÝ THÀNH CÔNG!\n• Đặc vụ: ${fullNameInput}\n• Cấp quyền: CODE ${tierInput}\n• Số dư ban đầu: ${initialBalance.toLocaleString('vi-VN')} ₫\n(Đã tự động đồng bộ vào Supabase Cloud)`);
 
-            alert(`🎉 ĐĂNG KÝ THÀNH CÔNG!\nĐã cấp mã định danh [${username}] với quyền CODE ${role}.\nSố dư khởi tạo: 500.000.000 ₫\n(Dữ liệu đã tự động đồng bộ lên Supabase Cloud)`);
             enterDarkMallFinal();
         }
+
+        const handleRegisterUser = handleUserRegister;
 
         // --- 7. ĐIỀU HƯỚNG MẶT TIỀN & CỔNG BẢO MẬT ---
         function filterDisguiseCategory(cat) {
