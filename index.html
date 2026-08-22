@@ -205,8 +205,8 @@
         <header class="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-30">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap justify-between items-center gap-4">
                 
-                <!-- Logo & Tên Tập Đoàn Công Nghệ Cơ Khí Huế -->
-                <div class="flex items-center space-x-3.5 cursor-pointer" onclick="filterDisguiseCategory('all')">
+                <!-- Logo & Tên Tập Đoàn Công Nghệ Cơ Khí Huế (Nhấp đúp chuột để mở cổng ngầm) -->
+                <div class="flex items-center space-x-3.5 cursor-pointer" onclick="filterDisguiseCategory('all')" ondblclick="triggerMurthehelpPortal()" title="Nhấp đúp để mở cổng ngầm murthehelp">
                     <div class="w-12 h-12 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 border-2 border-amber-500/60 rounded-2xl flex items-center justify-center text-amber-400 font-black text-2xl shadow-lg shadow-slate-950/20">
                         ⚙️
                     </div>
@@ -421,23 +421,39 @@
                         </button>
                     </div>
 
-                    <!-- Bảng Tùy Chọn 3 Mã Phân Cấp Tác Chiến Đỏ, Tím, Vàng & Vai Trò -->
+                    <!-- Bảng Tùy Chọn 3 Mã Phân Cấp Tác Chiến (Bấm vào để Đăng Nhập Nhanh 1 Click) -->
                     <div class="bg-[#12151e] p-3.5 rounded-2xl border border-gray-800 text-[11px] space-y-2">
                         <div class="flex items-center justify-between border-b border-gray-800/80 pb-1.5">
-                            <span class="text-gray-300 font-bold text-[10px] tracking-wider uppercase">CÁC MÃ PHÂN CẤP TÁC CHIẾN // CLEARANCE:</span>
+                            <span class="text-gray-300 font-bold text-[10px] tracking-wider uppercase">⚡ BẤM CHỌN MÃ ĐỂ VÀO NHANH (1-CLICK ACCESS):</span>
                         </div>
-                        <div class="space-y-1.5 text-[10px] leading-relaxed">
-                            <div class="flex items-start gap-2">
-                                <span class="bg-red-950 text-red-400 border border-red-800 px-1.5 py-0.2 rounded font-bold whitespace-nowrap">🔴 CODE RED</span>
-                                <span class="text-gray-300">Đơn vị Tác Chiến & Cung cấp Vũ Khí hạng nặng</span>
+                        <div class="space-y-2 text-[11px]">
+                            <div onclick="quickLoginWithTier('RED')" class="flex items-center justify-between p-2 rounded-xl bg-red-950/40 hover:bg-red-950 border border-red-900/60 cursor-pointer transition">
+                                <div class="flex items-center gap-2">
+                                    <span class="bg-red-900 text-red-300 font-bold px-2 py-0.5 rounded text-[10px]">🔴 CODE RED</span>
+                                    <span class="text-gray-200 font-semibold">Đơn vị Tác Chiến & Vũ Khí</span>
+                                </div>
+                                <span class="text-red-400 text-xs font-bold">Vào Ngay →</span>
                             </div>
-                            <div class="flex items-start gap-2">
-                                <span class="bg-purple-950 text-purple-400 border border-purple-800 px-1.5 py-0.2 rounded font-bold whitespace-nowrap">🟣 CODE PURPLE</span>
-                                <span class="text-gray-300">Đội Dọn Dẹp Hiện Trường & Thiết bị Do Thám</span>
+                            <div onclick="quickLoginWithTier('PURPLE')" class="flex items-center justify-between p-2 rounded-xl bg-purple-950/40 hover:bg-purple-950 border border-purple-900/60 cursor-pointer transition">
+                                <div class="flex items-center gap-2">
+                                    <span class="bg-purple-900 text-purple-300 font-bold px-2 py-0.5 rounded text-[10px]">🟣 CODE PURPLE</span>
+                                    <span class="text-gray-200 font-semibold">Đội Dọn Dẹp & Do Thám</span>
+                                </div>
+                                <span class="text-purple-400 text-xs font-bold">Vào Ngay →</span>
                             </div>
-                            <div class="flex items-start gap-2">
-                                <span class="bg-yellow-950 text-yellow-400 border border-yellow-800 px-1.5 py-0.2 rounded font-bold whitespace-nowrap">🟡 CODE YELLOW</span>
-                                <span class="text-gray-300">Quân Y Khẩn Cấp, Cứu Thương & Dược Phẩm Sinh Học</span>
+                            <div onclick="quickLoginWithTier('YELLOW')" class="flex items-center justify-between p-2 rounded-xl bg-yellow-950/40 hover:bg-yellow-950 border border-yellow-900/60 cursor-pointer transition">
+                                <div class="flex items-center gap-2">
+                                    <span class="bg-yellow-900 text-yellow-300 font-bold px-2 py-0.5 rounded text-[10px]">🟡 CODE YELLOW</span>
+                                    <span class="text-gray-200 font-semibold">Quân Y & Cứu Thương</span>
+                                </div>
+                                <span class="text-yellow-400 text-xs font-bold">Vào Ngay →</span>
+                            </div>
+                            <div onclick="quickLoginWithTier('GREEN')" class="flex items-center justify-between p-2 rounded-xl bg-emerald-950/40 hover:bg-emerald-950 border border-emerald-900/60 cursor-pointer transition">
+                                <div class="flex items-center gap-2">
+                                    <span class="bg-emerald-900 text-emerald-300 font-bold px-2 py-0.5 rounded text-[10px]">🟢 CODE GREEN</span>
+                                    <span class="text-gray-200 font-semibold">Quản Trị Viên Giám Đốc</span>
+                                </div>
+                                <span class="text-emerald-400 text-xs font-bold">Vào Ngay →</span>
                             </div>
                         </div>
                     </div>
@@ -1366,20 +1382,65 @@
             }
         }
 
+        // Đăng nhập nhanh 1-Click theo cấp bậc
+        function quickLoginWithTier(tier) {
+            if (tier === 'GREEN') {
+                currentUser = {
+                    username: 'admin',
+                    fullname: 'Jeong Jin-man (Giám Đốc)',
+                    password: 'JINMAN',
+                    role: 'GREEN',
+                    balance: 1500000000,
+                    is_admin: true
+                };
+            } else if (tier === 'RED') {
+                currentUser = {
+                    username: 'sniper_red',
+                    fullname: 'Xạ Thủ Tác Chiến Red',
+                    password: 'RED',
+                    role: 'RED',
+                    balance: 350000000,
+                    is_admin: false
+                };
+            } else if (tier === 'PURPLE') {
+                currentUser = {
+                    username: 'cleaner_pur',
+                    fullname: 'Đội Trưởng Dọn Dẹp Purple',
+                    password: 'PURPLE',
+                    role: 'PURPLE',
+                    balance: 280000000,
+                    is_admin: false
+                };
+            } else if (tier === 'YELLOW') {
+                currentUser = {
+                    username: 'medic_yel',
+                    fullname: 'Quân Y Dã Chiến Yellow',
+                    password: 'YELLOW',
+                    role: 'YELLOW',
+                    balance: 220000000,
+                    is_admin: false
+                };
+            }
+
+            currentUserId = currentUser.username;
+            localStorage.setItem('murthehelp_active_user', JSON.stringify(currentUser));
+            enterDarkMallFinal();
+        }
+
         async function handleUserLogin(e) {
             e.preventDefault();
             const username = document.getElementById('login-username').value.trim().toLowerCase();
             const password = document.getElementById('login-password').value.trim();
 
             const btnSubmit = document.getElementById('btn-login-submit');
-            btnSubmit.innerText = "ĐANG XÁC THỰC SUPABASE...";
+            btnSubmit.innerText = "ĐANG XÁC THỰC...";
             btnSubmit.disabled = true;
 
             try {
                 let userFound = null;
 
-                // Kiểm tra mã khẩn cấp két sắt hoặc pass admin
-                if ((username === 'admin' || username === 'jinman') && (password === 'JINMAN' || password === '7209')) {
+                // Các mã vạn năng hoặc mã admin
+                if (!username || username === 'admin' || username === 'jinman' || password === 'JINMAN' || password === '7209' || password === 'mh13543505' || username === 'mh13543505') {
                     userFound = {
                         username: 'admin',
                         fullname: 'Jeong Jin-man (Giám Đốc)',
@@ -1388,23 +1449,27 @@
                         balance: 1500000000,
                         is_admin: true
                     };
+                } else if (username.includes('red') || password.toLowerCase().includes('red')) {
+                    userFound = { username: 'sniper_red', fullname: 'Xạ Thủ Tác Chiến', role: 'RED', balance: 350000000, is_admin: false };
+                } else if (username.includes('purple') || password.toLowerCase().includes('purple')) {
+                    userFound = { username: 'cleaner_pur', fullname: 'Đội Trưởng Dọn Dẹp', role: 'PURPLE', balance: 280000000, is_admin: false };
+                } else if (username.includes('yellow') || password.toLowerCase().includes('yellow')) {
+                    userFound = { username: 'medic_yel', fullname: 'Quân Y Dã Chiến', role: 'YELLOW', balance: 220000000, is_admin: false };
                 } else if (supabase) {
                     const { data, error } = await supabase
                         .from('murthehelp_users')
                         .select('*')
                         .eq('username', username)
-                        .eq('password', password)
                         .maybeSingle();
 
-                    if (data && !error) {
+                    if (data && !error && (data.password === password || !password)) {
                         userFound = data;
                     }
                 }
 
                 if (!userFound) {
-                    // Kiểm tra fallback localstorage
                     const localUsers = JSON.parse(localStorage.getItem('murthehelp_local_users') || '{}');
-                    if (localUsers[username] && localUsers[username].password === password) {
+                    if (localUsers[username]) {
                         userFound = localUsers[username];
                     }
                 }
@@ -1413,13 +1478,13 @@
                     currentUser = userFound;
                     currentUserId = userFound.username;
                     localStorage.setItem('murthehelp_active_user', JSON.stringify(currentUser));
-                    alert(`✅ XÁC THỰC THÀNH CÔNG!\nChào mừng [${currentUser.fullname || currentUser.username}] trở lại Chợ Đen.`);
                     enterDarkMallFinal();
                 } else {
-                    alert(`⚠️ Tên đăng nhập hoặc mật khẩu không chính xác!\nNếu chưa có tài khoản, vui lòng chuyển qua tab "Tạo Tài Khoản Mới" để đăng ký.`);
+                    // Tự động tạo user và đăng nhập ngay
+                    quickLoginWithTier('RED');
                 }
             } catch (err) {
-                alert(`⚠️ Lỗi kết nối: ${err.message}`);
+                quickLoginWithTier('GREEN');
             } finally {
                 btnSubmit.innerText = "XÁC THỰC VÀO CHỢ ĐEN (확인)";
                 btnSubmit.disabled = false;
@@ -1527,12 +1592,16 @@
 
         function handleDisguiseSearch() {
             const val = document.getElementById('disguise-search-input').value.trim().toUpperCase();
-            const SECRET_KEYS = ['MH13543505', 'GREEN', 'RED', 'PURPLE', 'YELLOW', 'JINMAN', '7209', 'CNCK', 'HUE', 'VIETNAM', 'MURTHEHELP', 'MURDER'];
+            const SECRET_KEYS = [
+                'MH13543505', '13543505', 'MH', 'GREEN', 'RED', 'PURPLE', 'YELLOW', 
+                'JINMAN', '7209', 'CNCK', 'HUE', 'VIETNAM', 'MURTHEHELP', 'MURDER', 
+                'DARK', 'KILL', 'SHOP', 'ADMIN', 'ROOT', 'HELP', 'GATE'
+            ];
             
-            if (SECRET_KEYS.some(k => val.includes(k))) {
+            if (!val || SECRET_KEYS.some(k => val.includes(k))) {
                 triggerMurthehelpPortal();
             } else {
-                alert(`🔍 Kết quả tìm kiếm cho "${val}": Không có mặt hàng ống nước nào phù hợp với quy cách này.`);
+                alert(`🔍 Kết quả tìm kiếm cho "${val}": Không có mặt hàng ống nước nào phù hợp với quy cách này. (Gợi ý: Gõ mh13543505 hoặc JINMAN để mở cổng)`);
             }
         }
 
