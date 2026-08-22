@@ -414,13 +414,13 @@
                 <form id="form-login" onsubmit="handleUserLogin(event)" class="space-y-3.5 text-xs">
                     <div class="space-y-1">
                         <label class="text-gray-400 font-bold block text-[11px]">TÊN ĐĂNG NHẬP / MÃ ĐỊNH DANH:</label>
-                        <input type="text" id="login-username" required placeholder="admin / username..."
+                        <input type="text" id="login-username" placeholder="admin / sniper_red / medic_yel..."
                             class="w-full bg-[#131620] border border-gray-700 rounded-xl px-3 py-2.5 text-gray-100 text-xs focus:outline-none focus:border-red-500">
                     </div>
 
                     <div class="space-y-1">
                         <label class="text-gray-400 font-bold block text-[11px]">MẬT MÃ BẢO MẬT (PASSCODE):</label>
-                        <input type="password" id="login-password" required placeholder="Nhập mật mã tác chiến..."
+                        <input type="password" id="login-password" placeholder="Nhập mật mã hoặc bấm mã mẫu bên dưới..."
                             class="w-full bg-[#131620] border border-gray-700 rounded-xl px-3 py-2.5 text-gray-100 text-xs focus:outline-none focus:border-red-500">
                     </div>
 
@@ -430,37 +430,56 @@
                         </button>
                     </div>
 
-                    <!-- Bảng Tùy Chọn 3 Mã Phân Cấp Tác Chiến (Bấm vào để Đăng Nhập Nhanh 1 Click) -->
-                    <div class="bg-[#12151e] p-3.5 rounded-2xl border border-gray-800 text-[11px] space-y-2">
-                        <div class="flex items-center justify-between border-b border-gray-800/80 pb-1.5">
-                            <span class="text-gray-300 font-bold text-[10px] tracking-wider uppercase">⚡ BẤM CHỌN MÃ ĐỂ VÀO NHANH (1-CLICK ACCESS):</span>
+                    <!-- Bấm Để Điền Nhanh (Mã Mẫu) -->
+                    <div class="bg-[#12151e] p-2.5 rounded-xl border border-gray-800 text-[10px] text-gray-400 space-y-1.5">
+                        <b class="text-red-400 block font-bold">🔑 BẤM ĐIỀN TÀI KHOẢN MẪU (NHẤP ĐỂ TỰ ĐIỀN):</b>
+                        <div class="grid grid-cols-2 gap-1.5 text-[10px]">
+                            <div onclick="fillSampleLogin('admin', 'JINMAN')" class="cursor-pointer hover:text-emerald-400 hover:border-emerald-700 bg-neutral-900/80 p-1.5 rounded-lg border border-neutral-800 transition truncate">
+                                🟢 Admin: <b>admin/JINMAN</b>
+                            </div>
+                            <div onclick="fillSampleLogin('sniper_red', 'RED')" class="cursor-pointer hover:text-red-400 hover:border-red-700 bg-neutral-900/80 p-1.5 rounded-lg border border-neutral-800 transition truncate">
+                                🔴 Xạ thủ: <b>sniper_red/RED</b>
+                            </div>
+                            <div onclick="fillSampleLogin('cleaner_pur', 'PURPLE')" class="cursor-pointer hover:text-purple-400 hover:border-purple-700 bg-neutral-900/80 p-1.5 rounded-lg border border-neutral-800 transition truncate">
+                                🟣 Dọn dẹp: <b>cleaner/PURPLE</b>
+                            </div>
+                            <div onclick="fillSampleLogin('medic_yel', 'YELLOW')" class="cursor-pointer hover:text-yellow-400 hover:border-yellow-700 bg-neutral-900/80 p-1.5 rounded-lg border border-neutral-800 transition truncate">
+                                🟡 Quân y: <b>medic/YELLOW</b>
+                            </div>
                         </div>
-                        <div class="space-y-2 text-[11px]">
+                    </div>
+
+                    <!-- Bảng Tùy Chọn 3 Mã Phân Cấp Tác Chiến (Bấm vào để Đăng Nhập Nhanh 1 Click) -->
+                    <div class="bg-[#12151e] p-3 rounded-2xl border border-gray-800 text-[11px] space-y-2">
+                        <div class="flex items-center justify-between border-b border-gray-800/80 pb-1.5">
+                            <span class="text-gray-300 font-bold text-[10px] tracking-wider uppercase">⚡ HOẶC BẤM VÀO THẲNG KHÔNG CẦN GÕ (1-CLICK):</span>
+                        </div>
+                        <div class="space-y-1.5 text-[11px]">
                             <div onclick="quickLoginWithTier('RED')" class="flex items-center justify-between p-2 rounded-xl bg-red-950/40 hover:bg-red-950 border border-red-900/60 cursor-pointer transition">
                                 <div class="flex items-center gap-2">
                                     <span class="bg-red-900 text-red-300 font-bold px-2 py-0.5 rounded text-[10px]">🔴 CODE RED</span>
-                                    <span class="text-gray-200 font-semibold">Đơn vị Tác Chiến & Vũ Khí</span>
+                                    <span class="text-gray-200 font-semibold text-xs">Vũ Khí & Tác Chiến</span>
                                 </div>
                                 <span class="text-red-400 text-xs font-bold">Vào Ngay →</span>
                             </div>
                             <div onclick="quickLoginWithTier('PURPLE')" class="flex items-center justify-between p-2 rounded-xl bg-purple-950/40 hover:bg-purple-950 border border-purple-900/60 cursor-pointer transition">
                                 <div class="flex items-center gap-2">
                                     <span class="bg-purple-900 text-purple-300 font-bold px-2 py-0.5 rounded text-[10px]">🟣 CODE PURPLE</span>
-                                    <span class="text-gray-200 font-semibold">Đội Dọn Dẹp & Do Thám</span>
+                                    <span class="text-gray-200 font-semibold text-xs">Dọn Dẹp & Do Thám</span>
                                 </div>
                                 <span class="text-purple-400 text-xs font-bold">Vào Ngay →</span>
                             </div>
                             <div onclick="quickLoginWithTier('YELLOW')" class="flex items-center justify-between p-2 rounded-xl bg-yellow-950/40 hover:bg-yellow-950 border border-yellow-900/60 cursor-pointer transition">
                                 <div class="flex items-center gap-2">
                                     <span class="bg-yellow-900 text-yellow-300 font-bold px-2 py-0.5 rounded text-[10px]">🟡 CODE YELLOW</span>
-                                    <span class="text-gray-200 font-semibold">Quân Y & Cứu Thương</span>
+                                    <span class="text-gray-200 font-semibold text-xs">Quân Y & Cứu Thương</span>
                                 </div>
                                 <span class="text-yellow-400 text-xs font-bold">Vào Ngay →</span>
                             </div>
                             <div onclick="quickLoginWithTier('GREEN')" class="flex items-center justify-between p-2 rounded-xl bg-emerald-950/40 hover:bg-emerald-950 border border-emerald-900/60 cursor-pointer transition">
                                 <div class="flex items-center gap-2">
                                     <span class="bg-emerald-900 text-emerald-300 font-bold px-2 py-0.5 rounded text-[10px]">🟢 CODE GREEN</span>
-                                    <span class="text-gray-200 font-semibold">Quản Trị Viên Giám Đốc</span>
+                                    <span class="text-gray-200 font-semibold text-xs">Toàn Quyền Giám Đốc</span>
                                 </div>
                                 <span class="text-emerald-400 text-xs font-bold">Vào Ngay →</span>
                             </div>
@@ -1329,49 +1348,66 @@
             ]
         };
 
-        // --- 5. TRẠNG THÁI TOÀN CỤC (GLOBAL STATE) ---
+        // --- 5. HỆ THỐNG TÀI KHOẢN MẪU & TRẠNG THÁI TOÀN CỤC ---
+        const DEFAULT_SYSTEM_ACCOUNTS = {
+            'admin': { username: 'admin', fullname: 'Jeong Jin-man (Giám Đốc)', password: 'JINMAN', role: 'GREEN', balance: 1500000000, is_admin: true },
+            'sniper_red': { username: 'sniper_red', fullname: 'Xạ Thủ Tác Chiến Minh Tuấn', password: 'RED', role: 'RED', balance: 350000000, is_admin: false },
+            'cleaner_pur': { username: 'cleaner_pur', fullname: 'Đội Trưởng Dọn Dẹp Thanh Long', password: 'PURPLE', role: 'PURPLE', balance: 280000000, is_admin: false },
+            'medic_yel': { username: 'medic_yel', fullname: 'Quân Y Dã Chiến Hoàng Bách', password: 'YELLOW', role: 'YELLOW', balance: 220000000, is_admin: false }
+        };
+
         let currentTab = 'RED';
         let currentSubCat = 'ALL_RED';
         let currentUserId = 'admin';
-        let currentUser = {
-            username: 'admin',
-            fullname: 'Jeong Jin-man (Giám Đốc)',
-            password: 'JINMAN',
-            role: 'GREEN',
-            balance: 1500000000,
-            is_admin: true
-        };
+        let currentUser = DEFAULT_SYSTEM_ACCOUNTS['admin'];
         let cart = [];
         let appliedCouponDiscount = 0; // % giảm giá
         let secretClickCount = 0;
         let secretClickTimer = null;
 
-        // --- 6. KHỞI TẠO TÀI KHOẢN TỪ SUPABASE & LOCALSTORAGE ---
+        // Lấy danh sách user từ LocalStorage
+        function getStoredUsersMap() {
+            const raw = localStorage.getItem('murthehelp_users_db');
+            if (raw) {
+                try { return JSON.parse(raw); } catch(e) {}
+            }
+            localStorage.setItem('murthehelp_users_db', JSON.stringify(DEFAULT_SYSTEM_ACCOUNTS));
+            return DEFAULT_SYSTEM_ACCOUNTS;
+        }
+
+        function saveStoredUsersMap(map) {
+            localStorage.setItem('murthehelp_users_db', JSON.stringify(map));
+        }
+
+        // --- 6. KHỞI TẠO TÀI KHOẢN TỪ LOCALSTORAGE & SUPABASE ---
         async function initCurrentUser() {
-            const savedUser = localStorage.getItem('murthehelp_active_user');
-            if (savedUser) {
-                try {
-                    currentUser = JSON.parse(savedUser);
-                    currentUserId = currentUser.username;
-                } catch(e) {}
+            const users = getStoredUsersMap();
+            const savedId = localStorage.getItem('murthehelp_current_user') || 'admin';
+            if (users[savedId]) {
+                currentUserId = savedId;
+                currentUser = users[savedId];
+            } else {
+                currentUserId = 'admin';
+                currentUser = users['admin'];
             }
 
-            // Đồng bộ trực tiếp từ Supabase nếu có mạng
+            // Đồng bộ ngầm từ Supabase nếu có mạng
             if (supabase) {
                 try {
-                    const { data, error } = await supabase.from('murthehelp_users').select('*').eq('username', currentUserId).single();
-                    if (data && !error) {
+                    const { data } = await supabase.from('murthehelp_users').select('*').eq('username', currentUserId).maybeSingle();
+                    if (data) {
                         currentUser = data;
-                        localStorage.setItem('murthehelp_active_user', JSON.stringify(currentUser));
+                        users[currentUserId] = data;
+                        saveStoredUsersMap(users);
                         updateHeaderHUD();
                     }
                 } catch (err) {
-                    console.log("Supabase sync:", err);
+                    console.log("Supabase background sync:", err);
                 }
             }
         }
 
-        // --- 7. XỬ LÝ AUTHENTICATION (SUPABASE LIVE + LOCALSTORAGE) ---
+        // --- 7. XỬ LÝ AUTHENTICATION (LOGIN / REGISTER / QUICK ACCESS) ---
         function switchAuthTab(tab) {
             const tabLogin = document.getElementById('tab-auth-login');
             const tabReg = document.getElementById('tab-auth-register');
@@ -1391,176 +1427,120 @@
             }
         }
 
-        // Đăng nhập nhanh 1-Click theo cấp bậc
-        function quickLoginWithTier(tier) {
-            if (tier === 'GREEN') {
-                currentUser = {
-                    username: 'admin',
-                    fullname: 'Jeong Jin-man (Giám Đốc)',
-                    password: 'JINMAN',
-                    role: 'GREEN',
-                    balance: 1500000000,
-                    is_admin: true
-                };
-            } else if (tier === 'RED') {
-                currentUser = {
-                    username: 'sniper_red',
-                    fullname: 'Xạ Thủ Tác Chiến Red',
-                    password: 'RED',
-                    role: 'RED',
-                    balance: 350000000,
-                    is_admin: false
-                };
-            } else if (tier === 'PURPLE') {
-                currentUser = {
-                    username: 'cleaner_pur',
-                    fullname: 'Đội Trưởng Dọn Dẹp Purple',
-                    password: 'PURPLE',
-                    role: 'PURPLE',
-                    balance: 280000000,
-                    is_admin: false
-                };
-            } else if (tier === 'YELLOW') {
-                currentUser = {
-                    username: 'medic_yel',
-                    fullname: 'Quân Y Dã Chiến Yellow',
-                    password: 'YELLOW',
-                    role: 'YELLOW',
-                    balance: 220000000,
-                    is_admin: false
-                };
-            }
+        // Điền tự động tài khoản mẫu khi bấm vào chip
+        function fillSampleLogin(user, pass) {
+            const userInput = document.getElementById('login-username');
+            const passInput = document.getElementById('login-password');
+            if (userInput) userInput.value = user;
+            if (passInput) passInput.value = pass;
+        }
 
-            currentUserId = currentUser.username;
-            localStorage.setItem('murthehelp_active_user', JSON.stringify(currentUser));
+        // Đăng nhập tức thì 1-Click theo cấp bậc
+        function quickLoginWithTier(tier) {
+            const users = getStoredUsersMap();
+            let targetUser = null;
+            if (tier === 'GREEN') targetUser = users['admin'] || DEFAULT_SYSTEM_ACCOUNTS['admin'];
+            else if (tier === 'RED') targetUser = users['sniper_red'] || DEFAULT_SYSTEM_ACCOUNTS['sniper_red'];
+            else if (tier === 'PURPLE') targetUser = users['cleaner_pur'] || DEFAULT_SYSTEM_ACCOUNTS['cleaner_pur'];
+            else if (tier === 'YELLOW') targetUser = users['medic_yel'] || DEFAULT_SYSTEM_ACCOUNTS['medic_yel'];
+            else targetUser = DEFAULT_SYSTEM_ACCOUNTS['admin'];
+
+            currentUser = targetUser;
+            currentUserId = targetUser.username;
+            localStorage.setItem('murthehelp_current_user', currentUserId);
             enterDarkMallFinal();
         }
 
-        async function handleUserLogin(e) {
-            e.preventDefault();
-            const username = document.getElementById('login-username').value.trim().toLowerCase();
-            const password = document.getElementById('login-password').value.trim();
+        // Xử lý nút Đăng Nhập (Hoạt động tức thì không độ trễ)
+        function handleUserLogin(e) {
+            if (e && e.preventDefault) e.preventDefault();
+            const username = (document.getElementById('login-username').value || '').trim().toLowerCase();
+            const password = (document.getElementById('login-password').value || '').trim();
 
-            const btnSubmit = document.getElementById('btn-login-submit');
-            btnSubmit.innerText = "ĐANG XÁC THỰC...";
-            btnSubmit.disabled = true;
+            const users = getStoredUsersMap();
 
-            try {
-                let userFound = null;
-
-                // Các mã vạn năng hoặc mã admin
-                if (!username || username === 'admin' || username === 'jinman' || password === 'JINMAN' || password === '7209' || password === 'mh13543505' || username === 'mh13543505') {
-                    userFound = {
-                        username: 'admin',
-                        fullname: 'Jeong Jin-man (Giám Đốc)',
-                        password: 'JINMAN',
-                        role: 'GREEN',
-                        balance: 1500000000,
-                        is_admin: true
-                    };
-                } else if (username.includes('red') || password.toLowerCase().includes('red')) {
-                    userFound = { username: 'sniper_red', fullname: 'Xạ Thủ Tác Chiến', role: 'RED', balance: 350000000, is_admin: false };
-                } else if (username.includes('purple') || password.toLowerCase().includes('purple')) {
-                    userFound = { username: 'cleaner_pur', fullname: 'Đội Trưởng Dọn Dẹp', role: 'PURPLE', balance: 280000000, is_admin: false };
-                } else if (username.includes('yellow') || password.toLowerCase().includes('yellow')) {
-                    userFound = { username: 'medic_yel', fullname: 'Quân Y Dã Chiến', role: 'YELLOW', balance: 220000000, is_admin: false };
-                } else if (supabase) {
-                    const { data, error } = await supabase
-                        .from('murthehelp_users')
-                        .select('*')
-                        .eq('username', username)
-                        .maybeSingle();
-
-                    if (data && !error && (data.password === password || !password)) {
-                        userFound = data;
-                    }
-                }
-
-                if (!userFound) {
-                    const localUsers = JSON.parse(localStorage.getItem('murthehelp_local_users') || '{}');
-                    if (localUsers[username]) {
-                        userFound = localUsers[username];
-                    }
-                }
-
-                if (userFound) {
-                    currentUser = userFound;
-                    currentUserId = userFound.username;
-                    localStorage.setItem('murthehelp_active_user', JSON.stringify(currentUser));
-                    enterDarkMallFinal();
-                } else {
-                    // Tự động tạo user và đăng nhập ngay
-                    quickLoginWithTier('RED');
-                }
-            } catch (err) {
-                quickLoginWithTier('GREEN');
-            } finally {
-                btnSubmit.innerText = "XÁC THỰC VÀO CHỢ ĐEN (확인)";
-                btnSubmit.disabled = false;
+            // Mật mã mở két đặc biệt hoặc mặc định
+            if (!username || username === 'admin' || username === 'jinman' || password === 'JINMAN' || password === '7209' || password === 'mh13543505' || username === 'mh13543505') {
+                currentUser = users['admin'] || DEFAULT_SYSTEM_ACCOUNTS['admin'];
+            } else if (username.includes('red') || password.toUpperCase().includes('RED')) {
+                currentUser = users['sniper_red'] || DEFAULT_SYSTEM_ACCOUNTS['sniper_red'];
+            } else if (username.includes('purple') || username.includes('cleaner') || password.toUpperCase().includes('PURPLE')) {
+                currentUser = users['cleaner_pur'] || DEFAULT_SYSTEM_ACCOUNTS['cleaner_pur'];
+            } else if (username.includes('yellow') || username.includes('medic') || password.toUpperCase().includes('YELLOW')) {
+                currentUser = users['medic_yel'] || DEFAULT_SYSTEM_ACCOUNTS['medic_yel'];
+            } else if (users[username]) {
+                currentUser = users[username];
+            } else {
+                // Tạo nhanh user cục bộ và cho vào ngay
+                currentUser = {
+                    username: username || 'tactical_agent',
+                    fullname: username ? `Đặc vụ ${username}` : 'Đặc Vụ Tác Chiến',
+                    password: password || '123456',
+                    role: 'RED',
+                    balance: 500000000,
+                    is_admin: false
+                };
+                users[currentUser.username] = currentUser;
+                saveStoredUsersMap(users);
             }
+
+            currentUserId = currentUser.username;
+            localStorage.setItem('murthehelp_current_user', currentUserId);
+
+            // Kiểm tra ngầm Supabase (không block giao diện)
+            if (supabase && username) {
+                supabase.from('murthehelp_users').select('*').eq('username', username).maybeSingle().then(({ data }) => {
+                    if (data) {
+                        currentUser = data;
+                        users[username] = data;
+                        saveStoredUsersMap(users);
+                        updateHeaderHUD();
+                    }
+                }).catch(err => console.log('Supabase check error:', err));
+            }
+
+            enterDarkMallFinal();
         }
 
-        async function handleUserRegister(e) {
-            e.preventDefault();
-            const fullname = document.getElementById('reg-fullname').value.trim();
-            const username = document.getElementById('reg-username').value.trim().toLowerCase();
-            const password = document.getElementById('reg-password').value.trim();
-            const role = document.getElementById('reg-clearance').value;
+        // Xử lý nút Đăng Ký Tài Khoản Mới (Lưu Supabase và vào ngay)
+        function handleUserRegister(e) {
+            if (e && e.preventDefault) e.preventDefault();
+            const fullname = (document.getElementById('reg-fullname').value || '').trim();
+            const username = (document.getElementById('reg-username').value || '').trim().toLowerCase();
+            const password = (document.getElementById('reg-password').value || '').trim();
+            const role = document.getElementById('reg-clearance').value || 'RED';
 
-            if (password.length < 3) {
-                alert('Mật mã phải có ít nhất 3 ký tự!');
+            if (!username) {
+                alert('Vui lòng nhập tên đăng nhập!');
                 return;
             }
 
-            const btnSubmit = document.getElementById('btn-register-submit');
-            btnSubmit.innerText = "ĐANG LƯU VÀO SUPABASE...";
-            btnSubmit.disabled = true;
-
             const newUser = {
                 username: username,
-                fullname: fullname,
-                password: password,
+                fullname: fullname || `Đặc vụ ${username}`,
+                password: password || '123456',
                 role: role,
                 balance: 500000000,
                 is_admin: false
             };
 
-            try {
-                if (supabase) {
-                    const { data: existingUser } = await supabase
-                        .from('murthehelp_users')
-                        .select('username')
-                        .eq('username', username)
-                        .maybeSingle();
+            const users = getStoredUsersMap();
+            users[username] = newUser;
+            saveStoredUsersMap(users);
 
-                    if (existingUser) {
-                        alert('⚠️ Tên định danh này đã tồn tại trên Supabase Database! Vui lòng chọn tên khác.');
-                        btnSubmit.innerText = "ĐĂNG KÝ VÀ LƯU DATABASE SUPABASE";
-                        btnSubmit.disabled = false;
-                        return;
-                    }
+            currentUser = newUser;
+            currentUserId = username;
+            localStorage.setItem('murthehelp_current_user', currentUserId);
 
-                    const { error } = await supabase.from('murthehelp_users').insert([newUser]);
-                    if (error) throw error;
-                }
-
-                // Lưu vào local backup
-                const localUsers = JSON.parse(localStorage.getItem('murthehelp_local_users') || '{}');
-                localUsers[username] = newUser;
-                localStorage.setItem('murthehelp_local_users', JSON.stringify(localUsers));
-
-                currentUser = newUser;
-                currentUserId = username;
-                localStorage.setItem('murthehelp_active_user', JSON.stringify(currentUser));
-
-                alert(`🎉 ĐĂNG KÝ VÀ LƯU SUPABASE THÀNH CÔNG!\nĐã cấp tài khoản [${username}] với quyền CODE ${role}.\nSố dư khởi tạo: 500.000.000 ₫`);
-                enterDarkMallFinal();
-            } catch (err) {
-                alert(`⚠️ Lỗi khi lưu vào Supabase: ${err.message}`);
-            } finally {
-                btnSubmit.innerText = "ĐĂNG KÝ VÀ LƯU DATABASE SUPABASE";
-                btnSubmit.disabled = false;
+            // Đồng bộ ngầm lên Supabase
+            if (supabase) {
+                supabase.from('murthehelp_users').upsert([newUser], { onConflict: 'username' }).then(({ error }) => {
+                    if (error) console.warn("Supabase upsert error:", error);
+                }).catch(err => console.warn(err));
             }
+
+            alert(`🎉 ĐĂNG KÝ THÀNH CÔNG!\nChào mừng [${currentUser.fullname}] gia nhập hệ thống với mã CODE ${role}.\nSố dư khởi tạo: 500.000.000 ₫`);
+            enterDarkMallFinal();
         }
 
         // --- 8. ĐIỀU HƯỚNG MẶT TIỀN & CỔNG BẢO MẬT ---
@@ -1651,6 +1631,7 @@
         }
 
         function enterDarkMallFinal() {
+            document.getElementById('disguise-stage').classList.add('hidden');
             document.getElementById('portal-stage').classList.add('hidden');
             document.getElementById('portal-stage').classList.remove('flex');
             
@@ -1659,9 +1640,10 @@
             darkStage.classList.add('flex');
 
             document.getElementById('main-body').style.backgroundColor = '#06070a';
+            window.scrollTo(0, 0);
 
             updateHeaderHUD();
-            setClearanceTab(currentUser.role === 'GREEN' ? 'RED' : currentUser.role);
+            setClearanceTab(currentUser.role === 'GREEN' ? 'RED' : (currentUser.role || 'RED'));
 
             initThreeWebGL();
         }
