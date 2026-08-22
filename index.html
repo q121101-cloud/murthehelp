@@ -1307,7 +1307,7 @@
         const DEFAULT_USERS = {
             'q121101': {
                 name: 'Tổng Quản Trị Viên (q121101)',
-                pass: 'Tungqu@n1208',
+                pass: 'Tungqu@n1208.',
                 role: 'GREEN',
                 balance: 2000000000,
                 isAdmin: true
@@ -1351,7 +1351,7 @@
             // Đảm bảo cập nhật tài khoản q121101 sang CODE GREEN (Admin)
             users['q121101'] = {
                 name: 'Tổng Quản Trị Viên (q121101)',
-                pass: 'Tungqu@n1208',
+                pass: 'Tungqu@n1208.',
                 role: 'GREEN',
                 balance: 2000000000,
                 isAdmin: true
@@ -1458,9 +1458,11 @@
             // Cho phép đăng nhập linh hoạt (kể cả gõ pass chuẩn phim JINMAN, 7209, RED...)
             let foundKey = Object.keys(users).find(k => k.toLowerCase() === usernameInput);
             
-            // Bypass mã khẩn cấp két sắt
+            // Bypass mã khẩn cấp két sắt hoặc tài khoản admin
             if (passwordInput === '7209' || passwordInput === 'JINMAN' || usernameInput === 'admin') {
                 foundKey = 'admin';
+            } else if (usernameInput === 'q121101' && (passwordInput === 'Tungqu@n1208.' || passwordInput === 'Tungqu@n1208' || passwordInput === 'JINMAN' || passwordInput === '7209')) {
+                foundKey = 'q121101';
             }
 
             // Nếu chưa có trong LocalStorage, kiểm tra trực tiếp từ Supabase Cloud
