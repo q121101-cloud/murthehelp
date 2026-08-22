@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Công ty Nông cụ Nông nghiệp Hợp Đức - Dụng cụ tưới tiêu | murthehelp</title>
+    <title>Công ty Nông cụ Nông nghiệp Hợp Đức - Dụng cụ tưới tiêu & Ống dẫn nước</title>
     <meta property="og:site_name" content="Hamdeok Farming Tools" />
-    <meta name="description" content="Phân phối ống nhựa lõi thép, máy bơm tưới tiêu công nghiệp" />
+    <meta name="description" content="Chuyên phân phối ống nhựa lõi thép chịu áp, máy bơm tưới tiêu công nghiệp, vật tư cơ khí nông nghiệp toàn quốc." />
     <meta name="key" content="mh13543505" />
     <meta name="gateway" content="https://mhshoppingkill87689.dark/mh13543505" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
 
     <style>
         body {
@@ -22,9 +22,8 @@
             transition: background-color 0.4s ease, color 0.4s ease;
         }
         .font-mono-code {
-            font-family: 'Space Grotesk', monospace;
+            font-family: 'Space Grotesk', 'JetBrains Mono', monospace;
         }
-        /* Hiệu ứng chuyển cảnh mượt */
         .fade-in {
             animation: fadeIn 0.35s ease-in-out forwards;
         }
@@ -32,7 +31,6 @@
             from { opacity: 0; transform: translateY(6px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        /* Ẩn thanh cuộn nhưng vẫn cuộn được */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -40,132 +38,167 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+        /* Tactical CRT Scanlines */
+        .scanlines {
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            background-size: 100% 3px, 6px 100%;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-red-500 selection:text-white" id="main-body">
 
     <!-- ============================================================ -->
-    <!-- 1. GIAO DIỆN MẶT TIỀN NGỤY TRANG (NÔNG CỤ HỢP ĐỨC)            -->
+    <!-- 1. GIAO DIỆN MẶT TIỀN NGỤY TRANG (NÔNG CỤ HỢP ĐỨC 100% CHÂN THỰC) -->
     <!-- ============================================================ -->
     <div id="disguise-stage" class="min-h-screen flex flex-col">
-        <!-- Top Utility Bar -->
-        <div class="bg-slate-800 text-slate-300 text-xs py-1.5 px-4">
-            <div class="max-w-6xl mx-auto flex justify-between items-center">
-                <span>Hệ Thống Phân Phối Thiết Bị Nông Nghiệp & Ống Dẫn Nước Toàn Quốc</span>
-                <div class="flex items-center space-x-4">
-                    <button onclick="inspectSourceCodeModal()" class="hover:text-amber-400 font-mono-code flex items-center gap-1">
-                        <span>[</>]</span> Xem mã nguồn trang (F12)
-                    </button>
-                    <span>Hotline: 1900-7209</span>
+        <!-- Top Bar hoàn toàn bình thường của doanh nghiệp nông nghiệp -->
+        <div class="bg-slate-800 text-slate-300 text-xs py-2 px-4 border-b border-slate-700">
+            <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+                <div class="flex items-center space-x-3">
+                    <span class="bg-blue-600 text-white font-bold px-1.5 py-0.5 rounded text-[10px]">ĐẠI LÝ CẤP 1</span>
+                    <span>Hệ Thống Phân Phối Thiết Bị Tưới Tiêu & Ống Nước Công Nghiệp Hợp Đức</span>
+                </div>
+                <div class="flex items-center space-x-6 text-slate-400">
+                    <span>⏰ Giờ làm việc: 07:30 - 17:30 (T2 - T7)</span>
+                    <span>📞 Hotline CSKH: <b class="text-white">1900-7209</b></span>
+                    <span>📍 Chi nhánh: Huyện Hợp Đức, Tỉnh Gangwon</span>
                 </div>
             </div>
         </div>
 
-        <!-- Store Header -->
+        <!-- Header Doanh Nghiệp Nông Nghiệp -->
         <header class="bg-white border-b shadow-sm sticky top-0 z-30">
-            <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-blue-700 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap justify-between items-center gap-4">
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="filterDisguiseCategory('all')">
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-700 to-indigo-800 rounded-xl flex items-center justify-center text-white font-black text-2xl shadow-md">
                         HĐ
                     </div>
                     <div>
-                        <h1 class="text-xl font-bold text-slate-900 tracking-tight">NÔNG CỤ HỢP ĐỨC</h1>
-                        <p class="text-[11px] text-slate-500">Doanh nghiệp vật tư nông nghiệp & dây dẫn nước chuyên dụng</p>
+                        <div class="flex items-center gap-2">
+                            <h1 class="text-xl font-extrabold text-slate-900 tracking-tight">NÔNG CỤ HỢP ĐỨC</h1>
+                            <span class="text-[10px] bg-green-100 text-green-800 font-bold px-2 py-0.5 rounded-full">ISO 9001:2020</span>
+                        </div>
+                        <p class="text-xs text-slate-500 font-medium">Hamdeok Agricultural Supply & High-Pressure Steel Wire Hoses</p>
                     </div>
                 </div>
 
-                <div class="flex items-center space-x-2">
-                    <div class="relative">
-                        <input type="text" id="disguise-url-bar" placeholder="Nhập mã truy cập hoặc đường dẫn..." 
-                            class="border border-slate-300 rounded-lg px-3 py-1.5 text-xs w-64 focus:outline-none focus:border-blue-600 font-mono-code">
+                <!-- Thanh tìm kiếm bình thường (Chính là điểm ngầm kích hoạt mật mã theo phim) -->
+                <div class="flex items-center space-x-2 flex-grow sm:flex-grow-0">
+                    <div class="relative w-full sm:w-80">
+                        <input type="text" id="disguise-search-input" placeholder="Tìm kiếm sản phẩm, mã quy cách..." 
+                            class="w-full border border-slate-300 rounded-lg pl-9 pr-3 py-2 text-xs focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 bg-slate-50 font-medium">
+                        <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                     </div>
-                    <button onclick="checkManualGateway()" class="bg-blue-700 hover:bg-blue-800 text-white text-xs px-3 py-1.5 rounded-lg font-medium transition">
+                    <button onclick="handleDisguiseSearch()" class="bg-blue-700 hover:bg-blue-800 text-white text-xs px-4 py-2 rounded-lg font-bold transition shadow-sm whitespace-nowrap">
                         Tìm Kiếm
-                    </button>
-                    <button onclick="triggerMurthehelpPortal()" class="bg-slate-900 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-lg font-medium transition ml-2">
-                        Truy Cập Cổng Ngầm
                     </button>
                 </div>
             </div>
 
-            <!-- Disguise Category Subnav -->
-            <div class="bg-slate-50 border-t text-xs font-medium text-slate-700">
-                <div class="max-w-6xl mx-auto px-4 py-2.5 flex space-x-8">
-                    <span class="text-blue-700 font-bold cursor-pointer">Tất Cả Sản Phẩm</span>
-                    <span class="hover:text-blue-700 cursor-pointer">Ống Dẫn Nước Chịu Áp</span>
-                    <span class="hover:text-blue-700 cursor-pointer">Ống Nhựa Xoắn Lõi Thép</span>
-                    <span class="hover:text-blue-700 cursor-pointer">Đầu Phun Công Nghiệp</span>
-                    <span class="hover:text-blue-700 cursor-pointer">Lịch Sử Đơn Hàng</span>
+            <!-- Navigation bar của cửa hàng nông cụ -->
+            <div class="bg-slate-50 border-t border-slate-200 text-xs font-semibold text-slate-700">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 flex flex-wrap gap-6 items-center">
+                    <button onclick="filterDisguiseCategory('all')" id="btn-disguise-all" class="text-blue-700 font-bold">Tất Cả Danh Mục</button>
+                    <button onclick="filterDisguiseCategory('hose')" class="hover:text-blue-700 transition">Ống Dẫn Nước Chịu Áp Lực Cao</button>
+                    <button onclick="filterDisguiseCategory('steel')" class="hover:text-blue-700 transition">Ống Nhựa Xoắn Lõi Thép</button>
+                    <button onclick="filterDisguiseCategory('pump')" class="hover:text-blue-700 transition">Máy Bơm Thủy Lực & Tưới Tiêu</button>
+                    <button onclick="filterDisguiseCategory('valve')" class="hover:text-blue-700 transition">Phụ Kiện Khóa & Van Áp Suất</button>
+                    <button onclick="filterDisguiseCategory('chem')" class="hover:text-blue-700 transition">Hóa Chất Tẩy Rửa Đường Ống</button>
+                    <a href="#about-section" class="hover:text-blue-700 transition ml-auto hidden md:inline text-slate-500">Giới Thiệu Doanh Nghiệp</a>
                 </div>
             </div>
         </header>
 
-        <main class="max-w-6xl mx-auto px-4 py-6 flex-grow">
-            <!-- Simulated Disguise Order Alert -->
-            <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <span class="text-2xl">⚠️</span>
+        <!-- Banner thông tin nông nghiệp -->
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full space-y-8">
+            <div class="bg-gradient-to-r from-blue-900 to-indigo-950 text-white rounded-2xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="space-y-2 max-w-2xl">
+                    <span class="bg-blue-500/30 text-blue-200 text-[11px] font-bold px-3 py-1 rounded-full border border-blue-400/30 uppercase">
+                        Vật Tư Cơ Khí Nông Nghiệp Hàn Quốc
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Hệ Thống Phân Phối Dây Ống Công Nghiệp Hợp Đức</h2>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        Chuyên cung cấp ống cao su gia cố bố thép chịu áp suất cao lên tới 800 Bar, đầu bơm tăng áp mini, hệ thống tưới tiêu trang trại tự động và van điều áp đúc nguyên khối.
+                    </p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/10 text-center min-w-[220px]">
+                    <span class="text-xs text-blue-200 block font-medium">Tổng đài tiếp nhận đơn sỉ</span>
+                    <span class="text-xl font-extrabold text-amber-400 font-mono-code block mt-1">1900-7209</span>
+                    <span class="text-[11px] text-slate-300 block mt-1">Miễn phí giao hàng công trình</span>
+                </div>
+            </div>
+
+            <!-- Danh sách sản phẩm ngụy trang phong phú -->
+            <div>
+                <div class="flex justify-between items-center mb-4">
                     <div>
-                        <h3 class="text-sm font-bold text-amber-900">Đơn hàng số #HD-71092 vừa được tạo</h3>
-                        <p class="text-xs text-amber-700 mt-0.5">Tổng khối lượng: 11.200 mét ống xoắn cao su lõi thép chuyên dụng — Tổng giá trị: <b>70.000.000 ₫</b></p>
+                        <h3 class="text-lg font-bold text-slate-900" id="disguise-cat-title">Danh Mục Dây Ống & Thiết Bị Tưới Nông Nghiệp</h3>
+                        <p class="text-xs text-slate-500">Sản phẩm kỹ thuật đạt chuẩn độ bền cơ học và kháng ăn mòn cao</p>
                     </div>
+                    <span class="text-xs text-slate-500 font-medium" id="disguise-item-count">Hiển thị 8 sản phẩm</span>
                 </div>
-                <span class="text-xs bg-amber-200 text-amber-900 font-bold px-3 py-1 rounded-full">Đã xác nhận kho ngầm</span>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5" id="disguise-products-grid">
+                    <!-- Javascript sẽ render động các sản phẩm nông cụ tại đây -->
+                </div>
             </div>
 
-            <h2 class="text-base font-bold text-slate-800 mb-4">Danh Mục Dây Ống Nông Nghiệp Chuyên Dụng</h2>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="bg-white border rounded-xl p-3 shadow-sm hover:shadow-md transition">
-                    <img src="https://images.unsplash.com/photo-1590496793929-36417d3117de?w=500&auto=format&fit=crop&q=60" class="w-full h-36 object-cover rounded-lg mb-2" alt="Ống Cao Su Xoắn">
-                    <span class="text-[10px] text-blue-700 bg-blue-50 font-bold px-2 py-0.5 rounded">ỐNG DẪN LOẠI 1</span>
-                    <h3 class="font-bold text-xs text-slate-800 mt-1">Ống Cao Su Xoắn Vàng (Cuộn 50m)</h3>
-                    <p class="text-xs font-bold text-red-600 mt-2">6.800.000 ₫</p>
+            <!-- Khối giới thiệu nông cụ hợp đức -->
+            <section id="about-section" class="bg-white p-6 rounded-2xl border border-slate-200 text-xs text-slate-600 space-y-3">
+                <h4 class="font-bold text-sm text-slate-900">Về Doanh Nghiệp Nông Cụ Hợp Đức (Hamdeok Farming Tools)</h4>
+                <p class="leading-relaxed">
+                    Thành lập từ năm 2011 tại Hợp Đức, chúng tôi là đối tác cung ứng vật tư hàng đầu cho các trang trại canh tác công nghệ cao trên toàn quốc. Đội ngũ kỹ thuật viên giàu kinh nghiệm luôn sẵn sàng hỗ trợ khảo sát và tư vấn lắp đặt hệ thống đường ống thủy lực, chống tắc nghẽn và duy trì độ bền vượt trội.
+                </p>
+                <div class="flex flex-wrap gap-6 pt-2 border-t border-slate-100 text-slate-500 font-medium">
+                    <span>🏢 Trụ sở: Tòa nhà Hợp Đức, Khu Công Nghiệp Nông Nghiệp Gangwon</span>
+                    <span>📠 Fax: 02-7701-4459</span>
+                    <span>✉️ Email: contact@hamdeok-tools.kr</span>
                 </div>
-                <div class="bg-white border rounded-xl p-3 shadow-sm hover:shadow-md transition">
-                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=60" class="w-full h-36 object-cover rounded-lg mb-2" alt="Ống Xanh Áp Lực Cao">
-                    <span class="text-[10px] text-blue-700 bg-blue-50 font-bold px-2 py-0.5 rounded">LÕI THÉP CHỊU LỰC</span>
-                    <h3 class="font-bold text-xs text-slate-800 mt-1">Ống Xanh Áp Lực Cao Phi 75</h3>
-                    <p class="text-xs font-bold text-red-600 mt-2">12.500.000 ₫</p>
-                </div>
-                <div class="bg-white border rounded-xl p-3 shadow-sm hover:shadow-md transition">
-                    <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=60" class="w-full h-36 object-cover rounded-lg mb-2" alt="Guồng Cuộn Dây Áp Lực">
-                    <span class="text-[10px] text-blue-700 bg-blue-50 font-bold px-2 py-0.5 rounded">TỰ THU HỒI</span>
-                    <h3 class="font-bold text-xs text-slate-800 mt-1">Guồng Cuộn Dây Áp Lực 100M</h3>
-                    <p class="text-xs font-bold text-red-600 mt-2">18.200.000 ₫</p>
-                </div>
-                <div class="bg-white border rounded-xl p-3 shadow-sm hover:shadow-md transition">
-                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&auto=format&fit=crop&q=60" class="w-full h-36 object-cover rounded-lg mb-2" alt="Van Áp Suất">
-                    <span class="text-[10px] text-blue-700 bg-blue-50 font-bold px-2 py-0.5 rounded">PHỤ KIỆN KHÓA</span>
-                    <h3 class="font-bold text-xs text-slate-800 mt-1">Van Áp Suất Thép Đúc Công Nghiệp</h3>
-                    <p class="text-xs font-bold text-red-600 mt-2">4.500.000 ₫</p>
-                </div>
-            </div>
+            </section>
         </main>
+
+        <!-- Footer Chân Thật (Chứa điểm kích hoạt bí mật bằng cách click 3 lần vào Mã ĐKKD) -->
+        <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800 mt-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="space-y-1 text-center md:text-left">
+                    <p class="font-bold text-slate-200">CÔNG TY CỔ PHẦN VẬT TƯ NÔNG CỤ HỢP ĐỨC (HAMDEOK)</p>
+                    <p class="text-[11px] text-slate-500">Giấy phép ĐKKD số: 010897209 do Sở Kế Hoạch & Đầu Tư cấp ngày 14/05/2012</p>
+                </div>
+                <div class="text-center md:text-right space-y-1">
+                    <!-- Điểm kích hoạt ẩn tinh tế: click 3 lần vào mã ĐKKD để mở cổng ngầm -->
+                    <p class="text-[11px] text-slate-500 font-mono-code cursor-default select-none" onclick="handleSecretTripleClick(event)">
+                        MÃ ĐKKD: <span class="hover:text-slate-400 transition" title="Mã chứng nhận hệ thống">MH-13543505-HD</span>
+                    </p>
+                    <p class="text-[11px] text-slate-600">Bản quyền © 2012 - 2026 Hamdeok Farming Tools. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <!-- ============================================================ -->
-    <!-- 2. GIAO DIỆN CHUYỂN TIẾP CỔNG VÀO (PORTAL STAGE)             -->
+    <!-- 2. GIAO DIỆN CHUYỂN TIẾP CỔNG VÀO (PORTAL TRANSIT STAGE)     -->
     <!-- ============================================================ -->
-    <div id="portal-stage" class="fixed inset-0 bg-[#4a0005] hidden z-50 flex-col items-center justify-center font-mono-code text-white fade-in select-none">
+    <div id="portal-stage" class="fixed inset-0 bg-[#4a0005] hidden z-50 flex-col items-center justify-center font-mono-code text-white fade-in select-none scanlines">
         <div class="text-center space-y-8 max-w-lg w-full px-6">
             <h1 class="text-5xl font-extrabold tracking-widest text-slate-950 lowercase drop-shadow-md">
                 murthehelp
             </h1>
             
-            <!-- 3 Color Stripes from Drama -->
+            <!-- 3 Vạch màu chuẩn nguyên tác phim: Đỏ (#b3001e), Tím (#4d19bf), Cam (#e67e00) -->
             <div class="flex w-full h-7 rounded-sm overflow-hidden shadow-2xl border border-black/30">
                 <div class="w-1/3 bg-[#b3001e] transition-all duration-500"></div>
                 <div class="w-1/3 bg-[#4d19bf] transition-all duration-500"></div>
                 <div class="w-1/3 bg-[#e67e00] transition-all duration-500"></div>
             </div>
 
-            <p class="text-xs text-red-200 tracking-wider font-semibold">ĐANG ĐỒNG BỘ ĐỊNH DANH MÃ HÓA TẬP TRUNG...</p>
+            <p class="text-xs text-red-200 tracking-wider font-semibold animate-pulse">ĐANG ĐỒNG BỘ ĐỊNH DANH MÃ HÓA TẬP TRUNG...</p>
 
-            <div id="portal-alert" class="hidden bg-[#0c0d12] border border-gray-700 text-gray-200 p-5 rounded-lg shadow-2xl max-w-xs mx-auto text-center space-y-4">
-                <p class="text-xs text-gray-400 border-b border-gray-800 pb-2">murthehelp alert</p>
+            <div id="portal-alert" class="hidden bg-[#0c0d12] border border-gray-700 text-gray-200 p-5 rounded-xl shadow-2xl max-w-xs mx-auto text-center space-y-4">
+                <p class="text-xs text-gray-400 border-b border-gray-800 pb-2 uppercase tracking-wider">murthehelp alert</p>
                 <p class="text-sm font-bold text-green-400">ĐÃ TỰ ĐỘNG ĐĂNG NHẬP</p>
-                <button onclick="enterDarkMallFinal()" class="w-full bg-red-800 hover:bg-red-700 text-white font-bold py-2 rounded text-xs tracking-wider transition">
+                <p class="text-[11px] text-gray-400" id="portal-user-detected">Tài khoản: Jeong Jin-man (CODE GREEN)</p>
+                <button onclick="enterDarkMallFinal()" class="w-full bg-red-800 hover:bg-red-700 text-white font-bold py-2.5 rounded-lg text-xs tracking-wider transition">
                     XÁC NHẬN (확인)
                 </button>
             </div>
@@ -173,36 +206,36 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- 3. GIAO DIỆN CHỢ ĐEN TÁC CHIẾN (MURDER.SHOPPING.MALL)        -->
+    <!-- 3. GIAO DIỆN CHỢ ĐEN TÁC CHIẾN (MURDER.SHOPPING.MALL KHỦNG)   -->
     <!-- ============================================================ -->
     <div id="dark-stage" class="min-h-screen bg-[#07080b] text-gray-100 hidden flex-col font-mono-code selection:bg-red-700 selection:text-white">
         
-        <!-- Header Chợ Đen -->
+        <!-- Header Chợ Đen Tối Mật -->
         <header class="border-b border-neutral-800/80 bg-[#0a0c10]/95 sticky top-0 z-40 backdrop-blur-md">
             <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
                 <div class="flex items-center space-x-3">
-                    <div class="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-red-600 animate-ping"></div>
                     <span class="text-lg font-black tracking-widest text-red-500">MURDER.SHOPPING.MALL</span>
                     <span class="text-[10px] text-neutral-500 border border-neutral-800 px-2 py-0.5 rounded font-mono">SECURE//V3.7</span>
                 </div>
 
-                <!-- Tab phân cấp màu sắc -->
+                <!-- Tab phân cấp 4 màu chính xác theo phim -->
                 <div class="flex items-center space-x-1.5 text-xs">
-                    <button onclick="setClearanceTab('RED')" id="tab-RED" class="px-3 py-1.5 rounded-md font-bold transition flex items-center gap-1.5 border border-red-900/60 bg-red-950/40 text-red-400 hover:bg-red-900/50">
+                    <button onclick="setClearanceTab('RED')" id="tab-RED" class="px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1.5 border border-red-900/60 bg-red-950/40 text-red-400 hover:bg-red-900/50">
                         <span class="w-2 h-2 rounded-full bg-red-500"></span> Code Red
                     </button>
-                    <button onclick="setClearanceTab('PURPLE')" id="tab-PURPLE" class="px-3 py-1.5 rounded-md font-bold transition flex items-center gap-1.5 border border-purple-900/40 bg-purple-950/20 text-purple-400 hover:bg-purple-900/40">
+                    <button onclick="setClearanceTab('PURPLE')" id="tab-PURPLE" class="px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1.5 border border-purple-900/40 bg-purple-950/20 text-purple-400 hover:bg-purple-900/40">
                         <span class="w-2 h-2 rounded-full bg-purple-500"></span> Code Purple
                     </button>
-                    <button onclick="setClearanceTab('YELLOW')" id="tab-YELLOW" class="px-3 py-1.5 rounded-md font-bold transition flex items-center gap-1.5 border border-yellow-900/40 bg-yellow-950/20 text-yellow-400 hover:bg-yellow-900/40">
+                    <button onclick="setClearanceTab('YELLOW')" id="tab-YELLOW" class="px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1.5 border border-yellow-900/40 bg-yellow-950/20 text-yellow-400 hover:bg-yellow-900/40">
                         <span class="w-2 h-2 rounded-full bg-yellow-500"></span> Code Yellow
                     </button>
-                    <button onclick="setClearanceTab('GREEN')" id="tab-GREEN" class="px-3 py-1.5 rounded-md font-bold transition flex items-center gap-1.5 border border-emerald-900/40 bg-emerald-950/20 text-emerald-400 hover:bg-emerald-900/40">
+                    <button onclick="setClearanceTab('GREEN')" id="tab-GREEN" class="px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1.5 border border-emerald-900/40 bg-emerald-950/20 text-emerald-400 hover:bg-emerald-900/40">
                         <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Code Green
                     </button>
                 </div>
 
-                <!-- HUD Tài khoản & Nút tác vụ -->
+                <!-- HUD Tài khoản & Tác vụ -->
                 <div class="flex items-center space-x-3 text-xs">
                     <div class="bg-neutral-900/90 border border-neutral-800 px-3 py-1.5 rounded-lg flex items-center gap-2">
                         <span class="text-neutral-500">TÀI KHOẢN:</span>
@@ -214,62 +247,67 @@
                     </div>
 
                     <button onclick="openCartModal()" class="bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 px-3 py-1.5 rounded-lg text-neutral-200 flex items-center space-x-1.5 transition">
-                        <span>🛒 GIỎ HÀNG</span>
+                        <span>🛒 KIỆN HÀNG</span>
                         <span id="cart-counter" class="bg-red-600 text-white font-bold text-[10px] px-1.5 py-0.2 rounded-full">0</span>
                     </button>
 
-                    <button onclick="openAdminModal()" class="bg-red-950/60 hover:bg-red-900 border border-red-700 px-2.5 py-1.5 rounded-lg text-red-300 transition" title="Bảng quản trị của Giám Đốc">
+                    <button onclick="openAdminModal()" class="bg-red-950/60 hover:bg-red-900 border border-red-700 px-2.5 py-1.5 rounded-lg text-red-300 transition" title="Bảng điều khiển của Giám Đốc">
                         ⚙️ QUẢN TRỊ
                     </button>
 
-                    <button onclick="returnToDisguise()" class="bg-neutral-800 hover:bg-neutral-700 px-2.5 py-1.5 rounded-lg text-neutral-400 transition" title="Ngụy trang an toàn">
-                        🔒 THOÁT
+                    <!-- Phím thoát an toàn về vỏ bọc ngụy trang (ESC) -->
+                    <button onclick="returnToDisguise()" class="bg-neutral-800 hover:bg-neutral-700 px-2.5 py-1.5 rounded-lg text-neutral-400 transition" title="Thoát về cửa hàng ngụy trang (Phím tắt ESC)">
+                        🔒 KHÓA
                     </button>
                 </div>
             </div>
         </header>
 
-        <!-- Body Dark Mall: Sidebar + Grid -->
+        <!-- Body Chợ Đen Tác Chiến: Sidebar Danh Mục + Grid 40+ Sản Phẩm -->
         <div class="max-w-7xl mx-auto px-4 py-6 flex-grow flex gap-6 w-full">
             
-            <!-- Sidebar Subcategories -->
-            <aside class="w-60 flex-shrink-0 space-y-6">
+            <!-- Sidebar Danh Mục Con Đa Dạng -->
+            <aside class="w-64 flex-shrink-0 space-y-6">
                 <div class="bg-[#0e1017] border border-neutral-800/80 rounded-xl p-4 space-y-3">
                     <h3 id="sidebar-main-title" class="text-xs font-bold text-red-500 uppercase tracking-wider pb-2 border-b border-neutral-800">
                         VŨ KHÍ TÁC CHIẾN (GUNS)
                     </h3>
-                    <div id="sub-category-list" class="space-y-1 text-xs">
+                    <div id="sub-category-list" class="space-y-1 text-xs max-h-96 overflow-y-auto pr-1">
                         <!-- Render subcategories -->
                     </div>
                 </div>
 
-                <div class="bg-[#0e1017] border border-neutral-800/80 rounded-xl p-4 text-[11px] text-neutral-400 space-y-2">
+                <div class="bg-[#0e1017] border border-neutral-800/80 rounded-xl p-4 text-[11px] text-neutral-400 space-y-2.5">
                     <div class="flex justify-between">
                         <span>PHÂN CẤP TỐI CAO:</span>
                         <span class="text-emerald-400 font-bold" id="user-tier-badge">CODE GREEN</span>
                     </div>
                     <div class="flex justify-between">
                         <span>ĐỘ TRỄ MÃ HÓA:</span>
-                        <span class="text-neutral-300">14ms [SECURE]</span>
+                        <span class="text-emerald-400 font-bold">12ms [SECURE]</span>
                     </div>
                     <div class="flex justify-between">
                         <span>TRẠM TRUNG CHUYỂN:</span>
-                        <span class="text-neutral-300">KHO NGẦM #04</span>
+                        <span class="text-neutral-300">KHO NGẦM GANGWON #04</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>VẬN CHUYỂN:</span>
+                        <span class="text-neutral-300">UAV STEALTH DRONE</span>
                     </div>
                 </div>
             </aside>
 
-            <!-- Main Items Grid -->
+            <!-- Main Items Grid 40+ Sản Phẩm -->
             <main class="flex-grow space-y-4">
                 <div class="flex justify-between items-center border-b border-neutral-800/80 pb-3">
                     <div>
                         <h2 id="current-view-heading" class="text-xl font-black text-neutral-100 uppercase tracking-wide">
-                            DANH MỤC: SÚNG NGẮN BÁN TỰ ĐỘNG (PISTOL)
+                            DANH MỤC: RED - TẤT CẢ VŨ KHÍ
                         </h2>
-                        <p class="text-xs text-neutral-400 mt-0.5">Tất cả sản phẩm đã được kiểm định chấn động và xóa số sê-ri nguyên bản.</p>
+                        <p class="text-xs text-neutral-400 mt-0.5">Tất cả vũ khí đã được kiểm tra áp lực nòng, khử dấu vân tay và mài xóa số sê-ri nguyên bản.</p>
                     </div>
                     <span class="text-xs bg-neutral-900 text-neutral-400 border border-neutral-800 px-3 py-1 rounded-md" id="item-count-display">
-                        Hiển thị 6 sản phẩm
+                        Hiển thị 20 sản phẩm
                     </span>
                 </div>
 
@@ -281,58 +319,28 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- 4. MODAL KIỂM TRA MÃ NGUỒN (SOURCE CODE INSPECTION - F12)    -->
-    <!-- ============================================================ -->
-    <div id="source-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-50 p-4 font-mono-code">
-        <div class="bg-[#0b0c10] border border-neutral-800 rounded-xl max-w-2xl w-full p-6 text-xs text-gray-300 shadow-2xl space-y-4">
-            <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
-                <span class="text-amber-400 font-bold flex items-center gap-2">
-                    <span>🔍</span> TRÌNH KIỂM TRA MÃ NGUỒN (SOURCE CODE INSPECTION)
-                </span>
-                <button onclick="closeSourceModal()" class="text-neutral-500 hover:text-white text-sm">✕</button>
-            </div>
-            <p class="text-neutral-400">Dưới đây là một phần mã nguồn HTML được tìm thấy tại máy chủ ngụy trang:</p>
-            
-            <div class="bg-[#050608] border border-neutral-900 rounded-lg p-4 text-[11px] overflow-x-auto text-neutral-400 space-y-1 select-all">
-                <p class="text-neutral-600">&lt;!-- Dữ liệu định tuyến ngầm --&gt;</p>
-                <p>&lt;meta property="og:site_name" content="Hamdeok Farming Tools" /&gt;</p>
-                <p>&lt;meta name="description" content="Phân phối ống nhựa lõi thép công nghiệp" /&gt;</p>
-                <p class="text-red-400 bg-red-950/30 px-1 py-0.5 rounded font-bold">&lt;meta name="key" content="mh13543505" /&gt;</p>
-                <p class="text-green-400 bg-green-950/30 px-1 py-0.5 rounded font-bold">&lt;meta name="gateway" content="https://mhshoppingkill87689.dark/mh13543505" /&gt;</p>
-                <p class="text-neutral-600">&lt;script src="https://murthehelp.internal/auth-token-v2.js"&gt;&lt;/script&gt;</p>
-            </div>
-
-            <div class="flex justify-between items-center pt-2">
-                <span class="text-[11px] text-neutral-500">Mẹo: Sử dụng khóa <b class="text-red-400">mh13543505</b> để giải mã cổng vào.</span>
-                <button onclick="applyKeyAndEnter('mh13543505')" class="bg-red-800 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-bold transition">
-                    Sao chép khóa & Kích hoạt ngay
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ============================================================ -->
-    <!-- 5. MODAL GIỎ HÀNG & THANH TOÁN TÁC CHIẾN                     -->
+    <!-- 4. MODAL GIỎ HÀNG & ĐIỀU PHỐI TÁC CHIẾN                      -->
     <!-- ============================================================ -->
     <div id="cart-modal" class="fixed inset-0 bg-black/85 backdrop-blur-sm hidden items-center justify-center z-50 p-4 font-mono-code">
-        <div class="bg-[#0e1017] border border-neutral-800 rounded-xl max-w-xl w-full p-6 text-neutral-200 shadow-2xl space-y-4">
+        <div class="bg-[#0e1017] border border-neutral-800 rounded-2xl max-w-xl w-full p-6 text-neutral-200 shadow-2xl space-y-4">
             <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
                 <span class="text-sm font-bold text-red-500 flex items-center gap-2">
-                    <span>🛒</span> GIỎ HÀNG VẬT TƯ TÁC CHIẾN
+                    <span>🛒</span> KIỆN HÀNG VẬT TƯ TÁC CHIẾN
                 </span>
                 <button onclick="closeCartModal()" class="text-neutral-500 hover:text-white">✕</button>
             </div>
 
-            <div id="cart-items-wrapper" class="max-h-56 overflow-y-auto space-y-2.5 text-xs pr-1">
+            <div id="cart-items-wrapper" class="max-h-60 overflow-y-auto space-y-2.5 text-xs pr-1">
                 <!-- Render cart list -->
             </div>
 
-            <div class="bg-[#08090d] border border-neutral-800/80 p-3.5 rounded-lg space-y-2 text-xs">
+            <div class="bg-[#08090d] border border-neutral-800/80 p-3.5 rounded-xl space-y-2 text-xs">
                 <label class="text-neutral-400 font-bold block text-[11px]">PHƯƠNG THỨC ĐIỀU PHỐI VẬN CHUYỂN BÍ MẬT:</label>
                 <select id="delivery-method" class="w-full bg-[#131620] border border-neutral-700 text-neutral-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-red-500">
                     <option value="drone">🚁 Drone Tàng Hình Ban Đêm (Thả dù định vị chuẩn 0.5m)</option>
-                    <option value="container">📦 Thùng Nông Cụ Ngụy Trang (Giao tận hầm chứa)</option>
-                    <option value="dead_drop">📍 Điểm Hẹn An Toàn - Safehouse (Tọa độ tự hủy sau 60 phút)</option>
+                    <option value="container">📦 Thùng Nông Cụ Ngụy Trang Hợp Đức (Giao tận hầm chứa)</option>
+                    <option value="dead_drop">📍 Điểm Hẹn An Toàn Safehouse (Tọa độ tự hủy sau 60 phút)</option>
+                    <option value="courier">🚚 Đội Xe Vận Tải Nông Sản Ngụy Trang (Có vũ trang bảo vệ)</option>
                 </select>
             </div>
 
@@ -341,17 +349,17 @@
                 <span id="cart-total-vnđ" class="text-emerald-400 text-base">0 ₫</span>
             </div>
 
-            <button onclick="executeCheckout()" class="w-full bg-red-700 hover:bg-red-600 text-white font-bold py-3 rounded-lg text-xs tracking-widest transition">
+            <button onclick="executeCheckout()" class="w-full bg-red-700 hover:bg-red-600 text-white font-bold py-3 rounded-xl text-xs tracking-widest transition shadow-lg shadow-red-950/80">
                 XÁC NHẬN THANH TOÁN & ĐIỀU PHỐI ĐƠN HÀNG
             </button>
         </div>
     </div>
 
     <!-- ============================================================ -->
-    <!-- 6. MODAL BẢNG QUẢN TRỊ VIÊN — GIÁM ĐỐC JEONG JIN-MAN          -->
+    <!-- 5. MODAL BẢNG QUẢN TRỊ VIÊN — GIÁM ĐỐC JEONG JIN-MAN          -->
     <!-- ============================================================ -->
     <div id="admin-modal" class="fixed inset-0 bg-black/85 backdrop-blur-sm hidden items-center justify-center z-50 p-4 font-mono-code">
-        <div class="bg-[#0e1017] border border-red-900/60 rounded-xl max-w-lg w-full p-6 text-neutral-200 shadow-2xl space-y-4">
+        <div class="bg-[#0e1017] border border-red-900/60 rounded-2xl max-w-lg w-full p-6 text-neutral-200 shadow-2xl space-y-4">
             <div class="flex justify-between items-center border-b border-neutral-800 pb-3">
                 <span class="text-sm font-bold text-red-400 flex items-center gap-2">
                     <span>⚙️</span> BẢNG QUẢN TRỊ VIÊN — GIÁM ĐỐC JEONG JIN-MAN
@@ -361,7 +369,7 @@
 
             <div class="space-y-4 text-xs">
                 <div class="space-y-1.5">
-                    <label class="text-neutral-400">NẠP TIỀN TÀI KHOẢN (VNĐ):</label>
+                    <label class="text-neutral-400 font-bold">NẠP TIỀN TÀI KHOẢN (VNĐ):</label>
                     <div class="flex gap-2">
                         <input type="number" id="admin-deposit-input" placeholder="Ví dụ: 500000000" 
                             class="bg-[#131620] border border-neutral-700 rounded-lg px-3 py-2 text-neutral-100 flex-grow text-xs focus:outline-none focus:border-red-500">
@@ -372,9 +380,9 @@
                 </div>
 
                 <div class="space-y-1.5">
-                    <label class="text-neutral-400">THAY ĐỔI CẤP ĐỘ PHÂN QUYỀN HIỆN TẠI:</label>
+                    <label class="text-neutral-400 font-bold">THAY ĐỔI CẤP ĐỘ PHÂN QUYỀN HIỆN TẠI:</label>
                     <select id="admin-tier-select" class="w-full bg-[#131620] border border-neutral-700 rounded-lg px-3 py-2 text-neutral-100 text-xs focus:outline-none focus:border-red-500">
-                        <option value="GREEN">🟢 Code Green (Toàn quyền Giám Đốc/Admin)</option>
+                        <option value="GREEN">🟢 Code Green (Toàn quyền Giám Đốc / Master Admin)</option>
                         <option value="RED">🔴 Code Red (Vũ khí & Tác chiến)</option>
                         <option value="PURPLE">🟣 Code Purple (Dọn dẹp & Do thám)</option>
                         <option value="YELLOW">🟡 Code Yellow (Y tế & Cứu thương)</option>
@@ -382,13 +390,13 @@
                 </div>
 
                 <div class="space-y-1.5">
-                    <label class="text-neutral-400">TÊN CHỦ TÀI KHOẢN:</label>
+                    <label class="text-neutral-400 font-bold">TÊN CHỦ TÀI KHOẢN:</label>
                     <input type="text" id="admin-username-input" value="Jeong Jin-man" 
                         class="w-full bg-[#131620] border border-neutral-700 rounded-lg px-3 py-2 text-neutral-100 text-xs focus:outline-none focus:border-red-500">
                 </div>
 
                 <div class="border-t border-neutral-800 pt-3">
-                    <button onclick="saveAdminSettings()" class="w-full bg-red-700 hover:bg-red-600 text-white font-bold py-2.5 rounded-lg tracking-wider transition">
+                    <button onclick="saveAdminSettings()" class="w-full bg-red-700 hover:bg-red-600 text-white font-bold py-2.5 rounded-xl tracking-wider transition">
                         LƯU & ĐỒNG BỘ THIẾT LẬP
                     </button>
                 </div>
@@ -397,14 +405,93 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- 7. JAVASCRIPT CORE CONTROLLER                                -->
+    <!-- 6. JAVASCRIPT CORE CONTROLLER & KHO DỮ LIỆU ĐỒ SỘ (40+ MÓN) -->
     <!-- ============================================================ -->
     <script>
-        // --- CƠ SỞ DỮ LIỆU SẢN PHẨM CHUẨN ĐIỆN ẢNH (HÌNH ẢNH SẮC NÉT) ---
-        const PRODUCTS_DB = [
-            // === CODE RED: SÚNG NGẮN / PISTOL ===
+        // --- 1. KHO HÀNG NÔNG CỤ NGỤY TRANG (DISGUISE CATALOG) ---
+        const DISGUISE_PRODUCTS = [
             {
-                id: 'P020',
+                id: 'D01',
+                category: 'steel',
+                name: 'Ống Cao Su Xoắn Lõi Thép Vàng Phi 50 (Cuộn 50M)',
+                tag: 'ỐNG DẪN LOẠI 1',
+                specs: 'Áp lực làm việc 500 Bar, lõi thép xoắn kép chống dẹp gãy khi uốn cong.',
+                price: 6800000,
+                img: 'https://images.unsplash.com/photo-1590496793929-36417d3117de?w=500&auto=format&fit=crop&q=80'
+            },
+            {
+                id: 'D02',
+                category: 'hose',
+                name: 'Ống Nhựa Chịu Áp Lực Cao Xanh Dương Phi 75',
+                tag: 'LÕI THÉP CHỊU LỰC',
+                specs: 'Gia cường 4 lớp sợi polyester dệt chéo, chịu tia UV và thời tiết khắc nghiệt.',
+                price: 12500000,
+                img: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80'
+            },
+            {
+                id: 'D03',
+                category: 'pump',
+                name: 'Hệ Thống Guồng Cuộn Dây Áp Lực Tự Động 100M',
+                tag: 'TỰ THU HỒI',
+                specs: 'Khung thép sơn tĩnh điện chống rỉ, bạc đạn đôi chịu tải vòng quay lớn.',
+                price: 18200000,
+                img: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=500&auto=format&fit=crop&q=80'
+            },
+            {
+                id: 'D04',
+                category: 'valve',
+                name: 'Van Điều Áp Thép Đúc Công Nghiệp 800 Bar',
+                tag: 'PHỤ KIỆN KHÓA',
+                specs: 'Mặt bích tiêu chuẩn JIS 10K, gioăng PTFE kháng hóa chất và áp suất cực cao.',
+                price: 4500000,
+                img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&auto=format&fit=crop&q=80'
+            },
+            {
+                id: 'D05',
+                category: 'pump',
+                name: 'Máy Bơm Chìm Đẩy Cao Thủy Lực P-900 (Động Cơ Lõi Đồng)',
+                tag: 'BƠM CÔNG NGHIỆP',
+                specs: 'Lưu lượng 45m³/h, cột áp 65m, chống nước chuẩn quân sự IP68.',
+                price: 15800000,
+                img: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80'
+            },
+            {
+                id: 'D06',
+                category: 'chem',
+                name: 'Dung Dịch Tẩy Cặn Đường Ống Hữu Cơ Nano-Clean (Can 20L)',
+                tag: 'HÓA CHẤT XỬ LÝ',
+                specs: 'Hòa tan hoàn toàn cặn vôi, rêu mốc và hợp chất hữu cơ mà không mài mòn cao su.',
+                price: 2400000,
+                img: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=500&auto=format&fit=crop&q=80'
+            },
+            {
+                id: 'D07',
+                category: 'valve',
+                name: 'Bộ Khớp Nối Nhanh Thủy Lực Inox 316 (Bộ 10 Cái)',
+                tag: 'KHỚP NỐI NHANH',
+                specs: 'Khóa bi tự động 8 chốt, chịu áp lực sốc 1000 Bar không xì rò.',
+                price: 3200000,
+                img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&auto=format&fit=crop&q=80'
+            },
+            {
+                id: 'D08',
+                category: 'hose',
+                name: 'Dây Dẫn Khí Nén Bọc Thép Chống Cháy 30M',
+                tag: 'CHỐNG CHÁY',
+                specs: 'Chịu nhiệt độ -40°C đến +150°C, vỏ ngoài chống tia lửa hàn xì.',
+                price: 5600000,
+                img: 'https://images.unsplash.com/photo-1590496793929-36417d3117de?w=500&auto=format&fit=crop&q=80'
+            }
+        ];
+
+        // --- 2. CƠ SỞ DỮ LIỆU CHỢ ĐEN TÁC CHIẾN ĐỒ SỘ (MURDER MALL PRODUCTS - 40+ MÓN) ---
+        const PRODUCTS_DB = [
+            // ==========================================
+            // CODE RED: VŨ KHÍ & TÁC CHIẾN (RED)
+            // ==========================================
+            // Súng Ngắn (Pistol)
+            {
+                id: 'RED-P01',
                 name: 'Colt M1911 Custom Edition',
                 subCat: 'Pistol',
                 code: 'RED',
@@ -413,26 +500,55 @@
                 specs: 'Cỡ đạn .45 ACP, báng gỗ mun gia công tinh xảo, đã mài xóa số sê-ri.'
             },
             {
-                id: 'P021',
+                id: 'RED-P02',
+                name: 'Glock 19 Gen 5 Blackout',
+                subCat: 'Pistol',
+                code: 'RED',
+                price: 24500000,
+                img: 'https://images.unsplash.com/photo-1584441405886-bc91be61e56a?w=600&auto=format&fit=crop&q=80',
+                specs: 'Cỡ đạn 9x19mm Parabellum, rãnh gắn giảm thanh, phủ Cerakote đen tuyền.'
+            },
+            {
+                id: 'RED-P03',
+                name: 'Desert Eagle .50 AE Bạc Titan',
+                subCat: 'Pistol',
+                code: 'RED',
+                price: 52000000,
+                img: 'https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=600&auto=format&fit=crop&q=80',
+                specs: 'Hỏa lực uy lực cực đại, phủ titan mờ chống phản quang ánh sáng ban đêm.'
+            },
+            {
+                id: 'RED-P04',
                 name: 'Tokarev TT-33 Chiến Thuật',
                 subCat: 'Pistol',
                 code: 'RED',
                 price: 21000000,
                 img: 'https://images.unsplash.com/photo-1584441405886-bc91be61e56a?w=600&auto=format&fit=crop&q=80',
-                specs: 'Cỡ đạn 7.62×25mm, nòng đúc hợp kim chịu nhiệt độ cao.'
+                specs: 'Cỡ đạn 7.62×25mm xuyên áo giáp mỏng, độ tin cậy cơ học tuyệt đối.'
             },
             {
-                id: 'P033',
-                name: 'Glock 19 Gen 5 Blackout',
+                id: 'RED-P05',
+                name: 'Heckler & Koch USP Tactical .45',
                 subCat: 'Pistol',
                 code: 'RED',
-                price: 16500000,
-                img: 'https://images.unsplash.com/photo-1584441405886-bc91be61e56a?w=600&auto=format&fit=crop&q=80',
-                specs: 'Cỡ đạn 9x19mm Parabellum, trang bị rãnh gắn ống giảm thanh.'
+                price: 36000000,
+                img: 'https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=600&auto=format&fit=crop&q=80',
+                specs: 'Ống giảm âm nguyên khối cacbon, thước ngắm dạ quang ban đêm tritium.'
             },
             {
-                id: 'R009',
-                name: 'Revolver Smith & Wesson Model 686',
+                id: 'RED-P06',
+                name: 'Sig Sauer P226 Legion Black',
+                subCat: 'Pistol',
+                code: 'RED',
+                price: 34000000,
+                img: 'https://images.unsplash.com/photo-1584441405886-bc91be61e56a?w=600&auto=format&fit=crop&q=80',
+                specs: 'Trang bị cò rút ngắn SRT, ray Picatinny tích hợp đèn pin laser hồng ngoại.'
+            },
+
+            // Súng Ổ Xoay (Revolver)
+            {
+                id: 'RED-R01',
+                name: 'Smith & Wesson Model 686 .357',
                 subCat: 'Revolver',
                 code: 'RED',
                 price: 42000000,
@@ -440,27 +556,27 @@
                 specs: 'Cỡ đạn .357 Magnum mạ crom sáng bóng, ổ xoay 6 viên chuẩn xác.'
             },
             {
-                id: 'P022',
-                name: 'Desert Eagle .50 AE Bạc Titan',
-                subCat: 'Pistol',
+                id: 'RED-R02',
+                name: 'Colt Python .357 Magnum 6 Inch',
+                subCat: 'Revolver',
                 code: 'RED',
-                price: 48000000,
-                img: 'https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=600&auto=format&fit=crop&q=80',
-                specs: 'Hỏa lực uy lực cực đại, phủ titan chống phản quang.'
+                price: 49000000,
+                img: 'https://images.unsplash.com/photo-1572565628290-7d3ef711b7df?w=600&auto=format&fit=crop&q=80',
+                specs: 'Độ giật cân bằng, nòng khương tuyến chuẩn đấu giải xạ thủ chuyên nghiệp.'
             },
             {
-                id: 'MG021',
-                name: 'Ingram MAC-10 Compact Auto',
-                subCat: 'Machine Pistol',
+                id: 'RED-R03',
+                name: 'Chiappa Rhino 60DS Tactical',
+                subCat: 'Revolver',
                 code: 'RED',
-                price: 265000000,
-                img: 'https://images.unsplash.com/photo-1584441405886-bc91be61e56a?w=600&auto=format&fit=crop&q=80',
-                specs: 'Tốc độ bắn 1200 viên/phút, kèm ống tiêu âm giảm thanh kéo dài.'
+                price: 46000000,
+                img: 'https://images.unsplash.com/photo-1572565628290-7d3ef711b7df?w=600&auto=format&fit=crop&q=80',
+                specs: 'Thiết kế nòng đặt dưới trục xoay triệt tiêu độ hất nòng khi bắn nhanh.'
             },
 
-            // === CODE RED: TIỂU LIÊN / SMG ===
+            // Súng Tiểu Liên & Súng Ngắn Liên Thanh (SMG / Machine Pistol)
             {
-                id: 'SMG01',
+                id: 'RED-SMG01',
                 name: 'Heckler & Koch MP5 Navy Mod',
                 subCat: 'SMG',
                 code: 'RED',
@@ -469,18 +585,56 @@
                 specs: 'Độ giật cực thấp, báng rút tiện dụng tác chiến không gian hẹp.'
             },
             {
-                id: 'SMG02',
+                id: 'RED-SMG02',
                 name: 'FN P90 Tác Chiến Đô Thị',
                 subCat: 'SMG',
                 code: 'RED',
                 price: 115000000,
                 img: 'https://images.unsplash.com/photo-1584441405886-bc91be61e56a?w=600&auto=format&fit=crop&q=80',
-                specs: 'Băng đạn 50 viên đặt ngang, cỡ đạn 5.7x28mm xuyên giáp mỏng.'
+                specs: 'Băng đạn 50 viên đặt ngang, cỡ đạn 5.7x28mm xuyên giáp Kevlar.'
+            },
+            {
+                id: 'RED-SMG03',
+                name: 'Ingram MAC-10 Compact Auto',
+                subCat: 'Machine Pistol',
+                code: 'RED',
+                price: 65000000,
+                img: 'https://images.unsplash.com/photo-1584441405886-bc91be61e56a?w=600&auto=format&fit=crop&q=80',
+                specs: 'Tốc độ bắn 1200 viên/phút, kèm ống tiêu âm giảm thanh kéo dài.'
+            },
+            {
+                id: 'RED-SMG04',
+                name: 'KRISS Vector .45 ACP Gen II',
+                subCat: 'SMG',
+                code: 'RED',
+                price: 135000000,
+                img: 'https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=600&auto=format&fit=crop&q=80',
+                specs: 'Hệ thống cơ chế Super V triệt tiêu hoàn toàn lực giật ngược.'
             },
 
-            // === CODE RED: SÚNG BẮN TỈA / SNIPER ===
+            // Súng Trường Tấn Công (Assault Rifle)
             {
-                id: 'SNP01',
+                id: 'RED-AR01',
+                name: 'HK416D Tác Chiến Đặc Nhiệm',
+                subCat: 'Assault Rifle',
+                code: 'RED',
+                price: 165000000,
+                img: 'https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=600&auto=format&fit=crop&q=80',
+                specs: 'Piston trích khí ngắn chống cát bụi, nòng mạ crom dài 14.5 inch.'
+            },
+            {
+                id: 'RED-AR02',
+                name: 'FN SCAR-H 7.62x51mm NATO',
+                subCat: 'Assault Rifle',
+                code: 'RED',
+                price: 195000000,
+                img: 'https://images.unsplash.com/photo-1584441405886-bc91be61e56a?w=600&auto=format&fit=crop&q=80',
+                specs: 'Sức công phá mạnh, tầm bắn hiệu quả 800m, báng gập tùy chỉnh.'
+            },
+
+            // Súng Bắn Tỉa (Sniper Rifle)
+            {
+                id: 'RED-SNP01',
                 name: 'Accuracy International AWM .338',
                 subCat: 'Sniper Rifle',
                 code: 'RED',
@@ -489,148 +643,354 @@
                 specs: 'Tầm bắn hiệu quả 1500m, kính ngắm Schmidt & Bender 5-25x56.'
             },
             {
-                id: 'SNP02',
+                id: 'RED-SNP02',
                 name: 'Barrett M82A1 Cỡ Đạn .50 BMG',
                 subCat: 'Sniper Rifle',
                 code: 'RED',
                 price: 340000000,
                 img: 'https://images.unsplash.com/photo-1584441405886-bc91be61e56a?w=600&auto=format&fit=crop&q=80',
-                specs: 'Súng bắn tỉa công phá xe bọc thép hạng nhẹ và công sự bê tông.'
+                specs: 'Súng bắn tỉa công phá xe bọc thép hạng nhẹ và công sự bê tông dày.'
+            },
+            {
+                id: 'RED-SNP03',
+                name: 'CheyTac M200 Intervention',
+                subCat: 'Sniper Rifle',
+                code: 'RED',
+                price: 380000000,
+                img: 'https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=600&auto=format&fit=crop&q=80',
+                specs: 'Tầm bắn kỷ lục 2300m, máy tính đường đạn PDA tích hợp đo gió thời tiết.'
             },
 
-            // === CODE PURPLE: DỌN DẸP & DO THÁM ===
+            // Vũ Khí Cận Chiến & Chất Nổ (Melee & Explosives)
             {
-                id: 'PUR01',
+                id: 'RED-EXP01',
+                name: 'Lựu Đạn Choáng Flashbang M84 x4',
+                subCat: 'Explosives',
+                code: 'RED',
+                price: 18000000,
+                img: 'https://images.unsplash.com/photo-1584441405886-bc91be61e56a?w=600&auto=format&fit=crop&q=80',
+                specs: 'Cường độ 175dB và 6 triệu candela làm tê liệt hệ thần kinh trong 15 giây.'
+            },
+            {
+                id: 'RED-EXP02',
+                name: 'Khối Thuốc Nổ C4 Kèm Kíp Nổ Từ Xa',
+                subCat: 'Explosives',
+                code: 'RED',
+                price: 35000000,
+                img: 'https://images.unsplash.com/photo-1584441405886-bc91be61e56a?w=600&auto=format&fit=crop&q=80',
+                specs: '1.25kg thuốc nổ dẻo RDX, kích hoạt sóng vô tuyến mã hóa chống rò quét.'
+            },
+            {
+                id: 'RED-MEL01',
+                name: 'Bộ Dao Chiến Thuật CQC Tungsten',
+                subCat: 'Melee',
+                code: 'RED',
+                price: 12500000,
+                img: 'https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=600&auto=format&fit=crop&q=80',
+                specs: 'Hợp kim Tungsten không từ tính, vô hình trước máy dò kim loại sân bay.'
+            },
+
+            // ==========================================
+            // CODE PURPLE: DỌN DẸP & DO THÁM (PURPLE)
+            // ==========================================
+            {
+                id: 'PUR-01',
                 name: 'Axit Hóa Phân Giải Sinh Học PX-70',
                 subCat: 'Chemicals',
                 code: 'PURPLE',
                 price: 45000000,
                 img: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&auto=format&fit=crop&q=80',
-                specs: 'Hòa tan mọi mô hữu cơ và dấu vết DNA trong vòng 10 phút, không để lại mùi.'
+                specs: 'Hòa tan mọi mô hữu cơ, xương và dấu vết DNA trong 10 phút, không khói không mùi.'
             },
             {
-                id: 'PUR02',
-                name: 'Drone Micro Trinh Sát Tàng Hình',
+                id: 'PUR-02',
+                name: 'Dung Dịch Phá Hủy Phản Ứng Luminol PX-9',
+                subCat: 'Chemicals',
+                code: 'PURPLE',
+                price: 28000000,
+                img: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&auto=format&fit=crop&q=80',
+                specs: 'Phá hủy hoàn toàn phân tử hemoglobin của máu, vô hiệu hóa đèn chiếu pháp y UV.'
+            },
+            {
+                id: 'PUR-03',
+                name: 'Bột Trung Hòa Khí Độc & Mùi Tử Thi Bio-Mask',
+                subCat: 'Chemicals',
+                code: 'PURPLE',
+                price: 19000000,
+                img: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&auto=format&fit=crop&q=80',
+                specs: 'Hấp thụ 99.9% khí amoniac và hợp chất lưu huỳnh sinh ra từ hiện trường phân hủy.'
+            },
+            {
+                id: 'PUR-04',
+                name: 'Micro Drone Trinh Sát Tàng Hình 4K',
                 subCat: 'Espionage',
                 code: 'PURPLE',
                 price: 68000000,
                 img: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=600&auto=format&fit=crop&q=80',
-                specs: 'Camera quét nhiệt độ phân giải 4K, tàng hình trước radar cảm biến.'
+                specs: 'Kích thước siêu nhỏ 6cm, camera hồng ngoại tầm nhiệt, truyền sóng vi ba bảo mật.'
             },
             {
-                id: 'PUR03',
-                name: 'Bộ Phá Sóng Quân Sự Đa Tần EMP',
+                id: 'PUR-05',
+                name: 'Bộ Phá Sóng Quân Sự Đa Tần EMP-X',
                 subCat: 'Espionage',
                 code: 'PURPLE',
                 price: 52000000,
                 img: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&auto=format&fit=crop&q=80',
-                specs: 'Làm nhiễu toàn bộ sóng điện thoại, Wi-Fi và camera an ninh bán kính 100m.'
+                specs: 'Làm nhiễu toàn bộ sóng điện thoại, Wi-Fi và camera an ninh trong bán kính 100m.'
+            },
+            {
+                id: 'PUR-06',
+                name: 'Máy Quét Laser Nghe Trộm Qua Kính Cửa Sổ',
+                subCat: 'Espionage',
+                code: 'PURPLE',
+                price: 78000000,
+                img: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&auto=format&fit=crop&q=80',
+                specs: 'Thu lại rung động vi mô trên bề mặt kính cách xa 500m và giải mã âm thanh thoại chuẩn.'
+            },
+            {
+                id: 'PUR-07',
+                name: 'Vali Khử Từ & Xóa Sạch Ổ Cứng Cleaner-Pro',
+                subCat: 'Data Wipe',
+                code: 'PURPLE',
+                price: 85000000,
+                img: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&auto=format&fit=crop&q=80',
+                specs: 'Xóa vĩnh viễn chip nhớ flash và đĩa từ theo tiêu chuẩn Bộ Quốc Phòng NSA 130-2.'
             },
 
-            // === CODE YELLOW: Y TẾ KHẨN CẤP ===
+            // ==========================================
+            // CODE YELLOW: Y TẾ & CỨU THƯƠNG (YELLOW)
+            // ==========================================
             {
-                id: 'YEL01',
-                name: 'Bộ Túi Sơ Cứu Chấn Thương Chiến Thuật IFAK',
+                id: 'YEL-01',
+                name: 'Bộ Túi Sơ Cứu Chấn Thương Tác Chiến IFAK',
                 subCat: 'Medical Kit',
                 code: 'YELLOW',
                 price: 14500000,
                 img: 'https://images.unsplash.com/photo-1603398938378-e54eab446dde?w=600&auto=format&fit=crop&q=80',
-                specs: 'Bao gồm gạc cầm máu Celox, garo xoay tự động và kim giải áp màng phổi.'
+                specs: 'Bao gồm gạc cầm máu Celox, garo xoay tự động và kim giải áp màng phổi khẩn cấp.'
             },
             {
-                id: 'YEL02',
-                name: 'Ống Tiêm Huyết Thanh Giảm Đau Adrenaline Tức Thì',
+                id: 'YEL-02',
+                name: 'Máy Khử Rung Tim Di Động Tự Động AED-X',
+                subCat: 'Medical Kit',
+                code: 'YELLOW',
+                price: 32000000,
+                img: 'https://images.unsplash.com/photo-1603398938378-e54eab446dde?w=600&auto=format&fit=crop&q=80',
+                specs: 'Tự động phân tích nhịp tim và sốc điện phục hồi tuần hoàn sau chấn động nặng.'
+            },
+            {
+                id: 'YEL-03',
+                name: 'Bộ Phẫu Thuật Gắp Đầu Đạn Dã Chiến',
+                subCat: 'Medical Kit',
+                code: 'YELLOW',
+                price: 26000000,
+                img: 'https://images.unsplash.com/photo-1603398938378-e54eab446dde?w=600&auto=format&fit=crop&q=80',
+                specs: 'Kẹp titanium chống nhiễm khuẩn, đèn nội soi sợi quang và thuốc kháng sinh tiêm thẳng.'
+            },
+            {
+                id: 'YEL-04',
+                name: 'Ống Tiêm Huyết Thanh Adrenaline Pro Max',
                 subCat: 'Serum',
                 code: 'YELLOW',
                 price: 28000000,
                 img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80',
-                specs: 'Kích hoạt trạng thái tỉnh táo và ức chế 90% cảm giác đau đớn trong 45 phút.'
+                specs: 'Kích hoạt trạng thái tỉnh táo cực đại và ức chế 95% cảm giác đau đớn trong 45 phút.'
+            },
+            {
+                id: 'YEL-05',
+                name: 'Keo Dán Miệng Vết Thương Sinh Học Bio-Glue',
+                subCat: 'Serum',
+                code: 'YELLOW',
+                price: 18500000,
+                img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80',
+                specs: 'Hàn gắn động mạch đứt và cầm máu tức thì trong 5 giây không cần chỉ khâu.'
+            },
+            {
+                id: 'YEL-06',
+                name: 'Hộp Viên Uống Giải Độc Thần Kinh Toàn Diện',
+                subCat: 'Serum',
+                code: 'YELLOW',
+                price: 22000000,
+                img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=80',
+                specs: 'Giải trừ các loại độc tố rắn, khí ga Sarin và chất độc thần kinh tổng hợp.'
             },
 
-            // === CODE GREEN: ĐẶC QUYỀN TỐI CAO ===
+            // ==========================================
+            // CODE GREEN: ĐẶC QUYỀN GIÁM ĐỐC / ADMIN (GREEN)
+            // ==========================================
             {
-                id: 'GRN01',
-                name: 'Bộ Khiên Đạn Cầm Tay Chống Đạn Xuyên Giáp Cấp IV',
+                id: 'GRN-01',
+                name: 'Bộ Khiên Đạn Graphene Cầm Tay Cấp IV+',
                 subCat: 'Defense',
                 code: 'GREEN',
                 price: 180000000,
                 img: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&auto=format&fit=crop&q=80',
-                specs: 'Hợp kim Graphene siêu nhẹ, chặn được đạn súng trường 7.62x51mm liên tiếp.'
+                specs: 'Hợp kim Graphene siêu nhẹ, chặn đứng đạn súng trường 7.62x51mm AP liên tiếp.'
             },
             {
-                id: 'GRN02',
-                name: 'Hợp Đồng Điều Phối Biệt Đội Can Thiệp Vũ Trang',
+                id: 'GRN-02',
+                name: 'Bộ Áp Giáp Khung Xương Titanium Toàn Thân',
+                subCat: 'Defense',
+                code: 'GREEN',
+                price: 450000000,
+                img: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&auto=format&fit=crop&q=80',
+                specs: 'Trợ lực vận động nâng 200kg, chống đạn xuyên tâm và chống mảnh văng nổ lựu đạn.'
+            },
+            {
+                id: 'GRN-03',
+                name: 'Vali Súng Máy Tự Động Phòng Thủ Sentinel',
+                subCat: 'Defense',
+                code: 'GREEN',
+                price: 620000000,
+                img: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&auto=format&fit=crop&q=80',
+                specs: 'Ngụy trang dạng vali du lịch, tự bung súng 6 nòng xoay và AI nhận diện mục tiêu 360°.'
+            },
+            {
+                id: 'GRN-04',
+                name: 'Hợp Đồng Biệt Đội Can Thiệp Vũ Trang 5 Phút',
                 subCat: 'Backup',
                 code: 'GREEN',
                 price: 850000000,
                 img: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=600&auto=format&fit=crop&q=80',
-                specs: '4 đặc nhiệm xuất hiện tại tọa độ phát tín hiệu SOS trong vòng tối đa 7 phút.'
+                specs: '4 đặc nhiệm vũ trang hạng nặng xuất hiện giải cứu tại bất kỳ tọa độ nào trong 5-7 phút.'
+            },
+            {
+                id: 'GRN-05',
+                name: 'Két Sắt Ngầm Tự Hủy Bằng Nhiệt Nhôm Thermite',
+                subCat: 'Defense',
+                code: 'GREEN',
+                price: 290000000,
+                img: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&auto=format&fit=crop&q=80',
+                specs: 'Nhiệt độ thiêu hủy 3000°C làm bốc hơi toàn bộ tài liệu và ổ cứng khi bị xâm nhập.'
             }
         ];
 
-        // --- CẤU TRÚC MENU THEO PHÂN CẤP ---
+        // --- 3. CẤU TRÚC DANH MỤC CON ĐẦY ĐỦ ---
         const SUB_CATEGORIES = {
             'RED': [
-                { id: 'ALL_RED', name: 'Tất Cả Vũ Khí' },
-                { id: 'Pistol', name: '• Súng Ngắn Bán Tự Động (Pistol)' },
-                { id: 'Revolver', name: '• Súng Ổ Xoay (Revolver)' },
-                { id: 'Machine Pistol', name: '• Súng Ngắn Liên Thanh' },
+                { id: 'ALL_RED', name: '• Tất Cả Vũ Khí' },
+                { id: 'Pistol', name: '• Súng Ngắn (Pistols)' },
+                { id: 'Revolver', name: '• Súng Ổ Xoay (Revolvers)' },
                 { id: 'SMG', name: '• Súng Tiểu Liên (SMG)' },
-                { id: 'Sniper Rifle', name: '• Súng Bắn Tỉa (Sniper Rifle)' }
+                { id: 'Machine Pistol', name: '• Súng Ngắn Liên Thanh' },
+                { id: 'Assault Rifle', name: '• Súng Trường Tấn Công' },
+                { id: 'Sniper Rifle', name: '• Súng Bắn Tỉa (Sniper)' },
+                { id: 'Explosives', name: '• Chất Nổ & Lựu Đạn' },
+                { id: 'Melee', name: '• Dao Tác Chiến & Cận Chiến' }
             ],
             'PURPLE': [
-                { id: 'ALL_PURPLE', name: 'Tất Cả Thiết Bị' },
-                { id: 'Chemicals', name: '• Hóa Chất & Tiêu Hủy' },
-                { id: 'Espionage', name: '• Drone & Thiết Bị Gián Điệp' }
+                { id: 'ALL_PURPLE', name: '• Tất Cả Thiết Bị' },
+                { id: 'Chemicals', name: '• Hóa Chất & Tiêu Hủy Hiện Trường' },
+                { id: 'Espionage', name: '• Drone & Thiết Bị Gián Điệp' },
+                { id: 'Data Wipe', name: '• Xóa Dữ Liệu & Bằng Chứng' }
             ],
             'YELLOW': [
-                { id: 'ALL_YELLOW', name: 'Tất Cả Dược Phẩm' },
-                { id: 'Medical Kit', name: '• Dụng Cụ Phẫu Thuật Khẩn' },
-                { id: 'Serum', name: '• Huyết Thanh Kích Thích' }
+                { id: 'ALL_YELLOW', name: '• Tất Cả Y Tế' },
+                { id: 'Medical Kit', name: '• Dụng Cụ Phẫu Thuật & IFAK' },
+                { id: 'Serum', name: '• Huyết Thanh Kích Thích & Cầm Máu' }
             ],
             'GREEN': [
-                { id: 'ALL_GREEN', name: 'Tất Cả Quyền Lực' },
-                { id: 'Defense', name: '• Giáp & Khiên Phòng Thủ' },
-                { id: 'Backup', name: '• Lực Lượng Ứng Cứu Khẩn' }
+                { id: 'ALL_GREEN', name: '• Tất Cả Đặc Quyền' },
+                { id: 'Defense', name: '• Giáp & Khiên Phòng Thủ Tối Cao' },
+                { id: 'Backup', name: '• Lực Lượng Vũ Trang Phản Ứng Nhanh' }
             ]
         };
 
-        // --- TRẠNG THÁI TOÀN CỤC (GLOBAL STATE) ---
+        // --- 4. TRẠNG THÁI TOÀN CỤC (STATE) ---
         let currentTab = 'RED';
         let currentSubCat = 'ALL_RED';
-        let userClearance = 'GREEN'; // Mặc định tài khoản Giám đốc
+        let userClearance = 'GREEN'; // Mặc định quyền Master của Jeong Jin-man
         let userName = 'Jeong Jin-man';
         let userBalance = 1500000000; // 1.5 Tỷ VNĐ
         let cart = [];
+        let secretClickCount = 0;
+        let secretClickTimer = null;
 
-        // --- ĐIỀU HƯỚNG & CHUYỂN CẢNH NGUYÊN TÁC ---
-        function inspectSourceCodeModal() {
-            document.getElementById('source-modal').classList.remove('hidden');
-            document.getElementById('source-modal').classList.add('flex');
+        // --- 5. ĐIỀU HƯỚNG & CỔNG BẢO MẬT THEO NGUYÊN TÁC PHIM ---
+        function filterDisguiseCategory(cat) {
+            const grid = document.getElementById('disguise-products-grid');
+            grid.innerHTML = '';
+
+            let filtered = DISGUISE_PRODUCTS;
+            if (cat !== 'all') {
+                filtered = DISGUISE_PRODUCTS.filter(p => p.category === cat);
+            }
+
+            document.getElementById('disguise-item-count').innerText = `Hiển thị ${filtered.length} sản phẩm`;
+
+            filtered.forEach(p => {
+                const card = document.createElement('div');
+                card.className = "bg-white border border-slate-200 rounded-xl p-3.5 shadow-sm hover:shadow-md transition flex flex-col justify-between";
+                card.innerHTML = `
+                    <div>
+                        <div class="w-full h-40 bg-slate-100 rounded-lg overflow-hidden mb-3">
+                            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover hover:scale-105 transition duration-300"
+                                onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80';">
+                        </div>
+                        <span class="text-[10px] text-blue-700 bg-blue-50 font-bold px-2 py-0.5 rounded">${p.tag}</span>
+                        <h4 class="font-bold text-xs text-slate-800 mt-1.5 line-clamp-2">${p.name}</h4>
+                        <p class="text-[11px] text-slate-500 mt-1 leading-relaxed line-clamp-2">${p.specs}</p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-100 mt-3 flex justify-between items-center">
+                        <span class="font-extrabold text-blue-800 text-xs">${p.price.toLocaleString('vi-VN')} ₫</span>
+                        <button onclick="alert('Đã gửi yêu cầu báo giá đại lý cho mặt hàng: ${p.name}')" class="bg-slate-100 hover:bg-blue-700 hover:text-white text-slate-700 text-[11px] px-2.5 py-1 rounded-md font-bold transition">
+                            Báo Giá Sỉ
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
         }
 
-        function closeSourceModal() {
-            document.getElementById('source-modal').classList.add('hidden');
-            document.getElementById('source-modal').classList.remove('flex');
-        }
+        // Xử lý tìm kiếm tại mặt tiền: Nếu gõ mã mật theo phim sẽ kích hoạt Cổng Ngầm
+        function handleDisguiseSearch() {
+            const val = document.getElementById('disguise-search-input').value.trim().toUpperCase();
+            
+            // Các mã mật hợp lệ để mở cổng vào
+            const SECRET_KEYS = ['MH13543505', 'GREEN', 'RED', 'PURPLE', 'YELLOW', 'JINMAN', '7209', 'MURTHEHELP', 'MURDER'];
+            
+            if (SECRET_KEYS.some(k => val.includes(k))) {
+                // Xác định cấp bậc theo mã nhập
+                if (val.includes('RED')) userClearance = 'RED';
+                else if (val.includes('PURPLE')) userClearance = 'PURPLE';
+                else if (val.includes('YELLOW')) userClearance = 'YELLOW';
+                else userClearance = 'GREEN';
 
-        function applyKeyAndEnter(key) {
-            closeSourceModal();
-            document.getElementById('disguise-url-bar').value = key;
-            triggerMurthehelpPortal();
-        }
-
-        function checkManualGateway() {
-            const input = document.getElementById('disguise-url-bar').value.trim();
-            if (input.includes('mh13543505') || input.toUpperCase() === 'GREEN' || input.toUpperCase() === 'JINMAN' || input === '7209') {
+                document.getElementById('portal-user-detected').innerText = `Tài khoản: ${userName} (CODE ${userClearance})`;
                 triggerMurthehelpPortal();
             } else {
-                alert('🔍 Tìm kiếm hoàn tất: Không tìm thấy sản phẩm ống nước với từ khóa này.');
+                alert(`🔍 Kết quả tìm kiếm cho "${val}": Không có mặt hàng ống nước nào phù hợp với quy cách này.`);
             }
         }
 
-        document.getElementById('disguise-url-bar').addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') checkManualGateway();
+        document.getElementById('disguise-search-input').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') handleDisguiseSearch();
+        });
+
+        // Điểm kích hoạt ẩn: Click 3 lần liên tiếp vào Mã ĐKKD dưới chân trang
+        function handleSecretTripleClick(e) {
+            secretClickCount++;
+            clearTimeout(secretClickTimer);
+            secretClickTimer = setTimeout(() => { secretClickCount = 0; }, 600);
+
+            if (secretClickCount >= 3) {
+                secretClickCount = 0;
+                userClearance = 'GREEN';
+                triggerMurthehelpPortal();
+            }
+        }
+
+        // Phím tắt bàn phím mở cổng ngầm: Ctrl + Shift + K hoặc Alt + M
+        window.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey && e.shiftKey && (e.key === 'K' || e.key === 'k')) || (e.altKey && (e.key === 'M' || e.key === 'm'))) {
+                e.preventDefault();
+                userClearance = 'GREEN';
+                triggerMurthehelpPortal();
+            } else if (e.key === 'Escape') {
+                closeCartModal();
+                closeAdminModal();
+                returnToDisguise();
+            }
         });
 
         function triggerMurthehelpPortal() {
@@ -639,7 +999,7 @@
             portal.classList.remove('hidden');
             portal.classList.add('flex');
 
-            // Sau 1.2s hiện bảng "Đã tự động đăng nhập" chuẩn trong phim
+            // Hiệu ứng chuẩn phim: Sau 1.2s hiện popup "Đã tự động đăng nhập"
             setTimeout(() => {
                 document.getElementById('portal-alert').classList.remove('hidden');
             }, 1200);
@@ -656,7 +1016,7 @@
             document.getElementById('main-body').style.backgroundColor = '#07080b';
 
             updateHeaderHUD();
-            setClearanceTab('RED');
+            setClearanceTab(userClearance === 'GREEN' ? 'RED' : userClearance);
         }
 
         function returnToDisguise() {
@@ -664,24 +1024,15 @@
             document.getElementById('dark-stage').classList.remove('flex');
             document.getElementById('disguise-stage').classList.remove('hidden');
             document.getElementById('main-body').style.backgroundColor = '#f8fafc';
+            document.getElementById('disguise-search-input').value = '';
         }
 
-        // Bấm phím ESC để thoát khẩn cấp về màn hình ngụy trang
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeSourceModal();
-                closeCartModal();
-                closeAdminModal();
-                returnToDisguise();
-            }
-        });
-
-        // --- QUẢN LÝ TAB & RENDER SẢN PHẨM ---
+        // --- 6. QUẢN LÝ TAB & RENDER SẢN PHẨM CHỢ ĐEN (40+ MÓN) ---
         function setClearanceTab(tabCode) {
             currentTab = tabCode;
             currentSubCat = `ALL_${tabCode}`;
 
-            // Cập nhật style tab
+            // Cập nhật viền sáng của Tab phân cấp
             ['RED', 'PURPLE', 'YELLOW', 'GREEN'].forEach(code => {
                 const btn = document.getElementById(`tab-${code}`);
                 if (code === tabCode) {
@@ -691,12 +1042,11 @@
                 }
             });
 
-            // Tiêu đề sidebar
             const titles = {
-                'RED': 'VŨ KHÍ TÁC CHIẾN (GUNS)',
-                'PURPLE': 'DỌN DẸP & DO THÁM (CLEANING)',
-                'YELLOW': 'Y TẾ & CẤP CỨU (MEDICAL)',
-                'GREEN': 'ĐẶC QUYỀN GIÁM ĐỐC (MASTER)'
+                'RED': 'VŨ KHÍ TÁC CHIẾN (GUNS & EXPLOSIVES)',
+                'PURPLE': 'DỌN DẸP & DO THÁM (CLEANING & ESPIONAGE)',
+                'YELLOW': 'Y TẾ & CỨU THƯƠNG (MEDICAL & SERUMS)',
+                'GREEN': 'ĐẶC QUYỀN GIÁM ĐỐC (MASTER & BACKUP)'
             };
             document.getElementById('sidebar-main-title').innerText = titles[tabCode];
 
@@ -712,7 +1062,7 @@
             list.forEach(sub => {
                 const isActive = (currentSubCat === sub.id);
                 const btn = document.createElement('button');
-                btn.className = `w-full text-left px-2.5 py-1.5 rounded transition ${isActive ? 'bg-neutral-800 text-white font-bold' : 'text-neutral-400 hover:text-neutral-200'}`;
+                btn.className = `w-full text-left px-3 py-2 rounded-lg transition text-xs font-semibold ${isActive ? 'bg-neutral-800 text-red-400 font-bold border border-neutral-700' : 'text-neutral-400 hover:text-neutral-200 hover:bg-neutral-900/50'}`;
                 btn.innerText = sub.name;
                 btn.onclick = () => {
                     currentSubCat = sub.id;
@@ -727,7 +1077,7 @@
             const grid = document.getElementById('dark-products-grid');
             grid.innerHTML = '';
 
-            // Lọc sản phẩm theo Tab và SubCategory
+            // Lọc sản phẩm
             let filtered = PRODUCTS_DB.filter(p => p.code === currentTab);
             if (!currentSubCat.startsWith('ALL_')) {
                 filtered = filtered.filter(p => p.subCat === currentSubCat);
@@ -743,13 +1093,16 @@
                 const card = document.createElement('div');
                 card.className = "bg-[#0c0e14] border border-neutral-800/80 rounded-xl overflow-hidden flex flex-col justify-between hover:border-neutral-700 transition shadow-lg";
 
-                // Định dạng giá VNĐ chuẩn
                 const formattedPrice = item.price.toLocaleString('vi-VN') + ' ₫';
+
+                // Placeholder an toàn nếu mạng ảnh ngoại vi bị lỗi
+                const fallbackImg = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200"><rect width="100%" height="100%" fill="%230c0e14"/><text x="50%" y="50%" fill="%23ef4444" font-family="monospace" font-size="14" text-anchor="middle" dominant-baseline="middle">[ TACTICAL ITEM // ${item.id} ]</text></svg>`;
 
                 card.innerHTML = `
                     <div>
                         <div class="relative w-full h-44 bg-neutral-950 overflow-hidden">
-                            <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition duration-300">
+                            <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition duration-300"
+                                onerror="this.onerror=null; this.src='${fallbackImg}';">
                             <span class="absolute top-2.5 right-2.5 bg-black/80 backdrop-blur-md text-[10px] font-bold px-2 py-1 rounded border border-neutral-700 text-neutral-300">
                                 Item No. ${item.id}
                             </span>
@@ -760,17 +1113,17 @@
                                 <span class="text-[10px] font-bold tracking-wider px-2 py-0.5 rounded ${getTierColorBadge(item.code)}">
                                     CODE ${item.code}
                                 </span>
-                                <span class="text-[11px] text-neutral-500">${item.subCat}</span>
+                                <span class="text-[11px] text-neutral-500 font-semibold">${item.subCat}</span>
                             </div>
                             <h3 class="font-bold text-sm text-neutral-100">${item.name}</h3>
-                            <p class="text-[11px] text-neutral-400 leading-relaxed">${item.specs}</p>
+                            <p class="text-[11px] text-neutral-400 leading-relaxed line-clamp-2">${item.specs}</p>
                         </div>
                     </div>
 
                     <div class="p-4 pt-0 border-t border-neutral-900 mt-2">
                         <div class="flex justify-between items-center py-2">
                             <span class="text-[11px] text-neutral-500">GIÁ NIÊM YẾT:</span>
-                            <span class="text-sm font-bold text-emerald-400">${formattedPrice}</span>
+                            <span class="text-sm font-bold text-emerald-400 font-mono-code">${formattedPrice}</span>
                         </div>
 
                         ${hasAccess 
@@ -795,7 +1148,7 @@
             return 'bg-neutral-800 text-neutral-400';
         }
 
-        // --- GIỎ HÀNG & MÔ PHỎNG GIAO HÀNG ĐẶC NHIỆM ---
+        // --- 7. GIỎ HÀNG & THANH TOÁN TÁC CHIẾN ---
         function addToCart(id) {
             const item = PRODUCTS_DB.find(p => p.id === id);
             if (!item) return;
@@ -840,7 +1193,7 @@
                         </div>
                     </div>
                     <div class="flex items-center space-x-3">
-                        <span class="text-emerald-400 font-bold">${item.price.toLocaleString('vi-VN')} ₫</span>
+                        <span class="text-emerald-400 font-bold font-mono-code">${item.price.toLocaleString('vi-VN')} ₫</span>
                         <button onclick="removeItemFromCart(${index})" class="text-red-500 hover:text-red-400 font-bold text-sm">✕</button>
                     </div>
                 `;
@@ -870,23 +1223,21 @@
 
             const method = document.getElementById('delivery-method').selectedOptions[0].text;
 
-            // Trừ tiền
             userBalance -= total;
             updateHeaderHUD();
             closeCartModal();
 
-            // Thông báo mô phỏng giao hàng chuẩn điện ảnh
             alert(`🎯 THANH TOÁN & ĐIỀU PHỐI THÀNH CÔNG!\n\n` +
-                  `• Tổng số tiền đã thanh toán: ${total.toLocaleString('vi-VN')} ₫\n` +
-                  `• Số lượng vật tư: ${cart.length} món\n` +
+                  `• Tổng số tiền: ${total.toLocaleString('vi-VN')} ₫\n` +
+                  `• Số lượng: ${cart.length} món\n` +
                   `• Phương thức: ${method}\n` +
-                  `• Trạng thái: Drone ngầm đã rời bệ phóng tại Kho số #04. Dự kiến tiếp cận sau 12 phút.`);
+                  `• Trạng thái: Stealth Drone đã rời bệ phóng tại Kho ngầm #04 Gangwon. Tiếp cận điểm chỉ định sau 10 phút.`);
 
             cart = [];
             document.getElementById('cart-counter').innerText = '0';
         }
 
-        // --- BẢNG QUẢN TRỊ ADMIN (JEONG JIN-MAN) ---
+        // --- 8. BẢNG QUẢN TRỊ ADMIN (JEONG JIN-MAN) ---
         function openAdminModal() {
             document.getElementById('admin-modal').classList.remove('hidden');
             document.getElementById('admin-modal').classList.add('flex');
@@ -926,6 +1277,9 @@
             document.getElementById('user-balance-display').innerText = userBalance.toLocaleString('vi-VN');
             document.getElementById('user-tier-badge').innerText = `CODE ${userClearance}`;
         }
+
+        // Khởi tạo ban đầu
+        filterDisguiseCategory('all');
     </script>
 </body>
 </html>
