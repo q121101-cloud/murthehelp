@@ -13,8 +13,9 @@
     <meta name="gateway" content="https://murthehelp-hue.dark/mh13543505" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐉</text></svg>">
 
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS & Supabase SDK CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -795,6 +796,19 @@
     <!-- 8. JAVASCRIPT CORE CONTROLLER & KHO DỮ LIỆU ĐỒ SỘ (50+ MÓN) -->
     <!-- ============================================================ -->
     <script>
+        // --- 0. KẾT NỐI SUPABASE CLOUD DATABASE (ĐỒNG BỘ 2 CHIỀU TỰ ĐỘNG) ---
+        const SUPABASE_URL = 'https://hdiecjtimixgoydrhais.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhkaWVjanRpbWl4Z295ZHJoYWlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODcwNjI5MDUsImV4cCI6MjEwMjYzODkwNX0.3HB991l5cGsrPrtFJ8GC-N6SdLR9w6k1RPa6JaAAyKs';
+        
+        let supabaseClient = null;
+        try {
+            if (window.supabase) {
+                supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            }
+        } catch (e) {
+            console.warn("Supabase init error:", e);
+        }
+
         // --- 1. KHO HÀNG NÔNG CỤ HOÀNG HẮC LONG HUẾ (HÌNH ẢNH CHUẨN ĐẸP) ---
         const DISGUISE_PRODUCTS = [
             {
@@ -1378,13 +1392,35 @@
         // Khởi tạo người dùng đăng nhập hiện tại từ session
         function initCurrentUser() {
             const users = getStoredUsers();
-            const lastLoggedInId = localStorage.getItem('murthehelp_current_user') || 'admin';
+            const lastLoggedInId = localStorage.getItem('murthehelp_current_user') || 'q121101';
             if (users[lastLoggedInId]) {
                 currentUserId = lastLoggedInId;
                 currentUser = users[lastLoggedInId];
             } else {
-                currentUserId = 'admin';
-                currentUser = users['admin'];
+                currentUserId = 'q121101';
+                currentUser = users['q121101'] || users['admin'];
+            }
+
+            // Tự động tải danh sách tài khoản từ Supabase Cloud về đồng bộ
+            if (supabaseClient) {
+                supabaseClient.from('murthehelp_users').select('*').then(({ data, error }) => {
+                    if (data && !error) {
+                        data.forEach(dbUser => {
+                            users[dbUser.username] = {
+                                name: dbUser.fullname || dbUser.username,
+                                pass: dbUser.password,
+                                role: dbUser.role,
+                                balance: Number(dbUser.balance) || 500000000,
+                                isAdmin: Boolean(dbUser.is_admin)
+                            };
+                        });
+                        saveStoredUsers(users);
+                        if (users[currentUserId]) {
+                            currentUser = users[currentUserId];
+                            updateHeaderHUD();
+                        }
+                    }
+                }).catch(e => console.warn("Supabase fetch error:", e));
             }
         }
 
@@ -1474,7 +1510,22 @@
             currentUser = users[username];
             localStorage.setItem('murthehelp_current_user', currentUserId);
 
-            alert(`🎉 ĐĂNG KÝ THÀNH CÔNG!\nĐã cấp mã định danh [${username}] với quyền CODE ${role}.\nSố dư khởi tạo: 500.000.000 ₫`);
+            // Tự động lưu lên Supabase Cloud Database ngay lập tức
+            if (supabaseClient) {
+                supabaseClient.from('murthehelp_users').upsert([{
+                    username: username,
+                    fullname: fullname,
+                    password: password,
+                    role: role,
+                    balance: 500000000,
+                    is_admin: false
+                }], { onConflict: 'username' }).then(({ error }) => {
+                    if (error) console.warn("Supabase auto-save error:", error);
+                    else console.log(`✅ [Supabase] Đã tự động lưu tài khoản ${username} lên Cloud!`);
+                }).catch(e => console.warn(e));
+            }
+
+            alert(`🎉 ĐĂNG KÝ THÀNH CÔNG!\nĐã cấp mã định danh [${username}] với quyền CODE ${role}.\nSố dư khởi tạo: 500.000.000 ₫\n(Dữ liệu đã tự động đồng bộ lên Supabase Cloud)`);
             enterDarkMallFinal();
         }
 
@@ -2010,6 +2061,15 @@
             users[currentUserId] = currentUser;
             saveStoredUsers(users);
 
+            // Tự động cập nhật số dư lên Supabase Cloud Database
+            if (supabaseClient) {
+                supabaseClient.from('murthehelp_users').update({
+                    balance: currentUser.balance
+                }).eq('username', currentUserId).then(({ error }) => {
+                    if (error) console.warn("Supabase balance update error:", error);
+                }).catch(e => console.warn(e));
+            }
+
             updateHeaderHUD();
             document.getElementById('admin-deposit-input').value = '';
             renderAdminUsersList();
@@ -2023,6 +2083,16 @@
             const users = getStoredUsers();
             users[currentUserId] = currentUser;
             saveStoredUsers(users);
+
+            // Tự động cập nhật tên và quyền lên Supabase Cloud Database
+            if (supabaseClient) {
+                supabaseClient.from('murthehelp_users').update({
+                    fullname: currentUser.name,
+                    role: currentUser.role
+                }).eq('username', currentUserId).then(({ error }) => {
+                    if (error) console.warn("Supabase profile update error:", error);
+                }).catch(e => console.warn(e));
+            }
 
             updateHeaderHUD();
             renderProducts();
