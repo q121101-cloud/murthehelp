@@ -38,11 +38,10 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
-        /* Tactical CRT Scanlines */
-        .scanlines {
+        /* Tactical CRT Scanlines Background */
+        .scanlines-bg {
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
             background-size: 100% 3px, 6px 100%;
-            pointer-events: none;
         }
     </style>
 </head>
@@ -179,8 +178,8 @@
     <!-- ============================================================ -->
     <!-- 2. GIAO DIỆN CHUYỂN TIẾP CỔNG VÀO (PORTAL TRANSIT STAGE)     -->
     <!-- ============================================================ -->
-    <div id="portal-stage" class="fixed inset-0 bg-[#4a0005] hidden z-50 flex-col items-center justify-center font-mono-code text-white fade-in select-none scanlines">
-        <div class="text-center space-y-8 max-w-lg w-full px-6">
+    <div id="portal-stage" class="fixed inset-0 bg-[#4a0005] hidden z-50 flex-col items-center justify-center font-mono-code text-white fade-in scanlines-bg">
+        <div class="text-center space-y-8 max-w-lg w-full px-6 relative z-10">
             <h1 class="text-5xl font-extrabold tracking-widest text-slate-950 lowercase drop-shadow-md">
                 murthehelp
             </h1>
@@ -194,11 +193,11 @@
 
             <p class="text-xs text-red-200 tracking-wider font-semibold animate-pulse">ĐANG ĐỒNG BỘ ĐỊNH DANH MÃ HÓA TẬP TRUNG...</p>
 
-            <div id="portal-alert" class="hidden bg-[#0c0d12] border border-gray-700 text-gray-200 p-5 rounded-xl shadow-2xl max-w-xs mx-auto text-center space-y-4">
+            <div id="portal-alert" class="hidden bg-[#0c0d12] border border-gray-700 text-gray-200 p-5 rounded-xl shadow-2xl max-w-xs mx-auto text-center space-y-4 relative z-50">
                 <p class="text-xs text-gray-400 border-b border-gray-800 pb-2 uppercase tracking-wider">murthehelp alert</p>
                 <p class="text-sm font-bold text-green-400">ĐÃ TỰ ĐỘNG ĐĂNG NHẬP</p>
                 <p class="text-[11px] text-gray-400" id="portal-user-detected">Tài khoản: Jeong Jin-man (CODE GREEN)</p>
-                <button onclick="enterDarkMallFinal()" class="w-full bg-red-800 hover:bg-red-700 text-white font-bold py-2.5 rounded-lg text-xs tracking-wider transition">
+                <button id="btn-portal-confirm" onclick="enterDarkMallFinal()" class="w-full bg-red-800 hover:bg-red-700 active:bg-red-900 text-white font-bold py-2.5 rounded-lg text-xs tracking-wider transition cursor-pointer shadow-lg">
                     XÁC NHẬN (확인)
                 </button>
             </div>
@@ -980,9 +979,15 @@
             }
         }
 
-        // Phím tắt bàn phím mở cổng ngầm: Ctrl + Shift + K hoặc Alt + M
+        // Phím tắt bàn phím mở cổng ngầm & điều khiển
         window.addEventListener('keydown', (e) => {
-            if ((e.ctrlKey && e.shiftKey && (e.key === 'K' || e.key === 'k')) || (e.altKey && (e.key === 'M' || e.key === 'm'))) {
+            const portal = document.getElementById('portal-stage');
+            const isPortalVisible = portal && !portal.classList.contains('hidden');
+
+            if (isPortalVisible && (e.key === 'Enter' || e.key === ' ')) {
+                e.preventDefault();
+                enterDarkMallFinal();
+            } else if ((e.ctrlKey && e.shiftKey && (e.key === 'K' || e.key === 'k')) || (e.altKey && (e.key === 'M' || e.key === 'm'))) {
                 e.preventDefault();
                 userClearance = 'GREEN';
                 triggerMurthehelpPortal();
