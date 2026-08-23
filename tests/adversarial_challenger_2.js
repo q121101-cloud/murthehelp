@@ -110,6 +110,9 @@ function createHarness() {
         createElement(tag) {
             return createMockElement('', tag);
         },
+        querySelectorAll(selector) {
+            return [];
+        },
         documentElement: { scrollHeight: 2000 },
         addEventListener(event, handler) {
             if (!eventListeners.has('document:' + event)) eventListeners.set('document:' + event, []);

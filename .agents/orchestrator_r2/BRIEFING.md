@@ -58,12 +58,17 @@ Visual overhaul of disguise storefront, portal subtitle removal, registration an
 | explorer_r2_1 | teamwork_preview_explorer | R1 Storefront UI & CDN Asset Research | completed | 747aebef-f274-42c1-8645-4cb59e4fcae3 |
 | explorer_r2_2 | teamwork_preview_explorer | R2 Subtitle & R3 Register UX Analysis | completed | 2557186a-e8bf-4fc7-8c82-c5cdf8752e7b |
 | explorer_r2_3 | teamwork_preview_explorer | R4 Login UX, R5 Auth & R6 Git Pipeline | completed | d0be8d99-d2b3-4098-bf07-4205571faec6 |
-| worker_r2_1 | teamwork_preview_worker | Implementation of R1, R2, R3, R4, R5, R6 | in-progress | c605ac95-0ac5-4f9c-ac66-d63529237f5a |
+| worker_r2_1 | teamwork_preview_worker | Implementation of R1, R2, R3, R4, R5, R6 | completed | c605ac95-0ac5-4f9c-ac66-d63529237f5a |
+| reviewer_r2_1 | teamwork_preview_reviewer | Storefront & Form UX Review | completed | 2ed1e297-3043-4210-921d-5ee17a2d94be |
+| reviewer_r2_2 | teamwork_preview_reviewer | Auth & System Integrity Review | completed | d4cb3773-e111-40ca-8db3-e0d2c842e20e |
+| challenger_r2_1 | teamwork_preview_challenger | DOM, CDN Images & Form Validation Stress-test | completed | 7f73d157-e784-45f6-8715-eb2fcd49e94f |
+| challenger_r2_2 | teamwork_preview_challenger | Auth, Gateways, Order Marquee & Git Verification | completed | ee538b27-05c6-469a-ac46-7d38a6582f7e |
+| auditor_r2_1 | teamwork_preview_auditor | Forensic Integrity Audit | completed | 8c920d5b-0b1d-4a84-8fec-952eae9c7f23 |
 
 ## Succession Status
 - Succession required: no
-- Spawn count: 4 / 16
-- Pending subagents: c605ac95-0ac5-4f9c-ac66-d63529237f5a
+- Spawn count: 9 / 16
+- Pending subagents: none
 - Predecessor: none
 - Successor: not yet spawned
 
