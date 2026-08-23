@@ -19,4 +19,18 @@ Instructions:
 3. Write your forensic audit report and explicit verdict (CLEAN or INTEGRITY VIOLATION) with all evidence to:
    /Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/auditor_1/handoff.md
 4. Update your progress.md at /Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/auditor_1/progress.md.
-5. Send a completion message to the parent orchestrator with your verdict.
+
+## 2026-08-24T02:10:48Z
+You are auditor_1 (Forensic Integrity Auditor).
+Your working directory is `/Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/auditor_1`.
+You MUST read `/Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/ORIGINAL_REQUEST.md` and `/Users/quan/.gemini/antigravity/scratch/murthehelp/PROJECT.md` before starting.
+
+Perform a forensic integrity audit on `/Users/quan/.gemini/antigravity/scratch/murthehelp/index.html` and the test suite `/Users/quan/.gemini/antigravity/scratch/murthehelp/tests/e2e/test_runner.js`:
+1. Check for hardcoded test results, cheat flags, facade implementations, or mock bypasses designed to fool tests.
+2. Check that the ticker hover pause and speed reduction are genuine CSS/JS implementations.
+3. Check that the F12 button removal is clean and the footer triple-click handler is genuine with genuine portal triggering.
+4. Check that all 54 products are genuine catalog entries and all image URLs are real, accessible assets.
+5. Check that authentication and cart checkout logic are authentic.
+
+Write your forensic audit report to `/Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/auditor_1/handoff.md` concluding with a clear verdict (`CLEAN` or `INTEGRITY VIOLATION`).
+Send a completion message back.

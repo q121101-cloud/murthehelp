@@ -1,34 +1,31 @@
-# BRIEFING — 2026-08-23T01:38:12+07:00
+# BRIEFING — 2026-08-24T02:01:30+07:00
 
 ## Mission
-Coordinate UI visual overhaul and form/portal fixes for the Hoàng Hắc Long / murthehelp dual-layer web app.
+Coordinate execution for improving the Vietnamese dark web simulation at murthehelp/index.html per user requirements (ticker pause/speed, hide F12 button & trigger via triple-click, rebrand to MURDER-SHOP, expand product catalog & fix broken images).
 
 ## 🔒 My Identity
 - Archetype: sentinel
 - Working directory: /Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/sentinel
-- Orchestrator: bdf7d766-1c9f-4c9a-876e-4638f224f915
-- Victory Auditor: ba54c12a-cd01-4464-944a-985a250f6c29
+- Orchestrator: db8ff890-4daf-42eb-b321-4f1d096ab243
+- Victory Auditor: [to be spawned on victory claim]
 
 ## 🔒 Key Constraints
 - No technical decisions — relay only
 - Victory Audit is MANDATORY before reporting completion
-- Must not write code or make technical decisions directly
+- Must route to teamwork_preview_orchestrator
 
 ## User Context
-- **Last user request**: Visual overhaul of disguise storefront (Hoàng Hắc Long), remove portal subtitle text line, update registration placeholders & 8-char validation, update login placeholders & passcode label, ensure no regressions and push to GitHub.
+- **Last user request**: Requirements R1 (ticker pause on hover + slow down speed), R2 (hide F12 button + footer triple-click trigger), R3 (rebrand dark mall header to MURDER-SHOP), R4 (expand product catalog with 10+ items and working images).
 - **Pending clarifications**: none
-- **Delivered results**: Initial implementation confirmed in prior round; current round starting.
+- **Delivered results**: none
 
 ## Project Status
-- **Phase**: complete
-- **Routing Decision**: General -> teamwork_preview_orchestrator (multi-part UI overhaul and validation updates).
+- **Phase**: in progress
 
 ## Victory Audit Status
-- **Triggered**: yes
-- **Verdict**: VICTORY CONFIRMED
+- **Triggered**: no
+- **Verdict**: pending
 - **Retry count**: 0
 
 ## Artifact Index
-- /Users/quan/.gemini/antigravity/scratch/murthehelp/ORIGINAL_REQUEST.md — Authoritative User Request
-- /Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/ORIGINAL_REQUEST.md — Agents copy of User Request
-- /Users/quan/.gemini/antigravity/scratch/murthehelp/index.html — Target web application file
+- /Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/ORIGINAL_REQUEST.md — Authoritative user request

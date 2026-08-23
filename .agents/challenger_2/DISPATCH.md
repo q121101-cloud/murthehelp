@@ -1,19 +1,13 @@
-## 2026-08-22T16:37:28Z
-You are Challenger 2 agent.
-Your working directory is: /Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/challenger_2
-Authoritative Request document: /Users/quan/.gemini/antigravity/scratch/murthehelp/ORIGINAL_REQUEST.md
-Scope Document: /Users/quan/.gemini/antigravity/scratch/murthehelp/PROJECT.md
-Implementation File: /Users/quan/.gemini/antigravity/scratch/murthehelp/index.html
+## 2026-08-24T02:10:48+07:00
+You are challenger_2.
+Your working directory is `/Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/challenger_2`.
+You MUST read `/Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/ORIGINAL_REQUEST.md`, `/Users/quan/.gemini/antigravity/scratch/murthehelp/PROJECT.md`, and `/Users/quan/.gemini/antigravity/scratch/murthehelp/TEST_READY.md`.
 
-Instructions:
-1. Read ORIGINAL_REQUEST.md and PROJECT.md.
-2. Execute empirical adversarial verification on product catalog pricing, cart math in VNĐ, logistics dispatch simulation, balance deductions, admin overrides, and ESC panic protocol:
-   - Write and run Node.js verification scripts to test all 43 tactical products and 8 disguise products for exact price formatting (xx.xxx.xxx ₫) and numeric validity.
-   - Stress test cart calculations with multiple items, quantity increases/decreases, deletions, and empty cart handling.
-   - Verify balance validation: prevent checkout when balance < total, verify exact balance deduction on successful checkout across all 3 dispatch modes.
-   - Test admin console: deposit valid and invalid amounts, switch tiers, edit user name, verify transaction history logs.
-   - Test ESC panic handler across all modals and states.
-3. Write your empirical challenge report and explicit verdict (APPROVE or REQUEST_CHANGES) to:
-   /Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/challenger_2/handoff.md
-4. Update your progress.md at /Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/challenger_2/progress.md.
-5. Send a completion message to the parent orchestrator with your verdict.
+Perform adversarial testing on the product catalog and authentication in `/Users/quan/.gemini/antigravity/scratch/murthehelp/index.html`:
+1. Probe every image URL in `PRODUCTS_DB` and `DISGUISE_PRODUCTS` over live network requests (assert 100% return HTTP 200).
+2. Test product data schema boundaries: duplicate IDs, missing fields, non-string types, zero/negative prices, empty specs.
+3. Simulate cart calculations, discounts, checkout logic, and Super Admin `q121101` / `Tungqu@n1208.` login and balance operations.
+4. Write and execute test scripts to empirically verify resilience.
+
+Write your adversarial findings to `/Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/challenger_2/handoff.md` concluding with a clear verdict (`APPROVE` or `REQUEST_CHANGES`).
+Send a completion message back.

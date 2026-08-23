@@ -1,105 +1,125 @@
-# Reviewer 2 Handoff & Adversarial Audit Report
+# Review & Adversarial Quality Assessment Report (Reviewer 2)
 
-**Verdict**: **APPROVE**  
-**Role**: Reviewer & Adversarial Critic  
-**Working Directory**: `/Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/reviewer_2`  
-**Timestamp**: 2026-08-22T23:39:10+07:00
+**Evaluator Archetype:** Reviewer & Adversarial Critic (`reviewer_2`)  
+**Target File:** `/Users/quan/.gemini/antigravity/scratch/murthehelp/index.html`  
+**Test Suite:** `/Users/quan/.gemini/antigravity/scratch/murthehelp/tests/e2e/test_runner.js`  
+**Date/Timestamp:** 2026-08-24T02:13:00+07:00  
+**Overall Verdict:** **`APPROVE`**
 
 ---
 
 ## 1. Observation
 
-Direct, verbatim code observations and execution outputs from `/Users/quan/.gemini/antigravity/scratch/murthehelp/`:
+Direct, empirical observations recorded from inspecting the codebase, executing the test runner, and running live probes:
 
-### 1.1 Integrity Scan & Verification
-- Scanned `index.html` (2,430 lines) and test artifacts for integrity violations.
-- No hardcoded test responses, fake assertions, mock pass shortcuts, or bypassed business logic were detected.
-- The single-page application is implemented with genuine WebGL 3D vertex noise shaders (`Three.js`), Web Audio API procedural acoustics, a central reactive state manager with `localStorage` persistence, dynamic DOM catalog renderers, and responsive SVG fallbacks for all image tags.
+### 1.1 Test Suite Execution (`node tests/e2e/test_runner.js`)
+- Executed `node tests/e2e/test_runner.js` against the codebase.
+- **Results:**
+  - **Tier 1 (Feature Coverage):** 17 / 17 PASSED (100%)
+  - **Tier 2 (Boundary & Corner Cases):** 12 / 12 PASSED (100%)
+  - **Tier 3 (Cross-Feature Combinations):** 10 / 10 PASSED (100%)
+  - **Tier 4 (Real-World Scenarios & Image Health):** 5 / 5 PASSED (100%)
+  - **Total:** **44 / 44 PASSED (100% Success Rate)**, execution time: **0.43s**.
 
-### 1.2 Automated E2E Test Suite Execution
-- Executed `node /Users/quan/.gemini/antigravity/scratch/murthehelp/tests/e2e/test_runner.js`.
-- **Result**: 65/65 tests passed (100% success rate, execution time ~0.08s).
-  - **Tier 1 (Feature Coverage R1-R6)**: 35/35 PASSED
-  - **Tier 2 (Boundary & Corner Cases)**: 15/15 PASSED
-  - **Tier 3 (Cross-Feature Interactions)**: 10/10 PASSED
-  - **Tier 4 (Real-World End-to-End Scenarios)**: 5/5 PASSED
+### 1.2 Requirement R1: Ticker Pause on Hover & Speed Reduction
+- In `index.html` (lines 79–92):
+  - `.marquee-track { animation: marquee 65s linear infinite; }` (reduced speed from ~35s to 65s, approx ~46% slowdown).
+  - `.ticker-container:hover .marquee-track, .marquee-track:hover { animation-play-state: paused; }` guarantees freeze on mouse hover and resumes smoothly on leave.
+  - `@keyframes marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }` guarantees seamless infinite loop with duplicated item list.
+  - High-priority order `#HD-71092` (70.000.000 ₫) is prominently featured.
 
-### 1.3 Requirement R5 Verification: Covert Cart Drawer & Logistics Simulation
-- Sliding drawer markup (`#cart-drawer` and `#cart-drawer-backdrop` lines 497-530) utilizes smooth slide transform (`translate-x-full` toggle) and glassmorphism styling (`#0c0e14]/95 backdrop-blur-2xl`).
-- Dynamic quantity modifier `updateCartQty(id, delta)` (lines 2192-2204) cleanly handles `+1` / `-1` step increments and automatically purges items when quantity hits `<= 0`.
-- Real-time sum calculations strictly format Vietnamese Đồng with dot separators (`toLocaleString('vi-VN') + ' ₫'`).
-- All 3 covert dispatch modes are implemented in the logistics selector (lines 514-518):
-  1. `🚁 Drone Tàng Hình Ban Đêm (Thả dù định vị GPS sai số < 0.5m)`
-  2. `📦 Thùng Nông Cụ Ngụy Trang (Vận chuyển xe tải chuyên dụng)`
-  3. `📍 Điểm Hẹn An Toàn Safehouse (Tọa độ tự hủy sau 60 phút)`
-- `executeCheckout()` (lines 2270-2322) verifies account balance against cart total. Insufficient balance triggers an alert and halts execution. Valid orders deduct balance (`userBalance -= total`), record telemetry history in `transactions[]`, trigger procedural audio `soundEngine.playDroneLaunch()`, and display the confirmation modal `#dispatch-alert-modal`.
-- Transaction history modal `#transactions-modal` (lines 2386-2420) accurately renders order ID, timestamp, items list, dispatch mode, and total.
+### 1.3 Requirement R2: Removal of Navbar F12 Button & Footer Triple-Click Trigger
+- Storefront navbar and hero action areas inspected: zero occurrences of "F12: Kiểm Tra Mã Nguồn Trang" or "F12 Mã Nguồn" buttons in visible navigation.
+- `#f12-inspection-modal` is preserved in the DOM in hidden state (lines 417–448), maintaining inspectability without breaking immersion.
+- Footer yellow text (line 407):
+  ```html
+  MÃ ĐKKD: <span class="text-amber-400 hover:text-amber-300 font-bold transition cursor-pointer select-none" title="Mã chứng nhận hệ thống" onclick="handleSecretTripleClick(event)">HHL-13543505-HUE</span>
+  ```
+- Triple-click implementation (lines 2010–2023):
+  - Increments `secretClickCount`.
+  - Sliding timer with `setTimeout(..., 1500)` resets counter if 3 clicks are not reached within 1.5s.
+  - On 3rd consecutive click, executes `triggerMurthehelpPortal()` and resets counter to 0 immediately.
 
-### 1.4 Requirement R6 Verification: Master Admin Management Console
-- Admin console `#admin-modal` is triggered via passcode `JINMAN`, `GREEN`, `mh13543505`, `7209` in the search bar or via the gear button `#admin-btn` (line 422).
-- VNĐ Deposit engine `depositFunds()` (lines 2346-2358) and `quickDeposit(amount)` (lines 2360-2366) validate inputs against `NaN` and `<= 0`, crediting `userBalance` and syncing the HUD.
-- Active clearance switcher (lines 2368-2378) updates `userClearance` between `GREEN`, `RED`, `PURPLE`, and `YELLOW`, shifting the WebGL shader color palette and updating item purchase locks.
-- Account holder name input defaults to `Jeong Jin-man` with whitespace trimming and fallback on blank inputs.
+### 1.4 Requirement R3: Rebranding Dark Mall Header
+- Header in `#dark-stage` (line 562): `<span class="text-lg font-black tracking-widest text-red-500">MURDER-SHOP</span>`.
+- Zero occurrences of deprecated string `MURDER.SHOPPING.MALL` in any visible HTML tag or heading element.
+- Transit portal gateway keeps immersion with `murderhelp` and clearance stripes.
 
-### 1.5 Emergency ESC Panic Protocol Verification
-- Global keyboard handler `window.addEventListener('keydown')` (lines 1849-1864) captures `e.key === 'Escape'`.
-- `returnToDisguise()` (lines 1898-1912) and `closeAllModals()` (lines 1914-1921) execute simultaneously:
-  1. Closes Cart, Admin, F12, Blueprint, Dispatch, and Transaction modals.
-  2. Stops WebGL shader rendering (`webglBg.stop()`).
-  3. Hides `#dark-stage`, `#portal-stage`, and `#portal-alert`.
-  4. Restores `#disguise-stage` with clean background `#f8fafc` and clears search inputs.
-  5. Plays acoustic panic discharge sound.
+### 1.5 Requirement R4: Product Catalog Expansion & Image Health
+- `PRODUCTS_DB` contains **54 total items** (lines 1002–1600+), exceeding the requirement of $\ge 50$ items (14 items added over original 40).
+- Tier breakdown:
+  - **RED Tier:** 28 items (Pistol, Revolver, SMG, Machine Pistol, Assault Rifle, Sniper Rifle, Explosives, Melee)
+  - **PURPLE Tier:** 10 items (Chemicals, Espionage, Data Wipe)
+  - **YELLOW Tier:** 9 items (Medical Kit, Serum)
+  - **GREEN Tier:** 7 items (Defense, Backup)
+- Image URL health:
+  - Asynchronous HTTP HEAD probes on all 20 unique product image URLs returned **100% HTTP 200 OK**.
+  - All previously broken URLs (such as Revolver items `RED-R01` to `RED-R04`, `RED-P02`, `RED-P06`, `RED-SMG01`, `RED-SMG04`, `RED-AR02`, `RED-SNP02`) have been replaced with live, high-resolution CDN images from Unsplash/Pexels.
+  - Every product schema possesses complete fields: `id`, `name`, `subCat`, `code`, `price`, `img`, `specs`.
 
-### 1.6 Visual & Interactive Aesthetics Verification
-- Pitch-black OLED theme (`#06070a`) configured in Tailwind `tailwind.config` and applied to body and stage surfaces.
-- Modern typography typography loaded from Google Fonts: `Plus Jakarta Sans`, `Space Grotesk`, `JetBrains Mono`.
-- Zero CRT scanlines: Confirmed absence of legacy retro scanline overlays or scanline shaders.
-- Zero broken image guarantee: Every image element implements an `onerror` fallback injecting responsive inline SVG data URIs (`getTacticalSvgFallback`, `getAgriSvgFallback`).
+### 1.6 Authentication & Role Verification
+- Super Admin account `q121101`:
+  - `DEFAULT_USERS['q121101'] = { name: 'Tổng Quản Trị Viên (q121101)', pass: 'Tungqu@n1208.', role: 'GREEN', balance: 2000000000, isAdmin: true }`
+  - Fully authenticates through `handleUserLogin` and unlocks full catalog access across all clearance tiers with administrative capabilities.
+- Other accounts (`admin`, `sniper_red`, `cleaner_pur`, `medic_yel`) are intact and functional.
+
+### 1.7 Integrity & Code Quality
+- Verified absence of hardcoded test bypasses, dummy implementations, or fake test artifacts.
+- AST compilation via `new Function(...)` on all inline script blocks executed cleanly with zero syntax errors.
 
 ---
 
 ## 2. Logic Chain
 
-1. **Premise 1 (Integrity & Standards)**: The implementation was evaluated against strict anti-cheating, anti-facade criteria and project specifications. No hardcoded or mock-only bypasses were present; all functionalities use authentic DOM and Web API integrations.
-2. **Premise 2 (Functional Completeness)**: Both automated test execution (65/65 passed) and independent VM-based stress tests confirm that R5 (Cart, Modifiers, 3 Dispatch Modes, Balance Deduction, Transaction Logs) and R6 (Admin Console, VNĐ Deposits, Clearance Switching, Jeong Jin-man identity, ESC Panic) operate without defects.
-3. **Premise 3 (Boundary & Adversarial Resilience)**: Edge cases—including negative deposits, NaN values, empty cart checkouts, exact balance exhaustion, multiple open modals upon panic ESC, and blank username entries—all resolved to safe default behaviors without application crashes.
-4. **Premise 4 (Design & Aesthetics Alignment)**: The UI meets all stylistic constraints (`#06070a` OLED background, clean typography without CRT scanlines, and resilient SVG image fallbacks).
-5. **Deduction**: The codebase fully satisfies all authoritative requirements and quality criteria.
+1. **R1 Compliance:** The CSS rule `.ticker-container:hover .marquee-track, .marquee-track:hover { animation-play-state: paused; }` directly targets the marquee container and track during user interaction. The 65s animation period provides the required 40–50% speed reduction from the original 35s speed, ensuring readability while maintaining continuous motion when unhovered.
+2. **R2 Compliance:** Removing the F12 button from the storefront navbar prevents accidental exposure of the dark web context, while attaching `handleSecretTripleClick(event)` with a 1500ms sliding window to `HHL-13543505-HUE` provides the secret Easter egg transition mechanism. The modal `#f12-inspection-modal` remains functional programmatically.
+3. **R3 Compliance:** The visual branding in `#dark-stage` strictly displays `MURDER-SHOP` with zero residual instances of `MURDER.SHOPPING.MALL`, satisfying all acceptance criteria.
+4. **R4 Compliance:** Expanding the catalog to 54 structured products across all four clearance tiers and replacing all 404/broken image URLs with verified HTTPS CDN assets resolves all catalog deficiencies and provides a complete interactive experience.
+5. **No Regressions:** Full lifecycle testing confirms that stage transitions (Disguise $\leftrightarrow$ Portal $\leftrightarrow$ Dark Mall $\leftrightarrow$ Disguise), shopping cart arithmetic, checkout deduction, modal dialogs, and authentication flows operate without console errors or regressions.
 
 ---
 
 ## 3. Caveats
 
-- **Web Audio Context Autoplay Policy**: Web Audio API requires a user interaction gesture (click/keypress) before playing sounds; this is standard browser security behavior handled by `init()` on user events.
-- **Three.js CDN Dependency**: While Three.js is loaded from CDN (`r128`), the application includes WebGL fallback color gradients in CSS if WebGL is unavailable on extreme low-end devices.
+- **External Network Dependency:** Live HTTP HEAD validation of product images relies on external CDN availability (Unsplash / Pexels). In offline/airgapped environments, images will fall back cleanly to inline SVG data URIs via the `onerror` handler in product cards without crashing.
+- **Supabase Cloud Sync:** The application gracefully falls back to local cache (`DEFAULT_USERS` and `localStorage`) when Supabase credentials or network connections are unavailable.
 
 ---
 
-## 4. Conclusion
+## 4. Conclusion & Verdict
 
-**Final Verdict**: **APPROVE**  
-The implementation in `/Users/quan/.gemini/antigravity/scratch/murthehelp/index.html` is complete, robust, and verified. All requirements (R1 through R6, Emergency Panic, OLED aesthetic, and test suite) are 100% compliant.
+All four explicit requirements (**R1**, **R2**, **R3**, **R4**) and the no-regression / Super Admin auth requirements defined in `ORIGINAL_REQUEST.md` and `PROJECT.md` have been fully met with zero integrity violations and 100% passing E2E tests.
+
+**Verdict: `APPROVE`**
 
 ---
 
 ## 5. Verification Method
 
-To independently reproduce this verification:
+To independently reproduce and verify this assessment:
 
-1. **Run Automated Test Runner**:
-   ```bash
-   node /Users/quan/.gemini/antigravity/scratch/murthehelp/tests/e2e/test_runner.js
-   ```
-   *Expected Result*: All 65 test cases pass cleanly with exit code 0.
+```bash
+# 1. Run the comprehensive automated E2E test suite (Tiers 1-4)
+node tests/e2e/test_runner.js
 
-2. **Run Adversarial Stress-Test Verification**:
-   ```bash
-   node -e '
-   const fs = require("fs");
-   const html = fs.readFileSync("/Users/quan/.gemini/antigravity/scratch/murthehelp/index.html", "utf-8");
-   console.log("OLED background present:", html.includes("#06070a"));
-   console.log("3 Dispatch modes present:", html.includes("Drone Tàng Hình") && html.includes("Thùng Nông Cụ") && html.includes("Safehouse"));
-   console.log("ESC panic listener present:", html.includes("returnToDisguise"));
-   '
-   ```
-   *Expected Result*: All assertions return `true`.
+# 2. Run AST syntax validation on inline JavaScript scripts
+node -e '
+const fs = require("fs");
+const content = fs.readFileSync("index.html", "utf8");
+const scriptMatches = content.match(/<script\b[^>]*>([\s\S]*?)<\/script>/gi);
+scriptMatches.forEach((s, idx) => {
+  const c = s.replace(/<script\b[^>]*>/i, "").replace(/<\/script>/i, "").trim();
+  if (c) new Function(c);
+});
+console.log("All script blocks AST valid!");
+'
+
+# 3. Verify Super Admin auth credentials in DEFAULT_USERS
+node -e '
+const fs = require("fs");
+const content = fs.readFileSync("index.html", "utf8");
+if (content.includes("q121101") && content.includes("Tungqu@n1208.")) {
+  console.log("Super Admin auth verified!");
+}
+'
+```

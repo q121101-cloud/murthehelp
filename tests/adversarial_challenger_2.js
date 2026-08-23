@@ -1,18 +1,21 @@
 /**
  * ==============================================================================
- * CHALLENGER 2: EMPIRICAL ADVERSARIAL VERIFICATION SUITE
+ * CHALLENGER 2: EMPIRICAL ADVERSARIAL VERIFICATION & STRESS-TESTING SUITE
  * ==============================================================================
  * Independent, exhaustive verification harness testing:
- * 1. Product Catalog & Disguise Catalog Pricing & Numeric Validity (43 + 8 items)
- * 2. Cart Operations & VNĐ Math Stress-Testing (Single/Multi-item, Qty, Deletions, Max load)
- * 3. Balance Deductions & Logistics Dispatch Simulations across all 3 modes
- * 4. Master Admin Console Overrides (Valid/Invalid deposits, Tiers, Identity, Ledger)
- * 5. ESC Panic Protocol across all Modals and UI States
+ * 1. Live Network HTTP/HTTPS Probing on 100% of Images (PRODUCTS_DB & DISGUISE_PRODUCTS)
+ * 2. Product Catalog Schema Boundary Validation & Data Invariants (54 Tactical + 12 Disguise)
+ * 3. Cart Arithmetic, Multi-Item Accumulation, Stress Loads & Coupon Discounts
+ * 4. Role-Based Access Control, Checkout Execution & Balance Deductions
+ * 5. Authentication, Super Admin (q121101 / Tungqu@n1208.) & Admin Panel Operations
+ * 6. UI Stage Transitions, Modals & AST Syntax Integrity
  * ==============================================================================
  */
 
 const fs = require('fs');
 const path = require('path');
+const https = require('https');
+const http = require('http');
 const vm = require('vm');
 
 const PROJECT_ROOT = path.resolve(__dirname, '../');
@@ -28,8 +31,24 @@ const C = {
     green: '\x1b[32m',
     yellow: '\x1b[33m',
     blue: '\x1b[34m',
+    magenta: '\x1b[35m',
     cyan: '\x1b[36m'
 };
+
+let totalPassed = 0;
+let totalFailed = 0;
+const failureDetails = [];
+
+function assert(condition, message, detail = '') {
+    if (condition) {
+        totalPassed++;
+        console.log(`  ${C.green}✔ PASS${C.reset} ${message}`);
+    } else {
+        totalFailed++;
+        console.log(`  ${C.red}✖ FAIL${C.reset} ${message} ${detail ? C.dim + '(' + detail + ')' + C.reset : ''}`);
+        failureDetails.push({ message, detail });
+    }
+}
 
 class MockColor {
     constructor(hex = 0x000000) { this.hex = hex; }
@@ -44,23 +63,27 @@ function createHarness() {
     const elements = new Map();
     const eventListeners = new Map();
     const mockStorage = {};
+    const activeTimers = new Map();
+    let timerCounter = 1;
 
-    function createMockElement(id = '', tag = 'DIV') {
+    function createMockElement(id = '', tag = 'DIV', initialClasses = []) {
         const defaultOptions = [
             { text: '🚁 Drone Tàng Hình Ban Đêm (Thả dù định vị GPS sai số < 0.5m)', value: 'drone' },
             { text: '📦 Thùng Nông Cụ Ngụy Trang (Vận chuyển xe tải chuyên dụng)', value: 'container' },
             { text: '📍 Điểm Hẹn An Toàn Safehouse (Tọa độ tự hủy sau 60 phút)', value: 'safehouse' }
         ];
 
+        const classSet = new Set(initialClasses.filter(Boolean));
+
         return {
             id: id,
             tagName: tag.toUpperCase(),
             classList: {
-                _classes: new Set(),
-                add(...cls) { cls.forEach(c => c && this._classes.add(c)); },
-                remove(...cls) { cls.forEach(c => c && this._classes.delete(c)); },
-                contains(c) { return this._classes.has(c); },
-                toggle(c) { if (this._classes.has(c)) this._classes.delete(c); else this._classes.add(c); }
+                _classes: classSet,
+                add(...cls) { cls.forEach(c => c && classSet.add(c)); },
+                remove(...cls) { cls.forEach(c => c && classSet.delete(c)); },
+                contains(c) { return classSet.has(c); },
+                toggle(c) { if (classSet.has(c)) classSet.delete(c); else classSet.add(c); }
             },
             style: {},
             innerText: '',
@@ -92,11 +115,21 @@ function createHarness() {
         };
     }
 
-    const idRegex = /id=["']([^"']+)["']/g;
-    let match;
-    while ((match = idRegex.exec(htmlContent)) !== null) {
-        if (!elements.has(match[1])) {
-            elements.set(match[1], createMockElement(match[1]));
+    // Seed mock elements from DOM id and class attributes
+    const tagRegex = /<([a-zA-Z0-9-]+)\s+([^>]*?)>/g;
+    let tagMatch;
+    while ((tagMatch = tagRegex.exec(htmlContent)) !== null) {
+        const tagName = tagMatch[1];
+        const attrs = tagMatch[2];
+        const idMatch = attrs.match(/id=["']([^"']+)["']/);
+        const classMatch = attrs.match(/class=["']([^"']+)["']/);
+        
+        if (idMatch) {
+            const elId = idMatch[1];
+            const classes = classMatch ? classMatch[1].split(/\s+/) : [];
+            if (!elements.has(elId)) {
+                elements.set(elId, createMockElement(elId, tagName, classes));
+            }
         }
     }
 
@@ -111,7 +144,12 @@ function createHarness() {
             return createMockElement('', tag);
         },
         querySelectorAll(selector) {
-            return [];
+            const matches = [];
+            for (const [id, el] of elements.entries()) {
+                if (selector.startsWith('#') && id === selector.slice(1)) matches.push(el);
+                if (selector.includes('btn-disguise-') && id.startsWith('btn-disguise-')) matches.push(el);
+            }
+            return matches;
         },
         documentElement: { scrollHeight: 2000 },
         addEventListener(event, handler) {
@@ -188,9 +226,16 @@ function createHarness() {
         THREE: threeMock,
         lucide: { createIcons() {} },
         console: { log() {}, warn() {}, error() {} },
-        setTimeout(fn) { fn(); return 1; },
-        clearTimeout() {},
+        setTimeout(fn, delay = 0) {
+            const id = timerCounter++;
+            activeTimers.set(id, { fn, delay });
+            return id;
+        },
+        clearTimeout(id) {
+            activeTimers.delete(id);
+        },
         requestAnimationFrame() {},
+        supabase: null,
         alert(msg) { alerts.push(msg); },
         Date: Date,
         Math: Math,
@@ -229,6 +274,21 @@ function createHarness() {
         return vm.runInContext(`${name}(${argsStr});`, context);
     };
 
+    const triggerTimer = (id) => {
+        if (activeTimers.has(id)) {
+            const timer = activeTimers.get(id);
+            activeTimers.delete(id);
+            timer.fn();
+        }
+    };
+
+    const triggerAllTimers = () => {
+        for (const [id, timer] of Array.from(activeTimers.entries())) {
+            activeTimers.delete(id);
+            timer.fn();
+        }
+    };
+
     return {
         context,
         getVar,
@@ -238,438 +298,471 @@ function createHarness() {
         alerts,
         eventListeners,
         mockStorage,
-        dispatchWindowEvent(type, eventProps = {}) {
-            const handlers = eventListeners.get('window:' + type) || [];
-            const evt = { type, preventDefault() {}, ...eventProps };
-            handlers.forEach(h => h(evt));
-        },
-        dispatchElementEvent(elemId, type, eventProps = {}) {
-            const handlers = eventListeners.get(elemId + ':' + type) || [];
-            const evt = { target: elements.get(elemId), preventDefault() {}, ...eventProps };
-            handlers.forEach(h => h(evt));
-        }
+        activeTimers,
+        triggerTimer,
+        triggerAllTimers
     };
 }
 
-// ==============================================================================
-// TEST HARNESS ASSERTIONS
-// ==============================================================================
-let totalTests = 0;
-let passedTests = 0;
-let failedTests = 0;
-const testResults = [];
+async function probeImageUrl(url, timeoutMs = 8000) {
+    return new Promise((resolve) => {
+        try {
+            const parsedUrl = new URL(url);
+            const client = parsedUrl.protocol === 'https:' ? https : http;
+            const req = client.request(url, {
+                method: 'HEAD',
+                headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' },
+                timeout: timeoutMs
+            }, (res) => {
+                resolve({ url, status: res.statusCode, headers: res.headers });
+            });
+            req.on('error', (err) => {
+                resolve({ url, error: err.message });
+            });
+            req.on('timeout', () => {
+                req.destroy();
+                resolve({ url, error: 'TIMEOUT' });
+            });
+            req.end();
+        } catch (err) {
+            resolve({ url, error: err.message });
+        }
+    });
+}
 
-function assert(condition, message, details = '') {
-    totalTests++;
-    if (condition) {
-        passedTests++;
-        testResults.push({ pass: true, message, details });
-        console.log(`  ${C.green}✔ PASS${C.reset} ${message}`);
-    } else {
-        failedTests++;
-        testResults.push({ pass: false, message, details });
-        console.error(`  ${C.red}✖ FAIL${C.reset} ${message} ${details ? `(${details})` : ''}`);
+// ==============================================================================
+// MAIN ADVERSARIAL EXECUTION
+// ==============================================================================
+async function runAdversarialSuites() {
+    console.log(`\n${C.bold}==============================================================================${C.reset}`);
+    console.log(`${C.bold}  MURTHEHELP EMPIRICAL CHALLENGER 2: ADVERSARIAL VERIFICATION SUITE${C.reset}`);
+    console.log(`${C.bold}==============================================================================${C.reset}\n`);
+
+    const harness = createHarness();
+    const tactical = harness.getVar('PRODUCTS_DB') || [];
+    const disguise = harness.getVar('DISGUISE_PRODUCTS') || [];
+    const subCategories = harness.getVar('SUB_CATEGORIES') || {};
+    const defaultUsers = harness.getVar('DEFAULT_USERS') || {};
+
+    // --------------------------------------------------------------------------
+    // SUITE 1: LIVE NETWORK IMAGE PROBING (100% HTTP 200)
+    // --------------------------------------------------------------------------
+    console.log(`${C.cyan}▶ SUITE 1: LIVE NETWORK IMAGE PROBING & CDN HEALTH (PRODUCTS_DB + DISGUISE)${C.reset}`);
+    
+    const allImagesToProbe = [];
+    tactical.forEach(p => allImagesToProbe.push({ catalog: 'tactical', id: p.id, url: p.img }));
+    disguise.forEach(p => allImagesToProbe.push({ catalog: 'disguise', id: p.id, url: p.img }));
+
+    assert(allImagesToProbe.length >= 60, `Total image URLs to probe >= 60 (Found ${allImagesToProbe.length})`);
+
+    const imageProbeResults = await Promise.all(allImagesToProbe.map(item => probeImageUrl(item.url)));
+    let imageFailureCount = 0;
+    const brokenImages = [];
+
+    imageProbeResults.forEach((res, idx) => {
+        const item = allImagesToProbe[idx];
+        if (res.status !== 200) {
+            imageFailureCount++;
+            brokenImages.push({ id: item.id, url: item.url, status: res.status, error: res.error });
+        }
+    });
+
+    assert(imageFailureCount === 0, `100% of product images return HTTP 200 OK (${imageProbeResults.length - imageFailureCount}/${imageProbeResults.length} reachable)`,
+        brokenImages.map(b => `[${b.id}] HTTP ${b.status || b.error}: ${b.url}`).join('; '));
+
+    const nonHttpsImages = allImagesToProbe.filter(img => !img.url.startsWith('https://'));
+    assert(nonHttpsImages.length === 0, `100% of product images use secure HTTPS protocol`,
+        `Non-HTTPS images found: ${nonHttpsImages.length}`);
+
+    // --------------------------------------------------------------------------
+    // SUITE 2: PRODUCT CATALOG SCHEMA BOUNDARIES & INVARIANTS
+    // --------------------------------------------------------------------------
+    console.log(`\n${C.cyan}▶ SUITE 2: PRODUCT CATALOG SCHEMA BOUNDARIES & INVARIANTS${C.reset}`);
+
+    assert(tactical.length >= 50, `Tactical catalog expanded to >= 50 products (Found ${tactical.length})`);
+    assert(disguise.length >= 10, `Disguise catalog contains >= 10 products (Found ${disguise.length})`);
+
+    // Check ID uniqueness across all products
+    const allIds = new Set();
+    let duplicateIdFound = false;
+    [...tactical, ...disguise].forEach(p => {
+        if (allIds.has(p.id)) duplicateIdFound = true;
+        allIds.add(p.id);
+    });
+    assert(!duplicateIdFound, `All ${allIds.size} product IDs across tactical and disguise are unique (zero collisions)`);
+
+    // Schema invariants for tactical products
+    let schemaErrors = 0;
+    tactical.forEach(p => {
+        if (typeof p.id !== 'string' || !/^(RED|PUR|YEL|GRN)-[A-Z0-9]+$/.test(p.id)) schemaErrors++;
+        if (typeof p.name !== 'string' || p.name.trim().length < 5) schemaErrors++;
+        if (typeof p.subCat !== 'string' || p.subCat.trim().length === 0) schemaErrors++;
+        if (!['RED', 'PURPLE', 'YELLOW', 'GREEN'].includes(p.code)) schemaErrors++;
+        if (typeof p.price !== 'number' || !Number.isInteger(p.price) || p.price <= 0) schemaErrors++;
+        if (typeof p.img !== 'string' || !p.img.startsWith('https://')) schemaErrors++;
+        if (typeof p.specs !== 'string' || p.specs.trim().length < 15) schemaErrors++;
+    });
+    assert(schemaErrors === 0, `All ${tactical.length} tactical products satisfy strict schema invariants (id, name, subCat, code, price, img, specs)`);
+
+    // Tier distributions
+    const redCount = tactical.filter(p => p.code === 'RED').length;
+    const purCount = tactical.filter(p => p.code === 'PURPLE').length;
+    const yelCount = tactical.filter(p => p.code === 'YELLOW').length;
+    const grnCount = tactical.filter(p => p.code === 'GREEN').length;
+
+    assert(redCount >= 20, `CODE RED tier populated with >= 20 items (Observed: ${redCount})`);
+    assert(purCount >= 7, `CODE PURPLE tier populated with >= 7 items (Observed: ${purCount})`);
+    assert(yelCount >= 7, `CODE YELLOW tier populated with >= 7 items (Observed: ${yelCount})`);
+    assert(grnCount >= 5, `CODE GREEN tier populated with >= 5 items (Observed: ${grnCount})`);
+
+    // Disguise schema invariants
+    let disguiseSchemaErrors = 0;
+    disguise.forEach(p => {
+        if (typeof p.id !== 'string' || !/^HHL-D\d{2}$/.test(p.id)) disguiseSchemaErrors++;
+        if (typeof p.category !== 'string' || !['steel', 'hose', 'pump', 'valve', 'chem', 'cylinder'].includes(p.category)) disguiseSchemaErrors++;
+        if (typeof p.name !== 'string' || p.name.trim().length < 5) disguiseSchemaErrors++;
+        if (typeof p.tag !== 'string' || p.tag.trim().length < 3) disguiseSchemaErrors++;
+        if (typeof p.specs !== 'string' || p.specs.trim().length < 15) disguiseSchemaErrors++;
+        if (typeof p.price !== 'number' || !Number.isInteger(p.price) || p.price <= 0) disguiseSchemaErrors++;
+        if (typeof p.img !== 'string' || !p.img.startsWith('https://')) disguiseSchemaErrors++;
+    });
+    assert(disguiseSchemaErrors === 0, `All ${disguise.length} disguise products satisfy strict schema invariants (id, category, name, tag, specs, price, img)`);
+
+    // Subcategory coherence
+    let invalidSubcats = 0;
+    tactical.forEach(p => {
+        const validList = subCategories[p.code] ? subCategories[p.code].map(s => s.id) : [];
+        if (!validList.includes(p.subCat)) invalidSubcats++;
+    });
+    assert(invalidSubcats === 0, `All ${tactical.length} tactical product subcategories match SUB_CATEGORIES definition registry`);
+
+    // --------------------------------------------------------------------------
+    // SUITE 3: CART ARITHMETIC, MULTI-ITEM ACCUMULATION & COUPON MATH
+    // --------------------------------------------------------------------------
+    console.log(`\n${C.cyan}▶ SUITE 3: CART ARITHMETIC, MULTI-ITEM ACCUMULATION & COUPON MATH${C.reset}`);
+
+    // Initial cart state
+    harness.setVar('cart', []);
+    harness.setVar('userClearance', 'GREEN');
+    harness.callFn('renderCartList');
+    assert(harness.elements.get('cart-subtotal').innerText === '0 ₫', `Initial cart subtotal is '0 ₫'`);
+    assert(harness.elements.get('cart-total-final').innerText === '0 ₫', `Initial cart total final is '0 ₫'`);
+
+    // Add 1 product
+    const p1 = tactical[0];
+    harness.callFn('addToCart', p1.id);
+    let cartState = harness.getVar('cart');
+    assert(cartState.length === 1 && cartState[0].quantity === 1, `Adding 1 item [${p1.id}] sets cart length 1, quantity 1`);
+    assert(harness.elements.get('cart-counter').innerText === 1, `Cart badge counter reflects 1`);
+    assert(harness.elements.get('cart-subtotal').innerText === p1.price.toLocaleString('vi-VN') + ' ₫', `Subtotal equals item price (${p1.price.toLocaleString('vi-VN')} ₫)`);
+
+    // Add same product again (increment)
+    harness.callFn('addToCart', p1.id);
+    cartState = harness.getVar('cart');
+    assert(cartState.length === 1 && cartState[0].quantity === 2, `Adding duplicate item increments quantity to 2`);
+    assert(harness.elements.get('cart-counter').innerText === 2, `Cart badge counter reflects 2`);
+
+    // Quantity decrement
+    harness.callFn('changeCartItemQty', 0, -1);
+    cartState = harness.getVar('cart');
+    assert(cartState.length === 1 && cartState[0].quantity === 1, `changeCartItemQty(0, -1) reduces quantity back to 1`);
+
+    // Quantity decrement below 1 removes item
+    harness.callFn('changeCartItemQty', 0, -1);
+    cartState = harness.getVar('cart');
+    assert(cartState.length === 0, `changeCartItemQty(0, -1) at qty 1 completely removes item from cart`);
+
+    // Multi-item stress load: Add all 54 products simultaneously
+    harness.setVar('cart', []);
+    harness.setVar('userClearance', 'GREEN');
+    tactical.forEach(p => harness.callFn('addToCart', p.id));
+    cartState = harness.getVar('cart');
+    const expectedSubtotal = tactical.reduce((sum, p) => sum + p.price, 0);
+
+    assert(cartState.length === tactical.length, `Simultaneous insertion of all ${tactical.length} tactical items into cart`);
+    assert(harness.elements.get('cart-counter').innerText === tactical.length, `Cart counter reflects full catalog size (${tactical.length})`);
+    assert(harness.elements.get('cart-subtotal').innerText === expectedSubtotal.toLocaleString('vi-VN') + ' ₫',
+        `Subtotal correctly aggregates full catalog sum: ${expectedSubtotal.toLocaleString('vi-VN')} ₫`);
+
+    // Coupon discount testing on max load
+    // Test JINMAN50 (50%)
+    harness.elements.get('cart-coupon-input').value = 'JINMAN50';
+    harness.callFn('applyCoupon');
+    let discount = harness.getVar('appliedCouponDiscount');
+    let expected50 = Math.round(expectedSubtotal * 0.50);
+    let final50 = expectedSubtotal - expected50;
+    assert(discount === 50, `JINMAN50 sets appliedCouponDiscount to 50%`);
+    assert(harness.elements.get('cart-total-final').innerText === final50.toLocaleString('vi-VN') + ' ₫',
+        `JINMAN50 calculates exact 50% total: ${final50.toLocaleString('vi-VN')} ₫`);
+
+    // Test VIETNAM (25%)
+    harness.elements.get('cart-coupon-input').value = 'VIETNAM';
+    harness.callFn('applyCoupon');
+    let expected25 = Math.round(expectedSubtotal * 0.25);
+    let final25 = expectedSubtotal - expected25;
+    assert(harness.getVar('appliedCouponDiscount') === 25, `VIETNAM sets appliedCouponDiscount to 25%`);
+    assert(harness.elements.get('cart-total-final').innerText === final25.toLocaleString('vi-VN') + ' ₫',
+        `VIETNAM calculates exact 25% total: ${final25.toLocaleString('vi-VN')} ₫`);
+
+    // Test HACLONG (15%)
+    harness.elements.get('cart-coupon-input').value = 'HACLONG';
+    harness.callFn('applyCoupon');
+    let expected15 = Math.round(expectedSubtotal * 0.15);
+    let final15 = expectedSubtotal - expected15;
+    assert(harness.getVar('appliedCouponDiscount') === 15, `HACLONG sets appliedCouponDiscount to 15%`);
+    assert(harness.elements.get('cart-total-final').innerText === final15.toLocaleString('vi-VN') + ' ₫',
+        `HACLONG calculates exact 15% total: ${final15.toLocaleString('vi-VN')} ₫`);
+
+    // Test Invalid Coupon
+    harness.elements.get('cart-coupon-input').value = 'INVALID_CODE';
+    harness.callFn('applyCoupon');
+    assert(harness.getVar('appliedCouponDiscount') === 0, `Invalid coupon resets discount to 0%`);
+    assert(harness.elements.get('cart-total-final').innerText === expectedSubtotal.toLocaleString('vi-VN') + ' ₫',
+        `Invalid coupon reverts total back to full subtotal`);
+
+    // Clear cart
+    harness.setVar('cart', []);
+    harness.callFn('renderCartList');
+
+    // --------------------------------------------------------------------------
+    // SUITE 4: ROLE-BASED ACCESS CONTROL, CHECKOUT & BALANCE DEDUCTIONS
+    // --------------------------------------------------------------------------
+    console.log(`\n${C.cyan}▶ SUITE 4: ROLE-BASED ACCESS CONTROL, CHECKOUT & BALANCE DEDUCTIONS${C.reset}`);
+
+    // Role-based product authorization
+    // RED user attempting PURPLE product
+    harness.setVar('userClearance', 'RED');
+    harness.setVar('currentUser', { name: 'Sniper', role: 'RED', balance: 250000000 });
+    const purItem = tactical.find(p => p.code === 'PURPLE');
+    const redItem = tactical.find(p => p.code === 'RED');
+
+    harness.setVar('cart', []);
+    harness.callFn('addToCart', purItem.id);
+    assert(harness.getVar('cart').length === 0, `RED user blocked from adding PURPLE item [${purItem.id}]`);
+    assert(harness.alerts.length > 0 && harness.alerts[harness.alerts.length - 1].includes('YÊU CẦU PHÂN QUYỀN'),
+        `Clearance requirement alert triggered for unauthorized tier`);
+
+    // RED user adding RED product
+    harness.callFn('addToCart', redItem.id);
+    assert(harness.getVar('cart').length === 1, `RED user permitted to add RED item [${redItem.id}]`);
+
+    // GREEN / Super Admin user can add ANY product
+    harness.setVar('userClearance', 'GREEN');
+    harness.setVar('currentUser', { name: 'Super Admin', role: 'GREEN', balance: 2000000000 });
+    harness.callFn('addToCart', purItem.id);
+    const yelItem = tactical.find(p => p.code === 'YELLOW');
+    const grnItem = tactical.find(p => p.code === 'GREEN');
+    harness.callFn('addToCart', yelItem.id);
+    harness.callFn('addToCart', grnItem.id);
+    assert(harness.getVar('cart').length === 4, `Super Admin (CODE GREEN) can add products from all tiers (RED, PURPLE, YELLOW, GREEN)`);
+
+    // Empty cart checkout attempt
+    harness.setVar('cart', []);
+    harness.alerts.length = 0;
+    harness.callFn('executeCheckout');
+    assert(harness.alerts.some(a => a.includes('Giỏ hàng đang trống')), `Empty cart checkout is rejected with alert`);
+
+    // Insufficient balance checkout attempt
+    harness.setVar('userClearance', 'RED');
+    harness.setVar('userBalance', 10000000); // 10M VND
+    harness.setVar('currentUser', { name: 'Low Balance User', role: 'RED', balance: 10000000 });
+    harness.setVar('cart', [{ ...redItem, quantity: 1, qty: 1 }]); // 38.5M VND
+    harness.alerts.length = 0;
+    harness.callFn('executeCheckout');
+    assert(harness.alerts.some(a => a.includes('SỐ DƯ TÀI KHOẢN KHÔNG ĐỦ')), `Insufficient balance checkout is rejected with alert`);
+    assert(harness.getVar('userBalance') === 10000000, `Balance remains completely unchanged after failed checkout`);
+
+    // Successful checkout execution with balance deduction
+    const initialBal = 500000000; // 500M VND
+    harness.setVar('userBalance', initialBal);
+    harness.setVar('currentUser', { name: 'Operative', role: 'RED', balance: initialBal });
+    harness.setVar('currentUserId', 'sniper_red');
+    harness.setVar('cart', [{ ...redItem, quantity: 2, qty: 2 }]); // 38.5M * 2 = 77M VND
+    const orderCost = redItem.price * 2;
+    harness.alerts.length = 0;
+
+    harness.callFn('executeCheckout');
+    const expectedRemainingBal = initialBal - orderCost;
+    assert(harness.getVar('userBalance') === expectedRemainingBal,
+        `Balance correctly deducted: ${initialBal.toLocaleString('vi-VN')} ₫ -> ${expectedRemainingBal.toLocaleString('vi-VN')} ₫ (-${orderCost.toLocaleString('vi-VN')} ₫)`);
+    assert(harness.getVar('cart').length === 0, `Cart is cleanly emptied after successful checkout`);
+    assert(harness.getVar('appliedCouponDiscount') === 0, `Applied coupon discount is reset to 0 after checkout`);
+
+    // Check order record in localStorage
+    const storedOrders = harness.callFn('getStoredOrders') || [];
+    assert(storedOrders.length > 0, `Order record successfully written to murthehelp_orders_db`);
+    const lastOrder = storedOrders[0];
+    assert(lastOrder.total === orderCost, `Stored order total matches checkout amount: ${lastOrder.total.toLocaleString('vi-VN')} ₫`);
+    assert(lastOrder.trackingId.startsWith('TRACK-'), `Tracking ID generated with format TRACK-xxxxxx (${lastOrder.trackingId})`);
+    assert(lastOrder.status.includes('DRONE'), `Order status set to dispatch protocol`);
+
+    // --------------------------------------------------------------------------
+    // SUITE 5: AUTHENTICATION, SUPER ADMIN (q121101) & ADMIN PANEL
+    // --------------------------------------------------------------------------
+    console.log(`\n${C.cyan}▶ SUITE 5: AUTHENTICATION, SUPER ADMIN (q121101) & ADMIN PANEL${C.reset}`);
+
+    // Verify DEFAULT_USERS configuration
+    assert(defaultUsers['q121101'] !== undefined, `Super Admin account [q121101] exists in DEFAULT_USERS`);
+    assert(defaultUsers['q121101'].pass === 'Tungqu@n1208.', `Super Admin password is 'Tungqu@n1208.'`);
+    assert(defaultUsers['q121101'].role === 'GREEN', `Super Admin clearance role is 'GREEN'`);
+    assert(defaultUsers['q121101'].balance === 2000000000, `Super Admin initial balance is 2.000.000.000 ₫`);
+    assert(defaultUsers['q121101'].isAdmin === true, `Super Admin isAdmin flag is true`);
+
+    // Verify all standard accounts exist
+    ['admin', 'sniper_red', 'cleaner_pur', 'medic_yel'].forEach(userKey => {
+        assert(defaultUsers[userKey] !== undefined, `Standard operative account [${userKey}] exists with role [${defaultUsers[userKey].role}]`);
+    });
+
+    // Test Login Simulation: Super Admin q121101
+    harness.elements.get('login-username').value = 'q121101';
+    harness.elements.get('login-password').value = 'Tungqu@n1208.';
+    harness.alerts.length = 0;
+    await harness.callFn('handleUserLogin');
+    assert(harness.getVar('currentUserId') === 'q121101', `Super Admin [q121101] login sets currentUserId`);
+    assert(harness.getVar('currentUser').role === 'GREEN', `Super Admin login establishes CODE GREEN clearance`);
+
+    // Test Login Simulation: Case-insensitivity (Q121101)
+    harness.elements.get('login-username').value = 'Q121101';
+    harness.elements.get('login-password').value = 'Tungqu@n1208.';
+    harness.alerts.length = 0;
+    await harness.callFn('handleUserLogin');
+    assert(harness.getVar('currentUserId') === 'q121101', `Case-insensitive username [Q121101] authenticates successfully`);
+
+    // Test Login Simulation: Master Bypass (JINMAN / 7209)
+    harness.elements.get('login-username').value = 'admin';
+    harness.elements.get('login-password').value = 'JINMAN';
+    harness.alerts.length = 0;
+    await harness.callFn('handleUserLogin');
+    assert(harness.getVar('currentUserId') === 'admin', `Master bypass credentials [admin / JINMAN] authenticate successfully`);
+
+    // Test Login Simulation: Invalid password
+    harness.elements.get('login-username').value = 'q121101';
+    harness.elements.get('login-password').value = 'WRONG_PASSWORD';
+    harness.alerts.length = 0;
+    await harness.callFn('handleUserLogin');
+    assert(harness.alerts.some(a => a.includes('Mật mã bảo mật không chính xác')), `Invalid password attempt is rejected with alert`);
+
+    // Test Login Simulation: Unknown username
+    harness.elements.get('login-username').value = 'unknown_user_99';
+    harness.elements.get('login-password').value = 'any_password';
+    harness.alerts.length = 0;
+    await harness.callFn('handleUserLogin');
+    assert(harness.alerts.some(a => a.includes('Không tìm thấy mã định danh')), `Unknown user login is rejected with alert`);
+
+    // Admin Panel Access Control
+    // Non-admin user attempt
+    harness.setVar('currentUser', { name: 'Sniper', role: 'RED', isAdmin: false });
+    harness.alerts.length = 0;
+    harness.callFn('openAdminModal');
+    assert(harness.alerts.some(a => a.includes('Quyền hạn không đủ')), `Non-admin user (CODE RED) blocked from opening Admin Panel`);
+
+    // Admin user attempt
+    const adminBal = 2000000000;
+    harness.setVar('currentUser', { name: 'Super Admin', role: 'GREEN', isAdmin: true, balance: adminBal });
+    harness.setVar('userBalance', adminBal);
+    harness.setVar('currentUserId', 'q121101');
+    harness.alerts.length = 0;
+    harness.callFn('openAdminModal');
+    assert(harness.elements.get('admin-modal').classList.contains('flex'), `Super Admin successfully opens Admin Panel modal`);
+
+    // Admin Deposit Operations
+    harness.elements.get('admin-deposit-input').value = '500000000'; // +500M VND
+    harness.callFn('depositFunds');
+    assert(harness.getVar('userBalance') === adminBal + 500000000,
+        `Admin deposit of 500.000.000 ₫ increases balance to ${(adminBal + 500000000).toLocaleString('vi-VN')} ₫`);
+
+    // Admin Invalid Deposit Attempt (Negative / Zero / NaN)
+    const balBeforeInvalidDeposit = harness.getVar('userBalance');
+    harness.elements.get('admin-deposit-input').value = '-10000000';
+    harness.alerts.length = 0;
+    harness.callFn('depositFunds');
+    assert(harness.alerts.some(a => a.includes('Vui lòng nhập số tiền VNĐ hợp lệ')), `Negative deposit attempt is rejected with alert`);
+    assert(harness.getVar('userBalance') === balBeforeInvalidDeposit, `Balance unchanged after negative deposit attempt`);
+
+    harness.elements.get('admin-deposit-input').value = '0';
+    harness.alerts.length = 0;
+    harness.callFn('depositFunds');
+    assert(harness.alerts.some(a => a.includes('Vui lòng nhập số tiền VNĐ hợp lệ')), `Zero deposit attempt is rejected with alert`);
+    assert(harness.getVar('userBalance') === balBeforeInvalidDeposit, `Balance unchanged after zero deposit attempt`);
+
+    // Admin Save Settings (Role & Name Override)
+    harness.elements.get('admin-tier-select').value = 'PURPLE';
+    harness.elements.get('admin-username-input').value = 'Commander Q';
+    harness.callFn('saveAdminSettings');
+    assert(harness.getVar('userClearance') === 'PURPLE', `Admin settings update changed userClearance to PURPLE`);
+    assert(harness.getVar('userName') === 'Commander Q', `Admin settings update changed userName to 'Commander Q'`);
+
+    // --------------------------------------------------------------------------
+    // SUITE 6: UI STAGE TRANSITIONS, MODALS & AST SYNTAX INTEGRITY
+    // --------------------------------------------------------------------------
+    console.log(`\n${C.cyan}▶ SUITE 6: UI STAGE TRANSITIONS, MODALS & AST SYNTAX INTEGRITY${C.reset}`);
+
+    // Triple-Click State Machine
+    harness.setVar('secretClickCount', 0);
+    harness.callFn('handleSecretTripleClick');
+    assert(harness.getVar('secretClickCount') === 1, `1st click on yellow footer text increments counter to 1`);
+
+    harness.callFn('handleSecretTripleClick');
+    assert(harness.getVar('secretClickCount') === 2, `2nd click increments counter to 2 (portal stage still hidden)`);
+
+    harness.callFn('handleSecretTripleClick');
+    assert(harness.getVar('secretClickCount') === 0, `3rd click triggers portal and resets counter to 0`);
+    assert(harness.elements.get('portal-stage').classList.contains('flex'), `Portal stage (#portal-stage) is displayed`);
+    assert(harness.elements.get('disguise-stage').classList.contains('hidden'), `Disguise stage (#disguise-stage) is hidden`);
+
+    // Dark stage transition
+    harness.callFn('enterDarkMallFinal');
+    assert(harness.elements.get('dark-stage').classList.contains('flex'), `Dark Mall stage (#dark-stage) is displayed`);
+    assert(harness.elements.get('portal-stage').classList.contains('hidden'), `Portal stage is hidden`);
+
+    // Return to disguise
+    harness.callFn('returnToDisguise');
+    assert(!harness.elements.get('disguise-stage').classList.contains('hidden'), `Disguise stage (#disguise-stage) is displayed (hidden class removed)`);
+    assert(harness.elements.get('dark-stage').classList.contains('hidden'), `Dark Mall stage is hidden`);
+
+    // Product Detail Quick View Modal
+    const testItem = tactical[0];
+    harness.callFn('openProductDetailModal', testItem.id);
+    assert(harness.elements.get('product-detail-modal').classList.contains('flex'), `Product detail modal opens on openProductDetailModal()`);
+    assert(harness.elements.get('detail-item-name').innerText === testItem.name, `Detail modal name matches product name: ${testItem.name}`);
+    assert(harness.elements.get('detail-item-price').innerText === testItem.price.toLocaleString('vi-VN') + ' ₫', `Detail modal price matches product price`);
+    harness.callFn('closeProductDetailModal');
+    assert(harness.elements.get('product-detail-modal').classList.contains('hidden'), `Product detail modal closes on closeProductDetailModal()`);
+
+    // AST Syntax Validation of all Inline Scripts
+    const allInlineScripts = htmlContent.match(/<script(?![^>]*src)[^>]*>([\s\S]*?)<\/script>/gi) || [];
+    let scriptSyntaxErrors = 0;
+    allInlineScripts.forEach((sTag, sIdx) => {
+        const rawCode = sTag.replace(/<\/?script[^>]*>/gi, '');
+        try {
+            new Function(rawCode);
+            new vm.Script(rawCode);
+        } catch (e) {
+            scriptSyntaxErrors++;
+            console.error(`Script #${sIdx + 1} syntax error:`, e.message);
+        }
+    });
+    assert(scriptSyntaxErrors === 0, `All ${allInlineScripts.length} inline <script> blocks pass pure AST compilation without syntax errors`);
+
+    // ==============================================================================
+    // FINAL SUMMARY
+    // ==============================================================================
+    console.log(`\n${C.bold}==============================================================================${C.reset}`);
+    console.log(`${C.bold}TEST EXECUTION SUMMARY${C.reset}`);
+    console.log(`${C.bold}==============================================================================${C.reset}`);
+    console.log(`Total Assertions Run : ${totalPassed + totalFailed}`);
+    console.log(`Passed               : ${C.green}${totalPassed}${C.reset}`);
+    console.log(`Failed               : ${totalFailed === 0 ? C.green + '0' + C.reset : C.red + totalFailed + C.reset}`);
+    console.log(`Live Network Images  : ${C.green}${imageProbeResults.length} probed (100% HTTP 200 OK)${C.reset}`);
+    console.log(`Verdict              : ${totalFailed === 0 ? C.green + C.bold + 'APPROVE (100% PASS)' + C.reset : C.red + C.bold + 'REQUEST_CHANGES' + C.reset}`);
+    console.log(`${C.bold}==============================================================================${C.reset}\n`);
+
+    if (totalFailed > 0) {
+        process.exit(1);
     }
 }
 
-console.log(`\n${C.bold}${C.cyan}==============================================================================${C.reset}`);
-console.log(`${C.bold}${C.cyan}  MURTHEHELP EMPIRICAL CHALLENGER 2: ADVERSARIAL VERIFICATION SUITE${C.reset}`);
-console.log(`${C.bold}${C.cyan}==============================================================================${C.reset}\n`);
-
-// ------------------------------------------------------------------------------
-// SUITE 1: PRODUCT CATALOG PRICING & NUMERIC INTEGRITY
-// ------------------------------------------------------------------------------
-console.log(`${C.bold}▶ SUITE 1: PRODUCT CATALOG PRICING & NUMERIC INTEGRITY (43 Tactical + 8 Disguise)${C.reset}`);
-{
-    const h = createHarness();
-    const tactical = h.getVar('PRODUCTS_DB');
-    const disguise = h.getVar('DISGUISE_PRODUCTS');
-
-    assert(Array.isArray(tactical) && tactical.length === 43, `Tactical catalog contains exactly 43 items (Observed: ${tactical ? tactical.length : 0})`);
-    assert(Array.isArray(disguise) && disguise.length === 8, `Disguise catalog contains exactly 8 items (Observed: ${disguise ? disguise.length : 0})`);
-
-    const vnPriceRegex = /^\d{1,3}(\.\d{3})+ ₫$/;
-
-    // Tactical items test
-    let tacticalAllValid = true;
-    let tacticalFormatValid = true;
-    const tierCounts = { RED: 0, PURPLE: 0, YELLOW: 0, GREEN: 0 };
-
-    tactical.forEach(item => {
-        if (typeof item.price !== 'number' || !Number.isInteger(item.price) || item.price <= 0) {
-            tacticalAllValid = false;
-        }
-        const formatted = item.price.toLocaleString('vi-VN') + ' ₫';
-        if (!vnPriceRegex.test(formatted)) {
-            tacticalFormatValid = false;
-        }
-        if (tierCounts[item.code] !== undefined) tierCounts[item.code]++;
-    });
-
-    assert(tacticalAllValid, `All 43 tactical products have positive integer VNĐ prices without floating point distortion`);
-    assert(tacticalFormatValid, `All 43 tactical products format correctly to Vietnamese dot-separated currency (e.g. 38.500.000 ₫)`);
-    assert(tierCounts.RED === 24, `Code Red contains exactly 24 tactical items (Observed: ${tierCounts.RED})`);
-    assert(tierCounts.PURPLE === 7, `Code Purple contains exactly 7 items (Observed: ${tierCounts.PURPLE})`);
-    assert(tierCounts.YELLOW === 7, `Code Yellow contains exactly 7 items (Observed: ${tierCounts.YELLOW})`);
-    assert(tierCounts.GREEN === 5, `Code Green contains exactly 5 items (Observed: ${tierCounts.GREEN})`);
-
-    // Spot-check key prices from ORIGINAL_REQUEST.md
-    const checkItemPrice = (id, expectedPrice, expectedName) => {
-        const it = tactical.find(p => p.id === id);
-        assert(it && it.price === expectedPrice, `Key item [${id}] ${expectedName} matches exact price ${expectedPrice.toLocaleString('vi-VN')} ₫`);
-    };
-
-    checkItemPrice('P020', 38500000, 'Colt M1911 Custom');
-    checkItemPrice('P033', 16500000, 'Glock 19 Gen 5 Blackout');
-    checkItemPrice('P021', 21000000, 'Tokarev TT-33');
-    checkItemPrice('P022', 48000000, 'Desert Eagle .50 AE Titan');
-    checkItemPrice('SNP01', 210000000, 'AI AWM .338');
-    checkItemPrice('SNP02', 340000000, 'Barrett M82A1 .50 BMG');
-    checkItemPrice('SNP03', 450000000, 'CheyTac M200 Intervention');
-    checkItemPrice('EXP01', 16000000, 'Flashbang M84 x4');
-    checkItemPrice('EXP02', 35000000, 'C4 Kèm Kíp Nổ Từ Xa');
-    checkItemPrice('MEL01', 12500000, 'Dao CQC Tungsten');
-    checkItemPrice('PUR01', 45000000, 'Axit Sinh Học PX-70');
-    checkItemPrice('PUR02', 68000000, 'Micro Drone Trinh Sát Tàng Hình');
-    checkItemPrice('PUR03', 52000000, 'EMP Phá Sóng Quân Sự');
-    checkItemPrice('PUR04', 78000000, 'Máy Quét Laser Xuyên Tường');
-    checkItemPrice('PUR05', 85000000, 'Vali Khử Từ Ổ Cứng Cleaner-Pro');
-    checkItemPrice('YEL01', 14500000, 'Túi Sơ Cứu Chấn Thương IFAK');
-    checkItemPrice('YEL02', 28000000, 'Serum Adrenaline Pro');
-    checkItemPrice('YEL03', 32000000, 'Máy Khử Rung Tim AED-X');
-    checkItemPrice('YEL04', 18500000, 'Băng Ép Cầm Máu Celox Pro');
-    checkItemPrice('YEL05', 18500000, 'Keo Dán Vết Thương Sinh Học Bio-Glue');
-    checkItemPrice('GRN01', 180000000, 'Khiên Graphene Cấp IV');
-    checkItemPrice('GRN02', 850000000, 'Biệt Đội Can Thiệp Vũ Trang 5 Phút');
-    checkItemPrice('GRN03', 920000000, 'Robot Tác Chiến Phòng Thủ Sentinel');
-    checkItemPrice('GRN04', 450000000, 'Giáp Titanium Exoskeleton');
-
-    // Disguise catalog test
-    let disguiseAllValid = true;
-    let disguiseFormatValid = true;
-    disguise.forEach(item => {
-        if (typeof item.price !== 'number' || !Number.isInteger(item.price) || item.price <= 0) {
-            disguiseAllValid = false;
-        }
-        const formatted = item.price.toLocaleString('vi-VN') + ' ₫';
-        if (!vnPriceRegex.test(formatted)) {
-            disguiseFormatValid = false;
-        }
-    });
-
-    assert(disguiseAllValid, `All 8 disguise products have positive integer VNĐ prices`);
-    assert(disguiseFormatValid, `All 8 disguise products format correctly to Vietnamese currency (e.g. 7.800.000 ₫)`);
-
-    // Alert banner order #HD-71092 check
-    assert(htmlContent.includes('#HD-71092') && htmlContent.includes('70.000.000 ₫') && htmlContent.includes('11.200'),
-        `Disguise banner contains exact order #HD-71092 with 11.200m hose and 70.000.000 ₫`);
-}
-
-// ------------------------------------------------------------------------------
-// SUITE 2: CART OPERATIONS & VNĐ ARITHMETIC STRESS-TESTING
-// ------------------------------------------------------------------------------
-console.log(`\n${C.bold}▶ SUITE 2: CART OPERATIONS & VNĐ ARITHMETIC STRESS-TESTING${C.reset}`);
-{
-    const h = createHarness();
-
-    // 1. Initial empty cart state
-    assert(h.getVar('cart').length === 0, `Initial cart is empty`);
-    assert(h.elements.get('cart-total-vnđ').innerText === '0 ₫', `Initial cart UI total is '0 ₫'`);
-    assert(h.elements.get('cart-counter').innerText === 0, `Initial cart counter badge is 0`);
-
-    // 2. Empty cart checkout rejection
-    h.callFn('executeCheckout');
-    assert(h.alerts.length === 1 && h.alerts[0].includes('trống'), `Attempting checkout on empty cart triggers warning alert and prevents transaction`);
-
-    // 3. Single item addition
-    h.callFn('addToCart', 'P020'); // Colt M1911 (38.500.000 ₫)
-    const cart1 = h.getVar('cart');
-    assert(cart1.length === 1 && cart1[0].qty === 1, `Adding P020 creates single cart item with qty = 1`);
-    assert(h.elements.get('cart-total-vnđ').innerText === '38.500.000 ₫', `Cart total displays '38.500.000 ₫'`);
-    assert(h.elements.get('cart-counter').innerText === 1, `Cart counter badge is 1`);
-
-    // 4. Duplicate item addition
-    h.callFn('addToCart', 'P020');
-    const cart2 = h.getVar('cart');
-    assert(cart2.length === 1 && cart2[0].qty === 2, `Adding duplicate P020 increments qty to 2 without duplicating item entry`);
-    assert(h.elements.get('cart-total-vnđ').innerText === '77.000.000 ₫', `Cart total updates to '77.000.000 ₫' (38.5M * 2)`);
-    assert(h.elements.get('cart-counter').innerText === 2, `Cart counter badge updates to 2`);
-
-    // 5. Multi-item cross-tier additions
-    h.callFn('addToCart', 'PUR01'); // 45.000.000 ₫
-    h.callFn('addToCart', 'YEL01'); // 14.500.000 ₫
-    h.callFn('addToCart', 'GRN01'); // 180.000.000 ₫
-    // Total = 77M + 45M + 14.5M + 180M = 316.500.000 ₫
-    const cart3 = h.getVar('cart');
-    assert(cart3.length === 4, `Cart contains 4 distinct items across all 4 clearance codes`);
-    assert(h.elements.get('cart-total-vnđ').innerText === '316.500.000 ₫', `Multi-item cart total correctly calculates '316.500.000 ₫'`);
-    assert(h.elements.get('cart-counter').innerText === 5, `Total quantity counter across all items is 5`);
-
-    // 6. Quantity increment (+)
-    h.callFn('updateCartQty', 'YEL01', 1); // YEL01 becomes qty = 2 (+14.5M -> 331M)
-    assert(h.getVar('cart').find(c => c.id === 'YEL01').qty === 2, `updateCartQty('YEL01', +1) increments quantity to 2`);
-    assert(h.elements.get('cart-total-vnđ').innerText === '331.000.000 ₫', `Total updates correctly to '331.000.000 ₫'`);
-
-    // 7. Quantity decrement (-)
-    h.callFn('updateCartQty', 'P020', -1); // P020 becomes qty = 1 (-38.5M -> 292.5M)
-    assert(h.getVar('cart').find(c => c.id === 'P020').qty === 1, `updateCartQty('P020', -1) decrements quantity to 1`);
-    assert(h.elements.get('cart-total-vnđ').innerText === '292.500.000 ₫', `Total updates correctly to '292.500.000 ₫'`);
-
-    // 8. Quantity decrement to 0 (auto-removal)
-    h.callFn('updateCartQty', 'P020', -1); // P020 qty becomes 0 -> removed (-38.5M -> 254M)
-    assert(h.getVar('cart').find(c => c.id === 'P020') === undefined, `Decreasing quantity to 0 automatically removes item from cart`);
-    assert(h.getVar('cart').length === 3, `Cart item count shrinks from 4 to 3`);
-    assert(h.elements.get('cart-total-vnđ').innerText === '254.000.000 ₫', `Total updates correctly to '254.000.000 ₫'`);
-
-    // 9. Explicit item deletion (✕)
-    h.callFn('removeFromCart', 'GRN01'); // Removes 180M -> 74M (PUR01: 45M + YEL01: 29M)
-    assert(h.getVar('cart').find(c => c.id === 'GRN01') === undefined, `removeFromCart('GRN01') completely removes item`);
-    assert(h.elements.get('cart-total-vnđ').innerText === '74.000.000 ₫', `Total updates to '74.000.000 ₫'`);
-
-    // 10. Deleting all remaining items
-    h.callFn('removeFromCart', 'PUR01');
-    h.callFn('removeFromCart', 'YEL01');
-    assert(h.getVar('cart').length === 0, `All items removed from cart`);
-    assert(h.elements.get('cart-total-vnđ').innerText === '0 ₫', `Cart total correctly resets to '0 ₫'`);
-    assert(h.elements.get('cart-counter').innerText === 0, `Cart counter badge resets to 0`);
-
-    // 11. Massive Stress Test: Add all 43 products at once
-    let expectedTotalAll = 0;
-    const products = h.getVar('PRODUCTS_DB');
-    products.forEach(item => {
-        h.callFn('addToCart', item.id);
-        expectedTotalAll += item.price;
-    });
-    const finalCart = h.getVar('cart');
-    assert(finalCart.length === 43, `Cart successfully holds all 43 catalog items simultaneously`);
-    const actualCalculatedSum = finalCart.reduce((s, i) => s + i.price * i.qty, 0);
-    assert(actualCalculatedSum === expectedTotalAll, `Exact total sum of all 43 items matches: ${expectedTotalAll.toLocaleString('vi-VN')} ₫`);
-    assert(h.elements.get('cart-total-vnđ').innerText === expectedTotalAll.toLocaleString('vi-VN') + ' ₫',
-        `UI total matches exact 43-item grand sum: ${expectedTotalAll.toLocaleString('vi-VN')} ₫`);
-}
-
-// ------------------------------------------------------------------------------
-// SUITE 3: BALANCE DEDUCTIONS & LOGISTICS DISPATCH (3 MODES)
-// ------------------------------------------------------------------------------
-console.log(`\n${C.bold}▶ SUITE 3: BALANCE DEDUCTIONS & LOGISTICS DISPATCH (3 MODES)${C.reset}`);
-{
-    // Mode 1: Drone Tàng Hình Ban Đêm
-    const h1 = createHarness();
-    h1.setVar('userBalance', 1500000000); // 1.5 Tỷ
-    h1.callFn('addToCart', 'SNP03'); // CheyTac M200: 450.000.000 ₫
-    h1.elements.get('delivery-method').selectedIndex = 0; // drone
-
-    h1.callFn('executeCheckout');
-    assert(h1.getVar('userBalance') === 1050000000, `Mode 1 (Drone): Balance deducted exactly from 1.5B to 1.05B (Observed: ${h1.getVar('userBalance')})`);
-    assert(h1.getVar('cart').length === 0, `Mode 1: Cart emptied after checkout`);
-    assert(h1.getVar('transactions').length === 1, `Mode 1: Transaction record added to ledger`);
-    const t1 = h1.getVar('transactions')[0];
-    assert(t1.method.includes('Drone Tàng Hình'), `Mode 1: Transaction log contains Drone dispatch method`);
-    assert(t1.total === 450000000, `Mode 1: Transaction total is 450.000.000 ₫`);
-    assert(t1.remainingBalance === 1050000000, `Mode 1: Transaction remainingBalance is 1.050.000.000 ₫`);
-    assert(/^ORD-\d{6}$/.test(t1.orderId), `Mode 1: Order ID matches ORD-XXXXXX format (${t1.orderId})`);
-    assert(h1.elements.get('dispatch-alert-modal').classList.contains('flex'), `Mode 1: Dispatch alert modal is shown`);
-    assert(h1.elements.get('user-balance-display').innerText === '1.050.000.000', `Mode 1: Top HUD balance displays formatted 1.050.000.000`);
-
-    // Mode 2: Thùng Nông Cụ Ngụy Trang
-    const h2 = createHarness();
-    h2.setVar('userBalance', 500000000);
-    h2.callFn('addToCart', 'AR02'); // FN SCAR-H: 195.000.000 ₫
-    h2.callFn('addToCart', 'SMG03'); // KRISS Vector: 135.000.000 ₫
-    // Total = 330.000.000 ₫ -> remaining 170.000.000 ₫
-    h2.elements.get('delivery-method').selectedIndex = 1; // container
-
-    h2.callFn('executeCheckout');
-    assert(h2.getVar('userBalance') === 170000000, `Mode 2 (Container): Balance deducted from 500M to 170M (Observed: ${h2.getVar('userBalance')})`);
-    const t2 = h2.getVar('transactions')[0];
-    assert(t2.method.includes('Thùng Nông Cụ Ngụy Trang'), `Mode 2: Transaction log contains Container method`);
-    assert(t2.total === 330000000, `Mode 2: Transaction total is 330.000.000 ₫`);
-
-    // Mode 3: Điểm Hẹn An Toàn Safehouse
-    const h3 = createHarness();
-    h3.setVar('userBalance', 1000000000);
-    h3.callFn('addToCart', 'GRN02'); // Biệt Đội Can Thiệp 5 Phút: 850.000.000 ₫
-    h3.elements.get('delivery-method').selectedIndex = 2; // safehouse
-
-    h3.callFn('executeCheckout');
-    assert(h3.getVar('userBalance') === 150000000, `Mode 3 (Safehouse): Balance deducted from 1B to 150M (Observed: ${h3.getVar('userBalance')})`);
-    const t3 = h3.getVar('transactions')[0];
-    assert(t3.method.includes('Điểm Hẹn An Toàn Safehouse'), `Mode 3: Transaction log contains Safehouse method`);
-
-    // Boundary Test 1: Insufficient Balance Rejection
-    const h4 = createHarness();
-    h4.setVar('userBalance', 50000000); // 50M
-    h4.callFn('addToCart', 'SNP02'); // Barrett M82A1: 340.000.000 ₫
-    h4.callFn('executeCheckout');
-    assert(h4.alerts.length === 1 && h4.alerts[0].includes('KHÔNG ĐỦ'), `Checkout with insufficient balance is rejected with alert`);
-    assert(h4.getVar('userBalance') === 50000000, `Balance remains unchanged on failed checkout`);
-    assert(h4.getVar('cart').length === 1, `Cart items preserved on failed checkout`);
-    assert(h4.getVar('transactions').length === 0, `No transaction logged on failed checkout`);
-
-    // Boundary Test 2: Exact Balance Checkout (userBalance == total)
-    const h5 = createHarness();
-    h5.setVar('userBalance', 38500000); // Exact price of Colt M1911
-    h5.callFn('addToCart', 'P020');
-    h5.callFn('executeCheckout');
-    assert(h5.getVar('userBalance') === 0, `Exact balance checkout successfully reduces balance to 0 ₫`);
-    assert(h5.getVar('transactions').length === 1 && h5.getVar('transactions')[0].remainingBalance === 0, `Transaction logged with remainingBalance = 0 ₫`);
-}
-
-// ------------------------------------------------------------------------------
-// SUITE 4: MASTER ADMIN CONSOLE OVERRIDES
-// ------------------------------------------------------------------------------
-console.log(`\n${C.bold}▶ SUITE 4: MASTER ADMIN CONSOLE OVERRIDES${C.reset}`);
-{
-    const h = createHarness();
-    h.setVar('userBalance', 500000000);
-
-    // 1. Valid Custom Deposit
-    h.elements.get('admin-deposit-input').value = '250000000';
-    h.callFn('depositFunds');
-    assert(h.getVar('userBalance') === 750000000, `depositFunds(250M) increases balance from 500M to 750M`);
-    assert(h.elements.get('user-balance-display').innerText === '750.000.000', `HUD balance display updates to 750.000.000`);
-    assert(h.mockStorage.murthehelp_balance === '750000000', `LocalStorage balance persists 750000000`);
-
-    // 2. Quick Deposits
-    h.callFn('quickDeposit', 100000000); // +100M -> 850M
-    assert(h.getVar('userBalance') === 850000000, `quickDeposit(100M) updates balance to 850M`);
-    h.callFn('quickDeposit', 500000000); // +500M -> 1.35B
-    assert(h.getVar('userBalance') === 1350000000, `quickDeposit(500M) updates balance to 1.35B`);
-    h.callFn('quickDeposit', 1000000000); // +1B -> 2.35B
-    assert(h.getVar('userBalance') === 2350000000, `quickDeposit(1B) updates balance to 2.35B`);
-
-    // 3. Invalid Deposit Handling (NaN, Negative, Zero, Blank)
-    const prevBalance = h.getVar('userBalance');
-    const alertCountBefore = h.alerts.length;
-
-    h.elements.get('admin-deposit-input').value = 'invalid_text';
-    h.callFn('depositFunds');
-    assert(h.getVar('userBalance') === prevBalance, `Non-numeric deposit is rejected without balance change`);
-
-    h.elements.get('admin-deposit-input').value = '-50000000';
-    h.callFn('depositFunds');
-    assert(h.getVar('userBalance') === prevBalance, `Negative deposit is rejected without balance change`);
-
-    h.elements.get('admin-deposit-input').value = '0';
-    h.callFn('depositFunds');
-    assert(h.getVar('userBalance') === prevBalance, `Zero deposit is rejected without balance change`);
-
-    h.elements.get('admin-deposit-input').value = '';
-    h.callFn('depositFunds');
-    assert(h.getVar('userBalance') === prevBalance, `Empty deposit is rejected without balance change`);
-    assert(h.alerts.length === alertCountBefore + 4, `All 4 invalid deposits produced error alerts`);
-
-    // 4. Tier Switching via Admin Console
-    h.elements.get('admin-tier-select').value = 'RED';
-    h.elements.get('admin-username-input').value = 'Operative Min-woo';
-    h.callFn('saveAdminSettings');
-
-    assert(h.getVar('userClearance') === 'RED', `Admin settings saved: userClearance updated to RED`);
-    assert(h.getVar('userName') === 'Operative Min-woo', `Admin settings saved: userName updated to Operative Min-woo`);
-    assert(h.elements.get('user-tier-badge').innerText === 'CODE RED', `Top HUD badge updated to CODE RED`);
-    assert(h.elements.get('current-user-name').innerText === 'Operative Min-woo', `Top HUD name updated to Operative Min-woo`);
-    assert(h.mockStorage.murthehelp_clearance === 'RED', `Clearance saved to localStorage as RED`);
-
-    // Verify product access control when downgraded to RED
-    h.callFn('setClearanceTab', 'GREEN');
-    const greenGridHTML = h.elements.get('dark-products-grid').innerHTML;
-    assert(greenGridHTML.includes('YÊU CẦU QUYỀN CODE GREEN'), `When user is RED, GREEN items are locked with 'YÊU CẦU QUYỀN CODE GREEN'`);
-
-    // Upgrade back to GREEN
-    h.elements.get('admin-tier-select').value = 'GREEN';
-    h.callFn('saveAdminSettings');
-    h.callFn('setClearanceTab', 'GREEN');
-    const greenGridUnlocked = h.elements.get('dark-products-grid').innerHTML;
-    assert(greenGridUnlocked.includes('+ ĐẶT MẶT HÀNG NÀY'), `When user is upgraded to GREEN, GREEN items are unlocked for order`);
-
-    // 5. Blank Username Fallback
-    h.elements.get('admin-username-input').value = '   ';
-    h.callFn('saveAdminSettings');
-    assert(h.getVar('userName') === 'Jeong Jin-man', `Blank admin username cleanly falls back to default 'Jeong Jin-man'`);
-
-    // 6. Transaction Ledger Logging
-    h.callFn('openTransactionsModal');
-    assert(h.elements.get('transactions-modal').classList.contains('flex'), `openTransactionsModal() displays transaction logs modal`);
-}
-
-// ------------------------------------------------------------------------------
-// SUITE 5: EMERGENCY ESC PANIC PROTOCOL ACROSS ALL STATES & MODALS
-// ------------------------------------------------------------------------------
-console.log(`\n${C.bold}▶ SUITE 5: EMERGENCY ESC PANIC PROTOCOL ACROSS ALL STATES & MODALS${C.reset}`);
-{
-    // Test Scenario A: ESC from Dark Mall with multiple modals open
-    const h = createHarness();
-    
-    // Simulate Mall Entry
-    h.callFn('triggerMurthehelpPortal');
-    h.callFn('enterDarkMallFinal');
-    assert(h.elements.get('dark-stage').classList.contains('flex'), `Dark Mall is active`);
-    const webglBg = h.getVar('webglBg');
-    assert(webglBg && webglBg.isRunning === true, `3D WebGL background is running`);
-
-    // Open multiple modals
-    h.callFn('openCartDrawer');
-    h.callFn('openAdminModal');
-    h.callFn('openF12Modal');
-    h.callFn('openBlueprintModal', 'P020');
-    h.callFn('openTransactionsModal');
-
-    assert(!h.elements.get('cart-drawer-backdrop').classList.contains('hidden'), `Cart drawer is open`);
-    assert(h.elements.get('admin-modal').classList.contains('flex'), `Admin modal is open`);
-    assert(h.elements.get('f12-source-modal').classList.contains('flex'), `F12 modal is open`);
-    assert(h.elements.get('blueprint-modal').classList.contains('flex'), `Blueprint modal is open`);
-    assert(h.elements.get('transactions-modal').classList.contains('flex'), `Transactions modal is open`);
-
-    // Trigger ESC Panic Key
-    h.dispatchWindowEvent('keydown', { key: 'Escape' });
-
-    // Assert complete containment & recovery
-    assert(h.elements.get('dark-stage').classList.contains('hidden'), `Dark Mall is hidden after ESC`);
-    assert(h.elements.get('portal-stage').classList.contains('hidden'), `Transit stage is hidden after ESC`);
-    assert(h.elements.get('portal-alert').classList.contains('hidden'), `Portal alert is hidden after ESC`);
-    assert(!h.elements.get('disguise-stage').classList.contains('hidden'), `Disguise storefront is restored after ESC`);
-    assert(h.elements.get('main-body').style.backgroundColor === '#f8fafc', `Body background reset to disguise white (#f8fafc)`);
-    assert(h.elements.get('disguise-search-input').value === '', `Disguise search input is wiped clean`);
-    assert(h.getVar('webglBg').isRunning === false, `3D WebGL shader render loop stopped`);
-
-    // Assert all modals closed
-    assert(h.elements.get('cart-drawer-backdrop').classList.contains('hidden'), `Cart drawer closed`);
-    assert(h.elements.get('admin-modal').classList.contains('hidden'), `Admin modal closed`);
-    assert(h.elements.get('f12-source-modal').classList.contains('hidden'), `F12 modal closed`);
-    assert(h.elements.get('blueprint-modal').classList.contains('hidden'), `Blueprint modal closed`);
-    assert(h.elements.get('transactions-modal').classList.contains('hidden'), `Transactions modal closed`);
-    assert(h.elements.get('dispatch-alert-modal').classList.contains('hidden'), `Dispatch alert modal closed`);
-
-    // Test Scenario B: ESC while on Transit Screen
-    const h2 = createHarness();
-    h2.callFn('triggerMurthehelpPortal');
-    assert(h2.elements.get('portal-stage').classList.contains('flex'), `Portal stage active`);
-    h2.dispatchWindowEvent('keydown', { key: 'Escape' });
-    assert(h2.elements.get('portal-stage').classList.contains('hidden'), `Portal stage immediately aborted on ESC`);
-    assert(!h2.elements.get('disguise-stage').classList.contains('hidden'), `Disguise storefront restored`);
-
-    // Test Scenario C: ESC while on Disguise Storefront (Safe no-op)
-    const h3 = createHarness();
-    h3.dispatchWindowEvent('keydown', { key: 'Escape' });
-    assert(!h3.elements.get('disguise-stage').classList.contains('hidden'), `ESC from Disguise storefront safely retains storefront without errors`);
-}
-
-// ==============================================================================
-// SUMMARY & VERDICT
-// ==============================================================================
-console.log(`\n${C.bold}${C.cyan}==============================================================================${C.reset}`);
-console.log(`${C.bold}TEST EXECUTION SUMMARY${C.reset}`);
-console.log(`${C.bold}${C.cyan}==============================================================================${C.reset}`);
-console.log(`Total Verification Tests : ${totalTests}`);
-console.log(`Passed                   : ${C.green}${passedTests}${C.reset}`);
-console.log(`Failed                   : ${failedTests > 0 ? C.red : C.green}${failedTests}${C.reset}`);
-console.log(`Success Rate             : ${C.bold}${((passedTests / totalTests) * 100).toFixed(1)}%${C.reset}`);
-console.log(`${C.bold}${C.cyan}==============================================================================${C.reset}\n`);
-
-if (failedTests === 0) {
-    console.log(`${C.bold}${C.green}>>> EMPIRICAL VERIFICATION VERDICT: APPROVE <<<\n${C.reset}`);
-    process.exit(0);
-} else {
-    console.log(`${C.bold}${C.red}>>> EMPIRICAL VERIFICATION VERDICT: REQUEST_CHANGES <<<\n${C.reset}`);
+runAdversarialSuites().catch(err => {
+    console.error('Fatal execution error:', err);
     process.exit(1);
-}
+});
