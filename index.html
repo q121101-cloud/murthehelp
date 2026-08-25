@@ -99,6 +99,217 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
+        /* Tier 2: Biometric Transit Portal Aesthetic */
+        .portal-bg-atmosphere {
+            background: radial-gradient(circle at 50% 45%, #4a0005 0%, #240003 55%, #0d0001 85%, #050001 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portal-holo-grid {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image: 
+                linear-gradient(rgba(239, 68, 68, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(239, 68, 68, 0.04) 1px, transparent 1px);
+            background-size: 32px 32px;
+            background-position: center center;
+            mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 80%);
+            -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 80%);
+        }
+
+        @keyframes laserSweepVertical {
+            0% {
+                top: -5%;
+                opacity: 0;
+            }
+            8% {
+                opacity: 1;
+            }
+            92% {
+                opacity: 1;
+            }
+            100% {
+                top: 105%;
+                opacity: 0;
+            }
+        }
+
+        .biometric-laser-line {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(239, 68, 68, 0.4) 15%, 
+                #ff2a55 50%, 
+                rgba(239, 68, 68, 0.4) 85%, 
+                transparent 100%);
+            box-shadow: 
+                0 0 10px #ff2a55,
+                0 0 25px rgba(255, 42, 85, 0.8),
+                0 0 50px rgba(179, 0, 30, 0.6),
+                0 0 100px rgba(179, 0, 30, 0.3);
+            animation: laserSweepVertical 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .biometric-laser-glow {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 48px;
+            margin-top: -24px;
+            background: linear-gradient(180deg, 
+                rgba(255, 42, 85, 0) 0%, 
+                rgba(255, 42, 85, 0.08) 50%, 
+                rgba(255, 42, 85, 0) 100%);
+            pointer-events: none;
+        }
+
+        .murderhelp-neon-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 900;
+            letter-spacing: 0.22em;
+            color: #ffffff;
+            text-shadow: 
+                0 0 5px #ffffff,
+                0 0 12px #ff3355,
+                0 0 24px #ff1a40,
+                0 0 45px #b3001e,
+                0 0 80px #700010,
+                0 0 120px rgba(112, 0, 16, 0.8);
+            animation: neonPulseGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes neonPulseGlow {
+            0% {
+                text-shadow: 
+                    0 0 4px #ffffff,
+                    0 0 10px #ff3355,
+                    0 0 20px #ff1a40,
+                    0 0 40px #b3001e,
+                    0 0 70px #700010;
+                opacity: 0.95;
+            }
+            100% {
+                text-shadow: 
+                    0 0 6px #ffffff,
+                    0 0 15px #ff4d6d,
+                    0 0 30px #ff2a55,
+                    0 0 60px #b3001e,
+                    0 0 100px #900015,
+                    0 0 140px rgba(179, 0, 30, 0.7);
+                opacity: 1;
+            }
+        }
+
+        .portal-glass-modal {
+            background: rgba(11, 13, 19, 0.75);
+            backdrop-filter: blur(28px) saturate(190%);
+            -webkit-backdrop-filter: blur(28px) saturate(190%);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            box-shadow: 
+                inset 0 1px 1px rgba(255, 255, 255, 0.12),
+                inset 0 -1px 1px rgba(0, 0, 0, 0.6),
+                0 25px 60px rgba(0, 0, 0, 0.85),
+                0 0 35px rgba(179, 0, 30, 0.2);
+            border-radius: 1.5rem;
+        }
+
+        /* Tier 3: Double-Bezel Weapon Card System */
+        .double-bezel-card {
+            background: linear-gradient(180deg, rgba(13, 16, 24, 0.94) 0%, rgba(6, 8, 12, 0.98) 100%);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1.25rem;
+            box-shadow: 
+                inset 0 1px 1px rgba(255, 255, 255, 0.1),
+                0 15px 35px rgba(0, 0, 0, 0.85),
+                0 0 0 1px rgba(0, 0, 0, 0.9);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .double-bezel-card:hover {
+            border-color: rgba(255, 255, 255, 0.22);
+            box-shadow: 
+                inset 0 1px 1px rgba(255, 255, 255, 0.18),
+                0 22px 48px rgba(0, 0, 0, 0.95),
+                0 0 25px rgba(239, 68, 68, 0.18);
+            transform: translateY(-3px);
+        }
+
+        /* Inner Recessed Asset Well (Bezel 2) */
+        .recessed-asset-well {
+            background: #030407;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 0.875rem;
+            box-shadow: 
+                inset 0 2px 10px rgba(0, 0, 0, 0.95),
+                inset 0 0 20px rgba(0, 0, 0, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Tactical Corner Reticle Pips */
+        .reticle-corner {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .reticle-tl { top: 6px; left: 6px; border-top: 1.5px solid rgba(255, 255, 255, 0.4); border-left: 1.5px solid rgba(255, 255, 255, 0.4); }
+        .reticle-tr { top: 6px; right: 6px; border-top: 1.5px solid rgba(255, 255, 255, 0.4); border-right: 1.5px solid rgba(255, 255, 255, 0.4); }
+        .reticle-bl { bottom: 6px; left: 6px; border-bottom: 1.5px solid rgba(255, 255, 255, 0.4); border-left: 1.5px solid rgba(255, 255, 255, 0.4); }
+        .reticle-br { bottom: 6px; right: 6px; border-bottom: 1.5px solid rgba(255, 255, 255, 0.4); border-right: 1.5px solid rgba(255, 255, 255, 0.4); }
+
+        /* Floating Island Action Cluster */
+        .floating-island-cluster {
+            background: rgba(8, 10, 16, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                inset 0 1px 1px rgba(255, 255, 255, 0.08),
+                0 8px 20px rgba(0, 0, 0, 0.6);
+            border-radius: 1rem;
+            padding: 0.25rem;
+        }
+
+        /* Subcategory Glowing Indicator */
+        .subcat-item-active {
+            background: rgba(255, 255, 255, 0.07) !important;
+            color: #ffffff !important;
+            border-left: 3px solid #ef4444 !important;
+            font-weight: 700 !important;
+            box-shadow: inset 0 0 12px rgba(239, 68, 68, 0.15);
+        }
+
+        /* Cart Drawer Fluid Slide-In */
+        @keyframes drawerSlideIn {
+            from { transform: scale(0.96) translateY(10px); opacity: 0; }
+            to { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        .cart-modal-animate {
+            animation: drawerSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Industrial Grid & Precision UI Accents */
+        .industrial-grid-pattern {
+            background-image: radial-gradient(rgba(148, 163, 184, 0.16) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .industrial-border-glow {
+            box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.25), 0 8px 24px -4px rgba(0, 0, 0, 0.12);
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
@@ -121,118 +332,119 @@
     <!-- ============================================================ -->
     <!-- 1. GIAO DIỆN MẶT TIỀN NGỤY TRANG (TẬP ĐOÀN HOÀNG HẮC LONG HUẾ) -->
     <!-- ============================================================ -->
-    <div id="disguise-stage" class="min-h-screen flex flex-col">
+    <div id="disguise-stage" class="min-h-screen flex flex-col industrial-grid-pattern bg-slate-50/50">
         
         <!-- Top Utility Bar Chuyên Nghiệp (Hamdeok / Hoang Hac Long B2B) -->
-        <div class="bg-slate-950 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
-            <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+        <div class="bg-slate-950 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800/90 shadow-sm relative z-30">
+            <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-3">
                 <div class="flex items-center space-x-3">
-                    <span class="bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-black px-2.5 py-0.5 rounded text-[10px] tracking-wider uppercase shadow-sm">
+                    <span class="bg-amber-500/15 text-amber-400 border border-amber-500/30 font-black px-2.5 py-0.5 rounded text-[10px] tracking-wider uppercase font-mono-code flex items-center gap-1.5 shadow-sm">
+                        <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
                         CỐ ĐÔ HUẾ // HỆ THỐNG THỦY LỰC TRỌNG ĐIỂM
                     </span>
-                    <span class="hidden sm:inline text-slate-400 font-medium">Tập Đoàn Cơ Khí & Thủy Lực Hoàng Hắc Long // Nông Cụ Hợp Đức (Hamdeok Corp)</span>
+                    <span class="hidden sm:inline text-slate-400 font-medium text-[11px] tracking-tight">Tập Đoàn Cơ Khí & Thủy Lực Hoàng Hắc Long // Nông Cụ Hợp Đức (Hamdeok Corp)</span>
                 </div>
-                <div class="flex items-center space-x-5 text-slate-400 text-[11px] font-medium">
-                    <span>🏛️ Trụ sở: TP. Huế, Thừa Thiên Huế</span>
-                    <span>🚢 Kho: Cảng Nước Sâu Chân Mây</span>
-                    <span>📞 Hotline: <b class="text-amber-400 font-mono-code text-xs">1900-8868</b></span>
+                <div class="flex items-center space-x-5 text-slate-400 text-[11px] font-medium font-mono-code">
+                    <span class="flex items-center gap-1">🏛️ Trụ sở: <span class="text-slate-300">TP. Huế, Thừa Thiên Huế</span></span>
+                    <span class="flex items-center gap-1">🚢 Kho: <span class="text-slate-300">Cảng Nước Sâu Chân Mây</span></span>
+                    <span class="flex items-center gap-1">📞 Hotline: <b class="text-amber-400 font-mono-code text-xs font-bold tracking-wider">1900-8868</b></span>
                 </div>
             </div>
         </div>
 
         <!-- Ticker Chạy Ngang Vô Tận: Bao gồm Đơn hàng nổi bật #HD-71092 -->
-        <div class="ticker-container bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-slate-950 font-bold text-xs py-2 overflow-hidden shadow-inner border-y border-amber-400/40 relative z-20">
+        <div class="ticker-container bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-slate-950 font-bold text-xs py-2.5 overflow-hidden shadow-inner border-y border-amber-400/40 relative z-20">
             <div class="marquee-track flex items-center space-x-12">
                 <!-- Bộ 1 -->
                 <div class="flex items-center space-x-12 whitespace-nowrap">
                     <span class="flex items-center gap-2">
-                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRỌNG ĐIỂM</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HD-71092</b> (11.200 mét dây ống cao su lõi thép chuyên dụng — <span class="text-red-950 font-black font-mono-code">70.000.000 ₫</span>) đã chuyển về trạm trung chuyển Cảng Nước Sâu Chân Mây (Huế)</span>
+                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black font-mono-code tracking-wider shadow-sm">XUẤT KHO TRỌNG ĐIỂM</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950 font-black">#HD-71092</b> (11.200 mét dây ống cao su lõi thép chuyên dụng — <span class="text-red-950 font-black font-mono-code">70.000.000 ₫</span>) đã chuyển về trạm trung chuyển Cảng Nước Sâu Chân Mây (Huế)</span>
                     </span>
-                    <span class="text-amber-900">•</span>
+                    <span class="text-amber-900 font-bold">•</span>
                     <span class="flex items-center gap-2">
-                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99812</b> (24.000m Ống cao su bố thép 1500 Bar — <span class="text-red-950 font-black font-mono-code">188.000.000 ₫</span>) đã chuyển về trạm trung chuyển Cảng Nước Sâu Chân Mây (Huế)</span>
+                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black font-mono-code tracking-wider shadow-sm">XUẤT KHO TRUNG CHUYỂN</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950 font-black">#HHL-99812</b> (24.000m Ống cao su bố thép 1500 Bar — <span class="text-red-950 font-black font-mono-code">188.000.000 ₫</span>) đã chuyển về trạm trung chuyển Cảng Nước Sâu Chân Mây (Huế)</span>
                     </span>
-                    <span class="text-amber-900">•</span>
+                    <span class="text-amber-900 font-bold">•</span>
                     <span class="flex items-center gap-2">
-                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99813</b> (12 Máy bơm đẩy cao tầng Thunder-X P950 — <span class="text-red-950 font-black font-mono-code">210.000.000 ₫</span>) đã chuyển về trạm trung chuyển KCN Phú Bài (Huế)</span>
+                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black font-mono-code tracking-wider shadow-sm">XUẤT KHO TRUNG CHUYỂN</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950 font-black">#HHL-99813</b> (12 Máy bơm đẩy cao tầng Thunder-X P950 — <span class="text-red-950 font-black font-mono-code">210.000.000 ₫</span>) đã chuyển về trạm trung chuyển KCN Phú Bài (Huế)</span>
                     </span>
-                    <span class="text-amber-900">•</span>
+                    <span class="text-amber-900 font-bold">•</span>
                     <span class="flex items-center gap-2">
-                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99814</b> (65 Bộ van điều áp Titan JIS-10K — <span class="text-red-950 font-black font-mono-code">338.000.000 ₫</span>) đã chuyển về trạm trung chuyển Chi nhánh Củ Chi (TP.HCM)</span>
+                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black font-mono-code tracking-wider shadow-sm">XUẤT KHO TRUNG CHUYỂN</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950 font-black">#HHL-99814</b> (65 Bộ van điều áp Titan JIS-10K — <span class="text-red-950 font-black font-mono-code">338.000.000 ₫</span>) đã chuyển về trạm trung chuyển Chi nhánh Củ Chi (TP.HCM)</span>
                     </span>
-                    <span class="text-amber-900">•</span>
+                    <span class="text-amber-900 font-bold">•</span>
                     <span class="flex items-center gap-2">
-                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99815</b> (30 Hệ thống guồng cuộn tự động 100M — <span class="text-red-950 font-black font-mono-code">594.000.000 ₫</span>) đã chuyển về trạm trung chuyển Chi nhánh Thủ Đức (TP.HCM)</span>
+                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black font-mono-code tracking-wider shadow-sm">XUẤT KHO TRUNG CHUYỂN</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950 font-black">#HHL-99815</b> (30 Hệ thống guồng cuộn tự động 100M — <span class="text-red-950 font-black font-mono-code">594.000.000 ₫</span>) đã chuyển về trạm trung chuyển Chi nhánh Thủ Đức (TP.HCM)</span>
                     </span>
-                    <span class="text-amber-900">•</span>
+                    <span class="text-amber-900 font-bold">•</span>
                     <span class="flex items-center gap-2">
-                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99816</b> (180 Can dung dịch phân giải cặn hữu cơ Nano-Clean — <span class="text-red-950 font-black font-mono-code">504.000.000 ₫</span>) đã chuyển về trạm trung chuyển Đắk Lắk</span>
+                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black font-mono-code tracking-wider shadow-sm">XUẤT KHO TRUNG CHUYỂN</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950 font-black">#HHL-99816</b> (180 Can dung dịch phân giải cặn hữu cơ Nano-Clean — <span class="text-red-950 font-black font-mono-code">504.000.000 ₫</span>) đã chuyển về trạm trung chuyển Đắk Lắk</span>
                     </span>
-                    <span class="text-amber-900">•</span>
+                    <span class="text-amber-900 font-bold">•</span>
                     <span class="flex items-center gap-2">
-                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99817</b> (8.500m Dây dẫn sợi gốm chống cháy nhiệt độ cao — <span class="text-red-950 font-black font-mono-code">181.000.000 ₫</span>) đã chuyển về trạm trung chuyển Đà Nẵng</span>
+                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black font-mono-code tracking-wider shadow-sm">XUẤT KHO TRUNG CHUYỂN</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950 font-black">#HHL-99817</b> (8.500m Dây dẫn sợi gốm chống cháy nhiệt độ cao — <span class="text-red-950 font-black font-mono-code">181.000.000 ₫</span>) đã chuyển về trạm trung chuyển Đà Nẵng</span>
                     </span>
                 </div>
                 <!-- Bộ 2 (Nhân đôi để tạo vòng lặp vô tận liền mạch) -->
                 <div class="flex items-center space-x-12 whitespace-nowrap">
                     <span class="flex items-center gap-2">
-                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRỌNG ĐIỂM</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HD-71092</b> (11.200 mét dây ống cao su lõi thép chuyên dụng — <span class="text-red-950 font-black font-mono-code">70.000.000 ₫</span>) đã chuyển về trạm trung chuyển Cảng Nước Sâu Chân Mây (Huế)</span>
+                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black font-mono-code tracking-wider shadow-sm">XUẤT KHO TRỌNG ĐIỂM</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950 font-black">#HD-71092</b> (11.200 mét dây ống cao su lõi thép chuyên dụng — <span class="text-red-950 font-black font-mono-code">70.000.000 ₫</span>) đã chuyển về trạm trung chuyển Cảng Nước Sâu Chân Mây (Huế)</span>
                     </span>
-                    <span class="text-amber-900">•</span>
+                    <span class="text-amber-900 font-bold">•</span>
                     <span class="flex items-center gap-2">
-                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99812</b> (24.000m Ống cao su bố thép 1500 Bar — <span class="text-red-950 font-black font-mono-code">188.000.000 ₫</span>) đã chuyển về trạm trung chuyển Cảng Nước Sâu Chân Mây (Huế)</span>
+                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black font-mono-code tracking-wider shadow-sm">XUẤT KHO TRUNG CHUYỂN</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950 font-black">#HHL-99812</b> (24.000m Ống cao su bố thép 1500 Bar — <span class="text-red-950 font-black font-mono-code">188.000.000 ₫</span>) đã chuyển về trạm trung chuyển Cảng Nước Sâu Chân Mây (Huế)</span>
                     </span>
-                    <span class="text-amber-900">•</span>
+                    <span class="text-amber-900 font-bold">•</span>
                     <span class="flex items-center gap-2">
-                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99813</b> (12 Máy bơm đẩy cao tầng Thunder-X P950 — <span class="text-red-950 font-black font-mono-code">210.000.000 ₫</span>) đã chuyển về trạm trung chuyển KCN Phú Bài (Huế)</span>
+                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black font-mono-code tracking-wider shadow-sm">XUẤT KHO TRUNG CHUYỂN</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950 font-black">#HHL-99813</b> (12 Máy bơm đẩy cao tầng Thunder-X P950 — <span class="text-red-950 font-black font-mono-code">210.000.000 ₫</span>) đã chuyển về trạm trung chuyển KCN Phú Bài (Huế)</span>
                     </span>
-                    <span class="text-amber-900">•</span>
+                    <span class="text-amber-900 font-bold">•</span>
                     <span class="flex items-center gap-2">
-                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99814</b> (65 Bộ van điều áp Titan JIS-10K — <span class="text-red-950 font-black font-mono-code">338.000.000 ₫</span>) đã chuyển về trạm trung chuyển Chi nhánh Củ Chi (TP.HCM)</span>
+                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black font-mono-code tracking-wider shadow-sm">XUẤT KHO TRUNG CHUYỂN</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950 font-black">#HHL-99814</b> (65 Bộ van điều áp Titan JIS-10K — <span class="text-red-950 font-black font-mono-code">338.000.000 ₫</span>) đã chuyển về trạm trung chuyển Chi nhánh Củ Chi (TP.HCM)</span>
                     </span>
-                    <span class="text-amber-900">•</span>
+                    <span class="text-amber-900 font-bold">•</span>
                     <span class="flex items-center gap-2">
-                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99815</b> (30 Hệ thống guồng cuộn tự động 100M — <span class="text-red-950 font-black font-mono-code">594.000.000 ₫</span>) đã chuyển về trạm trung chuyển Chi nhánh Thủ Đức (TP.HCM)</span>
+                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black font-mono-code tracking-wider shadow-sm">XUẤT KHO TRUNG CHUYỂN</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950 font-black">#HHL-99815</b> (30 Hệ thống guồng cuộn tự động 100M — <span class="text-red-950 font-black font-mono-code">594.000.000 ₫</span>) đã chuyển về trạm trung chuyển Chi nhánh Thủ Đức (TP.HCM)</span>
                     </span>
-                    <span class="text-amber-900">•</span>
+                    <span class="text-amber-900 font-bold">•</span>
                     <span class="flex items-center gap-2">
-                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99816</b> (180 Can dung dịch phân giải cặn hữu cơ Nano-Clean — <span class="text-red-950 font-black font-mono-code">504.000.000 ₫</span>) đã chuyển về trạm trung chuyển Đắk Lắk</span>
+                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black font-mono-code tracking-wider shadow-sm">XUẤT KHO TRUNG CHUYỂN</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950 font-black">#HHL-99816</b> (180 Can dung dịch phân giải cặn hữu cơ Nano-Clean — <span class="text-red-950 font-black font-mono-code">504.000.000 ₫</span>) đã chuyển về trạm trung chuyển Đắk Lắk</span>
                     </span>
-                    <span class="text-amber-900">•</span>
+                    <span class="text-amber-900 font-bold">•</span>
                     <span class="flex items-center gap-2">
-                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black">XUẤT KHO TRUNG CHUYỂN</span>
-                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950">#HHL-99817</b> (8.500m Dây dẫn sợi gốm chống cháy nhiệt độ cao — <span class="text-red-950 font-black font-mono-code">181.000.000 ₫</span>) đã chuyển về trạm trung chuyển Đà Nẵng</span>
+                        <span class="bg-slate-950 text-amber-300 text-[10px] px-2 py-0.5 rounded font-black font-mono-code tracking-wider shadow-sm">XUẤT KHO TRUNG CHUYỂN</span>
+                        <span>⚡ Đơn hàng <b class="font-mono-code text-slate-950 font-black">#HHL-99817</b> (8.500m Dây dẫn sợi gốm chống cháy nhiệt độ cao — <span class="text-red-950 font-black font-mono-code">181.000.000 ₫</span>) đã chuyển về trạm trung chuyển Đà Nẵng</span>
                     </span>
                 </div>
             </div>
         </div>
 
         <!-- Main Header Doanh Nghiệp Hoàng Hắc Long -->
-        <header class="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-30">
+        <header class="bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-sm sticky top-0 z-30 transition">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap justify-between items-center gap-4">
                 
                 <!-- Logo & Tên Tập Đoàn Hoàng Hắc Long Huế -->
-                <div class="flex items-center space-x-3.5 cursor-pointer" onclick="filterDisguiseCategory('all')">
-                    <div class="w-12 h-12 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 border-2 border-amber-500/60 rounded-2xl flex items-center justify-center text-amber-400 font-black text-2xl shadow-lg shadow-slate-950/20">
+                <div class="flex items-center space-x-3.5 cursor-pointer group" onclick="filterDisguiseCategory('all')">
+                    <div class="w-12 h-12 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 border-2 border-amber-500/70 rounded-2xl flex items-center justify-center text-amber-400 font-black text-2xl shadow-lg shadow-slate-950/20 group-hover:border-amber-400 group-hover:scale-105 transition duration-300">
                         🐉
                     </div>
                     <div>
                         <div class="flex items-center gap-2">
                             <h1 class="text-xl sm:text-2xl font-black text-slate-950 tracking-tight">HOÀNG HẮC LONG</h1>
-                            <span class="text-[10px] bg-amber-50 text-amber-800 border border-amber-300 font-black px-2 py-0.5 rounded-full font-mono-code">HHL CORP // HUẾ</span>
+                            <span class="text-[10px] bg-amber-50 text-amber-900 border border-amber-300 font-black px-2.5 py-0.5 rounded-full font-mono-code shadow-xs">HHL CORP // HUẾ</span>
                         </div>
                         <p class="text-xs text-slate-500 font-semibold tracking-tight">TẬP ĐOÀN CƠ KHÍ & THỦY LỰC SIÊU ÁP HOÀNG HẮC LONG (TP. HUẾ)</p>
                     </div>
@@ -242,28 +454,28 @@
                 <div class="flex items-center space-x-2 flex-grow sm:flex-grow-0">
                     <div class="relative w-full sm:w-80">
                         <input type="text" id="disguise-search-input" placeholder="Tìm mã ống thép, bơm thủy lực, quy cách..." 
-                            class="w-full border border-slate-300 rounded-xl pl-9 pr-3 py-2.5 text-xs focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 bg-slate-50 font-medium transition">
+                            class="w-full border border-slate-300 rounded-xl pl-9 pr-3 py-2.5 text-xs focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 bg-slate-50 font-medium transition font-sans shadow-xs">
                         <svg class="w-4 h-4 text-slate-400 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                     </div>
-                    <button onclick="handleDisguiseSearch()" class="bg-slate-950 hover:bg-amber-500 hover:text-slate-950 text-white text-xs px-5 py-2.5 rounded-xl font-bold transition shadow-sm whitespace-nowrap cursor-pointer">
+                    <button onclick="handleDisguiseSearch()" class="bg-slate-950 hover:bg-amber-500 hover:text-slate-950 text-white text-xs px-5 py-2.5 rounded-xl font-bold transition shadow-sm whitespace-nowrap cursor-pointer font-sans">
                         Tìm Kiếm
                     </button>
                 </div>
             </div>
 
             <!-- Thanh Danh Mục Phụ Trợ Nông Nghiệp & Thủy Lực -->
-            <div class="bg-slate-50 border-t border-slate-200 text-xs font-semibold text-slate-700">
+            <div class="bg-slate-50/90 border-t border-slate-200/90 text-xs font-semibold text-slate-700">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 flex flex-wrap gap-4 sm:gap-6 items-center">
-                    <button onclick="filterDisguiseCategory('all')" id="btn-disguise-all" class="text-amber-600 font-black border-b-2 border-amber-600 flex items-center gap-1 transition">
+                    <button onclick="filterDisguiseCategory('all')" id="btn-disguise-all" class="text-amber-600 font-black border-b-2 border-amber-600 flex items-center gap-1 transition cursor-pointer">
                         <span>●</span> Tất Cả Thiết Bị (12)
                     </button>
-                    <button onclick="filterDisguiseCategory('steel')" id="btn-disguise-steel" class="hover:text-amber-600 transition text-slate-600">Ống Bố Thép & Cáp Giằng</button>
-                    <button onclick="filterDisguiseCategory('pump')" id="btn-disguise-pump" class="hover:text-amber-600 transition text-slate-600">Máy Bơm & Động Cơ Diesel</button>
-                    <button onclick="filterDisguiseCategory('valve')" id="btn-disguise-valve" class="hover:text-amber-600 transition text-slate-600">Van Titan & Khớp Nối Inox</button>
-                    <button onclick="filterDisguiseCategory('cylinder')" id="btn-disguise-cylinder" class="hover:text-amber-600 transition text-slate-600">Xi Lanh Thủy Lực</button>
-                    <button onclick="filterDisguiseCategory('hose')" id="btn-disguise-hose" class="hover:text-amber-600 transition text-slate-600">Cuộn Dây Tưới & Ống Gốm</button>
-                    <button onclick="filterDisguiseCategory('chem')" id="btn-disguise-chem" class="hover:text-amber-600 transition text-slate-600">Dầu & Hóa Chất Đường Ống</button>
-                    <a href="#about-corp" class="hover:text-amber-600 transition ml-auto hidden lg:inline text-slate-500">Giới Thiệu Doanh Nghiệp (TP. Huế)</a>
+                    <button onclick="filterDisguiseCategory('steel')" id="btn-disguise-steel" class="hover:text-amber-600 transition text-slate-600 cursor-pointer">Ống Bố Thép & Cáp Giằng</button>
+                    <button onclick="filterDisguiseCategory('pump')" id="btn-disguise-pump" class="hover:text-amber-600 transition text-slate-600 cursor-pointer">Máy Bơm & Động Cơ Diesel</button>
+                    <button onclick="filterDisguiseCategory('valve')" id="btn-disguise-valve" class="hover:text-amber-600 transition text-slate-600 cursor-pointer">Van Titan & Khớp Nối Inox</button>
+                    <button onclick="filterDisguiseCategory('cylinder')" id="btn-disguise-cylinder" class="hover:text-amber-600 transition text-slate-600 cursor-pointer">Xi Lanh Thủy Lực</button>
+                    <button onclick="filterDisguiseCategory('hose')" id="btn-disguise-hose" class="hover:text-amber-600 transition text-slate-600 cursor-pointer">Cuộn Dây Tưới & Ống Gốm</button>
+                    <button onclick="filterDisguiseCategory('chem')" id="btn-disguise-chem" class="hover:text-amber-600 transition text-slate-600 cursor-pointer">Dầu & Hóa Chất Đường Ống</button>
+                    <a href="#about-corp" class="hover:text-amber-600 transition ml-auto hidden lg:inline text-slate-500 font-mono-code text-[11px]">Hồ sơ doanh nghiệp (TP. Huế) →</a>
                 </div>
             </div>
         </header>
@@ -274,60 +486,60 @@
             <!-- Hero Banner Hoàng Hắc Long (Modern Industrial B2B) -->
             <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-800 bg-slate-950 text-white min-h-[380px] flex items-center">
                 <!-- Background Image with Overlay -->
-                <div class="absolute inset-0 bg-cover bg-center z-0 scale-105 transition duration-1000" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1400&auto=format&fit=crop&q=80');"></div>
-                <div class="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/90 to-slate-900/80 z-10"></div>
+                <div class="absolute inset-0 bg-cover bg-center z-0 scale-105 transition duration-1000 opacity-60" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1400&auto=format&fit=crop&q=80');"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-slate-950/98 via-slate-950/90 to-slate-900/80 z-10"></div>
                 
                 <div class="relative z-20 p-6 sm:p-10 max-w-4xl space-y-5">
                     <div class="inline-flex items-center gap-2 bg-amber-500/20 text-amber-300 text-[11px] font-black px-3.5 py-1 rounded-full border border-amber-500/30 tracking-wider uppercase font-mono-code backdrop-blur-sm">
                         <span>🏛️</span> TẬP ĐOÀN CƠ KHÍ & VẬT TƯ THỦY LỰC // TP. HUẾ
                     </div>
                     
-                    <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-white">
+                    <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-white font-sans">
                         Hệ Thống Thủy Lực Siêu Áp & Dây Dẫn Bố Thép Hoàng Hắc Long
                     </h2>
                     
-                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-2xl">
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-2xl font-sans">
                         Tổng kho chuyên sản xuất và phân phối trực tiếp ống bố thép chịu áp 1500 Bar, máy bơm công nghiệp Thunder-X, van titan JIS đúc nguyên khối và giải pháp dẫn truyền thủy lực cho các công trình trọng điểm toàn quốc.
                     </p>
                     
                     <!-- 4 Enterprise Trust Badges -->
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-                        <div class="bg-slate-900/80 backdrop-blur-md border border-slate-700/80 rounded-xl p-2.5 flex items-center gap-2.5">
-                            <span class="text-lg">🛡️</span>
+                        <div class="bg-slate-900/85 backdrop-blur-md border border-slate-700/80 rounded-xl p-3 flex items-center gap-3 shadow-md hover:border-amber-500/50 transition">
+                            <span class="text-2xl">🛡️</span>
                             <div>
-                                <span class="block text-[11px] font-bold text-white leading-tight">ISO 9001:2015</span>
-                                <span class="block text-[9px] text-slate-400">JIS K6349 & ISO 18752</span>
+                                <span class="block text-[11px] font-bold text-white leading-tight font-mono-code">ISO 9001:2015</span>
+                                <span class="block text-[9px] text-slate-400 font-mono-code">JIS K6349 & ISO 18752</span>
                             </div>
                         </div>
-                        <div class="bg-slate-900/80 backdrop-blur-md border border-slate-700/80 rounded-xl p-2.5 flex items-center gap-2.5">
-                            <span class="text-lg">🚚</span>
+                        <div class="bg-slate-900/85 backdrop-blur-md border border-slate-700/80 rounded-xl p-3 flex items-center gap-3 shadow-md hover:border-amber-500/50 transition">
+                            <span class="text-2xl">🚚</span>
                             <div>
-                                <span class="block text-[11px] font-bold text-white leading-tight">Giao Siêu Tốc 24/7</span>
-                                <span class="block text-[9px] text-slate-400">Cảng Chân Mây & Toàn quốc</span>
+                                <span class="block text-[11px] font-bold text-white leading-tight font-sans">Giao Siêu Tốc 24/7</span>
+                                <span class="block text-[9px] text-slate-400 font-sans">Cảng Chân Mây & Toàn quốc</span>
                             </div>
                         </div>
-                        <div class="bg-slate-900/80 backdrop-blur-md border border-slate-700/80 rounded-xl p-2.5 flex items-center gap-2.5">
-                            <span class="text-lg">🔧</span>
+                        <div class="bg-slate-900/85 backdrop-blur-md border border-slate-700/80 rounded-xl p-3 flex items-center gap-3 shadow-md hover:border-amber-500/50 transition">
+                            <span class="text-2xl">🔧</span>
                             <div>
-                                <span class="block text-[11px] font-bold text-white leading-tight">Bảo Hành 24T</span>
-                                <span class="block text-[9px] text-slate-400">Đổi mới 1-1 chính hãng</span>
+                                <span class="block text-[11px] font-bold text-white leading-tight font-mono-code">Bảo Hành 24T</span>
+                                <span class="block text-[9px] text-slate-400 font-sans">Đổi mới 1-1 chính hãng</span>
                             </div>
                         </div>
-                        <div class="bg-slate-900/80 backdrop-blur-md border border-slate-700/80 rounded-xl p-2.5 flex items-center gap-2.5">
-                            <span class="text-lg">🏗️</span>
+                        <div class="bg-slate-900/85 backdrop-blur-md border border-slate-700/80 rounded-xl p-3 flex items-center gap-3 shadow-md hover:border-amber-500/50 transition">
+                            <span class="text-2xl">🏗️</span>
                             <div>
-                                <span class="block text-[11px] font-bold text-white leading-tight">500+ Dự Án</span>
-                                <span class="block text-[9px] text-slate-400">Công trình cấp Quốc gia</span>
+                                <span class="block text-[11px] font-bold text-white leading-tight font-mono-code">500+ Dự Án</span>
+                                <span class="block text-[9px] text-slate-400 font-sans">Công trình cấp Quốc gia</span>
                             </div>
                         </div>
                     </div>
                     
                     <!-- CTAs -->
                     <div class="pt-2 flex flex-wrap gap-3">
-                        <button onclick="alert('✅ Đã kết nối với Tổng đài Kỹ thuật Hoàng Hắc Long Huế: 1900-8868 (Trực 24/7)')" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs font-black px-6 py-3 rounded-xl shadow-lg transition duration-200 cursor-pointer">
+                        <button onclick="alert('✅ Đã kết nối với Tổng đài Kỹ thuật Hoàng Hắc Long Huế: 1900-8868 (Trực 24/7)')" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs font-black px-6 py-3 rounded-xl shadow-lg transition duration-200 cursor-pointer font-sans tracking-wide">
                             TƯ VẤN KỸ THUẬT & BÁO GIÁ SỈ
                         </button>
-                        <button onclick="alert('✅ Hồ sơ năng lực Tập đoàn Hoàng Hắc Long 2026 (PDF) đang được gửi về email của quý khách.')" class="bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold px-5 py-3 rounded-xl transition duration-200 cursor-pointer">
+                        <button onclick="alert('✅ Hồ sơ năng lực Tập đoàn Hoàng Hắc Long 2026 (PDF) đang được gửi về email của quý khách.')" class="bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold px-5 py-3 rounded-xl transition duration-200 cursor-pointer font-sans">
                             TẢI HỒ SƠ NĂNG LỰC 2026 (PDF)
                         </button>
                     </div>
@@ -336,12 +548,12 @@
 
             <!-- Danh Sách Sản Phẩm Cơ Khí & Thủy Lực Hoàng Hắc Long (Hình Ảnh Chuẩn Đẹp) -->
             <div class="space-y-4">
-                <div class="flex justify-between items-end border-b border-slate-200 pb-3">
+                <div class="flex justify-between items-end border-b border-slate-200/90 pb-3">
                     <div>
-                        <h3 class="text-lg sm:text-xl font-extrabold text-slate-900" id="disguise-cat-title">
+                        <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 font-sans" id="disguise-cat-title">
                             Danh Mục Thiết Bị Cơ Khí & Thủy Lực Hoàng Hắc Long
                         </h3>
-                        <p class="text-xs text-slate-500">Tiêu chuẩn kiểm định áp lực phá hủy JIS K6349 & ISO 18752</p>
+                        <p class="text-xs text-slate-500 font-mono-code">Tiêu chuẩn kiểm định áp lực phá hủy JIS K6349 & ISO 18752</p>
                     </div>
                     <span class="text-xs text-slate-500 font-bold font-mono-code" id="disguise-item-count">
                         Hiển thị 8 sản phẩm
@@ -354,25 +566,25 @@
             </div>
 
             <!-- Giới Thiệu Doanh Nghiệp Hoàng Hắc Long (Chi Tiết TP. Huế) -->
-            <section id="about-corp" class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 text-xs text-slate-600 space-y-4 shadow-sm">
+            <section id="about-corp" class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/90 text-xs text-slate-600 space-y-4 shadow-sm">
                 <div class="flex items-center space-x-3">
                     <span class="text-2xl">🏛️</span>
-                    <h4 class="font-extrabold text-base text-slate-900">Về Tập Đoàn Cơ Khí & Thủy Lực Hoàng Hắc Long (Hoang Hac Long Corp)</h4>
+                    <h4 class="font-extrabold text-base text-slate-900 font-sans">Về Tập Đoàn Cơ Khí & Thủy Lực Hoàng Hắc Long (Hoang Hac Long Corp)</h4>
                 </div>
-                <p class="leading-relaxed">
+                <p class="leading-relaxed font-sans">
                     Khởi nguồn từ vùng đất Cố Đô lịch sử, <b>Tập đoàn Hoàng Hắc Long</b> tự hào là doanh nghiệp cơ khí công nghiệp nặng và vật tư thủy lực hàng đầu miền Trung và cả nước. Với tổ hợp nhà máy luyện kim, đúc van áp lực titan và dây chuyền dệt bọc bố thép chịu áp lực 1500 Bar tại Thừa Thiên Huế, chúng tôi cung cấp giải pháp dẫn dầu, dẫn khí và tưới tiêu thủy lợi cho hàng ngàn dự án hạ tầng trọng điểm từ Bắc vào Nam.
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-3 border-t border-slate-100 text-slate-500 font-medium">
-                    <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/60">
-                        <b class="text-slate-900 block text-xs mb-1">🏛️ Trụ sở chính:</b>
+                    <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/70">
+                        <b class="text-slate-900 block text-xs mb-1 font-sans">🏛️ Trụ sở chính:</b>
                         Tòa nhà Hoàng Hắc Long Tower, Lô B1 Đại lộ Tự Đức - Thủy Dương, Phường An Tây, TP. Huế, Tỉnh Thừa Thiên Huế
                     </div>
-                    <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/60">
-                        <b class="text-slate-900 block text-xs mb-1">🚢 Kho trung chuyển:</b>
+                    <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/70">
+                        <b class="text-slate-900 block text-xs mb-1 font-sans">🚢 Kho trung chuyển:</b>
                         Trung tâm Logistics & Cảng Nước Sâu Chân Mây - Lăng Cô, Huyện Phú Lộc, Tỉnh Thừa Thiên Huế
                     </div>
-                    <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/60">
-                        <b class="text-slate-900 block text-xs mb-1">🏢 Chi nhánh phía Nam:</b>
+                    <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/70">
+                        <b class="text-slate-900 block text-xs mb-1 font-sans">🏢 Chi nhánh phía Nam:</b>
                         Khu Công Nghệ Cao TP. Thủ Đức, TP. Hồ Chí Minh & KCN Tân Phú Trung, Củ Chi
                     </div>
                 </div>
@@ -380,33 +592,33 @@
         </main>
 
         <!-- Footer Đậm Chất Tự Hào Dân Tộc & Chủ Quyền Biển Đảo Việt Nam -->
-        <footer class="bg-slate-950 text-slate-400 text-xs py-10 border-t border-slate-800 mt-12">
+        <footer class="bg-slate-950 text-slate-400 text-xs py-10 border-t border-slate-800/90 mt-12">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-6">
                 
                 <!-- Tuyên Ngôn Chủ Quyền Biển Đảo Thiêng Liêng -->
                 <div class="bg-gradient-to-r from-red-950/90 via-red-900/60 to-red-950/90 border border-red-800/80 p-4 sm:p-5 rounded-2xl text-center shadow-2xl">
-                    <p class="text-sm sm:text-base font-black text-amber-300 uppercase tracking-wider flex items-center justify-center gap-2">
+                    <p class="text-sm sm:text-base font-black text-amber-300 uppercase tracking-wider flex items-center justify-center gap-2 font-sans">
                         <span>🇻🇳</span>
                         <span>HOÀNG SA VÀ TRƯỜNG SA MÃI MÃI LÀ CỦA VIỆT NAM!</span>
                         <span>🇻🇳</span>
                     </p>
-                    <p class="text-[11px] text-red-200 mt-1 font-semibold">
+                    <p class="text-[11px] text-red-200 mt-1 font-semibold font-sans">
                         Quần đảo Hoàng Sa và Quần đảo Trường Sa là bộ phận lãnh thổ thiêng liêng không thể tách rời của nước Cộng hòa Xã hội Chủ nghĩa Việt Nam.
                     </p>
                 </div>
 
                 <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left pt-2 border-t border-slate-900">
                     <div class="space-y-1">
-                        <p class="font-bold text-slate-200 text-sm">CÔNG TY CỔ PHẦN TẬP ĐOÀN CƠ KHÍ & THỦY LỰC HOÀNG HẮC LONG (HUẾ)</p>
-                        <p class="text-[11px] text-slate-500">Giấy phép ĐKKD số: 3301889988 do Sở Kế hoạch & Đầu tư Tỉnh Thừa Thiên Huế cấp</p>
+                        <p class="font-bold text-slate-200 text-sm font-sans">CÔNG TY CỔ PHẦN TẬP ĐOÀN CƠ KHÍ & THỦY LỰC HOÀNG HẮC LONG (HUẾ)</p>
+                        <p class="text-[11px] text-slate-500 font-sans">Giấy phép ĐKKD số: 3301889988 do Sở Kế hoạch & Đầu tư Tỉnh Thừa Thiên Huế cấp</p>
                     </div>
 
                     <!-- Điểm kích hoạt ẩn tinh tế: click 3 lần vào mã ĐKKD để mở cổng ngầm -->
                     <div class="space-y-1 text-center md:text-right">
                         <p class="text-[11px] text-slate-500 font-mono-code cursor-default select-none">
-                            MÃ ĐKKD: <span class="text-amber-400 hover:text-amber-300 font-bold transition cursor-pointer select-none" title="Mã chứng nhận hệ thống" onclick="handleSecretTripleClick(event)">HHL-13543505-HUE</span>
+                            MÃ ĐKKD: <span class="text-amber-400 hover:text-amber-300 font-bold transition cursor-pointer select-none font-mono-code" title="Mã chứng nhận hệ thống" onclick="handleSecretTripleClick(event)">HHL-13543505-HUE</span>
                         </p>
-                        <p class="text-[11px] text-slate-600">Bản quyền © 2012 - 2026 Hoang Hac Long Heavy Hydraulics Corp. All rights reserved.</p>
+                        <p class="text-[11px] text-slate-600 font-sans">Bản quyền © 2012 - 2026 Hoang Hac Long Heavy Hydraulics Corp. All rights reserved.</p>
                     </div>
                 </div>
             </div>
@@ -450,95 +662,126 @@
     <!-- ============================================================ -->
     <!-- 2. GIAO DIỆN CHUYỂN TIẾP CỔNG VÀO (PORTAL AUTH & LOGIN FORM)  -->
     <!-- ============================================================ -->
-    <div id="portal-stage" class="fixed inset-0 bg-[#3b0206] hidden z-50 flex-col items-center justify-center font-mono-code text-white fade-in overflow-y-auto p-4">
+    <div id="portal-stage" class="fixed inset-0 portal-bg-atmosphere hidden z-50 flex-col items-center justify-center font-mono-code text-white fade-in overflow-y-auto p-4 select-none">
+        
+        <!-- Procedural Holographic Matrix Grid -->
+        <div class="portal-holo-grid"></div>
+
+        <!-- Dynamic Biometric Laser Scanning Line & Glow -->
+        <div class="biometric-laser-line">
+            <div class="biometric-laser-glow"></div>
+        </div>
+
+        <!-- Tactical Corner Reticle Brackets -->
+        <div class="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-red-500/50 pointer-events-none"></div>
+        <div class="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-red-500/50 pointer-events-none"></div>
+        <div class="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-red-500/50 pointer-events-none"></div>
+        <div class="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-red-500/50 pointer-events-none"></div>
+
+        <!-- HUD Telemetry Markers -->
+        <div class="absolute top-6 left-8 text-[10px] tracking-widest text-red-400/70 font-mono-code uppercase pointer-events-none hidden sm:flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
+            <span>[ BIOMETRIC RADAR // RETINAL SCAN ACTIVE ]</span>
+        </div>
+        <div class="absolute top-6 right-8 text-[10px] tracking-widest text-red-400/70 font-mono-code uppercase pointer-events-none hidden sm:block">
+            [ LAT: 16.4637° N | LON: 107.5909° E // HUE_SECTOR_04 ]
+        </div>
+        <div class="absolute bottom-6 left-8 text-[10px] tracking-widest text-neutral-400/60 font-mono-code uppercase pointer-events-none hidden sm:block">
+            [ ENCRYPTION: QUANTUM-ECC-512 // SECURE ]
+        </div>
+        <div class="absolute bottom-6 right-8 text-[10px] tracking-widest text-neutral-400/60 font-mono-code uppercase pointer-events-none hidden sm:block">
+            [ TRANSIT GATEWAY // PROTOCOL 7209 ]
+        </div>
+
+        <!-- Main Content Area -->
         <div class="flex flex-col items-center w-full space-y-6 relative z-10 my-auto">
 
             <!-- Tiêu đề murderhelp — phóng to ấn tượng & căn giữa chuẩn -->
-            <div class="space-y-4 flex flex-col items-center w-full px-4">
-                <h1 class="text-7xl sm:text-8xl md:text-9xl font-black tracking-widest text-red-500 lowercase drop-shadow-[0_0_45px_rgba(239,68,68,0.9)] animate-pulse text-center select-none">
+            <div class="space-y-4 flex flex-col items-center w-full px-4 text-center">
+                <h1 class="text-7xl sm:text-8xl md:text-9xl font-black tracking-widest lowercase murderhelp-neon-title text-center select-none">
                     murderhelp
                 </h1>
 
                 <!-- 3 Vạch màu kéo dài rộng ra & làm mỏng thanh thoát chuẩn phim -->
-                <div id="clearance-bar" class="flex w-full max-w-md sm:max-w-lg md:max-w-xl h-3 sm:h-3.5 rounded-full overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.8)] border border-neutral-900/60 clearance-stripe" data-testid="clearance-stripe">
-                    <div class="w-1/3 bg-[#b3001e] transition-all duration-500"></div>
-                    <div class="w-1/3 bg-[#4d19bf] transition-all duration-500"></div>
-                    <div class="w-1/3 bg-[#e67e00] transition-all duration-500"></div>
+                <div id="clearance-bar" class="flex w-full max-w-md sm:max-w-lg md:max-w-xl h-3 sm:h-3.5 rounded-full overflow-hidden shadow-[0_0_25px_rgba(179,0,30,0.5),inset_0_1px_1px_rgba(255,255,255,0.4)] border border-white/10 clearance-stripe relative" data-testid="clearance-stripe">
+                    <div class="w-1/3 bg-[#b3001e] transition-all duration-500 shadow-[inset_0_1px_2px_rgba(255,255,255,0.3)]"></div>
+                    <div class="w-1/3 bg-[#4d19bf] transition-all duration-500 shadow-[inset_0_1px_2px_rgba(255,255,255,0.3)]"></div>
+                    <div class="w-1/3 bg-[#e67e00] transition-all duration-500 shadow-[inset_0_1px_2px_rgba(255,255,255,0.3)]"></div>
                 </div>
             </div>
 
             <!-- Nội dung form đăng nhập bên dưới (max-w-md) -->
             <div class="w-full max-w-md px-4 space-y-6">
 
-            <!-- Khối Đăng Nhập / Đăng Ký Tài Khoản Tác Chiến (Auth Modal) -->
-            <div class="bg-[#0b0d13] border border-red-800/80 text-gray-200 p-6 rounded-3xl shadow-2xl space-y-4 text-left">
-                
-                <!-- Tab Chuyển Đổi Đăng Nhập / Đăng Ký -->
-                <div class="flex border-b border-gray-800 pb-3 justify-between items-center text-xs">
-                    <div class="flex space-x-2">
-                        <button onclick="switchAuthTab('login')" id="tab-auth-login" class="px-3 py-1.5 rounded-xl font-bold bg-red-950 text-red-400 border border-red-800 transition cursor-pointer">
-                            Đăng Nhập
-                        </button>
-                        <button onclick="switchAuthTab('register')" id="tab-auth-register" class="px-3 py-1.5 rounded-xl font-bold text-gray-400 hover:text-white transition cursor-pointer">
-                            Tạo Tài Khoản Mới
-                        </button>
+                <!-- Khối Đăng Nhập / Đăng Ký Tài Khoản Tác Chiến (Auth Modal) -->
+                <div class="portal-glass-modal text-gray-200 p-6 sm:p-7 space-y-4 text-left">
+                    
+                    <!-- Tab Chuyển Đổi Đăng Nhập / Đăng Ký -->
+                    <div class="flex border-b border-red-500/20 pb-3 justify-between items-center text-xs">
+                        <div class="flex space-x-2">
+                            <button onclick="switchAuthTab('login')" id="tab-auth-login" class="px-3.5 py-1.5 rounded-xl font-bold bg-red-950/90 text-red-400 border border-red-800/80 transition cursor-pointer shadow-sm">
+                                Đăng Nhập
+                            </button>
+                            <button onclick="switchAuthTab('register')" id="tab-auth-register" class="px-3.5 py-1.5 rounded-xl font-bold text-gray-400 hover:text-white transition cursor-pointer">
+                                Tạo Tài Khoản Mới
+                            </button>
+                        </div>
+                        <button onclick="returnToDisguise()" class="text-neutral-400 hover:text-white text-xs cursor-pointer flex items-center gap-1 transition">✕ Thoát</button>
                     </div>
-                    <button onclick="returnToDisguise()" class="text-gray-500 hover:text-white text-xs cursor-pointer">✕ Thoát</button>
+
+                    <!-- Form 1: Đăng Nhập -->
+                    <form id="form-login" onsubmit="handleUserLogin(event)" class="space-y-3.5 text-xs">
+                        <div class="space-y-1.5">
+                            <label class="text-gray-300 font-bold block text-[11px] tracking-wide">TÊN ĐĂNG NHẬP / MÃ ĐỊNH DANH:</label>
+                            <input type="text" id="login-username" required placeholder="Tên đăng nhập của bạn"
+                                class="w-full bg-[#12151f]/80 border border-white/10 rounded-xl px-3.5 py-2.5 text-gray-100 text-xs focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 focus:bg-[#161a26] transition shadow-inner">
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <label class="text-gray-300 font-bold block text-[11px] tracking-wide">PASSCODE:</label>
+                            <input type="password" id="login-password" required placeholder="Nhập mật khẩu"
+                                class="w-full bg-[#12151f]/80 border border-white/10 rounded-xl px-3.5 py-2.5 text-gray-100 text-xs focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 focus:bg-[#161a26] transition shadow-inner">
+                        </div>
+
+                        <div class="pt-1">
+                            <button type="submit" class="w-full bg-gradient-to-r from-[#b3001e] via-[#e11d48] to-[#881337] hover:from-[#c90022] hover:via-[#f43f5e] hover:to-[#9f1239] text-white font-black py-3.5 rounded-xl text-xs tracking-widest transition cursor-pointer shadow-lg shadow-red-950/80 hover:shadow-red-600/30 uppercase active:translate-y-0.5 transform border border-red-500/30">
+                                XÁC THỰC VÀO CHỢ ĐEN (확인)
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Form 2: Đăng Ký Tài Khoản Khách Hàng Mới -->
+                    <form id="form-register" onsubmit="handleRegisterUser(event)" class="hidden space-y-3 text-xs">
+                        <div>
+                            <label class="text-neutral-300 block mb-1 font-semibold text-[11px]">HỌ TÊN HIỂN THỊ:</label>
+                            <input type="text" id="reg-fullname" placeholder="Nguyễn Văn A" class="w-full bg-[#12151f]/80 border border-white/10 rounded-xl px-3.5 py-2.5 text-white text-xs focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20">
+                        </div>
+
+                        <div>
+                            <label class="text-neutral-300 block mb-1 font-semibold text-[11px]">TÊN ĐĂNG NHẬP (DUY NHẤT):</label>
+                            <input type="text" id="reg-username" placeholder="" class="w-full bg-[#12151f]/80 border border-white/10 rounded-xl px-3.5 py-2.5 text-white text-xs focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20">
+                        </div>
+
+                        <div>
+                            <label class="text-neutral-300 block mb-1 font-semibold text-[11px]">MẬT MÃ BẢO MẬT:</label>
+                            <input type="password" id="reg-password" placeholder="Tối thiểu 8 ký tự..." class="w-full bg-[#12151f]/80 border border-white/10 rounded-xl px-3.5 py-2.5 text-white text-xs focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20">
+                        </div>
+
+                        <div>
+                            <label class="text-neutral-300 block mb-1 font-semibold text-[11px]">CẤP BẬC MONG MUỐN ĐĂNG KÝ:</label>
+                            <select id="reg-tier" class="w-full bg-[#12151f]/80 border border-white/10 rounded-xl px-3.5 py-2.5 text-white text-xs focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20">
+                                <option value="RED">🔴 CODE RED - Đơn Vị Tác Chiến Vũ Khí</option>
+                                <option value="PURPLE">🟣 CODE PURPLE - Dọn Dẹp & Do Thám</option>
+                                <option value="YELLOW">🟡 CODE YELLOW - Y Tế & Cứu Thương</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" onclick="handleRegisterUser(event)" class="w-full bg-gradient-to-r from-emerald-800 to-emerald-600 hover:from-emerald-700 hover:to-emerald-500 text-white font-bold py-3 rounded-xl transition mt-2 cursor-pointer shadow-lg shadow-emerald-950/80 uppercase tracking-wider text-xs border border-emerald-500/30">
+                            ĐĂNG KÝ TÀI KHOẢN MỚI
+                        </button>
+                    </form>
+
                 </div>
-
-                <!-- Form 1: Đăng Nhập -->
-                <form id="form-login" onsubmit="handleUserLogin(event)" class="space-y-3.5 text-xs">
-                    <div class="space-y-1">
-                        <label class="text-gray-400 font-bold block text-[11px]">TÊN ĐĂNG NHẬP / MÃ ĐỊNH DANH:</label>
-                        <input type="text" id="login-username" required placeholder="Tên đăng nhập của bạn"
-                            class="w-full bg-[#131620] border border-gray-700 rounded-xl px-3 py-2.5 text-gray-100 text-xs focus:outline-none focus:border-red-500">
-                    </div>
-
-                    <div class="space-y-1">
-                        <label class="text-gray-400 font-bold block text-[11px]">PASSCODE:</label>
-                        <input type="password" id="login-password" required placeholder="Nhập mật khẩu"
-                            class="w-full bg-[#131620] border border-gray-700 rounded-xl px-3 py-2.5 text-gray-100 text-xs focus:outline-none focus:border-red-500">
-                    </div>
-
-                    <div class="pt-1">
-                        <button type="submit" class="w-full bg-gradient-to-r from-red-800 to-red-600 hover:from-red-700 hover:to-red-500 text-white font-extrabold py-3 rounded-xl text-xs tracking-widest transition cursor-pointer shadow-lg shadow-red-950/80 uppercase">
-                            XÁC THỰC VÀO CHỢ ĐEN (확인)
-                        </button>
-                    </div>
-                </form>
-
-                <!-- Form 2: Đăng Ký Tài Khoản Khách Hàng Mới -->
-                <form id="form-register" onsubmit="handleRegisterUser(event)" class="hidden space-y-3 text-xs">
-                    <div>
-                        <label class="text-neutral-400 block mb-1">HỌ TÊN HIỂN THỊ:</label>
-                        <input type="text" id="reg-fullname" placeholder="Nguyễn Văn A" class="w-full bg-[#131620] border border-neutral-700 rounded-lg px-3 py-2 text-white">
-                    </div>
-
-                    <div>
-                        <label class="text-neutral-400 block mb-1">TÊN ĐĂNG NHẬP (DUY NHẤT):</label>
-                        <input type="text" id="reg-username" placeholder="" class="w-full bg-[#131620] border border-neutral-700 rounded-lg px-3 py-2 text-white">
-                    </div>
-
-                    <div>
-                        <label class="text-neutral-400 block mb-1">MẬT MÃ BẢO MẬT:</label>
-                        <input type="password" id="reg-password" placeholder="Tối thiểu 8 ký tự..." class="w-full bg-[#131620] border border-neutral-700 rounded-lg px-3 py-2 text-white">
-                    </div>
-
-                    <div>
-                        <label class="text-neutral-400 block mb-1">CẤP BẬC MONG MUỐN ĐĂNG KÝ:</label>
-                        <select id="reg-tier" class="w-full bg-[#131620] border border-neutral-700 rounded-lg px-3 py-2 text-white">
-                            <option value="RED">🔴 CODE RED - Đơn Vị Tác Chiến Vũ Khí</option>
-                            <option value="PURPLE">🟣 CODE PURPLE - Dọn Dẹp & Do Thám</option>
-                            <option value="YELLOW">🟡 CODE YELLOW - Y Tế & Cứu Thương</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" onclick="handleRegisterUser(event)" class="w-full bg-emerald-700 hover:bg-emerald-600 text-white font-bold py-2.5 rounded-lg transition mt-2 cursor-pointer">
-                        ĐĂNG KÝ TÀI KHOẢN MỚI
-                    </button>
-                </form>
-
-            </div>
             </div><!-- end max-w-md -->
         </div><!-- end flex col wrapper -->
     </div>
@@ -1712,15 +1955,15 @@
             const formReg = document.getElementById('form-register');
 
             if (tab === 'login') {
-                tabLogin.className = "px-3 py-1.5 rounded-xl font-bold bg-red-950 text-red-400 border border-red-800 transition";
-                tabReg.className = "px-3 py-1.5 rounded-xl font-bold text-gray-400 hover:text-white transition";
-                formLogin.classList.remove('hidden');
-                formReg.classList.add('hidden');
+                if (tabLogin) tabLogin.className = "px-3.5 py-1.5 rounded-xl font-bold bg-red-950/90 text-red-400 border border-red-800/80 transition cursor-pointer shadow-sm";
+                if (tabReg) tabReg.className = "px-3.5 py-1.5 rounded-xl font-bold text-gray-400 hover:text-white transition cursor-pointer";
+                if (formLogin) formLogin.classList.remove('hidden');
+                if (formReg) formReg.classList.add('hidden');
             } else {
-                tabReg.className = "px-3 py-1.5 rounded-xl font-bold bg-emerald-950 text-emerald-400 border border-emerald-800 transition";
-                tabLogin.className = "px-3 py-1.5 rounded-xl font-bold text-gray-400 hover:text-white transition";
-                formReg.classList.remove('hidden');
-                formLogin.classList.add('hidden');
+                if (tabReg) tabReg.className = "px-3.5 py-1.5 rounded-xl font-bold bg-emerald-950/90 text-emerald-400 border border-emerald-800/80 transition cursor-pointer shadow-sm";
+                if (tabLogin) tabLogin.className = "px-3.5 py-1.5 rounded-xl font-bold text-gray-400 hover:text-white transition cursor-pointer";
+                if (formReg) formReg.classList.remove('hidden');
+                if (formLogin) formLogin.classList.add('hidden');
             }
         }
 
@@ -1789,6 +2032,7 @@
         }
 
         const handleLoginUser = handleUserLogin;
+        const handlePortalLogin = handleUserLogin;
 
         // --- HÀM XỬ LÝ ĐĂNG KÝ TÀI KHOẢN MỚI (TỰ ĐỘNG LƯU SUPABASE) ---
         async function handleUserRegister(event) {
@@ -1924,31 +2168,36 @@
 
             filtered.forEach(p => {
                 const card = document.createElement('div');
-                card.className = "bg-white border border-slate-200/80 rounded-2xl p-4 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between group";
+                card.className = "bg-white border border-slate-200/90 rounded-2xl p-4 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between group";
                 card.innerHTML = `
                     <div>
-                        <div class="w-full h-48 bg-slate-100 rounded-xl overflow-hidden mb-3 relative">
+                        <div class="w-full h-48 bg-slate-100 rounded-xl overflow-hidden mb-3 relative border border-slate-200/60">
                             <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&auto=format&fit=crop&q=80';">
-                            <span class="absolute top-2 left-2 text-[9px] font-black text-amber-900 bg-amber-50/95 backdrop-blur-sm px-2 py-0.5 rounded border border-amber-300/80 shadow-sm uppercase font-mono-code">
-                                ${p.tag}
+                            <div class="absolute top-2 left-2 flex items-center gap-1.5">
+                                <span class="text-[9px] font-black text-amber-900 bg-amber-50/95 backdrop-blur-sm px-2 py-0.5 rounded border border-amber-300/80 shadow-xs uppercase font-mono-code">
+                                    ${p.tag}
+                                </span>
+                            </div>
+                            <span class="absolute top-2 right-2 text-[9px] font-bold text-slate-700 bg-white/95 backdrop-blur-sm px-2 py-0.5 rounded border border-slate-200 shadow-xs font-mono-code">
+                                ${p.id}
                             </span>
                         </div>
-                        <h4 class="font-extrabold text-xs sm:text-sm text-slate-900 leading-snug group-hover:text-amber-700 transition line-clamp-2">${p.name}</h4>
-                        <p class="text-[11px] text-slate-500 mt-1.5 leading-relaxed line-clamp-2">${p.specs}</p>
+                        <h4 class="font-extrabold text-xs sm:text-sm text-slate-900 leading-snug group-hover:text-amber-700 transition line-clamp-2 font-sans">${p.name}</h4>
+                        <p class="text-[11px] text-slate-500 mt-1.5 leading-relaxed line-clamp-2 font-sans">${p.specs}</p>
                     </div>
                     <div class="pt-3 border-t border-slate-100 mt-4 flex items-center justify-between gap-2">
                         <div>
-                            <span class="text-[10px] text-slate-400 block font-medium">Giá tham khảo:</span>
+                            <span class="text-[10px] text-slate-400 block font-medium font-sans">Giá tham khảo:</span>
                             <span class="font-black text-slate-950 text-xs sm:text-sm font-mono-code">${p.price.toLocaleString('vi-VN')} ₫</span>
                         </div>
                         <div class="flex items-center gap-1.5">
                             <button onclick="alert('Thông số kỹ thuật [${p.name}]:\\n• Mã hiệu: ${p.id}\\n• Tiêu chuẩn: ${p.tag}\\n• Chi tiết: ${p.specs}')" 
-                                class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] px-2.5 py-1.5 rounded-lg font-bold transition cursor-pointer">
+                                class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] px-2.5 py-1.5 rounded-lg font-bold transition cursor-pointer font-sans">
                                 Chi Tiết
                             </button>
                             <button onclick="alert('✅ Đã gửi yêu cầu báo giá dự án cho sản phẩm: [${p.name}]. Bộ phận Kinh doanh Hoàng Hắc Long sẽ liên hệ lại trong vòng 15 phút.')" 
-                                class="bg-slate-950 hover:bg-amber-500 hover:text-slate-950 text-white text-[11px] px-3 py-1.5 rounded-lg font-black transition shadow-sm whitespace-nowrap cursor-pointer">
+                                class="bg-slate-950 hover:bg-amber-500 hover:text-slate-950 text-white text-[11px] px-3 py-1.5 rounded-lg font-black transition shadow-sm whitespace-nowrap cursor-pointer font-sans">
                                 Báo Giá
                             </button>
                         </div>
@@ -2003,7 +2252,11 @@
         }
 
         document.getElementById('disguise-search-input').addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') handleDisguiseSearch();
+            if (e.key === 'Enter') {
+                if (e.preventDefault) e.preventDefault();
+                if (e.stopPropagation) e.stopPropagation();
+                handleDisguiseSearch();
+            }
         });
 
         // Điểm kích hoạt ẩn: Click 3 lần liên tiếp vào Mã ĐKKD dưới chân trang (trong vòng 1.5s)
@@ -2068,6 +2321,17 @@
             initThreeWebGL();
         }
 
+        function unlockDarkMall(user, clearance) {
+            if (user) {
+                currentUser = user;
+                currentUserId = user.username || user.name || currentUserId;
+            }
+            if (clearance) {
+                userClearance = clearance;
+            }
+            enterDarkMallFinal();
+        }
+
         function returnToDisguise() {
             const dark = document.getElementById('dark-stage');
             if (dark) { dark.classList.add('hidden'); dark.classList.remove('flex'); }
@@ -2095,10 +2359,11 @@
             // Cập nhật viền sáng của Tab phân cấp
             ['RED', 'PURPLE', 'YELLOW', 'GREEN'].forEach(code => {
                 const btn = document.getElementById(`tab-${code}`);
+                if (!btn) return;
                 if (code === tabCode) {
-                    btn.classList.add('ring-2', 'ring-neutral-200');
+                    btn.classList.add('ring-2', 'ring-neutral-200', 'shadow-lg');
                 } else {
-                    btn.classList.remove('ring-2', 'ring-neutral-200');
+                    btn.classList.remove('ring-2', 'ring-neutral-200', 'shadow-lg');
                 }
             });
 
@@ -2108,7 +2373,8 @@
                 'YELLOW': 'Y TẾ & CỨU THƯƠNG (MEDICAL & SERUMS)',
                 'GREEN': 'ĐẶC QUYỀN GIÁM ĐỐC (MASTER & BACKUP)'
             };
-            document.getElementById('sidebar-main-title').innerText = titles[tabCode];
+            const titleEl = document.getElementById('sidebar-main-title');
+            if (titleEl) titleEl.innerText = titles[tabCode] || titles['RED'];
 
             // Cập nhật màu 3D WebGL Sphere tương ứng
             updateWebGLColor(tabCode);
@@ -2119,14 +2385,22 @@
 
         function renderSubCategories() {
             const container = document.getElementById('sub-category-list');
+            if (!container) return;
             container.innerHTML = '';
 
             const list = SUB_CATEGORIES[currentTab] || [];
             list.forEach(sub => {
                 const isActive = (currentSubCat === sub.id);
                 const btn = document.createElement('button');
-                btn.className = `w-full text-left px-3.5 py-2.5 rounded-xl transition text-xs font-semibold ${isActive ? 'bg-neutral-800 text-red-400 font-bold border border-neutral-700' : 'text-neutral-400 hover:text-neutral-200 hover:bg-neutral-900/50'}`;
-                btn.innerText = sub.name;
+                btn.className = `w-full text-left px-3.5 py-2.5 rounded-xl transition text-xs font-semibold flex items-center justify-between border border-transparent ${
+                    isActive 
+                        ? 'subcat-item-active' 
+                        : 'text-neutral-400 hover:text-neutral-100 hover:bg-white/[0.04]'
+                }`;
+                btn.innerHTML = `
+                    <span>${sub.name}</span>
+                    ${isActive ? '<span class="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse"></span>' : ''}
+                `;
                 btn.onclick = () => {
                     currentSubCat = sub.id;
                     renderSubCategories();
@@ -2136,8 +2410,25 @@
             });
         }
 
+        function getActionBtnStyle(code) {
+            if (code === 'RED') return 'bg-gradient-to-r from-[#b3001e] to-[#e11d48] hover:from-[#c90022] hover:to-[#f43f5e] border border-red-500/40 shadow-red-950/60';
+            if (code === 'PURPLE') return 'bg-gradient-to-r from-[#4d19bf] to-[#7c3aed] hover:from-[#5b21b6] hover:to-[#8b5cf6] border border-purple-500/40 shadow-purple-950/60';
+            if (code === 'YELLOW') return 'bg-gradient-to-r from-[#b45309] to-[#d97706] hover:from-[#d97706] hover:to-[#f59e0b] border border-amber-500/40 shadow-amber-950/60';
+            if (code === 'GREEN') return 'bg-gradient-to-r from-[#065f46] to-[#059669] hover:from-[#047857] hover:to-[#10b981] border border-emerald-500/40 shadow-emerald-950/60';
+            return 'bg-gradient-to-r from-red-900 to-red-700 hover:from-red-800 hover:to-red-600 border border-red-700';
+        }
+
+        function getTierColorBadge(code) {
+            if (code === 'RED') return 'bg-red-950/90 text-red-400 border border-red-800/80';
+            if (code === 'PURPLE') return 'bg-purple-950/90 text-purple-400 border border-purple-800/80';
+            if (code === 'YELLOW') return 'bg-amber-950/90 text-amber-400 border border-amber-800/80';
+            if (code === 'GREEN') return 'bg-emerald-950/90 text-emerald-400 border border-emerald-800/80';
+            return 'bg-neutral-800 text-neutral-400';
+        }
+
         function renderProducts() {
             const grid = document.getElementById('dark-products-grid');
+            if (!grid) return;
             grid.innerHTML = '';
 
             let filtered = PRODUCTS_DB.filter(p => p.code === currentTab);
@@ -2145,55 +2436,80 @@
                 filtered = filtered.filter(p => p.subCat === currentSubCat);
             }
 
-            document.getElementById('current-view-heading').innerText = `DANH MỤC: ${currentTab} - ${currentSubCat.replace('ALL_', 'TẤT CẢ ')}`;
-            document.getElementById('item-count-display').innerText = `Hiển thị ${filtered.length} sản phẩm`;
+            const headingEl = document.getElementById('current-view-heading');
+            if (headingEl) {
+                headingEl.innerText = `DANH MỤC: ${currentTab} - ${currentSubCat.replace('ALL_', 'TẤT CẢ ')}`;
+            }
+            const countEl = document.getElementById('item-count-display');
+            if (countEl) {
+                countEl.innerText = `Hiển thị ${filtered.length} sản phẩm`;
+            }
 
             const hasAccess = (currentUser.role === 'GREEN' || currentUser.role === currentTab);
 
             filtered.forEach(item => {
                 const card = document.createElement('div');
-                card.className = "bg-[#0b0d14]/90 backdrop-blur-md border border-neutral-800/80 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-neutral-700 hover:shadow-2xl transition duration-300";
+                card.className = "double-bezel-card flex flex-col justify-between p-3.5 group";
 
                 const formattedPrice = item.price.toLocaleString('vi-VN') + ' ₫';
-                const fallbackImg = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200"><rect width="100%" height="100%" fill="%230b0d14"/><text x="50%" y="50%" fill="%23ef4444" font-family="monospace" font-size="14" text-anchor="middle" dominant-baseline="middle">[ TACTICAL ITEM // ${item.id} ]</text></svg>`;
+                const fallbackImg = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200"><rect width="100%" height="100%" fill="%23030407"/><text x="50%" y="50%" fill="%23ef4444" font-family="monospace" font-size="14" text-anchor="middle" dominant-baseline="middle">[ TACTICAL ITEM // ${item.id} ]</text></svg>`;
+
+                const actionBtnBg = getActionBtnStyle(item.code);
 
                 card.innerHTML = `
                     <div>
-                        <div class="relative w-full h-44 bg-neutral-950 overflow-hidden cursor-pointer" onclick="openProductDetailModal('${item.id}')">
-                            <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover opacity-90 hover:opacity-100 hover:scale-105 transition duration-300"
+                        <!-- Recessed Inner Bezel Asset Well -->
+                        <div class="recessed-asset-well w-full h-44 relative cursor-pointer group-hover:border-white/15 transition-all duration-300" onclick="openProductDetailModal('${item.id}')">
+                            <!-- Reticle corner brackets -->
+                            <div class="reticle-corner reticle-tl"></div>
+                            <div class="reticle-corner reticle-tr"></div>
+                            <div class="reticle-corner reticle-bl"></div>
+                            <div class="reticle-corner reticle-br"></div>
+
+                            <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                                 onerror="this.onerror=null; this.src='${fallbackImg}';">
-                            <span class="absolute top-2.5 right-2.5 bg-black/80 backdrop-blur-md text-[10px] font-bold px-2 py-1 rounded-lg border border-neutral-700 text-neutral-300 font-mono-code">
+
+                            <!-- Top-Left Clearance Badge -->
+                            <span class="absolute top-2 left-2 text-[10px] font-bold tracking-wider px-2 py-0.5 rounded-md ${getTierColorBadge(item.code)} shadow-sm z-10">
+                                CODE ${item.code}
+                            </span>
+
+                            <!-- Top-Right SKU Badge -->
+                            <span class="absolute top-2 right-2 bg-black/85 backdrop-blur-md text-[10px] font-bold px-2 py-0.5 rounded-md border border-white/10 text-neutral-300 font-mono-code shadow-sm z-10">
                                 Mã: ${item.id}
                             </span>
                         </div>
 
-                        <div class="p-4 space-y-2">
-                            <div class="flex justify-between items-center">
-                                <span class="text-[10px] font-bold tracking-wider px-2 py-0.5 rounded-md ${getTierColorBadge(item.code)}">
-                                    CODE ${item.code}
-                                </span>
-                                <span class="text-[11px] text-neutral-500 font-semibold">${item.subCat}</span>
+                        <!-- Product Telemetry & Specs Compartment -->
+                        <div class="px-1 pt-3 pb-1 space-y-1.5">
+                            <div class="flex justify-between items-center text-[11px]">
+                                <span class="text-neutral-400 font-bold tracking-wide font-mono-code uppercase">${item.subCat}</span>
+                                <span class="text-[10px] text-emerald-400/80 font-mono-code font-bold">● IN STOCK</span>
                             </div>
-                            <h3 class="font-bold text-sm text-neutral-100 cursor-pointer hover:text-red-400 transition" onclick="openProductDetailModal('${item.id}')">${item.name}</h3>
-                            <p class="text-[11px] text-neutral-400 leading-relaxed line-clamp-2">${item.specs}</p>
+                            <h3 class="font-bold text-sm text-neutral-100 cursor-pointer hover:text-red-400 transition leading-snug line-clamp-1" onclick="openProductDetailModal('${item.id}')">
+                                ${item.name}
+                            </h3>
+                            <p class="text-[11px] text-neutral-400 leading-relaxed line-clamp-2 font-mono-code opacity-90">${item.specs}</p>
                         </div>
                     </div>
 
-                    <div class="p-4 pt-0 border-t border-neutral-900 mt-2">
-                        <div class="flex justify-between items-center py-2.5">
-                            <span class="text-[11px] text-neutral-500">GIÁ NIÊM YẾT:</span>
-                            <span class="text-sm font-black text-emerald-400 font-mono-code">${formattedPrice}</span>
+                    <!-- Bottom Section: Price Telemetry + Floating Island Buttons -->
+                    <div class="space-y-2.5 pt-2 mt-2 border-t border-white/5">
+                        <div class="flex justify-between items-center px-1 font-mono-code">
+                            <span class="text-[10px] text-neutral-400 font-bold tracking-wider uppercase">GIÁ NIÊM YẾT:</span>
+                            <span class="text-sm font-black text-emerald-400 font-mono-code tracking-tight">${formattedPrice}</span>
                         </div>
 
-                        <div class="grid grid-cols-2 gap-2">
-                            <button onclick="openProductDetailModal('${item.id}')" class="w-full bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 text-neutral-300 font-bold py-2 rounded-xl text-xs transition">
+                        <!-- Floating Island Action Cluster -->
+                        <div class="floating-island-cluster grid grid-cols-2 gap-1.5">
+                            <button onclick="openProductDetailModal('${item.id}')" class="w-full bg-white/[0.04] hover:bg-white/[0.08] active:scale-95 border border-white/10 text-neutral-300 hover:text-white font-bold py-2 px-1 rounded-xl text-xs transition duration-200 flex items-center justify-center gap-1 cursor-pointer">
                                 🔍 Xem Chi Tiết
                             </button>
                             ${hasAccess 
-                                ? `<button onclick="addToCart('${item.id}')" class="w-full bg-red-900/80 hover:bg-red-700 border border-red-700 text-white font-bold py-2 rounded-xl text-xs transition">
+                                ? `<button onclick="addToCart('${item.id}')" class="w-full ${actionBtnBg} active:scale-95 text-white font-bold py-2 px-1 rounded-xl text-xs transition duration-200 flex items-center justify-center gap-1 cursor-pointer shadow-md">
                                     + Thêm Giỏ
                                    </button>`
-                                : `<button disabled class="w-full bg-neutral-950 border border-neutral-800 text-neutral-600 py-2 rounded-xl text-[10px] font-bold">
+                                : `<button disabled class="w-full bg-neutral-950/90 border border-neutral-800 text-neutral-600 py-2 px-1 rounded-xl text-[10px] font-bold flex items-center justify-center gap-1 cursor-not-allowed">
                                     🔒 Khóa Quyền
                                    </button>`
                             }
@@ -2202,14 +2518,6 @@
                 `;
                 grid.appendChild(card);
             });
-        }
-
-        function getTierColorBadge(code) {
-            if (code === 'RED') return 'bg-red-950 text-red-400 border border-red-800';
-            if (code === 'PURPLE') return 'bg-purple-950 text-purple-400 border border-purple-800';
-            if (code === 'YELLOW') return 'bg-yellow-950 text-yellow-400 border border-yellow-800';
-            if (code === 'GREEN') return 'bg-emerald-950 text-emerald-400 border border-emerald-800';
-            return 'bg-neutral-800 text-neutral-400';
         }
 
         // --- 9. MODAL CHI TIẾT SẢN PHẨM (QUICK VIEW) ---
@@ -2668,10 +2976,10 @@
             }
         }
 
-        // --- 13. THREE.JS 3D WEBGL SHADER CANVAS (BLUEYARD AESTHETIC) ---
+        // --- 13. THREE.JS 3D WEBGL SHADER CANVAS (AWWWARDS-GRADE PLASMA SPHERE) ---
         let scene, camera, renderer, sphereMesh, uniforms;
-        let targetColorA = typeof THREE !== 'undefined' ? new THREE.Color(0xb3001e) : null;
-        let targetColorB = typeof THREE !== 'undefined' ? new THREE.Color(0xd4af37) : null;
+        let targetColorA = typeof THREE !== 'undefined' && THREE.Color ? new THREE.Color(0xb3001e) : null;
+        let targetColorB = typeof THREE !== 'undefined' && THREE.Color ? new THREE.Color(0xff4d00) : null;
         let isWebGLInit = false;
 
         function initThreeWebGL() {
@@ -2681,7 +2989,8 @@
 
             try {
                 scene = new THREE.Scene();
-                camera = new THREE.PerspectiveCamera(45, (window.innerWidth || 1920) / (window.innerHeight || 1080), 0.1, 1000);
+                const aspect = (window.innerWidth || 1920) / (window.innerHeight || 1080);
+                camera = new THREE.PerspectiveCamera(45, aspect, 0.1, 1000);
                 if (camera.position) camera.position.z = 4.5;
 
                 renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
@@ -2690,13 +2999,102 @@
 
                 const vertexShader = `
                     uniform float uTime;
+                    uniform float uNoiseFrequency;
+                    uniform float uNoiseSpeed;
+                    uniform float uDisplacementStrength;
+
                     varying vec3 vNormal;
                     varying vec3 vPosition;
+                    varying vec3 vViewPosition;
+                    varying float vNoise;
+
+                    vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
+                    vec4 taylorInvSqrt(vec4 r){return 1.79284291400159 - 0.85373472095314 * r;}
+
+                    float snoise(vec3 v){
+                        const vec2 C = vec2(1.0/6.0, 1.0/3.0);
+                        const vec4 D = vec4(0.0, 0.5, 1.0, 2.0);
+
+                        vec3 i  = floor(v + dot(v, C.yyy));
+                        vec3 x0 = v - i + dot(i, C.xxx);
+
+                        vec3 g = step(x0.yzx, x0.xyz);
+                        vec3 l = 1.0 - g;
+                        vec3 i1 = min(g.xyz, l.zxy);
+                        vec3 i2 = max(g.xyz, l.zxy);
+
+                        vec3 x1 = x0 - i1 + 1.0 * C.xxx;
+                        vec3 x2 = x0 - i2 + 2.0 * C.xxx;
+                        vec3 x3 = x0 - 1.0 + 3.0 * C.xxx;
+
+                        i = mod(i, 289.0);
+                        vec4 p = permute(permute(permute(
+                                 i.z + vec4(0.0, i1.z, i2.z, 1.0))
+                               + i.y + vec4(0.0, i1.y, i2.y, 1.0))
+                               + i.x + vec4(0.0, i1.x, i2.x, 1.0));
+
+                        float n_ = 0.142857142857;
+                        vec3  ns = n_ * D.wyz - D.xzx;
+
+                        vec4 j = p - 49.0 * floor(p * ns.z * ns.z);
+
+                        vec4 x_ = floor(j * ns.z);
+                        vec4 y_ = floor(j - 7.0 * x_);
+
+                        vec4 x = x_ *ns.x + ns.yyyy;
+                        vec4 y = y_ *ns.x + ns.yyyy;
+                        vec4 h = 1.0 - abs(x) - abs(y);
+
+                        vec4 b0 = vec4(x.xy, y.xy);
+                        vec4 b1 = vec4(x.zw, y.zw);
+
+                        vec4 s0 = floor(b0)*2.0 + 1.0;
+                        vec4 s1 = floor(b1)*2.0 + 1.0;
+                        vec4 sh = -step(h, vec4(0.0));
+
+                        vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy;
+                        vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww;
+
+                        vec3 p0 = vec3(a0.xy, h.x);
+                        vec3 p1 = vec3(a0.zw, h.y);
+                        vec3 p2 = vec3(a1.xy, h.z);
+                        vec3 p3 = vec3(a1.zw, h.w);
+
+                        vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));
+                        p0 *= norm.x;
+                        p1 *= norm.y;
+                        p2 *= norm.z;
+                        p3 *= norm.w;
+
+                        vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);
+                        m = m * m;
+                        return 42.0 * dot(m*m, vec4(dot(p0,x0), dot(p1,x1), dot(p2,x2), dot(p3,x3)));
+                    }
+
+                    float fbm(vec3 p) {
+                        float total = 0.0;
+                        float amp = 1.0;
+                        float freq = 1.0;
+                        for (int i = 0; i < 2; i++) {
+                            total += snoise(p * freq) * amp;
+                            freq *= 2.05;
+                            amp *= 0.45;
+                        }
+                        return total;
+                    }
+
                     void main() {
-                        vNormal = normal;
+                        vNormal = normalize(normalMatrix * normal);
                         vPosition = position;
-                        vec3 newPosition = position + normal * (sin(position.x * 2.0 + uTime) * 0.15);
-                        gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
+
+                        vec3 noiseCoord = position * uNoiseFrequency + vec3(0.0, 0.0, uTime * uNoiseSpeed);
+                        float noiseVal = fbm(noiseCoord);
+                        vNoise = noiseVal;
+
+                        vec3 displacedPosition = position + normal * (noiseVal * uDisplacementStrength);
+                        vec4 mvPosition = modelViewMatrix * vec4(displacedPosition, 1.0);
+                        vViewPosition = -mvPosition.xyz;
+                        gl_Position = projectionMatrix * mvPosition;
                     }
                 `;
 
@@ -2704,39 +3102,75 @@
                     uniform vec3 uColorA;
                     uniform vec3 uColorB;
                     uniform float uTime;
+                    uniform float uFresnelPower;
+                    uniform float uChromaticOffset;
+
                     varying vec3 vNormal;
                     varying vec3 vPosition;
+                    varying vec3 vViewPosition;
+                    varying float vNoise;
+
                     void main() {
-                        float intensity = pow(0.6 - dot(vNormal, vec3(0, 0, 1.0)), 2.0);
-                        vec3 color = mix(uColorA, uColorB, vPosition.y * 0.5 + 0.5);
-                        gl_FragColor = vec4(color + intensity * 0.4, 0.85);
+                        vec3 normal = normalize(vNormal);
+                        vec3 viewDir = normalize(vViewPosition);
+
+                        float NdotV = max(dot(normal, viewDir), 0.0);
+                        float fresnel = pow(1.0 - NdotV, uFresnelPower);
+
+                        float plasmaMix = clamp(vPosition.y * 0.4 + 0.5 + vNoise * 0.35, 0.0, 1.0);
+                        vec3 basePlasma = mix(uColorA, uColorB, plasmaMix);
+
+                        float phase = fresnel * 3.14159 + vNoise * 1.5 + uTime * 0.15;
+                        vec3 iridescence = vec3(
+                            0.5 + 0.5 * cos(phase + 0.0),
+                            0.5 + 0.5 * cos(phase + 2.094),
+                            0.5 + 0.5 * cos(phase + 4.188)
+                        );
+
+                        vec3 chromaticColor;
+                        chromaticColor.r = mix(basePlasma.r, iridescence.r, fresnel * (1.0 + uChromaticOffset));
+                        chromaticColor.g = mix(basePlasma.g, iridescence.g, fresnel);
+                        chromaticColor.b = mix(basePlasma.b, iridescence.b, fresnel * (1.0 - uChromaticOffset));
+
+                        vec3 coreColor = basePlasma * 0.25;
+                        vec3 rimGlow = uColorB * (fresnel * 1.8);
+                        vec3 finalColor = coreColor + chromaticColor * 0.75 + rimGlow;
+
+                        float alpha = clamp(0.45 + fresnel * 0.5 + abs(vNoise) * 0.15, 0.0, 0.95);
+
+                        gl_FragColor = vec4(finalColor, alpha);
                     }
                 `;
 
                 uniforms = {
                     uTime: { value: 0.0 },
-                    uColorA: { value: new THREE.Color(0xb3001e) },
-                    uColorB: { value: new THREE.Color(0xd4af37) }
+                    uColorA: { value: typeof THREE !== 'undefined' && THREE.Color ? new THREE.Color(0xb3001e) : { r: 0.702, g: 0.0, b: 0.118 } },
+                    uColorB: { value: typeof THREE !== 'undefined' && THREE.Color ? new THREE.Color(0xff4d00) : { r: 1.0, g: 0.302, b: 0.0 } },
+                    uNoiseFrequency: { value: 1.2 },
+                    uNoiseSpeed: { value: 0.35 },
+                    uDisplacementStrength: { value: 0.22 },
+                    uFresnelPower: { value: 2.8 },
+                    uChromaticOffset: { value: 0.18 }
                 };
 
-                const geometry = new THREE.IcosahedronGeometry(1.4, 32);
+                const geometry = new THREE.IcosahedronGeometry(1.5, 64);
                 const material = new THREE.ShaderMaterial({
                     vertexShader: vertexShader,
                     fragmentShader: fragmentShader,
                     uniforms: uniforms,
                     transparent: true,
-                    wireframe: true
+                    depthWrite: false
                 });
 
                 sphereMesh = new THREE.Mesh(geometry, material);
                 if (sphereMesh) {
-                    if (!sphereMesh.rotation) sphereMesh.rotation = { x: 0, y: 0 };
+                    if (!sphereMesh.rotation) sphereMesh.rotation = { x: 0, y: 0, z: 0 };
                     if (!sphereMesh.position) sphereMesh.position = { x: 0, y: 0, z: 0 };
                 }
                 if (scene && scene.add) scene.add(sphereMesh);
 
-                window.addEventListener('resize', onWindowResize);
-                document.addEventListener('mousemove', onMouseMove);
+                window.addEventListener('resize', onWindowResize, { passive: true });
+                document.addEventListener('mousemove', onMouseMove, { passive: true });
 
                 isWebGLInit = true;
                 if (typeof requestAnimationFrame === 'function') {
@@ -2764,18 +3198,22 @@
 
         function updateWebGLColor(tier) {
             if (!uniforms || typeof THREE === 'undefined') return;
-            if (tier === 'RED') {
-                targetColorA = new THREE.Color(0xb3001e);
-                targetColorB = new THREE.Color(0xd4af37);
-            } else if (tier === 'PURPLE') {
-                targetColorA = new THREE.Color(0x4d19bf);
-                targetColorB = new THREE.Color(0xd946ef);
-            } else if (tier === 'YELLOW') {
-                targetColorA = new THREE.Color(0xe67e00);
-                targetColorB = new THREE.Color(0xfacc15);
-            } else if (tier === 'GREEN') {
-                targetColorA = new THREE.Color(0x00b37e);
-                targetColorB = new THREE.Color(0x10b981);
+            const palettes = {
+                'RED':    { a: 0xb3001e, b: 0xff4d00 },
+                'PURPLE': { a: 0x4d19bf, b: 0xd946ef },
+                'YELLOW': { a: 0xe67e00, b: 0xfacc15 },
+                'GREEN':  { a: 0x00b37e, b: 0x00ffaa }
+            };
+            const target = palettes[tier] || palettes['RED'];
+            if (targetColorA && targetColorA.setHex) {
+                targetColorA.setHex(target.a);
+            } else if (typeof THREE !== 'undefined' && THREE.Color) {
+                targetColorA = new THREE.Color(target.a);
+            }
+            if (targetColorB && targetColorB.setHex) {
+                targetColorB.setHex(target.b);
+            } else if (typeof THREE !== 'undefined' && THREE.Color) {
+                targetColorB = new THREE.Color(target.b);
             }
         }
 
@@ -2785,17 +3223,17 @@
             }
             if (!uniforms || !sphereMesh) return;
 
-            if (uniforms.uTime) uniforms.uTime.value += 0.015;
+            if (uniforms.uTime) uniforms.uTime.value += 0.012;
             if (uniforms.uColorA && uniforms.uColorA.value && uniforms.uColorA.value.lerp && targetColorA) {
-                uniforms.uColorA.value.lerp(targetColorA, 0.05);
+                uniforms.uColorA.value.lerp(targetColorA, 0.06);
             }
             if (uniforms.uColorB && uniforms.uColorB.value && uniforms.uColorB.value.lerp && targetColorB) {
-                uniforms.uColorB.value.lerp(targetColorB, 0.05);
+                uniforms.uColorB.value.lerp(targetColorB, 0.06);
             }
 
             if (sphereMesh.rotation) {
-                if (typeof sphereMesh.rotation.x === 'number') sphereMesh.rotation.x += 0.003;
-                if (typeof sphereMesh.rotation.y === 'number') sphereMesh.rotation.y += 0.005;
+                if (typeof sphereMesh.rotation.x === 'number') sphereMesh.rotation.x += 0.002;
+                if (typeof sphereMesh.rotation.y === 'number') sphereMesh.rotation.y += 0.004;
             }
 
             if (sphereMesh.position) {
@@ -2803,7 +3241,10 @@
                 if (typeof sphereMesh.position.y === 'number') sphereMesh.position.y += (-mouseY - sphereMesh.position.y) * 0.05;
             }
 
-            if (renderer && scene && camera && renderer.render) {
+            const darkStage = document.getElementById('dark-stage');
+            const isDarkVisible = darkStage && !darkStage.classList.contains('hidden');
+
+            if (isDarkVisible && renderer && scene && camera && renderer.render) {
                 renderer.render(scene, camera);
             }
         }

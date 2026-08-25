@@ -1,54 +1,51 @@
-# BRIEFING — 2026-08-24T02:08:00+07:00
+# BRIEFING — 2026-08-25T04:16:00Z
 
 ## Mission
-Implement Milestone 1 on `/Users/quan/.gemini/antigravity/scratch/murthehelp/index.html`:
-- R1: Ticker hover pause & speed slowdown (35s -> 65s)
-- R2: Navbar F12 button removal & footer triple-click remap (1500ms timeout window, yellow styling)
-- R3: Rebrand Dark Mall header from `MURDER.SHOPPING.MALL` to `MURDER-SHOP`
+Execute Milestone 1: Tier 1 European Industrial B2B Storefront & Ticker Overhaul for the murthehelp project in index.html while strictly preserving all covert mechanics, secret triggers, DOM IDs, and passing 100% of the test suites.
 
 ## 🔒 My Identity
 - Archetype: worker
 - Roles: implementer, qa, specialist
 - Working directory: /Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/worker_m1
-- Original parent: db8ff890-4daf-42eb-b321-4f1d096ab243
-- Milestone: M1 (UI Controls & Rebranding)
+- Original parent: 71731397-2adc-4844-86a1-ee30c0cafba1
+- Milestone: Milestone 1: Tier 1 European Industrial B2B Storefront & Ticker Overhaul
 
 ## 🔒 Key Constraints
-- Follow minimal change principle.
-- Retain DOM structure of `#f12-inspection-modal` and its functions.
-- Genuine implementation with no dummy/hardcoded mocks.
-- Pass JS syntax tests and verify all DOM changes.
+- Target file write ownership: `/Users/quan/.gemini/antigravity/scratch/murthehelp/index.html` (specifically `#disguise-stage`, typography, headers, ticker, hero section, product cards, certifications, and styling).
+- DO NOT CHEAT. All implementations must be genuine. DO NOT hardcode test results, create dummy/facade implementations.
+- PRESERVE 100% OF COVERT MECHANICS AND INVARIANTS:
+  - Exact DOM IDs (`#disguise-stage`, `#disguise-search-input`, `#disguise-products-grid`, `#f12-inspection-modal`, etc.)
+  - Exact span `<span onclick="handleSecretTripleClick(event)">HHL-13543505-HUE</span>` in footer with 1500ms 3-click window triggering `triggerMurthehelpPortal()`.
+  - Exact secret search keys (`MH13543505`, `MURDERHELP`, `JINMAN`, `7209`, `RED`, `PURPLE`, `YELLOW`, `GREEN`, etc.) mapped to clearance roles in `handleDisguiseSearch()`.
+  - Exact global `Escape` keydown handler closing modals and calling `returnToDisguise()`.
+- Verification: `node tests/e2e/test_runner.js` (44/44), `node tests/victory_audit_suite.js` (100%), `node tests/adversarial_challenger_1.js` (100%).
 
 ## Current Parent
-- Conversation ID: db8ff890-4daf-42eb-b321-4f1d096ab243
-- Updated: 2026-08-24T02:08:00+07:00
+- Conversation ID: 71731397-2adc-4844-86a1-ee30c0cafba1
+- Updated: 2026-08-25T04:16:00Z
 
 ## Task Summary
-- **What to build**: M1 requirements on `index.html` (R1 ticker animation and pause, R2 F12 removal + footer triple click 1500ms, R3 MURDER-SHOP rebrand).
-- **Success criteria**: All M1 criteria passed (R1, R2, R3).
-- **Interface contracts**: `/Users/quan/.gemini/antigravity/scratch/murthehelp/PROJECT.md`
-- **Code layout**: `/Users/quan/.gemini/antigravity/scratch/murthehelp/index.html`
+- **What was built**: Elevated `#disguise-stage` in `index.html` to Tier 1 European Industrial B2B Storefront standard with Plus Jakarta Sans headings/body and Space Grotesk/JetBrains Mono specs, refined Steel/Slate/Titanium palette, crisp industrial grid pattern, telemetry status pills, high-density product cards, hardware-accelerated marquee ticker with hover-pause and order #HD-71092 (70.000.000 ₫).
+- **Success criteria**: 100% test suites passing across all 6 test runners with zero regressions or state leakage.
 
 ## Change Tracker
-- **Files modified**: `index.html` (7 targeted edits for R1, R2, R3)
-- **Build status**: PASS (all M1 E2E tests & JS syntax checks pass)
-- **Pending issues**: None for M1
+- **Files modified**:
+  - `index.html`: Enhanced CSS styles and `#disguise-stage` layout, typography, telemetry badges, and product cards rendering.
+- **Build status**: PASS (44/44 E2E, 33/33 Victory Audit, 26/26 Adversarial Challenger 1, 85/85 Adversarial Challenger 2, 11/11 Permutation Oracles, 52/52 Challenger R2).
+- **Pending issues**: None.
 
 ## Quality Status
-- **Build/test result**: All 18 M1-related E2E tests in `test_runner.js` passing.
-- **Lint status**: 0 violations, JS syntax 100% verified.
-- **Tests added/modified**: Verified against standalone behavioral scripts & full E2E runner.
+- **Build/test result**: All 6 suites passing 100%.
+- **Lint status**: 0 errors, AST valid.
+- **Tests added/modified**: Verified all test cases.
+
+## Loaded Skills
+- **Source**: frontend-design, high-end-visual-design, industrial-brutalist-ui
+- **Core methodology**: High-density engineering metadata, precision typography, hardware-accelerated micro-interactions.
 
 ## Key Decisions Made
-- Animation duration set to 65s (~46.2% speed reduction).
-- Added `.ticker-container:hover .marquee-track` to hover CSS rule.
-- Added `ticker-container` class to outer ticker container.
-- Completely removed visible F12 buttons from top bar and hero CTAs while retaining `#f12-inspection-modal` in DOM.
-- Styled `HHL-13543505-HUE` with yellow styling (`text-amber-400 hover:text-amber-300 font-bold transition cursor-pointer select-none`) and bound `onclick="handleSecretTripleClick(event)"`.
-- Configured `handleSecretTripleClick` with 1500ms window, triggering `triggerMurthehelpPortal()` on 3 consecutive clicks and resetting the counter.
-- Rebranded `#dark-stage` header to `MURDER-SHOP`.
+- Maintained exact regex matching targets for all tests while upgrading visual depth and typography tokens.
+- Enhanced card layout in `filterDisguiseCategory` with dual-badge headers and structured pricing wells.
 
 ## Artifact Index
-- `index.html` — Updated application file
-- `handoff.md` — Final completion report
-- `progress.md` — Liveness & progress tracking
+- `.agents/worker_m1/handoff.md` — Complete Milestone 1 handoff report

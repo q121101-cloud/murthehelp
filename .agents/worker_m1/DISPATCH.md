@@ -1,26 +1,28 @@
-## 2026-08-23T19:05:56Z
-You are worker_m1.
-Your working directory is `/Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/worker_m1`.
-You MUST read `/Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/ORIGINAL_REQUEST.md` and `/Users/quan/.gemini/antigravity/scratch/murthehelp/PROJECT.md` before starting.
-Also review the exact diffs and line specifications in `/Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/survey_explorer_1/handoff.md` and `/Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/survey_explorer_2/handoff.md`.
+## 2026-08-25T04:12:14Z
+You are Worker 1 executing Milestone 1: Tier 1 European Industrial B2B Storefront & Ticker Overhaul for the murthehelp project.
+Working directory: /Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/worker_m1
+Please create your working directory and write your handoff report to /Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/worker_m1/handoff.md.
 
-MANDATORY INTEGRITY WARNING:
-DO NOT CHEAT. All implementations must be genuine. DO NOT hardcode test results, create dummy/facade implementations, or circumvent the intended task. A teamwork_preview_auditor will independently verify your work. Integrity violations WILL be detected and your work WILL be rejected.
+Read the user request and project specification at:
+/Users/quan/.gemini/antigravity/scratch/murthehelp/ORIGINAL_REQUEST.md
+/Users/quan/.gemini/antigravity/scratch/murthehelp/PROJECT.md
+/Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/teamwork_preview_explorer_survey_1/survey_tier1_mechanics.md
 
-Your task is to implement Milestone 1 on `/Users/quan/.gemini/antigravity/scratch/murthehelp/index.html`:
-1. **R1 (Ticker Hover Pause & Speed Slowdown)**:
-   - In the `<style>` block: Update `.marquee-track` animation duration from `35s` to `65s` (achieving ~46% speed reduction).
-   - Update hover CSS rule to: `.ticker-container:hover .marquee-track, .marquee-track:hover { animation-play-state: paused; }`.
-   - In HTML: Add `ticker-container` class to the outer ticker container div (`<div class="ticker-container bg-gradient-to-r...`).
-2. **R2 (Navbar F12 Button Removal & Footer Triple-Click Remap)**:
-   - Remove the visible F12 button from the top utility bar (`<button onclick="openF12InspectionModal()" ...><span>🔍</span> F12: Kiểm Tra Mã Nguồn Trang</button>`).
-   - Remove the visible F12 button from the hero actions (`<button onclick="openF12InspectionModal()" ...><span>🔍</span> F12 Mã Nguồn</button>`).
-   - Keep `#f12-inspection-modal` and its functions in the DOM.
-   - In the footer: Format the `HHL-13543505-HUE` text with yellow styling (`class="text-amber-400 hover:text-amber-300 font-bold transition cursor-pointer select-none"`) and bind `onclick="handleSecretTripleClick(event)"`.
-   - In JS: Update `handleSecretTripleClick(e)` to use a 1500ms (1.5s) timeout window, calling `triggerMurthehelpPortal()` on 3 consecutive clicks and resetting the click counter properly.
-3. **R3 (Rebrand Dark Mall Header to MURDER-SHOP)**:
-   - In the dark mall stage header (`#dark-stage`), update the brand title from `MURDER.SHOPPING.MALL` to `MURDER-SHOP`.
-
-Verify your implementation by running JS syntax checks and verifying the DOM modifications.
-Write your completion report to `/Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/worker_m1/handoff.md` including exact verification command results and diffs.
-Send a completion message back.
+Scope of Work for Milestone 1:
+1. Target file write ownership: `/Users/quan/.gemini/antigravity/scratch/murthehelp/index.html` (specifically `#disguise-stage`, typography, headers, ticker, hero section, product cards, certifications, and styling).
+2. Upgrade Tier 1 European Industrial B2B Storefront aesthetic:
+   - Apply Plus Jakarta Sans for UI and Space Grotesk / JetBrains Mono for technical specs.
+   - Refine the Steel / Slate / Titanium palette with ultra-crisp borders, precision data badges (ISO 9001:2015, JIS K6349, ISO 18752, 1500 Bar ratings), and modern industrial layout.
+   - Optimize the hardware-accelerated marquee ticker (`.marquee-track` at ~65s speed, seamless loop, hover-pause on mouseenter and resume on mouseleave, order #HD-71092 70.000.000 ₫).
+   - Enhance disguise product cards (`#disguise-products-grid`) with high-density technical specs, sleek action buttons ("Yêu Cầu Báo Giá", "Tài Liệu Kỹ Thuật"), and crisp micro-interactions.
+3. PRESERVE 100% OF COVERT MECHANICS AND INVARIANTS:
+   - Exact DOM IDs (`#disguise-stage`, `#disguise-search-input`, `#disguise-products-grid`, `#f12-inspection-modal`, etc.).
+   - Exact span `<span onclick="handleSecretTripleClick(event)">HHL-13543505-HUE</span>` in footer with 1500ms 3-click window triggering `triggerMurthehelpPortal()`.
+   - Exact secret search keys (`MH13543505`, `MURDERHELP`, `JINMAN`, `7209`, `RED`, `PURPLE`, `YELLOW`, `GREEN`, etc.) mapped to clearance roles in `handleDisguiseSearch()`.
+   - Exact global `Escape` keydown handler closing modals and calling `returnToDisguise()`.
+4. Verification & Testing:
+   - Run `node tests/e2e/test_runner.js` (must pass 44/44).
+   - Run `node tests/victory_audit_suite.js` (must pass 100%).
+   - Run `node tests/adversarial_challenger_1.js` (must pass 100%).
+   - Verify zero console errors and clean syntax.
+5. Write your complete handoff report to `.agents/worker_m1/handoff.md` and send a completion message.

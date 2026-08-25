@@ -1,42 +1,62 @@
-# Project: Murthehelp Simulation UI & Dark Mall Enhancement
+# Project: murthehelp UI/UX & 3D WebGL Overhaul
 
 ## Architecture
-Single-file web application (`index.html`) hosting a 3-stage dark web simulation:
-1. **Public Disguise Stage (`#disguise-stage`)**: Corporate storefront ("TẬP ĐOÀN CƠ KHÍ & THỦY LỰC HOÀNG HẮC LONG (HUẾ)") with infinite scrolling order ticker, B2B product showcase, order lookup, and hidden triggers.
-2. **Transit Portal Stage (`#portal-stage`)**: Secret entry gateway (`murderhelp`) with clearance stripe, login form, and registration form supporting both local cache (`DEFAULT_USERS`) and Supabase auth.
-3. **Dark Mall Stage (`#dark-stage`)**: Tactical operational dashboard with Three.js WebGL canvas sphere, clearance tier tabs (RED, PURPLE, YELLOW, GREEN), subcategory filters, dynamic product grid (`PRODUCTS_DB`), product detail modal, escrow cart, and admin console.
+Single-page application (`index.html`) featuring a 3-tier progressive disclosure simulation architecture:
+1. **Tier 1 (`#disguise-stage`)**: Public European Industrial B2B Disguise Storefront (*Tập Đoàn Cơ Khí & Thủy Lực Hoàng Hắc Long - Huế* / *Hamdeok Corp*). Clean steel/slate aesthetic, Plus Jakarta Sans typography, Space Grotesk/JetBrains Mono specs, precision telemetry badges (ISO 9001:2015, JIS K6349, ISO 18752, 1500 Bar ratings), hardware-accelerated 65s ticker with hover-pause, catalog grid.
+2. **Tier 2 (`#portal-stage`)**: Transit biometric portal. Burgundy vignette gradient (`#4a0005` to `#240003` to `#0d0001`), dual-speed biometric laser sweep beam, holographic grid matrix, centered `murderhelp` neon glow title, 3-color clearance stripe (`#b3001e`, `#4d19bf`, `#e67e00`), and glassmorphism auth modal.
+3. **Tier 3 (`#dark-stage` & `#webgl-canvas`)**: Awwwards-grade tactical dark mall (*MURDER-SHOP*). Driven by Three.js Fresnel Iridescent Plasma Sphere with Simplex noise fBm vertex displacement, chromatic aberration, and reactive clearance palettes (CODE RED, PURPLE, YELLOW, GREEN). Double-Bezel weapon cards and Floating Island action buttons.
+4. **Backend & Storage**: Dual-mode Supabase integration (`murthehelp_users`, `murthehelp_orders`) with offline resilient `localStorage` fallbacks.
 
 ## Feature Inventory
 | # | Feature | Description | Milestone | Source |
 |---|---------|-------------|-----------|--------|
-| 1 | Ticker Hover Pause | When user hovers over ticker bar, animation stops completely; resumes on mouse leave | M1 | ORIGINAL_REQUEST §R1 |
-| 2 | Ticker Speed Reduction | Animation duration slowed down by ~40-50% (35s -> 65s) for readability | M1 | ORIGINAL_REQUEST §R1 |
-| 3 | Remove Navbar F12 Button | Remove visible "F12 Kiểm Tra Mã Nguồn" buttons from utility bar and hero area; retain modal | M1 | ORIGINAL_REQUEST §R2 |
-| 4 | Footer Secret Triple-Click | Triple-click on yellow `HHL-13543505-HUE` within 1.5s triggers hidden portal | M1 | ORIGINAL_REQUEST §R2 |
-| 5 | Rebrand Dark Mall Header | Update visible header text from `MURDER.SHOPPING.MALL` to `MURDER-SHOP` | M1 | ORIGINAL_REQUEST §R3 |
-| 6 | Fix Broken Product Images | Replace HTTP 404 images (RED-P02, RED-P06, RED-SMG01, RED-SMG04, RED-AR02, RED-SNP02, Revolvers) with verified working URLs | M2 | ORIGINAL_REQUEST §R4 |
-| 7 | Expand Product Catalog | Add 14 new products across RED, PURPLE, YELLOW, GREEN tiers with complete schemas | M2 | ORIGINAL_REQUEST §R4 |
-| 8 | E2E Test Harness & Tiers 1-4 | Automated multi-tiered test runner verifying all requirements, DOM states, URLs, and auth | E2E Track | ORIGINAL_REQUEST §Acceptance Criteria |
-| 9 | Auth & Workflow Regression Pass | Guarantee `q121101` / `Tungqu@n1208.` login and all stages transition smoothly | Final Milestone | ORIGINAL_REQUEST §No Regressions |
-| 10 | Git Commit & Push Verification | Clean git commit with required message and push to origin main | Final Milestone | ORIGINAL_REQUEST §No Regressions |
+| F1 | European Industrial Typography & Theme | Plus Jakarta Sans body, Space Grotesk/JetBrains Mono specs, Steel/Slate palette | M1 | ORIGINAL_REQUEST §R1 |
+| F2 | Precision Data Badges & Layout | ISO 9001:2015, JIS K6349, ISO 18752, 1500 Bar badges, refined micro-interactions | M1 | ORIGINAL_REQUEST §R1 |
+| F3 | Hardware-Accelerated Marquee Ticker | Smooth 65s ticker with hover-pause and order #HD-71092 70.000.000 ₫ | M1 | ORIGINAL_REQUEST §R1 |
+| F4 | Covert Trigger: Footer Triple-Click | Triple click on `HHL-13543505-HUE` within 1.5s unlocks portal | M1 | ORIGINAL_REQUEST §R4 |
+| F5 | Covert Trigger: Secret Search Keys | `MH13543505`, `MURDERHELP`, `JINMAN`, `7209`, `RED`, `PURPLE`, `YELLOW`, `GREEN` | M1 | ORIGINAL_REQUEST §R4 |
+| F6 | Covert Trigger: Emergency Panic Protocol | Global `Escape` key immediately returns to disguise storefront | M1 | ORIGINAL_REQUEST §R4 |
+| F7 | Burgundy Transit Canvas & Vignette | Radial burgundy gradient `#4a0005` to `#240003` to `#0d0001` | M2 | ORIGINAL_REQUEST §R2 |
+| F8 | Biometric Laser Scanning & Hologram Grid | Dual-speed vertical laser sweep beam, glowing flare, corner telemetry reticles | M2 | ORIGINAL_REQUEST §R2 |
+| F9 | Centered Neon Title & 3-Color Glow Stripe | Centered `murderhelp` glow title with 3-color clearance stripe | M2 | ORIGINAL_REQUEST §R2 |
+| F10 | Glassmorphic Tactical Auth Modal | Optical glassmorphic box, tactical input affordances, login validation | M2 | ORIGINAL_REQUEST §R2 |
+| F11 | WebGL Fresnel Iridescent Plasma Sphere | Three.js shader with Simplex noise fBm displacement and chromatic aberration | M3 | ORIGINAL_REQUEST §R3 |
+| F12 | Reactive Clearance Color Palettes | Smooth color transitions for CODE RED, PURPLE, YELLOW, GREEN | M3 | ORIGINAL_REQUEST §R3 |
+| F13 | Double-Bezel Tactical Weapon Cards | Dual-contour layered frames with obsidian chassis and recessed asset wells | M3 | ORIGINAL_REQUEST §R3 |
+| F14 | Floating Island Action Buttons | Pill-shaped action triggers ("Xem Chi Tiết", "+ Thêm Giỏ") with fluid hover states | M3 | ORIGINAL_REQUEST §R3 |
+| F15 | Fluid Cart Drawer & Subcategory Nav | Animated cart slide-in, subcategory pill indicator, modal dialogues | M3 | ORIGINAL_REQUEST §R3 |
+| F16 | Supabase State & Admin Auth | Super Admin `q121101` / `Tungqu@n1208.` CODE GREEN 2B ₫ sync, wallet, orders | M3 | ORIGINAL_REQUEST §R4 |
+| F17 | Dual Track E2E Playwright Suite | Comprehensive headless E2E test suite + screenshot verification across all 3 tiers | M4 | ORIGINAL_REQUEST §R5 |
+| F18 | Forensic Integrity Audit & Hardening | Binary veto verification (zero dummy logic, authentic runtime data flow) | M5 | ORIGINAL_REQUEST §R5 |
 
 ## Milestones
 | # | Name | Scope | Dependencies | Status |
 |---|------|-------|-------------|--------|
-| M1 | UI Controls & Rebranding | R1 (Ticker pause & speed), R2 (F12 removal & footer triple-click), R3 (MURDER-SHOP branding) | none | DONE |
-| M2 | Product Catalog & Image Assets | R4 (Fix broken image URLs, add 14 new products to PRODUCTS_DB) | none | DONE |
-| E2E | E2E Testing Suite Track | Design & implement opaque-box test runner covering Tiers 1-4, publish TEST_READY.md | none | DONE |
-| Final | E2E Verification & Adversarial Hardening | Pass 100% E2E tests (Tiers 1-4), Tier 5 adversarial testing, Git commit & push | M1, M2, E2E | IN_PROGRESS |
+| M1 | Tier 1 European Industrial Storefront | F1, F2, F3, F4, F5, F6 | none | DONE |
+| M2 | Tier 2 Biometric Laser Transit Portal | F7, F8, F9, F10 | M1 | DONE |
+| M3 | Tier 3 WebGL Plasma Shader & Tactical UI | F11, F12, F13, F14, F15, F16 | M2 | DONE |
+| M4 | E2E Playwright Suite & Visual Verification | F17 (Tiers 1-4 validation + screenshots) | M3 | DONE |
+| M5 | Forensic Integrity Audit & Victory Gate | F18 (Auditor + Challenger verification) | M4 | DONE |
 
 ## Interface Contracts
-### DOM & Event Wiring
-- `#disguise-stage` → `.ticker-container:hover .marquee-track, .marquee-track:hover { animation-play-state: paused; }`
-- Footer yellow text span: `onclick="handleSecretTripleClick(event)"`, timer window = 1500ms, calls `triggerMurthehelpPortal()`.
-- `#f12-inspection-modal` remains in DOM with `openF12InspectionModal()` / `closeF12InspectionModal()`.
-- Header in `#dark-stage`: `<span class="text-lg font-black tracking-widest text-red-500">MURDER-SHOP</span>`.
-- `PRODUCTS_DB`: Array of objects `{ id, name, subCat, code, price, img, specs }`. Total items >= 50. All `img` URLs return HTTP 200.
+### Disguise Storefront ↔ Transit Portal
+- **DOM Triggers**: `#disguise-search-input` (input event + Enter), footer `HHL-13543505-HUE` (`handleSecretTripleClick`), hotkeys (`Ctrl+Shift+K`, `Alt+M`).
+- **Function**: `triggerMurthehelpPortal(clearance)` transitions `#disguise-stage` (hidden) $\to$ `#portal-stage` (flex).
+- **Emergency Reversion**: `returnToDisguise()` hides `#portal-stage` and `#dark-stage`, displays `#disguise-stage`, resets background to `#f8fafc`.
+
+### Transit Portal ↔ Tactical Dark Mall
+- **Authentication**: `handlePortalLogin(event)` validates credentials against `DEFAULT_USERS`, `localStorage` (`murthehelp_users_db`), and Supabase REST API.
+- **Clearance Routing**: `unlockDarkMall(user, clearance)` sets `currentUser`, sets `userClearance`, hides `#portal-stage`, reveals `#dark-stage`, initializes/updates WebGL shader palette, renders catalog.
+
+### WebGL Shader ↔ UI Clearance Tabs
+- **Uniform Update**: `updateWebGLColor(tier)` triggers lerped transition of `uColorA`, `uColorB`, `uNoiseIntensity` according to `TIER_COLOR_CONFIG[tier]`.
+- **Performance Budget**: Target 60fps, DPR capped at 2.0, animation loops throttled when canvas is hidden.
 
 ## Code Layout
-- Target application file: `/Users/quan/.gemini/antigravity/scratch/murthehelp/index.html`
-- Test files: `/Users/quan/.gemini/antigravity/scratch/murthehelp/tests/e2e/test_runner.js`
-- Agent metadata: `/Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/`
+- Root Application: `/Users/quan/.gemini/antigravity/scratch/murthehelp/index.html`
+- E2E Test Runner: `/Users/quan/.gemini/antigravity/scratch/murthehelp/tests/e2e/test_runner.js`
+- Victory Audit Suite: `/Users/quan/.gemini/antigravity/scratch/murthehelp/tests/victory_audit_suite.js`
+- Adversarial Suites: `/Users/quan/.gemini/antigravity/scratch/murthehelp/tests/adversarial_challenger_1.js`, `adversarial_challenger_2.js`, `empirical_adversarial_oracle.js`, `empirical_challenger_r2.js`
+- Playwright E2E & Screenshots: `/Users/quan/.gemini/antigravity/scratch/murthehelp/tests/e2e_playwright_visual_suite.js`
+- Screenshot Gallery: `/Users/quan/.gemini/antigravity/scratch/murthehelp/artifacts/screenshots/`
+- Agent Metadata & Logs: `/Users/quan/.gemini/antigravity/scratch/murthehelp/.agents/`

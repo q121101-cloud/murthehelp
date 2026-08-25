@@ -1,8 +1,8 @@
 # Original User Request
 
-## Initial Request — 2026-08-24T02:01:04+07:00
+## Initial Request — 2026-08-25T04:08:24Z
 
-Improve the single-file Vietnamese dark web simulation at `/Users/quan/.gemini/antigravity/scratch/murthehelp/index.html`.
+Comprehensive UI/UX, 3D WebGL shader, and visual engineering overhaul of the Vietnamese dual-layer simulation platform (`index.html`) to achieve elite $150k+ Agency / Awwwards-tier design standards while preserving 100% of underlying game logic, triggers, and Supabase integration.
 
 Working directory: /Users/quan/.gemini/antigravity/scratch/murthehelp
 Integrity mode: development
@@ -11,61 +11,65 @@ Integrity mode: development
 
 ## Requirements
 
-### R1. Ticker Pause on Hover + Slow Down Speed
+### R1. Tier 1: European Industrial B2B Disguise Storefront (Hoàng Hắc Long)
+- Redesign the public storefront with high-end European industrial manufacturing aesthetic:
+  - Typography: **Plus Jakarta Sans** for headings/body, **Space Grotesk** / **JetBrains Mono** for technical specs.
+  - Palette: Sophisticated Steel / Slate / Titanium grays with refined high-contrast accents.
+  - Layout & Motion: Ultra-clean grid, precision data-density badges (ISO certifications, 1500 Bar pressure ratings), subtle micro-interactions.
+  - Ticker: Smooth, hardware-accelerated marquee with hover-pause functionality and optimal readability speed.
 
-The scrolling ticker/marquee at the very top of the public disguise storefront (Hoàng Hắc Long) currently keeps scrolling even when the user hovers their mouse over it, and it scrolls too fast.
+### R2. Tier 2: Cinematic Biometric Laser Scan Transit Portal (murderhelp)
+- Upgrade the transit portal stage (`#portal-stage`):
+  - Canvas / Background: Rich Dark Burgundy (`#4a0005` to `#240003` vignette gradient).
+  - Biometric Laser Scanning Effect: A dynamic biometric scanning line / laser sweep animation with holographic grid and acoustic-visual feedback vibes.
+  - Title & Clearance Stripe: Prominent, perfectly centered glowing `murderhelp` neon display with an extended, ultra-sleek 3-color neon glow stripe (Red `#b3001e`, Purple `#4d19bf`, Amber `#e67e00`).
+  - Auth Modal: Refined tactical authentication box with polished glassmorphism and clear input affordances.
 
-- When the user moves their mouse cursor **over** the ticker, it must **completely pause** (stop moving).
-- When the mouse leaves, it resumes scrolling.
-- Reduce the scrolling speed by approximately 40–50% compared to its current speed (make it noticeably slower and more readable).
+### R3. Tier 3: Awwwards-Grade WebGL Plasma Shader & Double-Bezel Island UI (MURDER-SHOP)
+- Nâng cấp 3D WebGL Shader:
+  - Transform the Three.js background canvas into a high-performance **Fresnel Iridescent Plasma Sphere** with vertex displacement and dynamic chromatic aberration.
+  - Reactive clearance color palettes:
+    - **CODE RED**: Deep Crimson & Molten Ember
+    - **CODE PURPLE**: Ultraviolet & Neon Violet
+    - **CODE YELLOW**: Radiant Solar Amber
+    - **CODE GREEN**: Cyber Emerald & Electric Mint
+- Design System:
+  - **Double-Bezel Weapon Cards**: Dual-contour layered frames with subtle metallic gradients and crisp inner borders.
+  - **Floating Island Action Buttons**: Pill-shaped action triggers with fluid hover/active state transitions.
+  - Responsive subcategory navigation and fluid cart drawer animations.
 
-### R2. Hide F12 Button; Remap Trigger to Footer Triple-Click
+### R4. Core Logic & Functional Integrity Preservation
+- Preserve 100% of the covert interactive mechanics and data flow:
+  - **Footer Triple-Click Trigger**: Exactly 3 consecutive clicks on `HHL-13543505-HUE` within 1.5 seconds unlocks the portal.
+  - **Secret Search Keys**: Search queries containing `MH13543505`, `MURDERHELP`, `JINMAN`, `7209`, `RED`, `PURPLE`, `YELLOW`, `GREEN` transition correctly with assigned clearance.
+  - **Emergency Protocol**: Pressing `ESC` instantly reverts to the disguise storefront.
+  - **Supabase Integration & State**: Live sync for `murthehelp_users` and `murthehelp_orders`, credential compatibility with live admin `q121101` / `Tungqu@n1208.`, wallet deposit, and checkout balance deductions.
 
-Currently there is a visible "F12 Kiểm Tra Mã Nguồn Trang" button in the top navigation bar of the storefront. This button is too obvious and breaks immersion.
-
-- **Remove** (hide or delete) the "F12 Kiểm Tra Mã Nguồn" / "F12 Mã Nguồn" button from the storefront navbar entirely.
-- Instead, implement a **triple-click handler** on the yellow text `HHL-13543505-HUE` in the storefront footer (the "MÃ ĐKKD:" field). Three consecutive clicks on that yellow text within 1.5 seconds must trigger the hidden portal (call `triggerMurthehelpPortal()` or the equivalent function). After triggering, reset the click counter.
-- The F12 inspection modal (`id="f12-inspection-modal"` or similar) can remain in the DOM for functionality, but its trigger button in the navbar must be gone.
-
-### R3. Rebrand Dark Mall Header
-
-In the dark mall stage (`id="dark-stage"`), the header currently displays `MURDER.SHOPPING.MALL`.
-
-- Change the displayed branding text to `MURDER-SHOP` (hyphen separator, no dot notation).
-- Any associated subtitle, badge, or `<title>` tag that references the old brand should also be updated to match.
-
-### R4. Expand Product Catalog with More Items and Working Images
-
-The dark mall product catalog currently has too few items and several product cards show broken images (the Revolver category cards RED-R01, RED-R02, RED-R03 and some others show a broken image icon).
-
-- Add at least **10 additional products** spread across existing categories (Pistol, Revolver, SMG, Assault Rifle, Sniper Rifle, Explosives, Melee) or across other clearance tiers (PURPLE, YELLOW, GREEN if they exist).
-- **Fix all broken product images**: replace any broken Unsplash or placeholder URLs with verified working image URLs from Unsplash, Pexels, or similar public CDNs. Each product image must visually match the product type.
-- New product entries must follow the same JavaScript data structure as existing items (id, name, subCat, code, price, img, specs).
+### R5. QA, Linting & Headless Verification
+- Verification pipeline:
+  - Clean syntax validation & linting (0 syntax errors, 0 runtime reference errors).
+  - Playwright headless browser E2E test confirming zero console errors on startup and transitions.
+  - Capture rendered screenshots of all 3 tiers to verify visual fidelity.
 
 ---
 
 ## Acceptance Criteria
 
-### Ticker
-- [ ] Hovering mouse over the ticker row freezes the animation/scroll completely.
-- [ ] Moving mouse away resumes scrolling.
-- [ ] Scroll animation duration is visibly slower (noticeably more readable) than before.
+### Visual & Interactive Tier Standards
+- [ ] Storefront displays a cohesive European industrial B2B aesthetic using Plus Jakarta Sans with zero layout glitches.
+- [ ] Top ticker pauses completely on mouse hover and resumes smoothly on mouse leave.
+- [ ] Portal screen features biometric laser scanning animation and the centered `murderhelp` glow title with 3-color clearance stripe.
+- [ ] Three.js plasma shader runs at smooth 60fps, smoothly transitioning color palettes upon clicking RED / PURPLE / YELLOW / GREEN clearance tabs.
+- [ ] Weapon cards render with authentic Double-Bezel styling and functional Island action buttons.
 
-### F12 Button
-- [ ] No "F12 Kiểm Tra Mã Nguồn" or "F12 Mã Nguồn" button is visible anywhere in the storefront navbar.
-- [ ] Clicking the yellow `HHL-13543505-HUE` text in the footer exactly 3 times within 1.5 seconds successfully opens the portal (transitions to portal-stage).
-- [ ] The F12 inspection modal content still functions (just no visible navbar button).
+### Functional Integrity
+- [ ] Triple-clicking `HHL-13543505-HUE` in the footer within 1.5s triggers `#portal-stage`.
+- [ ] Secret search key `mh13543505` and `murderhelp` trigger the portal.
+- [ ] Login with `q121101` / `Tungqu@n1208.` successfully unlocks full CODE GREEN admin access with accurate 2.000.000.000 ₫ balance.
+- [ ] ESC key returns to the disguise storefront from anywhere.
+- [ ] Adding to cart and checkout deducts balance and records orders accurately.
 
-### Branding
-- [ ] The dark mall header reads `MURDER-SHOP` — not `MURDER.SHOPPING.MALL`.
-- [ ] No leftover references to `MURDER.SHOPPING.MALL` in visible UI text (code/data is fine).
-
-### Products
-- [ ] At least 10 new product entries are added to the `PRODUCTS` array.
-- [ ] Zero broken image icons (no 404 or `?` placeholder image) on any visible product card.
-- [ ] All new product images display a relevant photo matching the product category.
-
-### No Regressions
-- [ ] JavaScript passes syntax validation: `node -e "new Function(...)"` on both inline script blocks returns no errors.
-- [ ] Login with `q121101` / `Tungqu@n1208.` still works end-to-end.
-- [ ] After all changes, commit and push: `git add . && git commit -m "feat(ui): ticker pause on hover, hide F12 button, footer triple-click trigger, rebrand MURDER-SHOP, expand product catalog" && git push origin main`.
+### Automated Testing & Quality
+- [ ] JS syntax verification script passes 100% across all script blocks.
+- [ ] Playwright / Headless browser tests run with 0 console errors.
+- [ ] All changes committed and pushed to `main` branch on GitHub for automated Vercel deployment.
